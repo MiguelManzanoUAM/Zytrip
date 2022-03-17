@@ -1,0 +1,16 @@
+<section>
+  
+  <%= form_for(@trip, url: admin_trips_path(@trip)) do |f| %>
+    <%= render partial: "trip_form", :locals => { :f => f } %>
+
+    <div>
+        <%= f.submit "Crear"%>
+    </div>
+
+    <div>
+        <%= link_to "Back to trips", admin_trips_path %>
+    </div>
+  <% end %>
+  
+</section>
+

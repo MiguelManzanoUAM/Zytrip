@@ -1,8 +1,17 @@
 Rails.application.routes.draw do
-  resources :trips
-  devise_for :users
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  root to: 'trips#index'
   # Defines the root path route ("/")
   # root "articles#index"
+
+  resources :trips, only: [:index, :show]
+  devise_for :users
+  
+  root to: 'trips#index'
+
+  namespace :admin do
+    controller :admin do
+      resources :trips
+    end
+  end
 end

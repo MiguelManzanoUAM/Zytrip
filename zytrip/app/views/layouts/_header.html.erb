@@ -4,22 +4,32 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <% if user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to 'Sign out', destroy_user_session_path, method: :delete, data: { turbo_method: :delete}, class: 'nav-link' %>
-          </li>
-
+        
+        <% if user_signed_in?%>
           <% if current_user.admin == true %>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Admin
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                <li>
+                  <%= link_to 'Trips', admin_trips_path, class: 'dropdown-item' %>
+                </li>
+                <li><hr class="dropdown-divider"></li>
+              </ul>
+            </li>
+
             <li class="nav-item">
-              <%= link_to 'Trips', admin_trips_path, class: 'nav-link' %>
+              <%= link_to 'Sign out', destroy_user_session_path, method: :delete, data: { turbo_method: :delete}, class: 'nav-link' %>
             </li>
 
           <% else %>
-
             <li class="nav-item">
-              <%= link_to 'Trips', trips_path, class: 'nav-link' %>
+              <%= link_to 'Trips', trips_path, class: 'dropdown-item' %>
             </li>
 
           <% end %>
@@ -33,12 +43,7 @@
             <%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %>
           </li>
 
-          <li class="nav-item">
-            <%= link_to 'Trips', trips_path, class: 'nav-link' %>
-          </li>
-
         <% end %>
-        
       </ul>
     </div>
   </div>

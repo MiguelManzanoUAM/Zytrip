@@ -1,0 +1,11 @@
+<section>
+	<% if current_user and current_user.admin? %>
+		<div class="container-fluid"> 
+			<div class="p-4 p-md-5 mb-4 text-white rounded bg-dark mt-1">
+			    <h1 class="display-4 fst-italic"><center>Interfaz de administrador</center></h1>
+			</div>
+		</div>
+	<% else %>
+		<%= render "layouts/error" %>
+	<% end %>
+</section>

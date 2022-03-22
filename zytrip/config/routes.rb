@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   namespace :admin do
     controller :admin do
       resources :trips
+      get "/dashboards/landing", to: "dashboards#landing"
     end
   end
 end

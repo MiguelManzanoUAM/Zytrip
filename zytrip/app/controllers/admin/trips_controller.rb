@@ -4,6 +4,10 @@ class Admin::TripsController < ApplicationController
 
   # GET /trips or /trips.json
   def index
+    unless current_user and current_user.admin?
+      redirect_to root_path, error: "You don't belong there"
+    end
+    
     @trips = Trip.all
   end
 

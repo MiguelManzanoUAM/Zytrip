@@ -1,0 +1,13 @@
+<section>
+	<div class="container-fluid">
+		<div class="bd-callout bd-callout-info">
+			<h4 class="error">Ups, ha ocurrido un error no esperado!</h4>
+
+			<br><p class="error-info">Parece que ha intentado acceder a una vista con acceso restringido y no dispone de los permisos necesarios, contacte con nosotros si el error no se resuelve</p>
+		</div>
+	</div>
+</section>
+
+<% content_for :view_specific_css do %>
+    <%= stylesheet_link_tag "error" %>
+<% end %>

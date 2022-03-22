@@ -20,16 +20,21 @@
                   <%= link_to 'Trips', admin_trips_path, class: 'dropdown-item' %>
                 </li>
                 <li><hr class="dropdown-divider"></li>
+                <li>
+                  <%= button_to 'Sign out', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
+                </li>
               </ul>
             </li>
 
-            <li class="nav-item">
-              <%= link_to 'Sign out', destroy_user_session_path, method: :delete, data: { turbo_method: :delete}, class: 'nav-link' %>
-            </li>
+            
 
           <% else %>
             <li class="nav-item">
               <%= link_to 'Trips', trips_path, class: 'dropdown-item' %>
+            </li>
+
+            <li class="nav-item">
+              <%= button_to 'Sign out', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
             </li>
 
           <% end %>

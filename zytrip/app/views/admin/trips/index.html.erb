@@ -1,18 +1,24 @@
-<p style="color: green"><%= notice %></p>
+<section>
+  <div class="main">
+    <h1>Trips de la vista admin</h1>
 
-<h1>Trips de la vista admin</h1>
+    <% name = current_user.present? ? current_user.email : 'Stranger' %>
 
-<% name = current_user.present? ? current_user.email : 'Stranger' %>
+    <h1>Welcome, <%= name %></h1>
 
-<h1>Welcome, <%= name %></h1>
+    <div id="trips">
+      <% @trips.each do |trip| %>
+        <%= render trip %>
+        <p>
+          <%= link_to "Show this trip", trip %>
+        </p>
+      <% end %>
+    </div>
 
-<div id="trips">
-  <% @trips.each do |trip| %>
-    <%= render trip %>
-    <p>
-      <%= link_to "Show this trip", trip %>
-    </p>
-  <% end %>
-</div>
+    <%= link_to "New trip", new_admin_trip_path %>
+  </div>
+</section>
 
-<%= link_to "New trip", new_admin_trip_path %>
+<% content_for :view_specific_css do %>
+    <%= stylesheet_link_tag "admin" %>
+<% end %>

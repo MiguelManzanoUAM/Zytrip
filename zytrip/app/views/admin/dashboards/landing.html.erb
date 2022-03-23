@@ -1,7 +1,7 @@
 <section>
 	<% if current_user and current_user.admin? %>
-		<div class="container-fluid"> 
-			<div class="p-4 p-md-5 mb-4 text-white rounded bg-dark mt-1">
+		<div class="container-fluid main"> 
+			<div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
 			    <h1 class="display-4 fst-italic"><center>Interfaz de administrador</center></h1>
 			</div>
 		</div>
@@ -9,3 +9,7 @@
 		<%= render "layouts/error" %>
 	<% end %>
 </section>
+
+<% content_for :view_specific_css do %>
+    <%= stylesheet_link_tag "admin" %>
+<% end %>

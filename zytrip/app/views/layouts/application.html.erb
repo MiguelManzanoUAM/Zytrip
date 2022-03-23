@@ -13,7 +13,15 @@
   </head>
 
   <body>
-    <%= render "layouts/header" %>
+    <% if user_signed_in? %>
+      <% if current_user.admin == true %>
+        <%= render "layouts/sidebar" %>
+      <% end %>     
+    <% end %>
+
+    <% if !current_user or current_user.admin == false %>
+      <%= render "layouts/header" %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

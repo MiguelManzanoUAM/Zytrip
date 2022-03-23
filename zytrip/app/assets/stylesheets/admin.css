@@ -1,0 +1,48 @@
+/**********************************************
+ * Admin interface styles
+**********************************************/
+
+/* -----------------------------------------*/
+/* sidebar menu                             */
+/* -----------------------------------------*/
+
+.sidebar {
+  width: 250px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background-color: #343a40;
+}
+
+.sidebar hr{
+  margin-left: 10px;
+  margin-right: 10px;
+  border: 1px;
+  width: 90%;
+  color: white;
+}
+
+.sidebar i{
+  font-size:24px;
+}
+.sidebar-title{
+  margin-top: 50px;
+  margin-left: 10px;
+  margin-right: 5px;
+  color: white;
+  font-size: 20px;
+}
+
+.sidebar-menu{
+  margin-top: 50px;
+  margin-left: 10px;
+  margin-right: 5px;
+  color: white;
+}
+
+
+/* -----------------------------------------*/
+/* Main container                           */
+/* -----------------------------------------*/
+
+.main { margin-left: 250px; }

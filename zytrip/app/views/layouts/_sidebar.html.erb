@@ -1,12 +1,40 @@
 <section class="sidebar">
   <div class ="sidebar-title">
-    <h2>Interfaz de administrador</h1>
+    <h1>ZyTrip</h1>
   </div>
+
   <hr>
+
   <div class="sidebar-menu">
-    opciones
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item sidebar-item">
+        <%= link_to admin_dashboards_landing_path, class: 'sidebar-nav-link' do %>
+          <i class="fad fa-home"><strong class="sidebar-nav-opt"> Home</strong></i>
+        <% end %>
+      </li>
+
+      <li class="nav-item sidebar-item">
+        <%= link_to admin_dashboards_dashboard_path, class: 'sidebar-nav-link' do %>
+          <i class="fad fa-chart-bar"><strong class="sidebar-nav-opt">Dashboard</strong></i>
+        <% end %>
+      </li>
+
+      <li class="nav-item sidebar-item">
+        <%= link_to admin_users_path, class: 'sidebar-nav-link' do %>
+          <i class="fad fa-users"><strong class="sidebar-nav-opt">Usuarios</strong></i>
+        <% end %>
+      </li>
+
+      <li class="nav-item sidebar-item">
+        <%= link_to admin_trips_path, class: 'sidebar-nav-link' do %>
+          <i class="far fa-plane"><strong class="sidebar-nav-opt"> Viajes</strong></i>
+        <% end %>
+      </li>
+    </ul>
   </div>
+
   <hr>
+
   <div class="sidebar-footer">
     <div class="dropdown">
       <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -14,9 +42,7 @@
         <strong>Administrador</strong>
       </a>
       <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
-        <li><a class="dropdown-item" href="#">New project...</a></li>
         <li><a class="dropdown-item" href="#">Settings</a></li>
-        <li><a class="dropdown-item" href="#">Profile</a></li>
         <li><hr class="dropdown-divider"></li>
         <li>
           <%= button_to 'Sign out', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>

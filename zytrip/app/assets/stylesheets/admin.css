@@ -31,18 +31,36 @@
   margin-right: 5px;
   color: white;
   font-size: 20px;
+  text-align: center;
 }
 
 .sidebar-menu{
-  margin-top: 50px;
-  margin-left: 10px;
+  margin-top: 20px;
+  margin-left: 50px;
   margin-right: 5px;
+  color: white;
+  margin-bottom: 650px;
+}
+
+.sidebar-footer{
+  color: white;
+  margin-left: 50px;
+}
+
+.sidebar-nav-link{
   color: white;
 }
 
+.sidebar-nav-opt{
+  margin-left: 10px;
+}
+
+.sidebar-item{
+  margin-top: 20px;
+}
 
 /* -----------------------------------------*/
 /* Main container                           */
 /* -----------------------------------------*/
 
-.main { margin-left: 250px; }
+.admin-main { margin-left: 250px; }

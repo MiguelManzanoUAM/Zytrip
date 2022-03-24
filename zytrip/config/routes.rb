@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   namespace :admin do
     controller :admin do
       resources :trips
+      resources :users
       get "/dashboards/landing", to: "dashboards#landing"
+      get "/dashboards/dashboard", to: "dashboards#dashboard"
     end
   end
 end

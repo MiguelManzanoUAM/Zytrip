@@ -4,4 +4,8 @@ class Admin::DashboardsController < ApplicationController
 	def landing
 
 	end
+
+	def dashboard
+
+	end
 end

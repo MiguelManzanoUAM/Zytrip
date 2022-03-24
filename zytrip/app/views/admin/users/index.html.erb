@@ -1,0 +1,12 @@
+<section>
+	<div class="admin-main" id="users">
+    <% @users.each do |user| %>
+      <%= user.email %>
+      <br>
+    <% end %>
+  </div>
+</section>
+
+<% content_for :view_specific_css do %>
+    <%= stylesheet_link_tag "admin" %>
+<% end %>

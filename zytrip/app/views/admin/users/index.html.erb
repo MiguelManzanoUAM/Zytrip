@@ -1,9 +1,52 @@
 <section>
 	<div class="admin-main" id="users">
-    <% @users.each do |user| %>
-      <%= user.email %>
-      <br>
-    <% end %>
+    <h2 class="users-title"><strong>Administración de usuarios</strong></h2>
+
+    <table class="users-table">
+      <thead>
+        <tr>
+          <th>Rol del usuario</th>
+          <th>Usuario</th>
+          <th>Email</th>
+          <th>Administración</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td>
+              <% if user.admin? %>
+                <i class="fas fa-user-tie rounded-circle users-admin-icon">   Admin</i>
+              <% else %>
+                <i class="fas fa-user-tie rounded-circle users-user-icon">   Usuario</i>
+              <% end %>
+            </td>
+            <td>
+              <%= user.name %> <%= user.surname %>
+            </td>
+            <td><%= user.email %></td>
+            <td>
+              <div class="row justify-content-center">
+                <div class="col-2">
+                  <%= link_to edit_admin_user_path(user), title:"Editar" do %>
+                    <i class="fas fa-user-edit"></i>
+                  <% end %>
+                </div>
+
+                <div class="col-2">
+                  <% if user != current_user %>
+                    <%= button_to admin_user_path(user), method: :delete, class:"admin-delete-button", title:"Eliminar" do %> 
+                      <i class="fas fa-user-times admin-delete"></i>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </section>
 

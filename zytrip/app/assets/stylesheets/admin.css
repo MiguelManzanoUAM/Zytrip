@@ -11,7 +11,7 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  background-color: #343a40;
+  background-color: #0b0331;
 }
 
 .sidebar hr{
@@ -63,4 +63,61 @@
 /* Main container                           */
 /* -----------------------------------------*/
 
-.admin-main { margin-left: 250px; }
+.admin-main { 
+  margin-left: 300px;
+  margin-top: 50px;
+}
+
+.admin-delete {
+  color: red;
+}
+
+.admin-delete-button{
+  background-color: white;
+  border: none;
+}
+
+/**********************************************
+ * Admin interface styles
+**********************************************/
+
+/* -----------------------------------------*/
+/* Admin users                              */
+/* -----------------------------------------*/
+
+.users-title{
+  font-family: sans-serif;
+  margin-left: 50px;
+}
+
+.users-table{
+  margin-top: 50px;
+  margin-left: 50px;
+  width: 90%;
+  border-collapse: collapse;
+  font-size: 0.9em;
+  
+}
+
+.users-table thead tr{
+  background-color: #c4d6ed;
+  color: #6e9bd5;
+  text-align: center;
+}
+
+.users-table th, td{
+  padding: 12px 15px;
+  text-align: center;
+}
+
+.users-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.users-admin-icon{
+  color: red;
+}
+
+.users-user-icon{
+  color: blue;
+}

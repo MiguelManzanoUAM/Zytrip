@@ -77,6 +77,41 @@
   border: none;
 }
 
+.admin-new-panel{
+  margin-top: 50px;
+  margin-left: 50px;
+  width: 90%;
+  border-collapse: collapse;
+  font-size: 0.9em;
+  background-color: #f3f7fc;
+  color: #6e9bd5;
+  padding: 12px 15px;
+}
+
+.admin-new-element{
+  text-align: center;
+}
+
+.admin-search-bar{
+  margin-left: 50px;
+  border: 3px solid #6e9bd5;
+  border-right: none;
+  outline: none;
+  width: 30%;
+  border-radius: 5px 0 0 5px;
+}
+
+.admin-search-bar:focus{
+  color: #6e9bd5;
+}
+
+.admin-search-button{
+  color: #fff;
+  border: 1px solid #6e9bd5;
+  background: #6e9bd5;
+  cursor: pointer;
+}
+
 /**********************************************
  * Admin interface styles
 **********************************************/
@@ -91,12 +126,11 @@
 }
 
 .users-table{
-  margin-top: 50px;
+  margin-top: 20px;
   margin-left: 50px;
   width: 90%;
   border-collapse: collapse;
   font-size: 0.9em;
-  
 }
 
 .users-table thead tr{
@@ -111,7 +145,7 @@
 }
 
 .users-table tbody tr {
-    border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
 }
 
 .users-admin-icon{
@@ -120,4 +154,8 @@
 
 .users-user-icon{
   color: blue;
+}
+
+.users-new-icon{
+  color: green;
 }

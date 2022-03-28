@@ -1,26 +1,35 @@
-<h2>Log in</h2>
+<div class="registration-form login-form-img">
+  <div class="login-form-container">
+    <%= image_tag("user.jpeg", alt: "imagen usuario", class:"registration-avatar") %>
+    <h2>Iniciar Sesión</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field">
+        <%= f.label(:email, "Email", class:"registration-form-label") %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"registration-form-input", placeholder:"Introduzca su dirección de correo..." %>
+      </div>
+
+      <div class="field">
+        <%= f.label(:password, "Contraseña", class:"registration-form-label") %>
+        <%= f.password_field :password, autocomplete: "new-password", class:"registration-form-input", placeholder:"Introduzca su contraseña..." %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Iniciar Sesión", class:"registration-form-submit-btn" %>
+      </div>
+
+      <p class="login-form-advise">
+        ¿Aún no tienes una cuenta?
+      </p>
+
+      <div class="login-form-submit-btn">
+        <%= link_to 'Registrarse', new_user_registration_path, class:"login-registration-link"%>
+      </div>
+
+    <% end %>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
+<% content_for :view_specific_css do %>
+    <%= stylesheet_link_tag "main" %>
 <% end %>
-
-<%= render "devise/shared/links" %>

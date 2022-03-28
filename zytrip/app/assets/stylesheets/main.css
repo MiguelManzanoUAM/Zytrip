@@ -31,5 +31,150 @@
   font-size: 25px;
 }
 
-/* -----------------------------------------*/
 
+/**********************************************
+ * Sign-up and login forms
+**********************************************/
+
+.registration-form{
+  content: '';
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+
+  /*Estilos segun navegador */
+  -webkit-background-size: cover;
+  -webkit-filter: blur(10px);
+  -moz-filter: blur(10px);
+  filter: ;
+}
+
+.registration-form-img{
+  background-image: url(landscape1.jpeg);
+}
+
+.login-form-img{
+  background-image: url(landscape2.jpg);
+}
+
+.registration-form-container{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 700px;
+  padding: 80px 40px;
+  background: rgba(0,0,0,0.6);
+  border-radius: 15px;
+
+  /*Estilos segun navegador */
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+}
+
+.login-form-container{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 450px;
+  height: 550px;
+  padding: 80px 40px;
+  background: rgba(0,0,0,0.6);
+  border-radius: 15px;
+
+  /*Estilos segun navegador */
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+}
+
+.registration-avatar{
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  top: calc(-80px/2);
+  left: calc(50% - 40px);
+}
+
+.registration-form h2{
+  margin: 0;
+  padding: 0 0 20px;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.registration-form-label{
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  color: #fff;
+}
+
+.registration-form-input{
+  width: 100%;
+  margin-bottom: 20px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  background: transparent;
+  outline: none;
+  height: 35px;
+  color: #fff;
+  font-size: 15px;
+}
+
+.registration-form-submit-btn{
+  margin-top: 15%;
+  height: 40px;
+  color: #fff;
+  font-size: 15px;
+  background: #6e9bd5;
+  cursor: pointer;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  width: 100%;
+}
+
+.login-form-submit-btn{
+  height: 40px;
+  color: #fff;
+  font-size: 15px;
+  background: #6e9bd5;
+  cursor: pointer;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  width: 100%;
+}
+
+.login-form-advise{
+  margin-top: 20px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.login-registration-link{
+  color: #fff;
+  font-size: 15px;
+  margin-left: 40%;
+  margin-top: 10%;
+  text-decoration: none;
+}
+
+.login-registration-link:hover{
+  color: #fff;
+}

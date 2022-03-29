@@ -171,8 +171,8 @@
   color: #fff;
   font-size: 15px;
   margin-left: 40%;
-  margin-top: 10%;
   text-decoration: none;
+  text-align: center;
 }
 
 .login-registration-link:hover{

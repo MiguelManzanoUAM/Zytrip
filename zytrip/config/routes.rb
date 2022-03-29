@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :trips, only: [:index, :show]
+  resources :agencies, only: [:index, :show]
+
   devise_for :users
   
   root to: 'trips#index'
@@ -12,6 +14,7 @@ Rails.application.routes.draw do
   namespace :admin do
     controller :admin do
       resources :trips
+      resources :agencies
       resources :users
       get "/dashboards/landing", to: "dashboards#landing"
       get "/dashboards/dashboard", to: "dashboards#dashboard"

@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Agencies</h1>
+
+<div id="agencies">
+  <% @agencies.each do |agency| %>
+    <%= render agency %>
+    <p>
+      <%= link_to "Show this agency", agency %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New agency", new_agency_path %>

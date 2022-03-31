@@ -13,5 +13,6 @@ p "Borrando base de datos actual..."
 
 Agency.create!(name:"Viajes Miguel", id:1)
 Trip.create!(title: "Viaje prueba", body: "Descripcion del viaje", agency_id: 1, id:1)
+Trip.create!(title: "Madrid", body: "Otra descripcion", agency_id: 1, id:2)
 
 p "Alimentando base de datos..."

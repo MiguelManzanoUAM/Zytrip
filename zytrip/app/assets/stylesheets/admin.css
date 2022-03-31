@@ -116,16 +116,12 @@
  * Admin interface styles
 **********************************************/
 
-/* -----------------------------------------*/
-/* Admin users                              */
-/* -----------------------------------------*/
-
-.users-title{
+.admin-model-title{
   font-family: sans-serif;
   margin-left: 50px;
 }
 
-.users-table{
+.admin-model-table{
   margin-top: 20px;
   margin-left: 50px;
   width: 90%;
@@ -133,20 +129,24 @@
   font-size: 0.9em;
 }
 
-.users-table thead tr{
+.admin-model-table thead tr{
   background-color: #c4d6ed;
   color: #6e9bd5;
   text-align: center;
 }
 
-.users-table th, td{
+.admin-model-table th, td{
   padding: 12px 15px;
   text-align: center;
 }
 
-.users-table tbody tr {
+.admin-model-table tbody tr {
   border-bottom: 1px solid #dddddd;
 }
+
+/* -----------------------------------------*/
+/* Admin users                              */
+/* -----------------------------------------*/
 
 .users-admin-icon{
   color: red;

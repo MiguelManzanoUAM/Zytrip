@@ -1,21 +1,71 @@
 <section>
-  <div class="main">
-    <h1>Trips de la vista admin</h1>
+  <div class="admin-main" id="users">
+    <h2 class="admin-model-title"><strong>Administración de viajes</strong></h2>
 
-    <% name = current_user.present? ? current_user.email : 'Stranger' %>
+    <div class="admin-new-panel">
+      <div class="row ">
+        <div class="col-8 admin-search">
+          <%= form_tag admin_trips_path, :method => 'get' do %>
+            <%= text_field_tag :search, params[:search], class:"admin-search-bar", placeholder:"Búsqueda por viaje..." %>
+            <%= button_tag(type: 'submit', class: "admin-search-button") do %>
+              <i class="fas fa-search"></i>
+            <% end %>
+          <% end %>
+        </div>
 
-    <h1>Welcome, <%= name %></h1>
+        <div class="col-2 admin-new-element">
+          <%= link_to new_admin_trip_path do %>
+            <i class="fas fa-plane">   Añadir viaje</i>
+          <% end %>
+        </div>
 
-    <div id="trips">
-      <% @trips.each do |trip| %>
-        <%= render trip %>
-        <p>
-          <%= link_to "Show this trip", trip %>
-        </p>
-      <% end %>
+        <div class="col-2 admin-new-element">
+          <i class="fas fa-suitcase">   Importar viajes</i>
+        </div>
+      </div>
     </div>
 
-    <%= link_to "New trip", new_admin_trip_path %>
+    <table class="admin-model-table">
+      <thead>
+        <tr>
+          <th>Viaje</th>
+          <th>Agencia(id)</th>
+          <th>Precio</th>
+          <th>Nº Usuarios</th>
+          <th>Valoración</th>
+          <th>Administración</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @trips.each do |trip| %>
+          <tr>
+            <td><%= trip.title %></td>
+            <td><%= trip.agency_id %></td>
+            <td>sin definir</td>
+            <td><%= trip.users.size %></td>
+            <td>0/5</td>
+
+            <td>
+              <div class="row justify-content-center">
+                <div class="col-2">
+                  <%= link_to edit_admin_trip_path(trip), title:"Editar" do %>
+                    <i class="fas fa-plane-departure"></i>
+                  <% end %>
+                </div>
+
+                <div class="col-2">
+                  <%= button_to admin_trip_path(trip), method: :delete, class:"admin-delete-button", title:"Eliminar" do %> 
+                    <i class="fas fa-plane-slash admin-delete"></i>
+                  <% end %>
+                </div>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+
+      </tbody>
+    </table>
   </div>
 </section>
 

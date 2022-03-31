@@ -1,6 +1,6 @@
 <section>
 	<div class="admin-main" id="users">
-    <h2 class="users-title"><strong>Administración de usuarios</strong></h2>
+    <h2 class="admin-model-title"><strong>Administración de usuarios</strong></h2>
 
     <div class="admin-new-panel">
       <div class="row ">
@@ -25,12 +25,13 @@
       </div>
     </div>
 
-    <table class="users-table">
+    <table class="admin-model-table">
       <thead>
         <tr>
           <th>Rol del usuario</th>
           <th>Usuario</th>
           <th>Email</th>
+          <th>Nº Viajes</th>
           <th>Administración</th>
         </tr>
       </thead>
@@ -49,6 +50,7 @@
               <%= user.name %> <%= user.surname %>
             </td>
             <td><%= user.email %></td>
+            <td><%= user.trips.size %>
             <td>
               <div class="row justify-content-center">
                 <div class="col-2">
@@ -68,6 +70,7 @@
             </td>
           </tr>
         <% end %>
+
       </tbody>
     </table>
   </div>

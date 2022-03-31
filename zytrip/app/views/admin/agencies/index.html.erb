@@ -1,14 +1,70 @@
-<p style="color: green"><%= notice %></p>
+<section>
+  <div class="admin-main" id="users">
+    <h2 class="admin-model-title"><strong>Administración de agencias</strong></h2>
 
-<h1>Agencies</h1>
+    <div class="admin-new-panel">
+      <div class="row ">
+        <div class="col-8 admin-search">
+          <%= form_tag admin_agencies_path, :method => 'get' do %>
+            <%= text_field_tag :search, params[:search], class:"admin-search-bar", placeholder:"Búsqueda por agencia..." %>
+            <%= button_tag(type: 'submit', class: "admin-search-button") do %>
+              <i class="fas fa-search"></i>
+            <% end %>
+          <% end %>
+        </div>
 
-<div id="agencies">
-  <% @agencies.each do |agency| %>
-    <%= render agency %>
-    <p>
-      <%= link_to "Show this agency", agency %>
-    </p>
-  <% end %>
-</div>
+        <div class="col-2 admin-new-element">
+          <%= link_to new_admin_agency_path do %>
+            <i class="fas fa-user-tie">   Añadir agencia</i>
+          <% end %>
+        </div>
 
-<%= link_to "New agency", new_agency_path %>
+        <div class="col-2 admin-new-element">
+          <i class="fas fa-address-book">   Importar agencias</i>
+        </div>
+      </div>
+    </div>
+
+    <table class="admin-model-table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Telefono</th>
+          <th>Nº Viajes</th>
+          <th>Administración</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @agencies.each do |agency| %>
+          <tr>
+            <td><%= agency.name %></td>
+            <td>sin definir</td>
+            <td><%= agency.trips.size %></td>
+
+            <td>
+              <div class="row justify-content-center">
+                <div class="col-2">
+                  <%= link_to edit_admin_agency_path(agency), title:"Editar" do %>
+                    <i class="fas fa-briefcase"></i>
+                  <% end %>
+                </div>
+
+                <div class="col-2">
+                  <%= button_to admin_agency_path(agency), method: :delete, class:"admin-delete-button", title:"Eliminar" do %> 
+                    <i class="fas fa-briefcase admin-delete"></i>
+                  <% end %>
+                </div>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<% content_for :view_specific_css do %>
+    <%= stylesheet_link_tag "admin" %>
+<% end %>

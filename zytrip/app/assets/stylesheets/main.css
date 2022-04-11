@@ -152,7 +152,7 @@
   color: #fff;
   font-size: 15px;
   background: #6e9bd5;
-  cursor: pointer;
+  padding-top: 10px;
   border-radius: 25px;
   border: none;
   outline: none;
@@ -171,6 +171,7 @@
   color: #fff;
   font-size: 15px;
   margin-left: 40%;
+  cursor: pointer;
   text-decoration: none;
   text-align: center;
 }

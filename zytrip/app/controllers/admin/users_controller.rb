@@ -13,6 +13,7 @@ class Admin::UsersController < ApplicationController
 	def create
 		@user = User.new(user_params)
 		@user.save
+		redirect_to admin_users_path
 	end
 
 	def destroy
@@ -36,7 +37,7 @@ class Admin::UsersController < ApplicationController
 	private
 
 	def user_params
-		params.require(:user).permit(:name, :surname, :email, :password)
+		params.require(:user).permit(:name, :surname, :email, :password, :password_confirmation, :admin)
 	end
 
 end

@@ -159,3 +159,89 @@
 .users-new-icon{
   color: green;
 }
+
+/* -----------------------------------------*/
+/* Create and edit forms                    */
+/* -----------------------------------------*/
+
+.create-edit-styled-box{
+  position: absolute;
+  top: 25%;
+  left: 35%;
+  padding: 40px 40px;
+  margin-top:10px;
+  border: 4px solid #0b0331; 
+  background-color: rgba(249, 249, 249, 0.5);
+  border-radius: 25px;
+}
+
+.create-edit-form-label{
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+}
+
+.create-edit-form-input{
+  width: 100%;
+  margin-bottom: 20px;
+  border: none;
+  border-bottom: 1px solid black;
+  background: transparent;
+  outline: none;
+  height: 35px;
+  font-size: 15px;
+}
+
+.create-edit-form-checkbox{
+  margin-bottom: 20px;
+  background: transparent;
+  background-color: #eee;
+  margin-left: 20px;
+}
+
+.create-edit-header{
+  margin-top: 10px;
+  margin-bottom: 40px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.actions-btns{
+  margin-top: 20px;
+}
+
+.create-edit-form-submit-btn{
+  height: 40px;
+  color: #fff;
+  font-size: 15px;
+  background: blue;
+  cursor: pointer;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  width: 100%;
+}
+
+.create-edit-form-cancel-btn{
+  height: 40px;
+  color: #fff;
+  font-size: 15px;
+  padding-top: 10px;
+  background-color: grey;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  width: 100%;
+}
+
+.create-edit-form-cancel-link{
+  color: #fff;
+  font-size: 15px;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.create-edit-form-cancel-link:hover{
+  color: #fff;
+}

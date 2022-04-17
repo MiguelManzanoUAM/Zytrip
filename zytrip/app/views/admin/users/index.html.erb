@@ -54,14 +54,14 @@
             <td>
               <div class="row justify-content-center">
                 <div class="col-2">
-                  <%= link_to edit_admin_user_path(user), title:"Editar" do %>
+                  <%= link_to edit_admin_user_path(user), title:"Editar usuario" do %>
                     <i class="fas fa-user-edit"></i>
                   <% end %>
                 </div>
 
                 <div class="col-2">
                   <% if user != current_user %>
-                    <%= button_to admin_user_path(user), method: :delete, class:"admin-delete-button", title:"Eliminar" do %> 
+                    <%= button_to admin_user_path(user), method: :delete, class:"admin-delete-button", title:"Eliminar usuario" do %> 
                       <i class="fas fa-user-times admin-delete"></i>
                     <% end %>
                   <% end %>

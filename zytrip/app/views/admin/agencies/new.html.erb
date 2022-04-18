@@ -1,9 +1,22 @@
-<h1>New agency</h1>
+<section>
+  <div class="create-edit-styled-box">
+    <h2 class="create-edit-header">Crear Agencia</h2>
+    <%= form_for(@agency, url: admin_agencies_path(@agency)) do |f| %>
+      <%= render partial: "agency_form_fields", :locals => {:f => f} %>
+      <div class="actions-btns">
+        <div class="row">
+          <div class="col-lg-6 col-md-12 col-sm-12 text-center create-edit-form-cancel-btn">
+                <%= link_to "Volver", :back, class: "create-edit-form-cancel-link" %>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 text-center ">
+                <%= f.submit "Crear", class: "create-edit-form-submit-btn" %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+    </div>
+</section>
 
-<%= render "form", agency: @agency %>
-
-<br>
-
-<div>
-  <%= link_to "Back to agencies", agencies_path %>
-</div>
+<% content_for :view_specific_css do %>
+    <%= stylesheet_link_tag "admin" %>
+<% end %>

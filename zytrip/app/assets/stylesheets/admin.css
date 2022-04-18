@@ -25,6 +25,7 @@
 .sidebar i{
   font-size:24px;
 }
+
 .sidebar-title{
   margin-top: 50px;
   margin-left: 10px;
@@ -138,6 +139,14 @@
 .admin-model-table th, td{
   padding: 12px 15px;
   text-align: center;
+}
+
+.admin-model-table img{
+  width: 30px;
+  height: 30px;
+  border-radius: 25%;
+  margin-right: 20px;
+  overflow: hidden;
 }
 
 .admin-model-table tbody tr {

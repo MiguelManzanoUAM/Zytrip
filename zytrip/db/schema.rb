@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_18_105932) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_18_172559) do
   create_table "Trips_Users", id: false, force: :cascade do |t|
     t.integer "Trip_id", null: false
     t.integer "User_id", null: false
@@ -22,6 +22,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_18_105932) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "url"
+    t.string "logo"
+    t.string "phone_number"
+    t.text "description"
   end
 
   create_table "reviews", force: :cascade do |t|

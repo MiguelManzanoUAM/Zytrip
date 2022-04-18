@@ -42,10 +42,17 @@
           <tr>
             <td><%= trip.title %></td>
             <td><%= trip.agency_id %></td>
-            <td>sin definir</td>
+            <td><%= trip.price %></td>
             <td><%= trip.users.size %></td>
-            <td>0/5</td>
+            <td>
+              <% trip.rating.round().times do  %>
+                <i class="fas fa-star"></i>
+              <% end %>
 
+              <% (5 - trip.rating.round()).times do %>
+                <i class="far fa-star"></i>
+              <% end %>
+            </td>
             <td>
               <div class="row justify-content-center">
                 <div class="col-2">

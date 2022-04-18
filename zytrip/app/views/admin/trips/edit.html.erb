@@ -1,10 +1,22 @@
-<h1>Editing trip</h1>
+<section>
+  <div class="create-edit-styled-box">
+    <h2 class="create-edit-header">Editar Viaje</h2>
+    <%= form_for(@trip, url: admin_trip_path(@trip)) do |f| %>
+      <%= render partial: "trip_form_fields", :locals => {:f => f} %>
+      <div class="actions-btns">
+        <div class="row">
+          <div class="col-lg-6 col-md-12 col-sm-12 text-center create-edit-form-cancel-btn">
+                <%= link_to "Volver", :back, class: "create-edit-form-cancel-link" %>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 text-center ">
+                <%= f.submit "Guardar cambios", class: "create-edit-form-submit-btn" %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+    </div>
+</section>
 
-<%= render "form", trip: @trip %>
-
-<br>
-
-<div>
-  <%= link_to "Show this trip", @trip %> |
-  <%= link_to "Back to trips", trips_admin_path %>
-</div>
+<% content_for :view_specific_css do %>
+    <%= stylesheet_link_tag "admin" %>
+<% end %>

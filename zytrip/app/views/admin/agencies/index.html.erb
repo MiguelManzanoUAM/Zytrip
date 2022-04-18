@@ -38,8 +38,14 @@
       <tbody>
         <% @agencies.each do |agency| %>
           <tr>
-            <td><%= agency.name %></td>
-            <td>sin definir</td>
+            <td>
+              <% if agency.logo %>
+                <%= image_tag(agency.logo) %> <%= agency.name %>
+              <% else %>
+                <%= image_tag("user.jpeg") %> <%= agency.name %>
+              <% end %>
+            </td>
+            <td><%= agency.phone_number %></td>
             <td><%= agency.trips.size %></td>
 
             <td>

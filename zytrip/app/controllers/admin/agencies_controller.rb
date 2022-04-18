@@ -7,10 +7,6 @@ class Admin::AgenciesController < ApplicationController
     @agencies = Agency.search(params[:search])
   end
 
-  def show
-
-  end
-
   def new
     @agency = Agency.new
   end
@@ -18,6 +14,7 @@ class Admin::AgenciesController < ApplicationController
   def create
     @agency = Agency.new(agency_params)
     @agency.save
+    redirect_to admin_agencies_path
   end
 
   def destroy
@@ -41,6 +38,6 @@ class Admin::AgenciesController < ApplicationController
   private
 
     def agency_params
-      params.require(:trip).permit(:name)
+      params.require(:agency).permit(:name, :phone_number, :logo, :url, :description)
     end
 end

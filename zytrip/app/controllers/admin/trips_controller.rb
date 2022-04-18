@@ -8,10 +8,6 @@ class Admin::TripsController < ApplicationController
     @trips = Trip.search(params[:search])
   end
 
-  def show
-
-  end
-
   def new
     @trip = Trip.new
   end
@@ -19,6 +15,7 @@ class Admin::TripsController < ApplicationController
   def create
     @trip = Trip.new(trip_params)
     @trip.save
+    redirect_to admin_trips_path
   end
 
   def destroy
@@ -43,6 +40,6 @@ class Admin::TripsController < ApplicationController
   private
 
     def trip_params
-      params.require(:trip).permit(:title, :body)
+      params.require(:trip).permit(:title, :agency_id, :body, :price, :rating)
     end
 end

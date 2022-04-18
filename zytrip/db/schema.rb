@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_31_160534) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_18_105932) do
   create_table "Trips_Users", id: false, force: :cascade do |t|
     t.integer "Trip_id", null: false
     t.integer "User_id", null: false
@@ -24,12 +24,25 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_31_160534) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.decimal "rating"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.integer "trip_id"
+    t.index ["trip_id"], name: "index_reviews_on_trip_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
   create_table "trips", force: :cascade do |t|
     t.string "title"
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "agency_id"
+    t.decimal "price", default: "0.0"
+    t.decimal "rating", default: "0.0"
     t.index ["agency_id"], name: "index_trips_on_agency_id"
   end
 
@@ -48,5 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_31_160534) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "reviews", "trips"
+  add_foreign_key "reviews", "users"
   add_foreign_key "trips", "agencies"
 end

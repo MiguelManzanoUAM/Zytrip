@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_and_belongs_to_many :trips
+  has_many :reviews, dependent: :destroy
   
   #Busqueda de usuarios mediante barra de busqueda
   def self.search(search)

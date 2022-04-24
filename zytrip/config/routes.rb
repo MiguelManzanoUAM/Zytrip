@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   
-  root to: 'trips#index'
+  root to: 'landing#home'
 
   namespace :admin do
     controller :admin do

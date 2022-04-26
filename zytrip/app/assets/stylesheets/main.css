@@ -58,7 +58,7 @@
 }
 
 .login-form-img{
-  background-image: url(landscape2.jpg);
+  background-image: url(travelling.jpg);
 }
 
 .registration-form-container{
@@ -190,8 +190,21 @@
 
 .landing-title-container{
   width: 100%;
-  height: 20%;
+  height: 500px;
   background-color: #2b2a2f;
+
+  /*img*/
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  background-image: url(landscape2.jpeg);
+
+  /*Estilos segun navegador */
+  -webkit-background-size: cover;
+  -webkit-filter: blur(10px);
+  -moz-filter: blur(10px);
+  filter: ;
 }
 
 .landing-title{
@@ -208,14 +221,17 @@
   font-size: 30px;
   font-family: monospace;
   color:  #fff;
+  padding-bottom: 70px;
 }
 
 .landing-steps{
-  padding-top: 50px;
+  padding-top: 60px;
   font-size: 20px;
   font-family: monospace;
   color:  #fff;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
+  background: rgba(0,0,0,0.6);
+  overflow: hidden;
 }
 
 .landing-steps-col{
@@ -233,4 +249,40 @@
   padding: 15px;
 }
 
+.landing-results{
+  margin-left: 300px;
+  margin-right: 300px;
+}
+
+.landing-results-title{
+  margin-top: 80px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.landing-results-recomendations{
+  margin-top: 50px;
+}
+
+.landing-results-recomendations-box{
+  border:  1px solid lightgrey;
+  margin-left: 20px;
+  border-radius: 20px;
+}
+
+.landing-results-recomendations-box img{
+  height: 250px;
+  width:  100%;
+  padding-top: 10px;
+}
+
+.landing-results-recomendations-box hr{
+  border: 1px solid lightgrey;
+}
+
+.result-info{
+  padding-top: 10px;
+  font-size: 16 px;
+  text-align: center;
+}
 

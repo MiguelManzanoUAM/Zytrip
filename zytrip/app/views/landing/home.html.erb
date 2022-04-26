@@ -27,7 +27,24 @@
 				</div>
 			</div>
 		</div>
+	</div>
 
+	<div class="landing-results">
+		<div class="landing-results-title">
+			<h2>Nuestros destinos más populares</h2>
+		</div>
+
+		<div class="landing-results-recomendations">
+			<div class="row justify-content-md-center">
+				<% @trips_recomendated.each do |trip| %>
+					<div class="col col-lg-3 landing-results-recomendations-box">
+						<%= image_tag(trip.image) %>
+						<hr>
+						<p class="result-info"><%= trip.title %></p>
+					</div>
+				<% end %>
+			</div>
+		</div>
 	</div>
 </div>
 <% content_for :view_specific_css do %>

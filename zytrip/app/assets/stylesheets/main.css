@@ -185,7 +185,8 @@
 **********************************************/
 
 .main-landing{
-
+  background-color: #F5F4F5;
+  padding-bottom: 200px;
 }
 
 .landing-title-container{
@@ -250,8 +251,8 @@
 }
 
 .landing-results{
-  margin-left: 300px;
-  margin-right: 300px;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 .landing-results-title{
@@ -281,8 +282,42 @@
 }
 
 .result-info{
-  padding-top: 10px;
   font-size: 16 px;
-  text-align: center;
 }
 
+.result-info-title{
+  text-align: left;
+  padding-left: 10px;
+}
+
+.result-info-price{
+  text-align: right;
+  padding-right: 10px;
+  color: green;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.landing-sections{
+  margin-left: 30%;
+  margin-right: 30%;
+  margin-top: 50px;
+}
+
+.landing-sections-box{
+  border:  1px solid lightgreen;
+  border-radius: 20px;
+}
+
+
+
+/**********************************************
+ * Footer styles
+**********************************************/
+.footer{
+  height: 100px;
+  background-color: black;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+}

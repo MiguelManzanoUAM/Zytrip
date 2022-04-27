@@ -40,10 +40,12 @@ Agency.create!(name:"Viajes Miguel", id:1)
 Agency.create!(name:"Viajes El Corte Inglés", id:2, phone_number:"913567892", url:"www.viajesElCorteIngles.es",
 	logo:"elCorteIngles.png")
 
-Trip.create!(title: "Viaje prueba", body: "Descripcion del viaje", agency_id: 1, id:1, image:"summer.jpeg")
-Trip.create!(title: "Madrid", body: "Otra descripcion", agency_id: 1, id:2, rating:5.0, image:"madrid.jpg")
-Trip.create!(title: "Londres", body:"Descripción Londres", agency_id: 2, id:3, rating:4.5, image:"londres.jpg")
-Trip.create!(title: "Viaje prueba 2", body: "Descripcion del viaje 2", agency_id: 1, id:4, image:"user.jpeg")
+Trip.create!(title: "Viaje prueba", body: "Descripcion del viaje", agency_id: 1, id:1, image:"summer.jpeg", price:1050)
+Trip.create!(title: "Madrid", body: "Otra descripcion", agency_id: 1, id:2, rating:5.0, image:"madrid.jpg", price:70)
+Trip.create!(title: "Londres", body:"Descripción Londres", agency_id: 2, id:3, rating:4.5, image:"londres.jpg", price: 385)
+Trip.create!(title: "Viaje prueba 2", body: "Descripcion del viaje 2", agency_id: 1, id:4, image:"user.jpeg", price: 10)
+
+p "Pensando un precio para los viajes..."
 
 Review.create!(comment: "Me ha gustado mucho el viaje", rating: 4.5, user_id:2, trip_id:2, id:1)
 

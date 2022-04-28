@@ -253,16 +253,50 @@
 .landing-results{
   margin-left: 10%;
   margin-right: 10%;
+  margin-top: 80px;
 }
 
-.landing-results-title{
-  margin-top: 80px;
+.landing-results-info{
   font-size: 20px;
-  text-align: center;
+  text-align: left;
+  display: flex;
+  align-items: center;
+}
+
+.landing-results-info-text{
+  flex: 1 1 auto;
+  margin-left: 12%;
+}
+
+.landing-results-info-btn{
+  flex: 0 0 auto;
+  margin-right: 12%;
+  background-color: #fff;
+  border-radius: 3px;
+  border:  1px solid black;
+  outline: none;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.landing-results-info-btn:hover{
+  background-color: #d7d2d1;
+}
+
+.landing-results-info-btn-link{
+  color: black;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.landing-results-info-btn-link:hover{
+  color: black;
 }
 
 .landing-results-recomendations{
-  margin-top: 50px;
+  margin-top: 10px;
 }
 
 .landing-results-recomendations-box{
@@ -298,15 +332,68 @@
   font-weight: bold;
 }
 
-.landing-sections{
-  margin-left: 30%;
-  margin-right: 30%;
+.landing-form-container{
+  margin-left: 19%;
+  margin-right: 19%;
+  border: 1px solid white;
   margin-top: 50px;
+  border-radius: 10px;
+  background-image: url(vacaciones.jpg);
+  width: 63%;
+  height: 600px;
+
+  /*img*/
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+
+  /*Estilos segun navegador */
+  -webkit-background-size: cover;
+  -webkit-filter: blur(10px);
+  -moz-filter: blur(10px);
+  filter: ;
 }
 
-.landing-sections-box{
-  border:  1px solid lightgreen;
-  border-radius: 20px;
+.landing-form-section{
+  background-color: white;
+  margin-top: 250px;
+  float: right;
+  margin-right: 50px;
+  height: 300px;
+  width: 600px;
+  border-radius: 10px;
+  border: 1px solid white;
+}
+
+.landing-form-section-info{
+  font-size: 16px;
+  padding-top: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.landing-form-info-btn{
+  float: right;
+  background-color: #2a2c3b;
+  border-radius: 5px;
+  border:  1px solid #2a2c3b;
+  outline: none;
+  margin-right: 15px;
+  margin-top: 120px;
+}
+
+.landing-form-info-btn-link{
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.landing-form-info-btn-link:hover{
+  color: white;
 }
 
 

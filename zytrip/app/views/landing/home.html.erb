@@ -30,8 +30,15 @@
 	</div>
 
 	<div class="landing-results">
-		<div class="landing-results-title">
-			<h2>Nuestros destinos más populares</h2>
+		<div class="landing-results-info ">
+			<div class="landing-results-info-text">
+				<h2>Nuestros destinos más populares</h2>
+				<p>Recomendaciones resultantes de los viajes con mejor valoración</p>
+			</div>
+
+			<div class="landing-results-info-btn">
+				<%=link_to 'Ver todos', trips_path, class:"landing-results-info-btn-link"%>
+			</div>
 		</div>
 
 		<div class="landing-results-recomendations">
@@ -56,9 +63,15 @@
 		</div>
 	</div>
 
-	<div class="landing-sections">
-		<div class="landing-sections-box">
-			Descubre nuevos viajes
+	<div class="landing-form-container">
+		<div class="landing-form-section">
+			<div class="landing-form-section-info">
+				<h2>Titulo para formulario</h2>
+				<p>Te recomendamos que pruebes esto porque ....</p>
+				<div class="landing-form-info-btn">
+					<%=link_to 'Pruébalo', trips_path, class:"landing-form-info-btn-link"%>
+				</div>
+			</div>
 		</div>
 	</div>
 

@@ -45,11 +45,12 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  filter: none;
 
   /*Estilos segun navegador */
   -webkit-background-size: cover;
-  -webkit-filter: blur(10px);
-  -moz-filter: blur(10px);
+  /*-webkit-filter: blur(10px);
+  -moz-filter: blur(10px);*/
 }
 
 .registration-form-img{
@@ -199,11 +200,12 @@
   background-size: cover;
   position: relative;
   background-image: url(landscape2.jpeg);
+  filter: none;
 
   /*Estilos segun navegador */
   -webkit-background-size: cover;
-  -webkit-filter: blur(10px);
-  -moz-filter: blur(10px);
+  /*-webkit-filter: blur(10px);
+  -moz-filter: blur(10px);*/
 }
 
 .landing-title{
@@ -344,11 +346,12 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+  filter: none;
 
   /*Estilos segun navegador */
   -webkit-background-size: cover;
-  -webkit-filter: blur(10px);
-  -moz-filter: blur(10px);
+  /*-webkit-filter: blur(10px);
+  -moz-filter: blur(10px);*/
 }
 
 .landing-form-section{

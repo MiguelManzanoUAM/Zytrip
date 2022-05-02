@@ -11,13 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2022_04_26_182525) do
-  create_table "Trips_Users", id: false, force: :cascade do |t|
-    t.integer "Trip_id", null: false
-    t.integer "User_id", null: false
-    t.index ["Trip_id", "User_id"], name: "index_Trips_Users_on_trip_id_and_user_id"
-    t.index ["User_id", "Trip_id"], name: "index_Trips_Users_on_user_id_and_trip_id"
-  end
-
   create_table "agencies", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -49,6 +42,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_26_182525) do
     t.decimal "rating", default: "0.0"
     t.string "image"
     t.index ["agency_id"], name: "index_trips_on_agency_id"
+  end
+
+  create_table "trips_users", id: false, force: :cascade do |t|
+    t.integer "trip_id", null: false
+    t.integer "user_id", null: false
+    t.index ["trip_id"], name: "index_trips_users_on_trip_id"
+    t.index ["user_id"], name: "index_trips_users_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -384,7 +384,7 @@
 
 .landing-form-info-btn-link{
   color: white;
-  font-size: 15px;
+  font-size: 20px;
   font-weight: bold;
   cursor: pointer;
   text-decoration: none;
@@ -398,6 +398,7 @@
 
 
 
+
 /**********************************************
  * Footer styles
 **********************************************/
@@ -408,3 +409,46 @@
   color: white;
   overflow: hidden;
 }
+
+
+
+/**********************************************
+ * Trips styles
+**********************************************/
+.trips-title-container{
+  width: 100%;
+  height: 200px;
+  background-color: #2b2a2f;
+
+  /*img*/
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: url(landscape3.jpg);
+  filter: none;
+
+  /*Estilos segun navegador */
+  -webkit-background-size: cover;
+  /*-webkit-filter: blur(10px);
+  -moz-filter: blur(10px);*/
+}
+
+.trips-title-help-container{
+  background-color: white;
+  margin-top: 50px;
+  float: right;
+  margin-right: 35%;
+  height: 100px;
+  width: 600px;
+  border-radius: 10px;
+  border: 1px solid white;
+}
+
+.trips-title-help-container-info{
+  font-size: 20px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-family: sans-serif;
+}
+

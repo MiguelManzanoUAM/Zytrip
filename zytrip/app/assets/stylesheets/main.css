@@ -452,3 +452,74 @@
   font-family: sans-serif;
 }
 
+.trips-title-destinations{
+  background-color: #f7f7f7;
+  border: 1px solid #eaeaea;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-bottom: 5px;
+  width: 350px;
+  height: 40px;
+}
+
+.trips-destination-search{
+  background-color: #de2a35;
+  border: 1px solid #eaeaea;
+  border-radius: 1px;
+  cursor: pointer;
+  margin-top: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 150px;
+  height: 40px;
+  text-align: center;
+}
+
+.trips-main{
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-top: 50px;
+}
+
+.trips-sidebar-container{
+  background-color: white;
+  width: 300px;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 1px solid white;
+}
+
+.trips-sidebar-title{
+  font-size: 20px;
+  font-weight: bold;
+  padding-top: 10px;
+}
+
+.trips-sidebar-container hr{
+  border: 1px solid lightgrey;
+  width: 100%;
+}
+
+.trips-sidebar-section-title{
+  font-size: 16px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.trips-sidebar-section{
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.trips-sidebar-section input{
+  margin-left: 20px;
+}
+
+.trips-sidebar-section label{
+  margin-left: 10px;
+  margin-bottom: 10px;
+}

@@ -4,10 +4,59 @@
         <div class="trips-title-help-container">
             <div class="trips-title-help-container-info">
                 <b>¿Tienes algún lugar en mente?</b>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="trips-title-destinations">
+                            <!--dropdown o barra busqueda -->
+                            Nuestros destinos o busqueda?
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="trips-destination-search">
+                            Buscar
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="trips-main">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="trips-sidebar-container">
+                    <p class="trips-sidebar-title">Filtros de búsqueda</p>
+                    <hr>
+
+                    <!--secciones filtros -->
+                    <div class="trips-sidebar-section">
+                        <p class="trips-sidebar-section-title">Por precio: </p>
+                        <input type="checkbox" id="price1"><label for="price1"> Menos de 50€ </label><br>
+                        <input type="checkbox" id="price2"><label for="price2"> Entre 50€ y 100€ </label><br>
+                        <input type="checkbox" id="price3"><label for="price3"> Entre 100€ y 200€ </label><br>
+                        <input type="checkbox" id="price4"><label for="price4"> Entre 200€ y 500€ </label><br>
+                        <input type="checkbox" id="price5"><label for="price5"> Más de 500€ </label><br>
+                    </div>
+
+                    <div class="trips-sidebar-section">
+                        <p class="trips-sidebar-section-title">Valoración media: </p>
+                        <input type="checkbox" id="rating1"><label for="rating1"> 4 estrellas o más </label><br>
+                        <input type="checkbox" id="rating2"><label for="rating2"> 3 estrellas o más </label><br>
+                        <input type="checkbox" id="rating3"><label for="rating3"> 2 estrellas o más </label><br>
+                        <input type="checkbox" id="rating4"><label for="rating4"> 1 estrella o más </label><br>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="col-md-8">
+                resultados
             </div>
         </div>
     </div>
 </div>
+
+<!-- render footer -->
 
 
 <% content_for :view_specific_css do %>

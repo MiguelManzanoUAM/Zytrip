@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_26_182525) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_09_100702) do
   create_table "agencies", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -41,6 +41,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_26_182525) do
     t.decimal "price", default: "0.0"
     t.decimal "rating", default: "0.0"
     t.string "image"
+    t.string "country"
+    t.string "city"
     t.index ["agency_id"], name: "index_trips_on_agency_id"
   end
 

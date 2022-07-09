@@ -13,7 +13,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="trips-destination-search">
-                            Buscar
+                            BUSCAR
                         </div>
                     </div>
                 </div>
@@ -50,7 +50,32 @@
                 </div>
             </div>
             <div class="col-md-8">
-                resultados
+                <p class="trips-search-count"><b><%= @trips.size %></b> resultados encontrados</p>
+                <% @trips.each do |trip| %>
+                    <div class="row trips-results-box">
+                        <div class="col">
+                            <% if trip.image %>
+                                <%= image_tag(trip.image) %>
+                            <% else %>
+                                <%= image_tag("no-image-available.png") %>
+                            <% end %>
+                        </div>
+                        <div class="col-6">
+                            <div class="trips-results-box-title">
+                                <%=link_to trip, class:"trips-results-box-title" do%>
+                                    <p><b><%=trip.title%></b></p>
+                                <% end %>
+                            </div>
+                            <p class="trips-results-box-info"><%= trip.city %>, <%=trip.country%></p>
+                        </div>
+                        <div class="col">
+                            <p class="trips-results-box-price"><b><%= trip.price %>€</b></p>
+                            <div class="trips-results-booking">
+                                RESERVAR
+                            </div>
+                        </div>
+                    </div><br>
+                <% end %>
             </div>
         </div>
     </div>

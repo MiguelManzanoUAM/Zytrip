@@ -523,3 +523,64 @@
   margin-left: 10px;
   margin-bottom: 10px;
 }
+
+.trips-search-count{
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.trips-results-box{
+  border:  1px solid lightgrey;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.trips-results-box img{
+  height: 200px;
+  width:  200px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+
+.trips-results-box-title{
+  font-size: 22px;
+  padding-top: 20px;
+  font-family: arial;
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+}
+
+.trips-results-box-title:hover{
+  color: #000;
+}
+
+.trips-results-box-info{
+  font-size: 16px;
+  color: grey;
+}
+
+.trips-results-box-price{
+  font-size: 22px;
+  color: green;
+  text-align: right;
+  padding-top: 80px;
+  padding-right: 25px;
+}
+
+.trips-results-booking{
+  background-color: #5fde23;
+  border: 1px solid #eaeaea;
+  border-radius: 1px;
+  cursor: pointer;
+  margin-top: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 150px;
+  height: 40px;
+  text-align: center;
+  margin-left: 50px;
+  color: white;
+  font-weight: bold;
+}

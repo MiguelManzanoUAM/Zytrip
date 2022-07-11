@@ -40,7 +40,8 @@ Agency.create!(name:"Viajes Miguel", id:1)
 Agency.create!(name:"Viajes El Corte Inglés", id:2, phone_number:"913567892", url:"www.viajesElCorteIngles.es",
 	logo:"elCorteIngles.png")
 
-Trip.create!(title: "Viaje prueba", body: "Descripcion del viaje", agency_id: 1, id:1, rating:2.1, image:"summer.jpeg", price:1050, country:"Over the Rainbow", city:"Somewhere")
+Trip.create!(title: "Viaje prueba", body: "Descripcion del viaje", agency_id: 1, id:1, rating:2.1, image:"summer.jpeg", price:1050, country:"Over the Rainbow", city:"Somewhere", 
+	description:"Get an inside look into traditional sustainable farming and its impact on the coffee industry. You’ll learn about every stage of the production process, from growing to roasting, by our local experts who’ll take you on a walk-through of a scenic farm, explain how the slopes of Volcan Baru make the world’s best coffee, and show you how to brew a delicious cup. You’ll also get free hotel pick-up and drop-off, bottled water, and a custom bag of whole beans to take home. ")
 Trip.create!(title: "Madrid", body: "Otra descripcion", agency_id: 1, id:2, rating:5.0, image:"madrid.jpg", price:70, country:"España", city:"Madrid")
 Trip.create!(title: "Londres", body:"Descripción Londres", agency_id: 2, id:3, rating:4.5, image:"londres.jpg", price: 385, country:"Reino Unido", city:"Londres")
 Trip.create!(title: "Viaje prueba 2", body: "Descripcion del viaje 2", agency_id: 1, id:4, rating:2.0, price: 10, country:"Prueba", city:"prueba")

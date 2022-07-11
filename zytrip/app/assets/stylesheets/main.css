@@ -584,3 +584,91 @@
   color: white;
   font-weight: bold;
 }
+
+/**********************************************
+ * Trip styles
+**********************************************/
+.trip-section{
+  width: 100%;
+  background-color: #F5F4F5;
+  padding-top: 50px;
+}
+
+.trip-main-container-outside{
+  margin-left: 15%;
+  margin-right: 15%;
+  background-color: #2b2a2f;
+}
+
+.trip-main-container{
+  padding-top: 30px;
+  padding-left: 50px;
+  padding-bottom: 30px;
+  padding-right: 50px;
+}
+
+.trip-main-box{
+  border:  1px solid lightgrey;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.trip-main-box img{
+  height: 350px;
+  width:  700px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+
+.trip-main-box-title{
+  font-size: 35px;
+  font-family: arial;
+  font-weight: bold;
+  margin-left: 20px;
+  padding-top: 10px;
+  padding-right: 10px;
+}
+
+.trip-main-box-info{
+  font-size: 22px;
+  color: grey;
+  margin-left: 20px;
+  padding-right: 10px;
+}
+
+.trip-main-box-price-container{
+  padding-top: 150px;
+  padding-right: 20px;
+}
+
+.trip-price-info{
+  font-size: 20px;
+  color: grey;
+  margin-left: 20px;
+}
+
+.trip-price-colored{
+  font-size: 23px;
+  color: #5fde23;;
+}
+
+.trip-booking-box{
+  background-color: #5fde23;
+  border: 1px solid #eaeaea;
+  border-radius: 1px;
+  cursor: pointer;
+  width: 150px;
+  height: 40px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  padding-top: 5px;
+}
+
+.trip-description{
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-top: 50px;
+  font-size: 16px;
+}

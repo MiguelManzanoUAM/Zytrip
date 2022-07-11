@@ -1,5 +1,43 @@
-<p><%= @trip.title %></p>
+<%= render "layouts/header" %>
+<div class="trip-section">
+  <div class="trip-main-container-outside">
+    <div class="trip-main-container">
+      <div class="row trip-main-box">
+        <div class="col">
+            <% if @trip.image %>
+                <%= image_tag(@trip.image) %>
+            <% else %>
+                <%= image_tag("no-image-available.png") %>
+            <% end %>
+        </div>
+        <div class="col">
+            <div class="trip-main-box-title">
+              <p><b><%=@trip.title%></b></p>
+            </div>
+            <p class="trip-main-box-info"><%= @trip.city %>, <%= @trip.country%></p>
+            <div class="row trip-main-box-price-container">
+              <div class="col-8">
+                <p class="trip-price-info">Desde <b class="trip-price-colored"><%= @trip.price%>€</b></p>
+              </div>
+              <div class="col-4">
+                <p class="trip-booking-box">RESERVAR</p>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<div>
-  <%= link_to "Back to trips", trips_path %>
+  <div class="trip-description">
+    <p><%=@trip.description %></p>
+  </div>
+
 </div>
+
+
+<!-- render footer -->
+
+
+<% content_for :view_specific_css do %>
+    <%= stylesheet_link_tag "main" %>
+<% end %>

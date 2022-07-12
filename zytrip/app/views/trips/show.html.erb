@@ -1,5 +1,5 @@
 <%= render "layouts/header" %>
-<div class="trip-section">
+<div class="trip-main">
   <div class="trip-main-container-outside">
     <div class="trip-main-container">
       <div class="row trip-main-box">
@@ -32,10 +32,43 @@
     <p><%=@trip.description %></p>
   </div>
 
+  <div class="trip-about">
+    <div class="row">
+      <div class="col-3">
+        <div class="trip-section">
+          <p class="trip-section-title">Organizado por</p>
+          <hr>
+          <p class="trip-section-info">foto + Agencia</p>
+        </div>
+
+        <div class="trip-section">
+          <p class="trip-section-title">Acerca de esta experiencia</p>
+          <hr>
+          <p class="trip-section-info"><b>Duración:</b> 5 días</p>
+          <p class="trip-section-info"><b>Otra información:</b> No se que poner</p>
+        </div> 
+      </div>
+
+      <div class="col-6">
+        <div class="trip-itinerary">
+          <p class="trip-section-title">Itinerario de actividades</p>
+          <hr>
+          <p class="trip-section-info">Aqui ira detallado el itinerario de actividades</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="trip-ratings">
+    <p class="trip-section-title">Valoraciones de los usuarios</p>
+    <hr>
+    <p class="trip-section-info">cajita de comentario con foto + comentario</p>
+  </div>
 </div>
 
 
 <!-- render footer -->
+<%= render "layouts/footer" %>
 
 
 <% content_for :view_specific_css do %>

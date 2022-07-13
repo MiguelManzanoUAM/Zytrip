@@ -36,7 +36,7 @@ p "Se han creado un usuario administrador..."
 User.create!(name:"Turista", surname:"prueba", admin:false, password:"manzano99", email:"prueba@email.es",
 	password_confirmation:"manzano99", id:2)
 
-Agency.create!(name:"Viajes Miguel", id:1)
+Agency.create!(name:"Viajes Miguel", id:1, phone_number:"653209970")
 Agency.create!(name:"Viajes El Corte Inglés", id:2, phone_number:"913567892", url:"www.viajesElCorteIngles.es",
 	logo:"elCorteIngles.png")
 

@@ -692,6 +692,15 @@
   padding-right: 10px;
 }
 
+.trip-section img{
+  width: 30px;
+  height: 30px;
+  border-radius: 25%;
+  margin-right: 20px;
+  margin-left: 20px;
+  overflow: hidden;
+}
+
 .trip-section-title{
   padding-top: 10px;
   font-size: 20px;

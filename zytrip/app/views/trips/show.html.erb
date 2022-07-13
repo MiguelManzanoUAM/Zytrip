@@ -38,7 +38,13 @@
         <div class="trip-section">
           <p class="trip-section-title">Organizado por</p>
           <hr>
-          <p class="trip-section-info">foto + Agencia</p>
+          <p class="trip-section-info">
+            <% if @agency.logo %>
+              <%= image_tag(@agency.logo) %> <%= @agency.name %> (<%= @agency.phone_number %>)
+            <% else %>
+              <%= image_tag("user.jpeg") %> <%= @agency.name %> (<%= @agency.phone_number %>)
+            <% end %>
+          </p>
         </div>
 
         <div class="trip-section">

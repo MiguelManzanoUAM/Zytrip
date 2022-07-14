@@ -79,7 +79,14 @@
             </div>
         </div>
     </div>
+
+    <%= form_for "", url: trips_path, role: "search", method: :get do %>
+        <%= text_field_tag :minp, @search_min_price, placeholder: "Min..."%>
+        <%= text_field_tag :maxp, @search_max_price, placeholder: "Max..."%>
+        <%= submit_tag "Search" %>
+    <% end %>
 </div>
+
 
 
 <!-- render footer -->

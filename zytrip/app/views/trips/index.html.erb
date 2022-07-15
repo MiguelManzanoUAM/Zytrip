@@ -81,12 +81,54 @@
     </div>
 
     <%= form_for "", url: trips_path, role: "search", method: :get do %>
-        <%= text_field_tag :minp, @search_min_price, placeholder: "Min..."%>
-        <%= text_field_tag :maxp, @search_max_price, placeholder: "Max..."%>
+        <%= text_field_tag :minp, @search_min_price, placeholder: "Min..."%><br>
+        <%= text_field_tag :maxp, @search_max_price, placeholder: "Max..."%><br>
+        <hr>
+        <p class="trips-sidebar-section-title">Por valoración: </p>
+        <input name="stars4" type="checkbox" id="stars4", onclick="check4()"><label>4 estrellas o más</label><br>
+        <input name="stars3" type="checkbox" id="stars3", onclick="check3()"><label>3 estrellas o más</label><br>
+        <input name="stars2" type="checkbox" id="stars2", onclick="check2()"><label>2 estrellas o más</label><br>
+        <input name="stars1" type="checkbox" id="stars1", onclick="check1()"><label>1 estrella o más</label><br>
         <%= submit_tag "Search" %>
     <% end %>
+
 </div>
 
+<script type="text/javascript">
+    
+    function check4() {
+        if(document.getElementById("stars4").checked){
+            document.getElementById("stars3").checked = false;
+            document.getElementById("stars2").checked = false;
+            document.getElementById("stars1").checked = false;
+        }
+    }
+
+    function check3() {
+        if(document.getElementById("stars3").checked){
+            document.getElementById("stars4").checked = false;
+            document.getElementById("stars2").checked = false;
+            document.getElementById("stars1").checked = false;
+        }
+    }
+
+    function check2() {
+        if(document.getElementById("stars2").checked){
+            document.getElementById("stars4").checked = false;
+            document.getElementById("stars3").checked = false;
+            document.getElementById("stars1").checked = false;
+        }
+    }
+
+    function check1() {
+        if(document.getElementById("stars1").checked){
+            document.getElementById("stars4").checked = false;
+            document.getElementById("stars3").checked = false;
+            document.getElementById("stars2").checked = false;
+        }
+    }
+
+</script>
 
 
 <!-- render footer -->

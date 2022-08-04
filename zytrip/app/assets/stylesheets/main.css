@@ -515,6 +515,10 @@
   margin-top: 20px;
 }
 
+.trips-sidebar-section-options{
+  font-size: 16px;
+}
+
 .trips-sidebar-section input{
   margin-left: 20px;
 }
@@ -522,6 +526,16 @@
 .trips-sidebar-section label{
   margin-left: 10px;
   margin-bottom: 10px;
+}
+
+.sidebar-prices{
+  width: 50%;
+}
+
+.sidebar-submit{
+  margin-left: 40%;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 .trips-search-count{

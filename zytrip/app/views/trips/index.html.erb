@@ -4,19 +4,18 @@
         <div class="trips-title-help-container">
             <div class="trips-title-help-container-info">
                 <b>¿Tienes algún lugar en mente?</b>
-                <div class="row">
-                    <div class="col-md-8">
-                        <div class="trips-title-destinations">
-                            <!--dropdown o barra busqueda -->
-                            Nuestros destinos o busqueda?
+                <!--dropdown o barra busqueda -->
+                <%= form_for "", url: trips_path, role: "search_by_name", method: :get do %>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <%= text_field_tag :sch, @search_name, class:"trips-title-destinations" %>
+                        </div>
+                        <div class="col-md-4">
+                            <%= submit_tag "Buscar", class:"trips-destination-search" %>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="trips-destination-search">
-                            BUSCAR
-                        </div>
-                    </div>
-                </div>
+                <% end %>
+                    
             </div>
         </div>
     </div>

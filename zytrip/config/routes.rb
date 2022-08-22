@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'trips_research/survey'
+  get 'trips_research/results'
   resources :reviews
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

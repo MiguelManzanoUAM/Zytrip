@@ -752,3 +752,46 @@
   width: 100%;
 }
 
+/**********************************************
+ * Survey styles
+**********************************************/
+.main-survey{
+  content: '';
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  filter: none;
+  overflow: scroll;
+
+  /*Estilos segun navegador */
+  -webkit-background-size: cover;
+  /*-webkit-filter: blur(10px);
+  -moz-filter: blur(10px);*/
+}
+
+.main-survey-img{
+  background-image: url(landscape4.jpeg);
+}
+
+.survey-title{
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
+  color: white;
+  margin-top: 5%;
+  font-family: monospace;
+  margin-bottom: 100px;
+}
+
+.survey-container{
+  margin-left: 120px;
+  margin-bottom: 100px;
+  width: 400px;
+  height: 400px;
+  background: rgba(0,0,0,0.8);
+  border-radius: 20px;
+}

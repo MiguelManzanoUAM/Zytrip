@@ -3,9 +3,19 @@
 		<p>Ayúdanos a encontrar tu viaje ideal</p>
 	</div>
 
+
 	<div class="row">
 		<div class="col col-lg-3 survey-container">
-			Prueba 1
+			<p class="survey-container-title"><%= image_tag("earth.png") %> ¿Dónde te gustaría viajar?</p>
+			<hr><br>
+			<div class="survey-container-options">
+				<input name="europe" type="checkbox" id="europe", onclick="checkEurope()"><label>Europa</label><br>
+				<input name="africa" type="checkbox" id="africa", onclick="checkAfrica()"><label>Africa</label><br>
+				<input name="america" type="checkbox" id="america", onclick="checkAmerica()"><label>America</label><br>
+				<input name="asia" type="checkbox" id="asia", onclick="checkAsia()"><label>Asia</label><br>
+				<input name="oceania" type="checkbox" id="oceania", onclick="checkOceania()"><label>Oceania</label><br>
+			</div>
+
 		</div>
 
 		<div class="col col-lg-3 survey-container">
@@ -32,6 +42,57 @@
 	</div>
 
 </div>
+
+<!--Funciones JavaScript -->
+
+<script type="text/javascript">
+    
+    function checkEurope() {
+        if(document.getElementById("europe").checked){
+            document.getElementById("africa").checked = false;
+            document.getElementById("asia").checked = false;
+            document.getElementById("america").checked = false;
+            document.getElementById("oceania").checked = false;
+        }
+    }
+
+    function checkAfrica() {
+        if(document.getElementById("africa").checked){
+            document.getElementById("europe").checked = false;
+            document.getElementById("asia").checked = false;
+            document.getElementById("america").checked = false;
+            document.getElementById("oceania").checked = false;
+        }
+    }
+
+    function checkAsia() {
+        if(document.getElementById("asia").checked){
+            document.getElementById("africa").checked = false;
+            document.getElementById("europe").checked = false;
+            document.getElementById("america").checked = false;
+            document.getElementById("oceania").checked = false;
+        }
+    }
+
+    function checkAmerica() {
+        if(document.getElementById("america").checked){
+            document.getElementById("africa").checked = false;
+            document.getElementById("asia").checked = false;
+            document.getElementById("europe").checked = false;
+            document.getElementById("oceania").checked = false;
+        }
+    }
+
+    function checkOceania() {
+        if(document.getElementById("oceania").checked){
+            document.getElementById("africa").checked = false;
+            document.getElementById("asia").checked = false;
+            document.getElementById("america").checked = false;
+            document.getElementById("europe").checked = false;
+        }
+    }
+
+</script>
 
 <% content_for :view_specific_css do %>
     <%= stylesheet_link_tag "main" %>

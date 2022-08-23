@@ -795,3 +795,38 @@
   background: rgba(0,0,0,0.8);
   border-radius: 20px;
 }
+
+.survey-container hr{
+  border: 1px solid white;
+  width: 90%;
+  margin-left: 20px;
+}
+
+.survey-container-title{
+  margin-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-weight: bold;
+  font-size: 30px;
+  color: white;
+}
+
+.survey-container img{
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
+}
+
+.survey-container-options{
+  padding-left: 50px;
+  font-size: 20px;
+}
+
+.survey-container-options input{
+  margin-right: 20px;
+}
+
+.survey-container-options label{
+  margin-bottom: 10px;
+  color: lightgrey;
+}

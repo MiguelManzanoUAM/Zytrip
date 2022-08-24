@@ -19,17 +19,39 @@
 		</div>
 
 		<div class="col col-lg-3 survey-container">
-			Prueba 2
+			<p class="survey-container-title"><%= image_tag("friends.png") %> Compañía para tu viaje</p>
+			<hr><br>
+			<div class="survey-container-options">
+				<input name="family" type="checkbox" id="family", onclick="checkFamily()"><label>Viaje Familiar</label><br>
+				<input name="romantic" type="checkbox" id="romantic", onclick="checkLove()"><label>Escapada Romántica</label><br>
+				<input name="alone" type="checkbox" id="alone", onclick="checkAlone()"><label>Me gustaría viajar solo</label><br>
+				<input name="friends" type="checkbox" id="friends", onclick="checkFriends()"><label>Viaje con amigos</label><br>
+				<input name="people" type="checkbox" id="people", onclick="checkPeople()"><label>Quiero conocer gente</label><br>
+			</div>
 		</div>
 
 		<div class="col col-lg-3 survey-container">
-			Prueba 3
+			<p class="survey-container-title"><%= image_tag("wallet.png") %> Presupuesto deseable</p>
+			<hr><br>
+			<div class="survey-container-options">
+				<input name="maxp300" type="checkbox" id="maxp300", onclick="checkPriceMax300()"><label>Menos de 300€</label><br>
+				<input name="betwp35" type="checkbox" id="betwp35", onclick="checkPriceBetw35()"><label>Entre 300 y 500€</label><br>
+				<input name="betwp510" type="checkbox" id="betwp510", onclick="checkPriceBetw510()"><label>Entre 500 y 1000€</label><br>
+				<input name="minp1000" type="checkbox" id="minp1000", onclick="checkPriceMin1000()"><label>Más de 1000€</label><br>
+			</div>
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="col col-lg-3 survey-container">
-			Prueba 4
+			<p class="survey-container-title"><%= image_tag("duration.png") %> Duración de tu viaje</p>
+			<hr><br>
+			<div class="survey-container-options">
+				<input name="maxd3" type="checkbox" id="maxd3", onclick="checkDurationMax3()"><label>Menos de 3 días</label><br>
+				<input name="betwd35" type="checkbox" id="betwd35", onclick="checkDurationBetw35()"><label> Entre 3 y 5 días</label><br>
+				<input name="betwd510" type="checkbox" id="betwd510", onclick="checkDurationBetw510()"><label>Entre 5 y 7 días €</label><br>
+				<input name="minweek" type="checkbox" id="minweek", onclick="checkMinWeek()"><label>Más de una semana</label><br>
+			</div>
 		</div>
 
 		<div class="col col-lg-3 survey-container">
@@ -43,56 +65,9 @@
 
 </div>
 
-<!--Funciones JavaScript -->
-
-<script type="text/javascript">
-    
-    function checkEurope() {
-        if(document.getElementById("europe").checked){
-            document.getElementById("africa").checked = false;
-            document.getElementById("asia").checked = false;
-            document.getElementById("america").checked = false;
-            document.getElementById("oceania").checked = false;
-        }
-    }
-
-    function checkAfrica() {
-        if(document.getElementById("africa").checked){
-            document.getElementById("europe").checked = false;
-            document.getElementById("asia").checked = false;
-            document.getElementById("america").checked = false;
-            document.getElementById("oceania").checked = false;
-        }
-    }
-
-    function checkAsia() {
-        if(document.getElementById("asia").checked){
-            document.getElementById("africa").checked = false;
-            document.getElementById("europe").checked = false;
-            document.getElementById("america").checked = false;
-            document.getElementById("oceania").checked = false;
-        }
-    }
-
-    function checkAmerica() {
-        if(document.getElementById("america").checked){
-            document.getElementById("africa").checked = false;
-            document.getElementById("asia").checked = false;
-            document.getElementById("europe").checked = false;
-            document.getElementById("oceania").checked = false;
-        }
-    }
-
-    function checkOceania() {
-        if(document.getElementById("oceania").checked){
-            document.getElementById("africa").checked = false;
-            document.getElementById("asia").checked = false;
-            document.getElementById("america").checked = false;
-            document.getElementById("europe").checked = false;
-        }
-    }
-
-</script>
+<% content_for :javascript_includes do %>
+    <%= javascript_include_tag "survey.js" %>
+<% end %>
 
 <% content_for :view_specific_css do %>
     <%= stylesheet_link_tag "main" %>

@@ -49,8 +49,8 @@
 			<div class="survey-container-options">
 				<input name="maxd3" type="checkbox" id="maxd3", onclick="checkDurationMax3()"><label>Menos de 3 días</label><br>
 				<input name="betwd35" type="checkbox" id="betwd35", onclick="checkDurationBetw35()"><label> Entre 3 y 5 días</label><br>
-				<input name="betwd510" type="checkbox" id="betwd510", onclick="checkDurationBetw510()"><label>Entre 5 y 7 días €</label><br>
-				<input name="minweek" type="checkbox" id="minweek", onclick="checkMinWeek()"><label>Más de una semana</label><br>
+				<input name="betwd57" type="checkbox" id="betwd57", onclick="checkDurationBetw57()"><label>Entre 5 y 7 días €</label><br>
+				<input name="minweek" type="checkbox" id="minweek", onclick="checkDurationMinWeek()"><label>Más de una semana</label><br>
 			</div>
 		</div>
 
@@ -65,9 +65,181 @@
 
 </div>
 
-<% content_for :javascript_includes do %>
-    <%= javascript_include_tag "survey.js" %>
-<% end %>
+<!--  Funciones JavaScript -->
+
+<script type="text/javascript">
+
+	/////////////////////////////////////////////
+	// Destiny functions
+	/////////////////////////////////////////////
+
+    function checkEurope() {
+	    if(document.getElementById("europe").checked){
+	        document.getElementById("africa").checked = false;
+	        document.getElementById("asia").checked = false;
+	        document.getElementById("america").checked = false;
+	        document.getElementById("oceania").checked = false;
+	    }
+	}
+
+	function checkAfrica() {
+	    if(document.getElementById("africa").checked){
+	        document.getElementById("europe").checked = false;
+	        document.getElementById("asia").checked = false;
+	        document.getElementById("america").checked = false;
+	        document.getElementById("oceania").checked = false;
+	    }
+	}
+
+	function checkAsia() {
+	    if(document.getElementById("asia").checked){
+	        document.getElementById("africa").checked = false;
+	        document.getElementById("europe").checked = false;
+	        document.getElementById("america").checked = false;
+	        document.getElementById("oceania").checked = false;
+	    }
+	}
+
+	function checkAmerica() {
+	    if(document.getElementById("america").checked){
+	        document.getElementById("africa").checked = false;
+	        document.getElementById("asia").checked = false;
+	        document.getElementById("europe").checked = false;
+	        document.getElementById("oceania").checked = false;
+	    }
+	}
+
+	function checkOceania() {
+	    if(document.getElementById("oceania").checked){
+	        document.getElementById("africa").checked = false;
+	        document.getElementById("asia").checked = false;
+	        document.getElementById("america").checked = false;
+	        document.getElementById("europe").checked = false;
+	    }
+	}
+
+	/////////////////////////////////////////////
+	// company functions
+	/////////////////////////////////////////////
+
+	function checkFamily() {
+	    if(document.getElementById("family").checked){
+	    	document.getElementById("romantic").checked = false;
+	        document.getElementById("alone").checked = false;
+	        document.getElementById("friends").checked = false;
+	        document.getElementById("people").checked = false;
+	    }
+	}
+
+	function checkLove() {
+	    if(document.getElementById("romantic").checked){
+	    	document.getElementById("family").checked = false;
+	        document.getElementById("alone").checked = false;
+	        document.getElementById("friends").checked = false;
+	        document.getElementById("people").checked = false;
+	    }
+	}
+
+	function checkAlone() {
+	    if(document.getElementById("alone").checked){
+	    	document.getElementById("romantic").checked = false;
+	        document.getElementById("family").checked = false;
+	        document.getElementById("friends").checked = false;
+	        document.getElementById("people").checked = false;
+	    }
+	}
+
+	function checkFriends() {
+	    if(document.getElementById("friends").checked){
+	    	document.getElementById("romantic").checked = false;
+	        document.getElementById("alone").checked = false;
+	        document.getElementById("familys").checked = false;
+	        document.getElementById("people").checked = false;
+	    }
+	}
+
+	function checkPeople() {
+	    if(document.getElementById("people").checked){
+	    	document.getElementById("romantic").checked = false;
+	        document.getElementById("alone").checked = false;
+	        document.getElementById("friends").checked = false;
+	        document.getElementById("family").checked = false;
+	    }
+	}
+
+	/////////////////////////////////////////////
+	// Budget functions
+	/////////////////////////////////////////////
+
+	function checkPriceMax300() {
+	    if(document.getElementById("maxp300").checked){
+	    	document.getElementById("betwp35").checked = false;
+	        document.getElementById("betwp510").checked = false;
+	        document.getElementById("minp1000").checked = false;
+	    }
+	}
+
+	function checkPriceBetw35() {
+	    if(document.getElementById("betwp35").checked){
+	    	document.getElementById("maxp300").checked = false;
+	        document.getElementById("betwp510").checked = false;
+	        document.getElementById("minp1000").checked = false;
+	    }
+	}
+
+	function checkPriceBetw510() {
+	    if(document.getElementById("betwp510").checked){
+	    	document.getElementById("betwp35").checked = false;
+	        document.getElementById("maxp300").checked = false;
+	        document.getElementById("minp1000").checked = false;
+	    }
+	}
+
+	function checkPriceMin1000() {
+	    if(document.getElementById("minp1000").checked){
+	    	document.getElementById("betwp35").checked = false;
+	        document.getElementById("betwp510").checked = false;
+	        document.getElementById("maxp300").checked = false;
+	    }
+	}
+
+	/////////////////////////////////////////////
+	// Duration functions
+	/////////////////////////////////////////////
+
+	function checkDurationMax3() {
+	    if(document.getElementById("maxd3").checked){
+	    	document.getElementById("betwd35").checked = false;
+	        document.getElementById("betwd57").checked = false;
+	        document.getElementById("minweek").checked = false;
+	    }
+	}
+
+	function checkDurationBetw35() {
+	    if(document.getElementById("betwd35").checked){
+	    	document.getElementById("maxd3").checked = false;
+	        document.getElementById("betwd57").checked = false;
+	        document.getElementById("minweek").checked = false;
+	    }
+	}
+
+	function checkDurationBetw57() {
+	    if(document.getElementById("betwd57").checked){
+	    	document.getElementById("betwd35").checked = false;
+	        document.getElementById("maxd3").checked = false;
+	        document.getElementById("minweek").checked = false;
+	    }
+	}
+
+	function checkDurationMinWeek() {
+	    if(document.getElementById("minweek").checked){
+	    	document.getElementById("betwd35").checked = false;
+	        document.getElementById("betwd57").checked = false;
+	        document.getElementById("maxd3").checked = false;
+	    }
+	}
+
+</script>
 
 <% content_for :view_specific_css do %>
     <%= stylesheet_link_tag "main" %>

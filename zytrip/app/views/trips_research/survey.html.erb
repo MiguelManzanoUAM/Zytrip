@@ -49,17 +49,26 @@
 			<div class="survey-container-options">
 				<input name="maxd3" type="checkbox" id="maxd3", onclick="checkDurationMax3()"><label>Menos de 3 días</label><br>
 				<input name="betwd35" type="checkbox" id="betwd35", onclick="checkDurationBetw35()"><label> Entre 3 y 5 días</label><br>
-				<input name="betwd57" type="checkbox" id="betwd57", onclick="checkDurationBetw57()"><label>Entre 5 y 7 días €</label><br>
+				<input name="betwd57" type="checkbox" id="betwd57", onclick="checkDurationBetw57()"><label>Entre 5 y 7 días</label><br>
 				<input name="minweek" type="checkbox" id="minweek", onclick="checkDurationMinWeek()"><label>Más de una semana</label><br>
 			</div>
 		</div>
 
 		<div class="col col-lg-3 survey-container">
-			Prueba 5
+			<p class="survey-container-title"><%= image_tag("beach.png") %> Si pudieses elegir una...</p>
+			<hr><br>
+			<div class="survey-container-options">
+				<input name="maxd3" type="checkbox" id="maxd3", onclick="checkDurationMax3()"><label>Turismo y cultura</label><br>
+				<input name="betwd35" type="checkbox" id="betwd35", onclick="checkDurationBetw35()"><label>Una buena playa</label><br>
+				<input name="betwd57" type="checkbox" id="betwd57", onclick="checkDurationBetw57()"><label>Naturaleza</label><br>
+				<input name="minweek" type="checkbox" id="minweek", onclick="checkDurationMinWeek()"><label>???</label><br>
+			</div>
+
 		</div>
 
 		<div class="col col-lg-3 survey-container">
-			Prueba 6
+			<p class="survey-container-title"><%= image_tag("duration.png") %> Si pudieses elegir una...</p>
+			<hr><br>
 		</div>
 	</div>
 

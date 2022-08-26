@@ -1,3 +1,4 @@
+<%= render "layouts/header" %>
 <div class="main-survey main-survey-img">
 	<div class="survey-title">
 		<p>Ayúdanos a encontrar tu viaje ideal</p>
@@ -55,20 +56,24 @@
 		</div>
 
 		<div class="col col-lg-3 survey-container">
-			<p class="survey-container-title"><%= image_tag("beach.png") %> Si pudieses elegir una...</p>
+			<p class="survey-container-title"><%= image_tag("beach.png") %> Interés principal</p>
 			<hr><br>
 			<div class="survey-container-options">
-				<input name="maxd3" type="checkbox" id="maxd3", onclick="checkDurationMax3()"><label>Turismo y cultura</label><br>
-				<input name="betwd35" type="checkbox" id="betwd35", onclick="checkDurationBetw35()"><label>Una buena playa</label><br>
-				<input name="betwd57" type="checkbox" id="betwd57", onclick="checkDurationBetw57()"><label>Naturaleza</label><br>
-				<input name="minweek" type="checkbox" id="minweek", onclick="checkDurationMinWeek()"><label>???</label><br>
+				<input name="tourism" type="checkbox" id="tourism", onclick="checkTourism()"><label>Turismo y cultura</label><br>
+				<input name="beach" type="checkbox" id="beach", onclick="checkBeach()"><label>Playa</label><br>
+				<input name="nature" type="checkbox" id="nature", onclick="checkNature()"><label>Naturaleza</label><br>
 			</div>
 
 		</div>
 
 		<div class="col col-lg-3 survey-container">
-			<p class="survey-container-title"><%= image_tag("duration.png") %> Si pudieses elegir una...</p>
+			<p class="survey-container-title"><%= image_tag("eating.png") %> Si pudieses destacar una...</p>
 			<hr><br>
+			<div class="survey-container-options">
+				<input name="lodging" type="checkbox" id="lodging", onclick="checkLodging()"><label>Una buena habitación</label><br>
+				<input name="gastronomy" type="checkbox" id="gastronomy", onclick="checkGastronomy()"><label>Me quedo con la gastronomía</label><br>
+				<input name="activities" type="checkbox" id="activities", onclick="checkActivities()"><label>Variedad de actividades</label><br>
+			</div>
 		</div>
 	</div>
 
@@ -245,6 +250,56 @@
 	    	document.getElementById("betwd35").checked = false;
 	        document.getElementById("betwd57").checked = false;
 	        document.getElementById("maxd3").checked = false;
+	    }
+	}
+
+	/////////////////////////////////////////////
+	// Interest functions
+	/////////////////////////////////////////////
+
+	function checkTourism() {
+	    if(document.getElementById("tourism").checked){
+	    	document.getElementById("beach").checked = false;
+	        document.getElementById("nature").checked = false;
+	    }
+	}
+
+	function checkBeach() {
+	    if(document.getElementById("beach").checked){
+	    	document.getElementById("tourism").checked = false;
+	        document.getElementById("nature").checked = false;
+	    }
+	}
+
+	function checkNature() {
+	    if(document.getElementById("nature").checked){
+	    	document.getElementById("beach").checked = false;
+	        document.getElementById("tourism").checked = false;
+	    }
+	}
+
+	/////////////////////////////////////////////
+	// Services functions
+	/////////////////////////////////////////////
+
+	function checkLodging() {
+	    if(document.getElementById("lodging").checked){
+	    	document.getElementById("gastronomy").checked = false;
+	        document.getElementById("activities").checked = false;
+	    }
+	}
+
+	function checkGastronomy() {
+	    if(document.getElementById("gastronomy").checked){
+	    	document.getElementById("lodging").checked = false;
+	        document.getElementById("activities").checked = false;
+	    }
+	}
+
+	function checkActivities() {
+	    if(document.getElementById("activities").checked){
+	    	document.getElementById("gastronomy").checked = false;
+	        document.getElementById("lodging").checked = false;
 	    }
 	}
 

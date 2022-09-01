@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_11_111529) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_31_100140) do
   create_table "agencies", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -19,6 +19,28 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_11_111529) do
     t.string "logo"
     t.string "phone_number"
     t.text "description"
+  end
+
+  create_table "companies", force: :cascade do |t|
+    t.boolean "family", default: false
+    t.boolean "romantic", default: false
+    t.boolean "friends", default: false
+    t.boolean "alone", default: false
+    t.boolean "people", default: false
+    t.integer "preference_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["preference_id"], name: "index_companies_on_preference_id"
+  end
+
+  create_table "preferences", force: :cascade do |t|
+    t.integer "trip_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "destination", default: 0
+    t.integer "budget", default: 0
+    t.integer "duration", default: 0
+    t.index ["trip_id"], name: "index_preferences_on_trip_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -30,6 +52,26 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_11_111529) do
     t.integer "trip_id"
     t.index ["trip_id"], name: "index_reviews_on_trip_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.boolean "lodging", default: false
+    t.boolean "gastronomy", default: false
+    t.boolean "activities", default: false
+    t.integer "preference_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["preference_id"], name: "index_services_on_preference_id"
+  end
+
+  create_table "topics", force: :cascade do |t|
+    t.boolean "beach", default: false
+    t.boolean "nature", default: false
+    t.boolean "tourism", default: false
+    t.integer "preference_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["preference_id"], name: "index_topics_on_preference_id"
   end
 
   create_table "trips", force: :cascade do |t|
@@ -69,7 +111,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_11_111529) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "companies", "preferences"
+  add_foreign_key "preferences", "trips"
   add_foreign_key "reviews", "trips"
   add_foreign_key "reviews", "users"
+  add_foreign_key "services", "preferences"
+  add_foreign_key "topics", "preferences"
   add_foreign_key "trips", "agencies"
 end

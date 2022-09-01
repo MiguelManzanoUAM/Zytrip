@@ -2,6 +2,7 @@ class Trip < ApplicationRecord
 	belongs_to :agency
 	has_and_belongs_to_many :users
 	has_many :reviews, dependent: :destroy
+	has_one :preference
 
 	#Busqueda de viajes mediante barra de busqueda
   	def self.search(search)

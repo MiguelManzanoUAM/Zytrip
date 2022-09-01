@@ -60,6 +60,12 @@
           <p class="trip-section-title">Itinerario de actividades</p>
           <hr>
           <p class="trip-section-info">Aqui ira detallado el itinerario de actividades</p>
+          <% if @trip.preference %>
+            <p>Servicio comida <%= @trip.preference.service.gastronomy %></p>
+            <p>Duración: <%= @trip.preference.duration %></p>
+          <% else %>
+            <p> No se especifican preferencias </p>
+          <% end %>
         </div>
       </div>
     </div>

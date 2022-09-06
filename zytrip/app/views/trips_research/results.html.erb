@@ -1,2 +1,15 @@
-<h1>TripsResearch#results</h1>
-<p>Find me in app/views/trips_research/results.html.erb</p>
+<br><h1 class="text-center">Resultados</h1><br>
+
+<p><%= @message %></p><br>
+<% @result_trips.each do |trip| %>
+	<hr>
+	<p><b><%= trip.title %></b></p><br>
+	<% if trip.preference %>
+		<p>Destino del viaje: <%= trip.preference.destination %></p>
+		<p>Duración: <%= trip.preference.duration %></p>
+		<p>Presupuesto: <%= trip.preference.budget %></p>
+	<% end %>
+<% end %>
+
+
+

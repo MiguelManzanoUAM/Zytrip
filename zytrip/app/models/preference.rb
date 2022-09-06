@@ -3,9 +3,9 @@ class Preference < ApplicationRecord
 	##############################
 	# Preferences Relations
 	##############################
-	has_one :service
-	has_one :company
-	has_one :topic
+	has_one :service, dependent: :destroy
+	has_one :company, dependent: :destroy
+	has_one :topic, dependent: :destroy
 	belongs_to :trip
 
 	##############################
@@ -33,6 +33,17 @@ class Preference < ApplicationRecord
 		long: 2,
 		overlong: 3
 	}, _prefix: true
+
+	################################################################
+	# Helper functions for enums
+	# --------------------------
+	# -> By using _prefix: true you can access to helpers like this:
+	#
+	#    preference.destination_spain?  ----> destination == 'spain'
+	# 
+	# -> This helpers will be used in the survey controller
+	################################################################
+	
 
 
 end

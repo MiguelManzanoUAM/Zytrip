@@ -61,7 +61,11 @@ Trip.create!(title: "Viaje prueba 2", body: "Descripcion del viaje 2", agency_id
 # Creación de Preferencias
 ########################################
 
-Preference.create!(id:1, destination:0, budget:2, duration:1, trip_id:4)
+
+Preference.create!(id:1, destination:3, budget:3, duration: 3, trip_id: 1)
+Preference.create!(id:2, destination:0, budget:0, duration: 1, trip_id: 2)
+Preference.create!(id:3, destination:1, budget:1, duration: 2, trip_id: 3)
+Preference.create!(id:4, destination:3, budget:2, duration: 3, trip_id:4)
 
 Service.create!(id:1, gastronomy: true, lodging: true, activities:false, preference_id:1)
 Company.create!(id:1, family:true, preference_id:1)

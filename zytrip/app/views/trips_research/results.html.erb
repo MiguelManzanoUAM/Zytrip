@@ -1,6 +1,12 @@
 <br><h1 class="text-center">Resultados</h1><br>
 
-<p><%= @message %></p><br>
+<p> 1) <%= @message_destination %></p>
+<p> 2) <%= @message_budget %></p>
+<p> 3) <%= @message_duration %></p>
+<p> 4) <%= @message_services %></p>
+<p> 5) <%= @message_company %></p>
+<p> 6) <%= @message_topic %></p><br>
+
 <% @result_trips.each do |trip| %>
 	<hr>
 	<p><b><%= trip.title %></b></p><br>

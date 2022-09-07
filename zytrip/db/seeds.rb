@@ -63,13 +63,25 @@ Trip.create!(title: "Viaje prueba 2", body: "Descripcion del viaje 2", agency_id
 
 
 Preference.create!(id:1, destination:3, budget:3, duration: 3, trip_id: 1)
-Preference.create!(id:2, destination:0, budget:0, duration: 1, trip_id: 2)
-Preference.create!(id:3, destination:1, budget:1, duration: 2, trip_id: 3)
-Preference.create!(id:4, destination:3, budget:2, duration: 3, trip_id:4)
+Preference.create!(id:2, destination:0, budget:0, duration: 0, trip_id: 2)
+Preference.create!(id:3, destination:1, budget:1, duration: 1, trip_id: 3)
+Preference.create!(id:4, destination:3, budget:0, duration: 3, trip_id:4)
 
-Service.create!(id:1, gastronomy: true, lodging: true, activities:false, preference_id:1)
+Service.create!(id:1, gastronomy: true, lodging: true, activities: false, preference_id:1)
 Company.create!(id:1, family:true, preference_id:1)
 Topic.create!(id:1, nature:true, preference_id:1)
+
+Service.create!(id:2, gastronomy: true, lodging: false, activities: false, preference_id:2)
+Company.create!(id:2, alone:true, preference_id:2)
+Topic.create!(id:2, beach:true, preference_id:2)
+
+Service.create!(id:3, gastronomy: false, lodging: false, activities: true, preference_id:3)
+Company.create!(id:3, romantic:true, preference_id:3)
+Topic.create!(id:3, tourism:true, preference_id:3)
+
+Service.create!(id:4, gastronomy: false, lodging: true, activities:false, preference_id:4)
+Company.create!(id:4, people:true, preference_id:4)
+Topic.create!(id:4, nature:true, preference_id:4)
 
 
 p "Pensando un precio para los viajes..."

@@ -45,5 +45,69 @@ class Preference < ApplicationRecord
 	################################################################
 	
 
+	#######################################
+	# Helper functions for associations
+	#######################################
+
+	# ----- Services ----- #
+
+	def remarkable_gastronomy?
+		return true if self.service.gastronomy == true
+		return false
+	end
+
+	def remarkable_lodging?
+		return true if self.service.lodging == true
+		return false
+	end
+
+	def remarkable_activities?
+		return true if self.service.activities == true
+		return false
+	end
+
+	# ----- Companies ----- #
+
+	def family_as_company?
+		return true if self.company.family == true
+		return false
+	end
+
+	def partner_as_company?
+		return true if self.company.romantic == true
+		return false
+	end
+
+	def friends_as_company?
+		return true if self.company.friends == true
+		return false
+	end
+
+	def alone_as_company?
+		return true if self.company.alone == true
+		return false
+	end
+
+	def new_people_as_company?
+		return true if self.company.people == true
+		return false
+	end
+
+	# ----- Topic ----- #
+
+	def beach_as_main_topic?
+		return true if self.topic.beach == true
+		return false
+	end
+
+	def nature_as_main_topic?
+		return true if self.topic.nature == true
+		return false
+	end
+
+	def tourism_as_main_topic?
+		return true if self.topic.tourism == true
+		return false
+	end
 
 end

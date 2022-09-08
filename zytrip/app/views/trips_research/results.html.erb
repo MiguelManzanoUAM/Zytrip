@@ -1,21 +1,40 @@
-<br><h1 class="text-center">Resultados</h1><br>
+<%= render "layouts/header" %>
 
-<p> 1) <%= @message_destination %></p>
-<p> 2) <%= @message_budget %></p>
-<p> 3) <%= @message_duration %></p>
-<p> 4) <%= @message_services %></p>
-<p> 5) <%= @message_company %></p>
-<p> 6) <%= @message_topic %></p><br>
+<div class="main-results">
+	<div class="results-filters">
+		<div class="results-filter-container">
+			<div class="results-filter-container-title">
+				<%if @result_trips.size == 0 %>
+					<p> Hemos encontrado <text class="results-size-red"><%= @result_trips.size %> resultados </text></p>
+				<% else %>
+					<p> Hemos encontrado <text class="results-size-green"><%= @result_trips.size %> resultados </text> que podrían interesarte </p>
+				<% end %>
+			</div>
+			<hr>
+		</div>
+	</div>
 
-<% @result_trips.each do |trip| %>
-	<hr>
-	<p><b><%= trip.title %></b></p><br>
-	<% if trip.preference %>
-		<p>Destino del viaje: <%= trip.preference.destination %></p>
-		<p>Duración: <%= trip.preference.duration %></p>
-		<p>Presupuesto: <%= trip.preference.budget %></p>
+	<br><h1 class="text-center">Resultados</h1><br>
+
+	<p> 1) <%= @message_destination %></p>
+	<p> 2) <%= @message_budget %></p>
+	<p> 3) <%= @message_duration %></p>
+	<p> 4) <%= @message_services %></p>
+	<p> 5) <%= @message_company %></p>
+	<p> 6) <%= @message_topic %></p><br>
+
+	<% @result_trips.each do |trip| %>
+		<hr>
+		<p><b><%= trip.title %></b></p><br>
+		<% if trip.preference %>
+			<p>Destino del viaje: <%= trip.preference.destination %></p>
+			<p>Duración: <%= trip.preference.duration %></p>
+			<p>Presupuesto: <%= trip.preference.budget %></p>
+		<% end %>
 	<% end %>
+</div>
+
+<% content_for :view_specific_css do %>
+    <%= stylesheet_link_tag "main" %>
 <% end %>
-
-
 

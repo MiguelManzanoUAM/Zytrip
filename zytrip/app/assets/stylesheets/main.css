@@ -872,3 +872,53 @@
   outline: none;
   width: 100%;
 }
+
+/**********************************************
+ * Survey-results styles
+**********************************************/
+.main-results{
+  background-color: #F5F4F5;
+  padding-bottom: 100px;
+  padding-top: 100px;
+}
+
+.results-filters{
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.results-filter-container{
+  width: 1000px;
+  height: 200px;
+  background-color: white;
+  border-radius: 20px;
+}
+
+.results-filter-container hr{
+  border: 1px solid grey;
+  width: 90%;
+  margin: auto;
+}
+
+.results-filter-container-title{
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-weight: bold;
+  font-size: 30px;
+  color: grey;
+  text-align: center;
+}
+
+.results-size-red{
+  font-weight: bold;
+  font-size: 30px;
+  color: red;
+}
+
+.results-size-green{
+  font-weight: bold;
+  font-size: 30px;
+  color: green;
+}
+

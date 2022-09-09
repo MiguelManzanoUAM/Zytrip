@@ -889,7 +889,7 @@
 
 .results-filter-container{
   width: 1000px;
-  height: 200px;
+  height: 250px;
   background-color: white;
   border-radius: 20px;
 }
@@ -922,3 +922,21 @@
   color: green;
 }
 
+.results-filter-container-description{
+  padding-top: 20px;
+  font-size: 20px;
+  color: grey;
+  text-align: center;
+}
+
+.results-filters{
+  font-size: 16px;
+}
+
+.results-filters-true{
+  color: green;
+}
+
+.results-filters-false{
+  color: grey;
+}

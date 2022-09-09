@@ -11,6 +11,57 @@
 				<% end %>
 			</div>
 			<hr>
+			<div class="results-filter-container-description">
+				<p> Estos han sido los parámetros establecidos en su búsqueda </p>
+			</div>
+			<div class="row results-filters text-center">
+				<div class="col-4">
+					<% if @filter_destination %>
+						<p><b>Destino: </b><text class="results-filters-true"><%= @message_destination %></text></p>
+					<% else %>
+						<p><b>Destino: </b><text class="results-filters-false"><%= @message_destination %></text></p>
+					<% end %>
+				</div>
+				<div class="col-4">
+					<% if @filter_budget %>
+						<p><b>Presupuesto: </b><text class="results-filters-true"><%= @message_budget %></text></p>
+					<% else %>
+						<p><b>Presupuesto: </b><text class="results-filters-false"><%= @message_budget %></text></p>
+					<% end %>
+				</div>
+				<div class="col-4">
+					<% if @filter_duration %>
+						<p><b>Duración: </b><text class="results-filters-true"><%= @message_duration %></text></p>
+					<% else %>
+						<p><b>Duración: </b><text class="results-filters-false"><%= @message_duration %></text></p>
+					<% end %>
+				</div>
+			</div>
+
+			<div class="row results-filters text-center">
+				<div class="col-4">
+					<% if @filter_company %>
+						<p><b>Compañía: </b><text class="results-filters-true"><%= @message_company %></text></p>
+					<% else %>
+						<p><b>Compañía: </b><text class="results-filters-false"><%= @message_company %></text></p>
+					<% end %>
+				</div>
+				<div class="col-4">
+					<% if @filter_services %>
+						<p><b>Otros intereses: </b><text class="results-filters-true"><%= @message_services %></text></p>
+					<% else %>
+						<p><b>Otros intereses: </b><text class="results-filters-false"><%= @message_services %></text></p>
+					<% end %>
+				</div>
+				<div class="col-4">
+					<% if @filter_topic %>
+						<p><b>Temática: </b><text class="results-filters-true"><%= @message_topic %></text></p>
+					<% else %>
+						<p><b>Temática: </b><text class="results-filters-false"><%= @message_topic %></text></p>
+					<% end %>
+				</div>
+			</div>
+
 		</div>
 	</div>
 

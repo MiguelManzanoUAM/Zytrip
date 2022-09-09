@@ -6,11 +6,123 @@ class TripsResearchController < ApplicationController
 
     @trips = Trip.all
 
+    # ------------ 0) Filters ------------ #
+
+    if (params[:iberic] || params[:europe] || params[:africa] || params[:asia] || params[:america])
+
+      @filter_destination = true
+
+      if params[:iberic]
+        @message_destination = "Rutas Ibéricas"
+      elsif params[:europe]
+        @message_destination = "Europe"
+      elsif params[:africa]
+        @message_destination = "África"
+      elsif params[:asia]
+        @message_destination = "Asia"
+      else
+        @message_destination = "América"
+      end
+    else
+      @filter_destination = false
+      @message_destination = "No especificado"
+    end
+
+    if (params[:maxp300] || params[:betwp35] || params[:betwp510] || params[:minp1000])
+
+      @filter_budget = true
+
+      if params[:maxp300]
+        @message_budget = "Menos de 300€"
+      elsif params[:betwp35]
+        @message_budget = "300€-500€"
+      elsif params[:betwp510]
+        @message_budget = "500€-1000€"
+      else
+        @message_budget = "Más de 1000€"
+      end
+    else
+      @filter_budget = false
+      @message_budget = "No especificado"
+    end
+
+    if (params[:maxd3] || params[:betwd35] || params[:betwd57] || params[:minweek])
+
+      @filter_duration = true
+
+      if params[:maxd3]
+        @message_duration = "Menos de 3 días"
+      elsif params[:betwd35]
+        @message_duration = "3-5 días"
+      elsif params[:betwd57]
+        @message_duration = "5-7 días"
+      else
+        @message_duration = "Más de una semana"
+      end
+    else
+      @filter_duration = false
+      @message_duration = "No especificado"
+    end
+
+    if (params[:gastronomy] || params[:lodging] || params[:activities])
+
+      @filter_services = true
+
+      if params[:gastronomy]
+        @message_services = "gastronomía"
+      elsif params[:lodging]
+        @message_services = "estancia"
+      else
+        @message_services = "actividades"
+      end
+    else
+      @filter_services = false
+      @message_services = "No especificado"
+    end
+
+    if (params[:family] || params[:romantic] || params[:friends] || params[:alone] || params[:people])
+
+      @filter_company = true
+
+      if params[:family]
+        @message_company = "Viaje familiar"
+      elsif params[:romantic]
+        @message_company = "Escapada romántica"
+      elsif params[:friends]
+        @message_company = "Viaje con amigos"
+      elsif params[:alone]
+        @message_company = "Viaje por tu cuenta"
+      else
+        @message_company = "Conocer gente nueva"
+      end
+    else
+      @filter_company = false
+      @message_company = "No especificado"
+    end
+
+    if(params[:beach] || params[:nature] || params[:tourism])
+
+      @filter_topic = true
+
+      if params[:beach]
+        @message_topic = "Playa"
+      elsif params[:nature]
+        @message_topic = "Naturaleza"
+      else
+        @message_topic = "Turismo y cultura"
+      end
+    else
+      @filter_topic = false
+      @message_topic = "No especificado"
+    end
+
+
+
+
     # ------------ 1) destination ------------ #
 
     if (params[:iberic] || params[:europe] || params[:africa] || params[:asia] || params[:america])
       
-      @message_destination = "Se tendra en cuenta el destino del viaje"
       @destination_trips = []
 
       if params[:iberic]
@@ -50,7 +162,6 @@ class TripsResearchController < ApplicationController
       if (params[:maxp300] || params[:betwp35] || params[:betwp510] || params[:minp1000])
 
         @budget_trips = []
-        @message_budget = "Se tendra en cuenta el presupuesto"
 
         if params[:maxp300]
           @destination_trips.each do |t|
@@ -83,7 +194,6 @@ class TripsResearchController < ApplicationController
         if (params[:maxd3] || params[:betwd35] || params[:betwd57] || params[:minweek])
 
           @duration_trips = []
-          @message_duration = "Se tendra en cuenta la duracion del viaje"
 
           if params[:maxd3]
             @budget_trips.each do |t|
@@ -116,7 +226,6 @@ class TripsResearchController < ApplicationController
           if (params[:gastronomy] || params[:lodging] || params[:activities])
 
             @services_trips = []
-            @message_services = "Se tiene en cuenta alguna preferencia en los servicios del viaje"
 
             if params[:gastronomy]
               @duration_trips.each do |t|
@@ -143,7 +252,6 @@ class TripsResearchController < ApplicationController
             if (params[:family] || params[:romantic] || params[:friends] || params[:alone] || params[:people])
 
               @company_trips = []
-              @message_company = "Se especifica el tipo de compañía deseada"
 
               if params[:family]
                 @services_trips.each do |t|
@@ -182,7 +290,6 @@ class TripsResearchController < ApplicationController
               if(params[:beach] || params[:nature] || params[:tourism])
 
                 @topic_trips = []
-                @message_topic = "Se especifica la temática principal del viaje"
 
                 if params[:beach]
                   @company_trips.each do |t|
@@ -207,13 +314,11 @@ class TripsResearchController < ApplicationController
                 @result_trips = @topic_trips
 
               else
-                @message_topic = "No se especifica la temática principal del viaje"
                 @result_trips = @company_trips
               end
 
             # ------------ 5) No companies ------------ #
             else
-              @message_company = "No se especifica el tipo de compañía deseada"
               @company_trips = @services_trips
 
               # ------------ 6) Topic ------------ #
@@ -221,7 +326,6 @@ class TripsResearchController < ApplicationController
               if(params[:beach] || params[:nature] || params[:tourism])
 
                 @topic_trips = []
-                @message_topic = "Se especifica la temática principal del viaje"
 
                 if params[:beach]
                   @company_trips.each do |t|
@@ -246,7 +350,6 @@ class TripsResearchController < ApplicationController
                 @result_trips = @topic_trips
 
               else
-                @message_topic = "No se especifica la temática principal del viaje"
                 @result_trips = @company_trips
               end
 
@@ -254,7 +357,6 @@ class TripsResearchController < ApplicationController
 
           # ------------ 4) No services ------------ #
           else
-            @message_services = "No se tiene en cuenta alguna preferencia en los servicios del viaje"
             @services_trips = @duration_trips
 
             # ------------ 5) Companies ------------ #
@@ -262,7 +364,6 @@ class TripsResearchController < ApplicationController
             if (params[:family] || params[:romantic] || params[:friends] || params[:alone] || params[:people])
 
               @company_trips = []
-              @message_company = "Se especifica el tipo de compañía deseada"
 
               if params[:family]
                 @services_trips.each do |t|
@@ -301,7 +402,6 @@ class TripsResearchController < ApplicationController
               if(params[:beach] || params[:nature] || params[:tourism])
 
                 @topic_trips = []
-                @message_topic = "Se especifica la temática principal del viaje"
 
                 if params[:beach]
                   @company_trips.each do |t|
@@ -326,13 +426,11 @@ class TripsResearchController < ApplicationController
                 @result_trips = @topic_trips
 
               else
-                @message_topic = "No se especifica la temática principal del viaje"
                 @result_trips = @company_trips
               end
 
             # ------------ 5) No companies ------------ #
             else
-              @message_company = "No se especifica el tipo de compañía deseada"
               @company_trips = @services_trips
 
               # ------------ 6) Topic ------------ #
@@ -340,7 +438,6 @@ class TripsResearchController < ApplicationController
               if(params[:beach] || params[:nature] || params[:tourism])
 
                 @topic_trips = []
-                @message_topic = "Se especifica la temática principal del viaje"
 
                 if params[:beach]
                   @company_trips.each do |t|
@@ -365,7 +462,6 @@ class TripsResearchController < ApplicationController
                 @result_trips = @topic_trips
 
               else
-                @message_topic = "No se especifica la temática principal del viaje"
                 @result_trips = @company_trips
               end
               
@@ -374,7 +470,6 @@ class TripsResearchController < ApplicationController
 
         # ------------ 3) No duration ------------ #
         else
-          @message_duration = "No se tendra en cuenta la duracion del viaje"
           @duration_trips = @budget_trips
 
           # ------------ 4) Services ------------ #
@@ -382,7 +477,6 @@ class TripsResearchController < ApplicationController
           if (params[:gastronomy] || params[:lodging] || params[:activities])
 
             @services_trips = []
-            @message_services = "Se tiene en cuenta alguna preferencia en los servicios del viaje"
 
             if params[:gastronomy]
               @duration_trips.each do |t|
@@ -409,7 +503,6 @@ class TripsResearchController < ApplicationController
             if (params[:family] || params[:romantic] || params[:friends] || params[:alone] || params[:people])
 
               @company_trips = []
-              @message_company = "Se especifica el tipo de compañía deseada"
 
               if params[:family]
                 @services_trips.each do |t|
@@ -448,7 +541,6 @@ class TripsResearchController < ApplicationController
               if(params[:beach] || params[:nature] || params[:tourism])
 
                 @topic_trips = []
-                @message_topic = "Se especifica la temática principal del viaje"
 
                 if params[:beach]
                   @company_trips.each do |t|
@@ -473,13 +565,11 @@ class TripsResearchController < ApplicationController
                 @result_trips = @topic_trips
 
               else
-                @message_topic = "No se especifica la temática principal del viaje"
                 @result_trips = @company_trips
               end
 
             # ------------ 5) No companies ------------ #
             else
-              @message_company = "No se especifica el tipo de compañía deseada"
               @company_trips = @services_trips
 
               # ------------ 6) Topic ------------ #
@@ -487,7 +577,6 @@ class TripsResearchController < ApplicationController
               if(params[:beach] || params[:nature] || params[:tourism])
 
                 @topic_trips = []
-                @message_topic = "Se especifica la temática principal del viaje"
 
                 if params[:beach]
                   @company_trips.each do |t|
@@ -512,7 +601,6 @@ class TripsResearchController < ApplicationController
                 @result_trips = @topic_trips
 
               else
-                @message_topic = "No se especifica la temática principal del viaje"
                 @result_trips = @company_trips
               end
 
@@ -520,7 +608,6 @@ class TripsResearchController < ApplicationController
 
           # ------------ 4) No services ------------ #
           else
-            @message_services = "No se tiene en cuenta alguna preferencia en los servicios del viaje"
             @services_trips = @duration_trips
 
             # ------------ 5) Companies ------------ #
@@ -528,7 +615,6 @@ class TripsResearchController < ApplicationController
             if (params[:family] || params[:romantic] || params[:friends] || params[:alone] || params[:people])
 
               @company_trips = []
-              @message_company = "Se especifica el tipo de compañía deseada"
 
               if params[:family]
                 @services_trips.each do |t|
@@ -567,7 +653,6 @@ class TripsResearchController < ApplicationController
               if(params[:beach] || params[:nature] || params[:tourism])
 
                 @topic_trips = []
-                @message_topic = "Se especifica la temática principal del viaje"
 
                 if params[:beach]
                   @company_trips.each do |t|
@@ -592,13 +677,11 @@ class TripsResearchController < ApplicationController
                 @result_trips = @topic_trips
 
               else
-                @message_topic = "No se especifica la temática principal del viaje"
                 @result_trips = @company_trips
               end
 
             # ------------ 5) No companies ------------ #
             else
-              @message_company = "No se especifica el tipo de compañía deseada"
               @company_trips = @services_trips
 
               # ------------ 6) Topic ------------ #
@@ -606,7 +689,6 @@ class TripsResearchController < ApplicationController
               if(params[:beach] || params[:nature] || params[:tourism])
 
                 @topic_trips = []
-                @message_topic = "Se especifica la temática principal del viaje"
 
                 if params[:beach]
                   @company_trips.each do |t|
@@ -631,7 +713,6 @@ class TripsResearchController < ApplicationController
                 @result_trips = @topic_trips
 
               else
-                @message_topic = "No se especifica la temática principal del viaje"
                 @result_trips = @company_trips
               end
               
@@ -644,14 +725,12 @@ class TripsResearchController < ApplicationController
       else
 
         @budget_trips = @destination_trips
-        @message_budget = "No se tendra en cuenta el presupuesto"
 
         # ------------ 3) duration ------------ #
 
         if (params[:maxd3] || params[:betwd35] || params[:betwd57] || params[:minweek])
 
           @duration_trips = []
-          @message_duration = "Se tendra en cuenta la duracion del viaje"
 
           if params[:maxd3]
             @budget_trips.each do |t|
@@ -684,7 +763,6 @@ class TripsResearchController < ApplicationController
           if (params[:gastronomy] || params[:lodging] || params[:activities])
 
             @services_trips = []
-            @message_services = "Se tiene en cuenta alguna preferencia en los servicios del viaje"
 
             if params[:gastronomy]
               @duration_trips.each do |t|
@@ -711,7 +789,6 @@ class TripsResearchController < ApplicationController
             if (params[:family] || params[:romantic] || params[:friends] || params[:alone] || params[:people])
 
               @company_trips = []
-              @message_company = "Se especifica el tipo de compañía deseada"
 
               if params[:family]
                 @services_trips.each do |t|
@@ -750,7 +827,6 @@ class TripsResearchController < ApplicationController
               if(params[:beach] || params[:nature] || params[:tourism])
 
                 @topic_trips = []
-                @message_topic = "Se especifica la temática principal del viaje"
 
                 if params[:beach]
                   @company_trips.each do |t|
@@ -775,13 +851,11 @@ class TripsResearchController < ApplicationController
                 @result_trips = @topic_trips
 
               else
-                @message_topic = "No se especifica la temática principal del viaje"
                 @result_trips = @company_trips
               end
 
             # ------------ 5) No companies ------------ #
             else
-              @message_company = "No se especifica el tipo de compañía deseada"
               @company_trips = @services_trips
 
               # ------------ 6) Topic ------------ #
@@ -789,7 +863,6 @@ class TripsResearchController < ApplicationController
               if(params[:beach] || params[:nature] || params[:tourism])
 
                 @topic_trips = []
-                @message_topic = "Se especifica la temática principal del viaje"
 
                 if params[:beach]
                   @company_trips.each do |t|
@@ -814,7 +887,6 @@ class TripsResearchController < ApplicationController
                 @result_trips = @topic_trips
 
               else
-                @message_topic = "No se especifica la temática principal del viaje"
                 @result_trips = @company_trips
               end
 
@@ -822,7 +894,6 @@ class TripsResearchController < ApplicationController
 
           # ------------ 4) No services ------------ #
           else
-            @message_services = "No se tiene en cuenta alguna preferencia en los servicios del viaje"
             @services_trips = @duration_trips
 
             # ------------ 5) Companies ------------ #
@@ -830,7 +901,6 @@ class TripsResearchController < ApplicationController
             if (params[:family] || params[:romantic] || params[:friends] || params[:alone] || params[:people])
 
               @company_trips = []
-              @message_company = "Se especifica el tipo de compañía deseada"
 
               if params[:family]
                 @services_trips.each do |t|
@@ -869,7 +939,6 @@ class TripsResearchController < ApplicationController
               if(params[:beach] || params[:nature] || params[:tourism])
 
                 @topic_trips = []
-                @message_topic = "Se especifica la temática principal del viaje"
 
                 if params[:beach]
                   @company_trips.each do |t|
@@ -894,13 +963,11 @@ class TripsResearchController < ApplicationController
                 @result_trips = @topic_trips
 
               else
-                @message_topic = "No se especifica la temática principal del viaje"
                 @result_trips = @company_trips
               end
 
             # ------------ 5) No companies ------------ #
             else
-              @message_company = "No se especifica el tipo de compañía deseada"
               @company_trips = @services_trips
 
               # ------------ 6) Topic ------------ #
@@ -908,7 +975,6 @@ class TripsResearchController < ApplicationController
               if(params[:beach] || params[:nature] || params[:tourism])
 
                 @topic_trips = []
-                @message_topic = "Se especifica la temática principal del viaje"
 
                 if params[:beach]
                   @company_trips.each do |t|
@@ -933,7 +999,6 @@ class TripsResearchController < ApplicationController
                 @result_trips = @topic_trips
 
               else
-                @message_topic = "No se especifica la temática principal del viaje"
                 @result_trips = @company_trips
               end
               
@@ -942,7 +1007,6 @@ class TripsResearchController < ApplicationController
 
         # ------------ 3) No duration ------------ #
         else
-          @message_duration = "No se tendra en cuenta la duracion del viaje"
           @duration_trips = @budget_trips
 
           # ------------ 4) Services ------------ #
@@ -950,7 +1014,6 @@ class TripsResearchController < ApplicationController
           if (params[:gastronomy] || params[:lodging] || params[:activities])
 
             @services_trips = []
-            @message_services = "Se tiene en cuenta alguna preferencia en los servicios del viaje"
 
             if params[:gastronomy]
               @duration_trips.each do |t|
@@ -977,7 +1040,6 @@ class TripsResearchController < ApplicationController
             if (params[:family] || params[:romantic] || params[:friends] || params[:alone] || params[:people])
 
               @company_trips = []
-              @message_company = "Se especifica el tipo de compañía deseada"
 
               if params[:family]
                 @services_trips.each do |t|
@@ -1016,7 +1078,6 @@ class TripsResearchController < ApplicationController
               if(params[:beach] || params[:nature] || params[:tourism])
 
                 @topic_trips = []
-                @message_topic = "Se especifica la temática principal del viaje"
 
                 if params[:beach]
                   @company_trips.each do |t|
@@ -1041,13 +1102,11 @@ class TripsResearchController < ApplicationController
                 @result_trips = @topic_trips
 
               else
-                @message_topic = "No se especifica la temática principal del viaje"
                 @result_trips = @company_trips
               end
 
             # ------------ 5) No companies ------------ #
             else
-              @message_company = "No se especifica el tipo de compañía deseada"
               @company_trips = @services_trips
 
               # ------------ 6) Topic ------------ #
@@ -1055,7 +1114,6 @@ class TripsResearchController < ApplicationController
               if(params[:beach] || params[:nature] || params[:tourism])
 
                 @topic_trips = []
-                @message_topic = "Se especifica la temática principal del viaje"
 
                 if params[:beach]
                   @company_trips.each do |t|
@@ -1080,7 +1138,6 @@ class TripsResearchController < ApplicationController
                 @result_trips = @topic_trips
 
               else
-                @message_topic = "No se especifica la temática principal del viaje"
                 @result_trips = @company_trips
               end
 
@@ -1088,7 +1145,6 @@ class TripsResearchController < ApplicationController
 
           # ------------ 4) No services ------------ #
           else
-            @message_services = "No se tiene en cuenta alguna preferencia en los servicios del viaje"
             @services_trips = @duration_trips
 
             # ------------ 5) Companies ------------ #
@@ -1096,7 +1152,6 @@ class TripsResearchController < ApplicationController
             if (params[:family] || params[:romantic] || params[:friends] || params[:alone] || params[:people])
 
               @company_trips = []
-              @message_company = "Se especifica el tipo de compañía deseada"
 
               if params[:family]
                 @services_trips.each do |t|
@@ -1135,7 +1190,6 @@ class TripsResearchController < ApplicationController
               if(params[:beach] || params[:nature] || params[:tourism])
 
                 @topic_trips = []
-                @message_topic = "Se especifica la temática principal del viaje"
 
                 if params[:beach]
                   @company_trips.each do |t|
@@ -1160,13 +1214,11 @@ class TripsResearchController < ApplicationController
                 @result_trips = @topic_trips
 
               else
-                @message_topic = "No se especifica la temática principal del viaje"
                 @result_trips = @company_trips
               end
 
             # ------------ 5) No companies ------------ #
             else
-              @message_company = "No se especifica el tipo de compañía deseada"
               @company_trips = @services_trips
 
               # ------------ 6) Topic ------------ #
@@ -1174,7 +1226,6 @@ class TripsResearchController < ApplicationController
               if(params[:beach] || params[:nature] || params[:tourism])
 
                 @topic_trips = []
-                @message_topic = "Se especifica la temática principal del viaje"
 
                 if params[:beach]
                   @company_trips.each do |t|
@@ -1199,7 +1250,6 @@ class TripsResearchController < ApplicationController
                 @result_trips = @topic_trips
 
               else
-                @message_topic = "No se especifica la temática principal del viaje"
                 @result_trips = @company_trips
               end
               
@@ -1213,7 +1263,6 @@ class TripsResearchController < ApplicationController
 
     # ------------ 1) No destination ------------ #
     else
-      @message_destination = "No se tendra en cuenta el destino del viaje"
       @destination_trips = Trip.all
 
       # ------------ 2) budget ------------ #
@@ -1221,7 +1270,6 @@ class TripsResearchController < ApplicationController
       if (params[:maxp300] || params[:betwp35] || params[:betwp510] || params[:minp1000])
 
         @budget_trips = []
-        @message_budget = "Se tendra en cuenta el presupuesto"
 
         if params[:maxp300]
           @destination_trips.each do |t|
@@ -1254,7 +1302,6 @@ class TripsResearchController < ApplicationController
         if (params[:maxd3] || params[:betwd35] || params[:betwd57] || params[:minweek])
 
           @duration_trips = []
-          @message_duration = "Se tendra en cuenta la duracion del viaje"
 
           if params[:maxd3]
             @budget_trips.each do |t|
@@ -1287,7 +1334,6 @@ class TripsResearchController < ApplicationController
           if (params[:gastronomy] || params[:lodging] || params[:activities])
 
             @services_trips = []
-            @message_services = "Se tiene en cuenta alguna preferencia en los servicios del viaje"
 
             if params[:gastronomy]
               @duration_trips.each do |t|
@@ -1314,7 +1360,6 @@ class TripsResearchController < ApplicationController
             if (params[:family] || params[:romantic] || params[:friends] || params[:alone] || params[:people])
 
               @company_trips = []
-              @message_company = "Se especifica el tipo de compañía deseada"
 
               if params[:family]
                 @services_trips.each do |t|
@@ -1353,7 +1398,6 @@ class TripsResearchController < ApplicationController
               if(params[:beach] || params[:nature] || params[:tourism])
 
                 @topic_trips = []
-                @message_topic = "Se especifica la temática principal del viaje"
 
                 if params[:beach]
                   @company_trips.each do |t|
@@ -1378,13 +1422,11 @@ class TripsResearchController < ApplicationController
                 @result_trips = @topic_trips
 
               else
-                @message_topic = "No se especifica la temática principal del viaje"
                 @result_trips = @company_trips
               end
 
             # ------------ 5) No companies ------------ #
             else
-              @message_company = "No se especifica el tipo de compañía deseada"
               @company_trips = @services_trips
 
               # ------------ 6) Topic ------------ #
@@ -1392,7 +1434,6 @@ class TripsResearchController < ApplicationController
               if(params[:beach] || params[:nature] || params[:tourism])
 
                 @topic_trips = []
-                @message_topic = "Se especifica la temática principal del viaje"
 
                 if params[:beach]
                   @company_trips.each do |t|
@@ -1417,7 +1458,6 @@ class TripsResearchController < ApplicationController
                 @result_trips = @topic_trips
 
               else
-                @message_topic = "No se especifica la temática principal del viaje"
                 @result_trips = @company_trips
               end
 
@@ -1425,7 +1465,6 @@ class TripsResearchController < ApplicationController
 
           # ------------ 4) No services ------------ #
           else
-            @message_services = "No se tiene en cuenta alguna preferencia en los servicios del viaje"
             @services_trips = @duration_trips
 
             # ------------ 5) Companies ------------ #
@@ -1433,7 +1472,6 @@ class TripsResearchController < ApplicationController
             if (params[:family] || params[:romantic] || params[:friends] || params[:alone] || params[:people])
 
               @company_trips = []
-              @message_company = "Se especifica el tipo de compañía deseada"
 
               if params[:family]
                 @services_trips.each do |t|
@@ -1472,7 +1510,6 @@ class TripsResearchController < ApplicationController
               if(params[:beach] || params[:nature] || params[:tourism])
 
                 @topic_trips = []
-                @message_topic = "Se especifica la temática principal del viaje"
 
                 if params[:beach]
                   @company_trips.each do |t|
@@ -1497,13 +1534,11 @@ class TripsResearchController < ApplicationController
                 @result_trips = @topic_trips
 
               else
-                @message_topic = "No se especifica la temática principal del viaje"
                 @result_trips = @company_trips
               end
 
             # ------------ 5) No companies ------------ #
             else
-              @message_company = "No se especifica el tipo de compañía deseada"
               @company_trips = @services_trips
 
               # ------------ 6) Topic ------------ #
@@ -1511,7 +1546,6 @@ class TripsResearchController < ApplicationController
               if(params[:beach] || params[:nature] || params[:tourism])
 
                 @topic_trips = []
-                @message_topic = "Se especifica la temática principal del viaje"
 
                 if params[:beach]
                   @company_trips.each do |t|
@@ -1536,7 +1570,6 @@ class TripsResearchController < ApplicationController
                 @result_trips = @topic_trips
 
               else
-                @message_topic = "No se especifica la temática principal del viaje"
                 @result_trips = @company_trips
               end
               
@@ -1545,7 +1578,6 @@ class TripsResearchController < ApplicationController
 
         # ------------ 3) No duration ------------ #
         else
-          @message_duration = "No se tendra en cuenta la duracion del viaje"
           @duration = @budget_trips
 
           # ------------ 4) Services ------------ #
@@ -1553,7 +1585,6 @@ class TripsResearchController < ApplicationController
           if (params[:gastronomy] || params[:lodging] || params[:activities])
 
             @services_trips = []
-            @message_services = "Se tiene en cuenta alguna preferencia en los servicios del viaje"
 
             if params[:gastronomy]
               @duration_trips.each do |t|
@@ -1580,7 +1611,6 @@ class TripsResearchController < ApplicationController
             if (params[:family] || params[:romantic] || params[:friends] || params[:alone] || params[:people])
 
               @company_trips = []
-              @message_company = "Se especifica el tipo de compañía deseada"
 
               if params[:family]
                 @services_trips.each do |t|
@@ -1619,7 +1649,6 @@ class TripsResearchController < ApplicationController
               if(params[:beach] || params[:nature] || params[:tourism])
 
                 @topic_trips = []
-                @message_topic = "Se especifica la temática principal del viaje"
 
                 if params[:beach]
                   @company_trips.each do |t|
@@ -1644,13 +1673,11 @@ class TripsResearchController < ApplicationController
                 @result_trips = @topic_trips
 
               else
-                @message_topic = "No se especifica la temática principal del viaje"
                 @result_trips = @company_trips
               end
 
             # ------------ 5) No companies ------------ #
             else
-              @message_company = "No se especifica el tipo de compañía deseada"
               @company_trips = @services_trips
 
               # ------------ 6) Topic ------------ #
@@ -1658,7 +1685,6 @@ class TripsResearchController < ApplicationController
               if(params[:beach] || params[:nature] || params[:tourism])
 
                 @topic_trips = []
-                @message_topic = "Se especifica la temática principal del viaje"
 
                 if params[:beach]
                   @company_trips.each do |t|
@@ -1683,7 +1709,6 @@ class TripsResearchController < ApplicationController
                 @result_trips = @topic_trips
 
               else
-                @message_topic = "No se especifica la temática principal del viaje"
                 @result_trips = @company_trips
               end
 
@@ -1691,7 +1716,6 @@ class TripsResearchController < ApplicationController
 
           # ------------ 4) No services ------------ #
           else
-            @message_services = "No se tiene en cuenta alguna preferencia en los servicios del viaje"
             @services_trips = @duration_trips
 
             # ------------ 5) Companies ------------ #
@@ -1699,7 +1723,6 @@ class TripsResearchController < ApplicationController
             if (params[:family] || params[:romantic] || params[:friends] || params[:alone] || params[:people])
 
               @company_trips = []
-              @message_company = "Se especifica el tipo de compañía deseada"
 
               if params[:family]
                 @services_trips.each do |t|
@@ -1738,7 +1761,6 @@ class TripsResearchController < ApplicationController
               if(params[:beach] || params[:nature] || params[:tourism])
 
                 @topic_trips = []
-                @message_topic = "Se especifica la temática principal del viaje"
 
                 if params[:beach]
                   @company_trips.each do |t|
@@ -1763,13 +1785,11 @@ class TripsResearchController < ApplicationController
                 @result_trips = @topic_trips
 
               else
-                @message_topic = "No se especifica la temática principal del viaje"
                 @result_trips = @company_trips
               end
 
             # ------------ 5) No companies ------------ #
             else
-              @message_company = "No se especifica el tipo de compañía deseada"
               @company_trips = @services_trips
 
               # ------------ 6) Topic ------------ #
@@ -1777,7 +1797,6 @@ class TripsResearchController < ApplicationController
               if(params[:beach] || params[:nature] || params[:tourism])
 
                 @topic_trips = []
-                @message_topic = "Se especifica la temática principal del viaje"
 
                 if params[:beach]
                   @company_trips.each do |t|
@@ -1802,7 +1821,6 @@ class TripsResearchController < ApplicationController
                 @result_trips = @topic_trips
 
               else
-                @message_topic = "No se especifica la temática principal del viaje"
                 @result_trips = @company_trips
               end
               
@@ -1815,14 +1833,12 @@ class TripsResearchController < ApplicationController
       else
 
         @budget_trips = @destination_trips
-        @message_budget = "No se tendra en cuenta el presupuesto"
 
         # ------------ 3) duration ------------ #
 
         if (params[:maxd3] || params[:betwd35] || params[:betwd57] || params[:minweek])
 
           @duration_trips = []
-          @message_duration = "Se tendra en cuenta la duracion del viaje"
 
           if params[:maxd3]
             @budget_trips.each do |t|
@@ -1855,7 +1871,6 @@ class TripsResearchController < ApplicationController
           if (params[:gastronomy] || params[:lodging] || params[:activities])
 
             @services_trips = []
-            @message_services = "Se tiene en cuenta alguna preferencia en los servicios del viaje"
 
             if params[:gastronomy]
               @duration_trips.each do |t|
@@ -1882,7 +1897,6 @@ class TripsResearchController < ApplicationController
             if (params[:family] || params[:romantic] || params[:friends] || params[:alone] || params[:people])
 
               @company_trips = []
-              @message_company = "Se especifica el tipo de compañía deseada"
 
               if params[:family]
                 @services_trips.each do |t|
@@ -1921,7 +1935,6 @@ class TripsResearchController < ApplicationController
               if(params[:beach] || params[:nature] || params[:tourism])
 
                 @topic_trips = []
-                @message_topic = "Se especifica la temática principal del viaje"
 
                 if params[:beach]
                   @company_trips.each do |t|
@@ -1946,13 +1959,11 @@ class TripsResearchController < ApplicationController
                 @result_trips = @topic_trips
 
               else
-                @message_topic = "No se especifica la temática principal del viaje"
                 @result_trips = @company_trips
               end
 
             # ------------ 5) No companies ------------ #
             else
-              @message_company = "No se especifica el tipo de compañía deseada"
               @company_trips = @services_trips
 
               # ------------ 6) Topic ------------ #
@@ -1960,7 +1971,6 @@ class TripsResearchController < ApplicationController
               if(params[:beach] || params[:nature] || params[:tourism])
 
                 @topic_trips = []
-                @message_topic = "Se especifica la temática principal del viaje"
 
                 if params[:beach]
                   @company_trips.each do |t|
@@ -1985,7 +1995,6 @@ class TripsResearchController < ApplicationController
                 @result_trips = @topic_trips
 
               else
-                @message_topic = "No se especifica la temática principal del viaje"
                 @result_trips = @company_trips
               end
 
@@ -1993,7 +2002,6 @@ class TripsResearchController < ApplicationController
 
           # ------------ 4) No services ------------ #
           else
-            @message_services = "No se tiene en cuenta alguna preferencia en los servicios del viaje"
             @services_trips = @duration_trips
 
             # ------------ 5) Companies ------------ #
@@ -2001,7 +2009,6 @@ class TripsResearchController < ApplicationController
             if (params[:family] || params[:romantic] || params[:friends] || params[:alone] || params[:people])
 
               @company_trips = []
-              @message_company = "Se especifica el tipo de compañía deseada"
 
               if params[:family]
                 @services_trips.each do |t|
@@ -2040,7 +2047,6 @@ class TripsResearchController < ApplicationController
               if(params[:beach] || params[:nature] || params[:tourism])
 
                 @topic_trips = []
-                @message_topic = "Se especifica la temática principal del viaje"
 
                 if params[:beach]
                   @company_trips.each do |t|
@@ -2065,13 +2071,11 @@ class TripsResearchController < ApplicationController
                 @result_trips = @topic_trips
 
               else
-                @message_topic = "No se especifica la temática principal del viaje"
                 @result_trips = @company_trips
               end
 
             # ------------ 5) No companies ------------ #
             else
-              @message_company = "No se especifica el tipo de compañía deseada"
               @company_trips = @services_trips
 
               # ------------ 6) Topic ------------ #
@@ -2079,7 +2083,6 @@ class TripsResearchController < ApplicationController
               if(params[:beach] || params[:nature] || params[:tourism])
 
                 @topic_trips = []
-                @message_topic = "Se especifica la temática principal del viaje"
 
                 if params[:beach]
                   @company_trips.each do |t|
@@ -2104,7 +2107,6 @@ class TripsResearchController < ApplicationController
                 @result_trips = @topic_trips
 
               else
-                @message_topic = "No se especifica la temática principal del viaje"
                 @result_trips = @company_trips
               end
               
@@ -2113,7 +2115,6 @@ class TripsResearchController < ApplicationController
 
         # ------------ 3) No duration ------------ #
         else
-          @message_duration = "No se tendra en cuenta la duracion del viaje"
           @duration_trips = @budget_trips
 
           # ------------ 4) Services ------------ #
@@ -2121,7 +2122,6 @@ class TripsResearchController < ApplicationController
           if (params[:gastronomy] || params[:lodging] || params[:activities])
 
             @services_trips = []
-            @message_services = "Se tiene en cuenta alguna preferencia en los servicios del viaje"
 
             if params[:gastronomy]
               @duration_trips.each do |t|
@@ -2148,7 +2148,6 @@ class TripsResearchController < ApplicationController
             if (params[:family] || params[:romantic] || params[:friends] || params[:alone] || params[:people])
 
               @company_trips = []
-              @message_company = "Se especifica el tipo de compañía deseada"
 
               if params[:family]
                 @services_trips.each do |t|
@@ -2187,7 +2186,6 @@ class TripsResearchController < ApplicationController
               if(params[:beach] || params[:nature] || params[:tourism])
 
                 @topic_trips = []
-                @message_topic = "Se especifica la temática principal del viaje"
 
                 if params[:beach]
                   @company_trips.each do |t|
@@ -2212,13 +2210,11 @@ class TripsResearchController < ApplicationController
                 @result_trips = @topic_trips
 
               else
-                @message_topic = "No se especifica la temática principal del viaje"
                 @result_trips = @company_trips
               end
 
             # ------------ 5) No companies ------------ #
             else
-              @message_company = "No se especifica el tipo de compañía deseada"
               @company_trips = @services_trips
 
               # ------------ 6) Topic ------------ #
@@ -2226,7 +2222,6 @@ class TripsResearchController < ApplicationController
               if(params[:beach] || params[:nature] || params[:tourism])
 
                 @topic_trips = []
-                @message_topic = "Se especifica la temática principal del viaje"
 
                 if params[:beach]
                   @company_trips.each do |t|
@@ -2251,7 +2246,6 @@ class TripsResearchController < ApplicationController
                 @result_trips = @topic_trips
 
               else
-                @message_topic = "No se especifica la temática principal del viaje"
                 @result_trips = @company_trips
               end
 
@@ -2259,7 +2253,6 @@ class TripsResearchController < ApplicationController
 
           # ------------ 4) No services ------------ #
           else
-            @message_services = "No se tiene en cuenta alguna preferencia en los servicios del viaje"
             @services_trips = @duration_trips
 
             # ------------ 5) Companies ------------ #
@@ -2267,7 +2260,6 @@ class TripsResearchController < ApplicationController
             if (params[:family] || params[:romantic] || params[:friends] || params[:alone] || params[:people])
 
               @company_trips = []
-              @message_company = "Se especifica el tipo de compañía deseada"
 
               if params[:family]
                 @services_trips.each do |t|
@@ -2306,7 +2298,6 @@ class TripsResearchController < ApplicationController
               if(params[:beach] || params[:nature] || params[:tourism])
 
                 @topic_trips = []
-                @message_topic = "Se especifica la temática principal del viaje"
 
                 if params[:beach]
                   @company_trips.each do |t|
@@ -2331,13 +2322,11 @@ class TripsResearchController < ApplicationController
                 @result_trips = @topic_trips
 
               else
-                @message_topic = "No se especifica la temática principal del viaje"
                 @result_trips = @company_trips
               end
 
             # ------------ 5) No companies ------------ #
             else
-              @message_company = "No se especifica el tipo de compañía deseada"
               @company_trips = @services_trips
 
               # ------------ 6) Topic ------------ #
@@ -2345,7 +2334,6 @@ class TripsResearchController < ApplicationController
               if(params[:beach] || params[:nature] || params[:tourism])
 
                 @topic_trips = []
-                @message_topic = "Se especifica la temática principal del viaje"
 
                 if params[:beach]
                   @company_trips.each do |t|
@@ -2370,7 +2358,6 @@ class TripsResearchController < ApplicationController
                 @result_trips = @topic_trips
 
               else
-                @message_topic = "No se especifica la temática principal del viaje"
                 @result_trips = @company_trips
               end
               

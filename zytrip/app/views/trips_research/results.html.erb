@@ -62,27 +62,40 @@
 				</div>
 			</div>
 
+
+			<div class="results-survey-btn">
+				<%=link_to 'Cambiar parámetros', trips_research_survey_path, class:"results-survey-btn-link"%>
+			</div>
 		</div>
 	</div>
 
-	<br><h1 class="text-center">Resultados</h1><br>
-
-	<p> 1) <%= @message_destination %></p>
-	<p> 2) <%= @message_budget %></p>
-	<p> 3) <%= @message_duration %></p>
-	<p> 4) <%= @message_services %></p>
-	<p> 5) <%= @message_company %></p>
-	<p> 6) <%= @message_topic %></p><br>
-
-	<% @result_trips.each do |trip| %>
-		<hr>
-		<p><b><%= trip.title %></b></p><br>
-		<% if trip.preference %>
-			<p>Destino del viaje: <%= trip.preference.destination %></p>
-			<p>Duración: <%= trip.preference.duration %></p>
-			<p>Presupuesto: <%= trip.preference.budget %></p>
-		<% end %>
-	<% end %>
+	<div class="results-list-container">
+		<% @result_trips.each do |trip| %>
+        	<div class="row trips-results-box">
+                <div class="col">
+                    <% if trip.image %>
+                        <%= image_tag(trip.image) %>
+                    <% else %>
+                        <%= image_tag("no-image-available.png") %>
+                    <% end %>
+                </div>
+                <div class="col-6">
+                    <div class="trips-results-box-title">
+                        <%=link_to trip, class:"trips-results-box-title" do%>
+                            <p><b><%=trip.title%></b></p>
+                        <% end %>
+                    </div>
+                    <p class="trips-results-box-info"><%= trip.city %>, <%=trip.country%></p>
+                </div>
+                <div class="col">
+                    <p class="trips-results-box-price"><b><%= trip.price %>€</b></p>
+                    <div class="trips-results-booking">
+                        RESERVAR
+                    </div>
+                </div>
+            </div><br>
+        <% end %>
+    </div>
 </div>
 
 <% content_for :view_specific_css do %>

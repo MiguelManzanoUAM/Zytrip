@@ -889,7 +889,7 @@
 
 .results-filter-container{
   width: 1000px;
-  height: 250px;
+  height: 300px;
   background-color: white;
   border-radius: 20px;
 }
@@ -939,4 +939,32 @@
 
 .results-filters-false{
   color: grey;
+}
+
+.results-survey-btn{
+  background-color: #2a2c3b;
+  border-radius: 5px;
+  border:  1px solid #2a2c3b;
+  outline: none;
+  width: 300px;
+  margin: 10px auto;
+  text-align: center;
+}
+
+.results-survey-btn-link{
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.results-survey-btn-link:hover{
+  color: white;
+}
+
+.results-list-container{
+  margin-top: 100px;
+  margin-left: 10%;
+  margin-right: 10%;
 }

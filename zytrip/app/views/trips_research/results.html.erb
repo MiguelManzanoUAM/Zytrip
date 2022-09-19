@@ -69,33 +69,34 @@
 		</div>
 	</div>
 
-	<div class="results-list-container">
-		<% @result_trips.each do |trip| %>
-        	<div class="row trips-results-box">
-                <div class="col">
-                    <% if trip.image %>
-                        <%= image_tag(trip.image) %>
-                    <% else %>
-                        <%= image_tag("no-image-available.png") %>
-                    <% end %>
-                </div>
-                <div class="col-6">
-                    <div class="trips-results-box-title">
-                        <%=link_to trip, class:"trips-results-box-title" do%>
-                            <p><b><%=trip.title%></b></p>
-                        <% end %>
-                    </div>
-                    <p class="trips-results-box-info"><%= trip.city %>, <%=trip.country%></p>
-                </div>
-                <div class="col">
-                    <p class="trips-results-box-price"><b><%= trip.price %>€</b></p>
-                    <div class="trips-results-booking">
-                        RESERVAR
-                    </div>
-                </div>
-            </div><br>
-        <% end %>
-    </div>
+	<div class="results-list-view-container">
+		
+		<% @result_trips.each_with_index do |trip,aux| %>
+			<% if aux%3 == 0 %>
+				<div class="row">
+			<% end %>
+			<div class="col col-lg-3 recomendations-results-box">
+				<% if trip.image %>
+					<%= link_to image_tag(trip.image), trip %>
+				<% else %>
+        			<%= link_to image_tag("no-image-available.png"), trip %>
+        		<% end %>
+
+				<hr>
+				<p class="result-info">
+					<div class="row justify-content-between">
+						<div class="col-8">
+							<p class="result-info-title"><%= trip.title %></p>
+						</div>
+						<div class="col-4">
+							<p class="result-info-price"><%= trip.price %> €</p>
+						</div>
+					</div>
+				</p>
+			</div>
+		<% end %>
+		</div>
+	</div>
 </div>
 
 <% content_for :view_specific_css do %>

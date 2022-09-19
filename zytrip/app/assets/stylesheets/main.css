@@ -878,7 +878,7 @@
 **********************************************/
 .main-results{
   background-color: #F5F4F5;
-  padding-bottom: 100px;
+  padding-bottom: 350px;
   padding-top: 100px;
 }
 
@@ -963,8 +963,30 @@
   color: white;
 }
 
-.results-list-container{
+.results-list-view-container{
   margin-top: 100px;
-  margin-left: 10%;
+  margin-left: 20%;
   margin-right: 10%;
+}
+
+.results-row{
+  margin-top: 20px;
+}
+
+.recomendations-results-box{
+  border:  1px solid lightgrey;
+  border-radius: 20px;
+  margin-bottom: 50px;
+  margin-right: 50px;
+  background-color: white;
+}
+
+.recomendations-results-box img{
+  height: 250px;
+  width:  100%;
+  padding-top: 10px;
+}
+
+.recomendations-results-box hr{
+  border: 1px solid lightgrey;
 }

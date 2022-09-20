@@ -1,0 +1,6 @@
+id,title,agency_id,price,country,city
+1,Viaje prueba,1,1050.0,Over the Rainbow,Somewhere
+2,Madrid,1,75.0,España,Madrid
+3,Londres,2,385.0,Reino Unido,Londres
+4,Viaje prueba 2,1,10.0,Prueba,prueba
+5,Viaje prueba 3,2,550.0,Mexico,Cancun

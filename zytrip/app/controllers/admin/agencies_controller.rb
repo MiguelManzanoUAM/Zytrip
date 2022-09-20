@@ -4,6 +4,13 @@ class Admin::AgenciesController < ApplicationController
       redirect_to root_path, error: "You don't belong there"
     end
     
+    @agencies = Agency.all
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @agencies.to_csv(['id', 'name', 'phone_number', 'url', 'logo']) }
+    end
+
     @agencies = Agency.search(params[:search])
   end
 
@@ -32,6 +39,11 @@ class Admin::AgenciesController < ApplicationController
   def update
     @agency = Agency.find_by(id: params[:id])
     @agency.update(agency_params)
+    redirect_to admin_agencies_path
+  end
+
+  def import
+    Agency.import()
     redirect_to admin_agencies_path
   end
 

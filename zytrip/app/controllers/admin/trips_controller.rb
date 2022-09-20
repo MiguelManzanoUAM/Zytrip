@@ -5,6 +5,13 @@ class Admin::TripsController < ApplicationController
       redirect_to root_path, error: "You don't belong there"
     end
     
+    @trips = Trip.all
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @trips.to_csv(['id', 'title', 'agency_id', 'price', 'country', 'city']) }
+    end
+
     @trips = Trip.search(params[:search])
   end
 
@@ -36,6 +43,10 @@ class Admin::TripsController < ApplicationController
     redirect_to admin_trips_path
   end
 
+  def import
+    Trip.import()
+    redirect_to admin_trips_path
+  end
 
   private
 

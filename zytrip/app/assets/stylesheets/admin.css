@@ -113,6 +113,42 @@
   cursor: pointer;
 }
 
+.import-form-btn{
+  height: 40px;
+  color: #fff;
+  font-size: 15px;
+  padding-top: 10px;
+  background-color: #6e9bd5;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  margin-left: 10px;
+}
+
+.import-form-btn-link{
+  color: #fff;
+  font-size: 15px;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.import-form-btn-link:hover{
+  color: #fff;
+}
+
+.import-form-submit-btn{
+  height: 40px;
+  color: #fff;
+  font-size: 15px;
+  background: #6e9bd5;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  width: 100%;
+}
+
 /**********************************************
  * Admin interface styles
 **********************************************/

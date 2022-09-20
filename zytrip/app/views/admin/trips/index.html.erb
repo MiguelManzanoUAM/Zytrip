@@ -14,14 +14,21 @@
           <% end %>
         </div>
 
-        <div class="col-2 admin-new-element">
-          <%= link_to new_admin_trip_path do %>
-            <i class="fas fa-plane">   Añadir viaje</i>
-          <% end %>
-        </div>
 
-        <div class="col-2 admin-new-element">
-          <i class="fas fa-suitcase">   Importar viajes</i>
+        <div class="col-4">
+          <%= form_tag import_admin_trips_path, multipart: true, class: "form-inline" do %>
+            <div class="row">
+              <div class="col-4 import-form-btn text-center">
+                <%= link_to "Añadir viaje", new_admin_trip_path, class: "import-form-btn-link" %>
+              </div>
+              <div class="col-4 import-form-btn text-center">
+                <%= link_to "Exportar CSV", admin_trips_path(format: :csv), class: "import-form-btn-link" %>
+              </div>
+              <div class="col -4 text-center">
+                <%= submit_tag "Importar viajes", class:"import-form-submit-btn" %>
+              </div>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>

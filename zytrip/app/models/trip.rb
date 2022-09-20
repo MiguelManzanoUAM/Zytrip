@@ -12,4 +12,28 @@ class Trip < ApplicationRecord
       		all
     	end
   	end
+
+  	#Exporta todos los datos en un csv
+  	def self.to_csv(fields = column_names, options = {})
+  		CSV.generate(options) do |csv|
+  			csv << fields
+  			all.each do |trip|
+  				csv << trip.attributes.values_at(*fields)
+  			end
+  		end
+  	end
+
+  	#Importa los datos desde un csv
+  	def self.import
+  		path = Rails.root + "app/csv/trips.csv"
+  		CSV.foreach(path, headers: true) do |row|
+  			trip_hash = row.to_hash
+  			if Trip.where("id" => trip_hash['id']).exists?
+  				trip = Trip.find_by(id: trip_hash['id'])
+  			else
+  				trip = Trip.create!(trip_hash)
+  			end
+  			trip.update(trip_hash)
+  		end
+  	end
 end

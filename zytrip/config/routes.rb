@@ -16,9 +16,16 @@ Rails.application.routes.draw do
 
   namespace :admin do
     controller :admin do
-      resources :trips
-      resources :agencies
+      resources :trips do
+        collection { post :import }
+      end
+
+      resources :agencies do
+        collection { post :import }
+      end
+      
       resources :users
+
       get "/dashboards/landing", to: "dashboards#landing"
       get "/dashboards/dashboard", to: "dashboards#dashboard"
     end

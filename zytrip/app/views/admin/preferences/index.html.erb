@@ -1,0 +1,73 @@
+<%= render "layouts/sidebar" %>
+
+<section>
+  <div class="admin-main" id="users">
+    <h2 class="admin-model-title"><strong>Administración de preferencias</strong></h2>
+
+    <div class="admin-new-panel">
+      <div class="row ">
+        <div class="col-7 admin-search">
+        </div>
+
+        <div class="col-5">
+          <%= form_tag import_admin_preferences_path, multipart: true, class: "form-inline" do %>
+            <div class="row">
+              <div class="col-4 import-form-btn text-center">
+                <%= link_to "Añadir preferencia", new_admin_preference_path, class: "import-form-btn-link" %>
+              </div>
+              <div class="col-4 import-form-btn text-center">
+                <%= link_to "Exportar CSV", admin_preferences_path(format: :csv), class: "import-form-btn-link" %>
+              </div>
+              <div class="col -4 text-center">
+                <%= submit_tag "Importar preferencias", class:"import-form-submit-btn" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <table class="admin-model-table">
+      <thead>
+        <tr>
+          <th>ID Viaje</th>
+          <th>Destino</th>
+          <th>Presupuesto</th>
+          <th>Duración</th>
+          <th>Administración</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @preferences.each do |preference| %>
+          <tr>
+            <td><%= preference.trip_id %></td>
+            <td><%= preference.destination %></td>
+            <td><%= preference.budget %></td>
+            <td><%= preference.duration %></td>
+            <td>
+              <div class="row justify-content-center">
+                <div class="col-2">
+                  <%= link_to edit_admin_preference_path(preference), title:"Editar" do %>
+                    <i class="fas fa-briefcase"></i>
+                  <% end %>
+                </div>
+
+                <div class="col-2">
+                  <%= button_to admin_preference_path(preference), method: :delete, class:"admin-delete-button", title:"Eliminar" do %> 
+                    <i class="fas fa-briefcase admin-delete"></i>
+                  <% end %>
+                </div>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<% content_for :view_specific_css do %>
+    <%= stylesheet_link_tag "admin" %>
+<% end %>

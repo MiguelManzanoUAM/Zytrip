@@ -1,0 +1,6 @@
+id,trip_id,destination,budget,duration
+1,1,america,expensive,overlong
+2,2,spain,low,short
+3,3,europe,medium,ordinary
+4,4,america,low,overlong
+5,5,america,expensive,overlong

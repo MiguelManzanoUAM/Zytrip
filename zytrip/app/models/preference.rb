@@ -110,4 +110,27 @@ class Preference < ApplicationRecord
 		return false
 	end
 
+	#Exporta todos los datos en un csv
+  	def self.to_csv(fields = column_names, options = {})
+  		CSV.generate(options) do |csv|
+  			csv << fields
+  			all.each do |preference|
+  				csv << preference.attributes.values_at(*fields)
+  			end
+  		end
+  	end
+
+  	#Importa los datos desde un csv
+  	def self.import
+  		path = Rails.root + "app/csv/preferences.csv"
+  		CSV.foreach(path, headers: true) do |row|
+  			preference_hash = row.to_hash
+			if Preference.where("id" => preference_hash['id']).exists?
+  				preference = Preference.find_by(id: preference_hash['id'])
+  			else
+  				preference = Preference.create!(preference_hash)
+  			end
+  			preference.update(preference_hash)
+  		end
+  	end
 end

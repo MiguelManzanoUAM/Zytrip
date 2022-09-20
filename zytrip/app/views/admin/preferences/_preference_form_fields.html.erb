@@ -1,0 +1,25 @@
+<div class="row">
+	<div class="col-md-12 mb-3">
+		<%= f.label(:trip_id, "Viaje", class:"create-edit-form-label") %>
+		<%= f.collection_select(:trip_id, Trip.all, :id, :title, {include_blank: 'Seleccionar Viaje'}, required: true, 
+		class:"create-edit-form-input") %>
+	</div>
+</div>
+
+<div class="row">
+
+	<div class="col-3 mb-3">
+		<%= f.label(:destination, "Destino", class:"create-edit-form-label") %>
+		<%= f.select(:destination, options_for_select(Preference.destinations.keys)) %>
+	</div>
+
+	<div class="col-3 mb-3">
+		<%= f.label(:budget, "Presupuesto", class:"create-edit-form-label") %>
+		<%= f.select(:budget, options_for_select(Preference.budgets.keys)) %>
+	</div>
+
+	<div class="col-3 mb-3">
+		<%= f.label(:duration, "Duración", class:"create-edit-form-label") %>
+		<%= f.select(:duration, options_for_select(Preference.durations.keys)) %>
+	</div>
+</div>

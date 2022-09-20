@@ -23,6 +23,10 @@ Rails.application.routes.draw do
       resources :agencies do
         collection { post :import }
       end
+
+      resources :preferences do
+        collection { post :import }
+      end
       
       resources :users
 

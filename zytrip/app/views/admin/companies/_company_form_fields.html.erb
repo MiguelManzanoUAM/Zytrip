@@ -1,0 +1,37 @@
+<div class="row">
+	<div class="col-md-12 mb-3">
+		<%= f.label(:preference_id, "Preferencia", class:"create-edit-form-label") %>
+		<%= f.select(:preference_id, options_for_select(Preference.ids)) %>
+	</div>
+</div>
+
+<div class="row">
+
+	<div class="col-3 mb-3">
+		<%= f.label(:family, "Familia", class:"create-edit-form-label") %>
+		<%= f.check_box :family, class:"create-edit-form-checkbox", autofocus: true %>
+	</div>
+
+	<div class="col-3 mb-3">
+		<%= f.label(:romantic, "Pareja", class:"create-edit-form-label") %>
+		<%= f.check_box :romantic, class:"create-edit-form-checkbox", autofocus: true %>
+	</div>
+
+	<div class="col-3 mb-3">
+		<%= f.label(:friends, "Amigos", class:"create-edit-form-label") %>
+		<%= f.check_box :friends, class:"create-edit-form-checkbox", autofocus: true %>
+	</div>
+</div>
+
+<div class="row">
+
+	<div class="col-4 mb-3">
+		<%= f.label(:alone, "Viajar solo", class:"create-edit-form-label") %>
+		<%= f.check_box :alone, class:"create-edit-form-checkbox", autofocus: true %>
+	</div>
+
+	<div class="col-5 mb-3">
+		<%= f.label(:people, "Conocer gente", class:"create-edit-form-label") %>
+		<%= f.check_box :people, class:"create-edit-form-checkbox", autofocus: true %>
+	</div>
+</div>

@@ -1,0 +1,73 @@
+<%= render "layouts/sidebar" %>
+
+<section>
+  <div class="admin-main" id="users">
+    <h2 class="admin-model-title"><strong>Administración de temáticas</strong></h2>
+
+    <div class="admin-new-panel">
+      <div class="row ">
+        <div class="col-7 admin-search">
+        </div>
+
+        <div class="col-5">
+          <%= form_tag import_admin_topics_path, multipart: true, class: "form-inline" do %>
+            <div class="row">
+              <div class="col-4 import-form-btn text-center">
+                <%= link_to "Añadir temática", new_admin_topic_path, class: "import-form-btn-link" %>
+              </div>
+              <div class="col-4 import-form-btn text-center">
+                <%= link_to "Exportar CSV", admin_topics_path(format: :csv), class: "import-form-btn-link" %>
+              </div>
+              <div class="col -4 text-center">
+                <%= submit_tag "Importar temáticas", class:"import-form-submit-btn" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <table class="admin-model-table">
+      <thead>
+        <tr>
+          <th>ID Preferencia</th>
+          <th>Playa</th>
+          <th>Naturaleza</th>
+          <th>Turismo</th>
+          <th>Administración</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @topics.each do |topic| %>
+          <tr>
+            <td><%= topic.preference_id %></td>
+            <td><%= topic.beach %></td>
+            <td><%= topic.nature %></td>
+            <td><%= topic.tourism %></td>
+            <td>
+              <div class="row justify-content-center">
+                <div class="col-2">
+                  <%= link_to edit_admin_topic_path(topic), title:"Editar" do %>
+                    <i class="fas fa-briefcase"></i>
+                  <% end %>
+                </div>
+
+                <div class="col-2">
+                  <%= button_to admin_topic_path(topic), method: :delete, class:"admin-delete-button", title:"Eliminar" do %> 
+                    <i class="fas fa-briefcase admin-delete"></i>
+                  <% end %>
+                </div>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<% content_for :view_specific_css do %>
+    <%= stylesheet_link_tag "admin" %>
+<% end %>

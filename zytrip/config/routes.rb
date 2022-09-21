@@ -27,6 +27,18 @@ Rails.application.routes.draw do
       resources :preferences do
         collection { post :import }
       end
+
+      resources :services do
+        collection { post :import }
+      end
+
+      resources :topics do
+        collection { post :import }
+      end
+      
+      resources :companies do
+        collection { post :import }
+      end
       
       resources :users
 

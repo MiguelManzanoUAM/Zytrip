@@ -1,0 +1,6 @@
+id,preference_id,lodging,gastronomy,activities
+1,1,true,true,false
+2,2,false,true,false
+3,3,false,false,true
+4,4,true,false,false
+5,5,true,true,false

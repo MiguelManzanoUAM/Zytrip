@@ -1,0 +1,45 @@
+<%= render "layouts/header" %>
+
+<div class="main-profile">
+    <div class="main-profile-container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-container">
+                    <%= image_tag "user.jpeg", class:"profile-img-center" %>
+                    <div class="profile-info">
+                        <%= @user.name %> <%= @user.surname %>
+                    </div>
+
+                    <div class="profile-description">
+                        <p>Programador y amante de los viajes</p>
+                    </div>
+
+                    <%= link_to "Editar perfil", edit_user_registration_path(@user) %>
+                </div>
+            </div>
+
+            <div class="col md-8">
+                <div class="profile-container">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-container">
+                    <p class="profile-contact-title">Contacto</p>
+                    <hr>
+                    <div class="profile-contact">
+                        <p><b>Teléfono:</b> 916543245</p>
+                        <p><b>Correo:</b> <%= @user.email %></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% content_for :view_specific_css do %>
+    <%= stylesheet_link_tag "main" %>
+<% end %>

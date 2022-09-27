@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   resources :agencies, only: [:index, :show]
 
   devise_for :users
-  
+
+  devise_scope :users do
+    get '/users/profile', :to => 'users#profile'
+  end
+
   root to: 'landing#home'
 
   namespace :admin do

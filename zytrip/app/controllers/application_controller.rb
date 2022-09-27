@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 			if current_user.admin == true
 				admin_dashboards_landing_path
 			else
-				trips_path
+				root_path
 			end
 		end
 

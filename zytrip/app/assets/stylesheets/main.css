@@ -990,3 +990,73 @@
 .recomendations-results-box hr{
   border: 1px solid lightgrey;
 }
+
+/**********************************************
+ * User profile styles
+**********************************************/
+.main-profile{
+  background-color: #aab4c6;
+  padding-bottom: 350px;
+  padding-top: 80px;
+}
+
+.main-profile-container{
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+.profile-container{
+  background-color: white;
+  margin-top: 20px;
+  border: 1px solid lightgrey;
+  padding-top: 20px;
+  padding-bottom: 50px;
+}
+
+.profile-img-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.profile-container img{
+  margin-top: 30px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.profile-container hr{
+  border: 1px solid grey;
+  width: 90%;
+  margin-left: 20px;
+}
+
+.profile-info{
+  margin-top: 20px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.profile-description{
+  margin-top: 10px;
+  color: grey;
+  font-size: 16px;
+  text-align: center;
+}
+
+.profile-contact-title{
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  color: darkblue;
+}
+
+.profile-contact{
+  margin-top: 20px;
+  font-size: 16px;
+  margin-left: 50px;
+}

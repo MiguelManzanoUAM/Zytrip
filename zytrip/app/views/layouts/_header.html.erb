@@ -27,7 +27,7 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
               <li>
-                <%= link_to 'Mi perfil', users_profile_path, class: 'dropdown-item' %>
+                <%= link_to 'Mi perfil', users_profile_path(current_user), class: 'dropdown-item' %>
               </li>
               <li><hr class="dropdown-divider"></li>
               <li>

@@ -1025,7 +1025,6 @@
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  text-align: center;
 }
 
 .profile-container hr{
@@ -1052,11 +1051,67 @@
   text-align: center;
   font-weight: bold;
   font-size: 20px;
-  color: darkblue;
+  color: #6e9bd5;
 }
 
 .profile-contact{
   margin-top: 20px;
   font-size: 16px;
   margin-left: 50px;
+}
+
+.profile-edit-btn{
+  margin-top: 10px;
+  height: 40px;
+  color: #fff;
+  font-size: 15px;
+  padding-top: 10px;
+  background-color: #6e9bd5;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+
+.profile-edit-btn-link{
+  color: #fff;
+  font-size: 15px;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.profile-edit-btn-link:hover{
+  color: #fff;
+}
+
+.profile-option-btn{
+  margin-top: 10px;
+  height: 40px;
+  color: #000;
+  font-size: 15px;
+  padding-top: 10px;
+  background-color: #eeeded;
+  border-radius: 1px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.profile-selected-option-btn{
+  margin-top: 10px;
+  height: 40px;
+  color: #fff;
+  font-size: 15px;
+  padding-top: 10px;
+  background-color: #6e9bd5;
+  border-radius: 1px;
+  border-right: 1px solid #fff;
+  outline: none;
+  cursor: pointer;
+}
+
+.profile-btn-text{
+  text-align: center;
+  padding-left: 15px;
+  padding-right: 15px;
 }

@@ -11,15 +11,36 @@
                     </div>
 
                     <div class="profile-description">
-                        <p>Programador y amante de los viajes</p>
+                        <p> Soy programador y me gusta viajar </p>
                     </div>
+                    
 
-                    <%= link_to "Editar perfil", edit_user_registration_path(@user) %>
+                    <% if @user.id == current_user.id %>
+                        <div class="profile-edit-btn text-center profile-img-center">
+                            <%= link_to "Editar perfil", edit_user_registration_path(@user), class:"profile-edit-btn-link" %>
+                        </div>
+                    <% end %>
                 </div>
             </div>
 
-            <div class="col md-8">
+            <div class="col-md-8">
                 <div class="profile-container">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item profile-selected-option-btn" id="friendsbtn">
+                            <p onclick="show_friends()", id="friendsnav", class="profile-btn-text">Amigos</p>
+                        </li>
+                        <li class="nav-item profile-option-btn" id="tripsbtn">
+                            <p onclick="show_trips()", id="tripsnav", class="profile-btn-text">Viajes</p>
+                        </li>
+                    </ul>
+
+                    <div id="trips">
+                        <p> Viajes </p>
+                    </div>
+
+                    <div id="friends">
+                        <p> Amigos </p>
+                    </div>
 
                 </div>
             </div>
@@ -39,6 +60,41 @@
         </div>
     </div>
 </div>
+
+<!-- Funciones javascript -->
+
+<script type="text/javascript">
+
+    document.getElementById('trips').style.display = 'none';
+
+    /////////////////////////////////////////////
+    // Change dynamic info and styles
+    /////////////////////////////////////////////
+
+    function show_friends(){
+        if(document.getElementById('friends').style.display == 'none'){
+            document.getElementById('friends').style.display = 'block';
+            document.getElementById('trips').style.display = 'none';
+            document.getElementById('tripsnav').style.color = '#000';
+            document.getElementById('tripsbtn').style.backgroundColor = '#eeeded';
+            document.getElementById('friendsnav').style.color = '#fff';
+            document.getElementById('friendsbtn').style.backgroundColor = '#6e9bd5';
+        }
+    }
+
+    function show_trips(){
+        if(document.getElementById('trips').style.display == 'none'){
+            document.getElementById('trips').style.display = 'block';
+            document.getElementById('friends').style.display = 'none';
+            document.getElementById('friendsnav').style.color = '#000';
+            document.getElementById('friendsbtn').style.backgroundColor = '#eeeded';
+            document.getElementById('tripsnav').style.color = '#fff';
+            document.getElementById('tripsbtn').style.backgroundColor = '#6e9bd5';
+        }
+    }
+
+
+</script>
 
 <% content_for :view_specific_css do %>
     <%= stylesheet_link_tag "main" %>

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   devise_scope :users do
-    get '/users/profile', :to => 'users#profile'
+    get '/users/:id/profile', to: 'users#profile', as: 'users_profile'
   end
 
   root to: 'landing#home'

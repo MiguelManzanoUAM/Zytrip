@@ -4,7 +4,7 @@
     <div class="main-profile-container">
         <div class="row">
             <div class="col-md-4">
-                <div class="profile-container">
+                <div class="profile-user-container">
                     <%= image_tag "user.jpeg", class:"profile-img-center" %>
                     <div class="profile-info">
                         <%= @user.name %> <%= @user.surname %>
@@ -34,14 +34,52 @@
                         </li>
                     </ul>
 
-                    <div id="trips">
-                        <p> Viajes </p>
+                    <div id="friends" class="profile-section">
+                        <p class="profile-section-results text-center"> Sección de Amigos </p>
                     </div>
 
-                    <div id="friends">
-                        <p> Amigos </p>
-                    </div>
+                    <div id="trips" class="profile-section">
+                        <% if @user.trips.size == 0 %>
+                            <p class="profile-section-results text-center"> El usuario ha realizado <text class="profile-section-results-red"> <%= @user.trips.size %> </text>viajes</p>
+                        <% else %>
+                            <p class="profile-section-results text-center"> El usuario ha realizado <text class="profile-section-results-green"> <%= @user.trips.size %> </text>viajes</p>
 
+                            <table class="profile-section-table">
+                                <thead>
+                                    <tr>
+                                        <th>Viaje</th>
+                                        <th>Opciones</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <% @user.trips.each do |trip| %>
+                                        <tr>
+                                            <td>
+                                              <% if trip.image %>
+                                                <%= image_tag(trip.image) %> <%= trip.title %>
+                                              <% else %>
+                                                <%= image_tag("user.jpeg") %> <%= trip.title %>
+                                              <% end %>
+                                            </td>
+
+                                            <td>
+                                              <div class="row justify-content-center">
+                                                <div class="col-4">
+                                                  Opción 1
+                                                </div>
+
+                                                <div class="col-4">
+                                                  Opción 2
+                                                </div>
+                                              </div>
+                                            </td>
+                                        </tr>
+                                    <% end %>
+                                </tbody>
+                            </table>
+                        <% end %>
+                    </div>
                 </div>
             </div>
         </div>

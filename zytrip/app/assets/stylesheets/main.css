@@ -1005,7 +1005,7 @@
   margin-right: 15%;
 }
 
-.profile-container{
+.profile-user-container{
   background-color: white;
   margin-top: 20px;
   border: 1px solid lightgrey;
@@ -1020,11 +1020,19 @@
   width: 50%;
 }
 
-.profile-container img{
+.profile-user-container img{
   margin-top: 30px;
   width: 150px;
   height: 150px;
   border-radius: 50%;
+}
+
+.profile-container{
+  background-color: white;
+  margin-top: 20px;
+  border: 1px solid lightgrey;
+  padding-top: 20px;
+  padding-bottom: 50px;
 }
 
 .profile-container hr{
@@ -1114,4 +1122,53 @@
   text-align: center;
   padding-left: 15px;
   padding-right: 15px;
+}
+
+.profile-section{
+  margin-top: 20px;
+}
+
+.profile-section-results{
+  font-size: 16px;
+}
+
+.profile-section-results-red{
+  font-weight: bold;
+  color: red;
+}
+
+.profile-section-results-green{
+  font-weight: bold;
+  color: green;
+}
+
+.profile-section-table{
+  margin-top: 20px;
+  margin-left: 50px;
+  width: 90%;
+  border-collapse: collapse;
+  font-size: 0.9em;
+}
+
+.profile-section-table thead tr{
+  background-color: #c4d6ed;
+  color: #6e9bd5;
+  text-align: center;
+}
+
+.profile-section-table th, td{
+  padding: 12px 15px;
+  text-align: center;
+}
+
+.profile-section-table img{
+  width: 50px;
+  height: 50px;
+  border-radius: 25%;
+  margin-right: 20px;
+  overflow: hidden;
+}
+
+.profile-section-table tbody tr {
+  border-bottom: 1px solid #dddddd;
 }

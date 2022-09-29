@@ -61,6 +61,10 @@ Trip.create!(title: "Viaje prueba 2", body: "Descripcion del viaje 2", agency_id
 # Creación de Preferencias
 ########################################
 
+@trip = Trip.find_by(id: 3)
+@user = User.find_by(id: 2)
+
+@user.trips << @trip
 
 Preference.create!(id:1, destination:3, budget:3, duration: 3, trip_id: 1)
 Preference.create!(id:2, destination:0, budget:0, duration: 0, trip_id: 2)

@@ -1068,6 +1068,13 @@
   margin-left: 50px;
 }
 
+.profile-contact-icon{
+  width: 20px;
+  height: 20px;
+  border-radius: 25%;
+  margin-right: 20px;
+}
+
 .profile-edit-btn{
   margin-top: 10px;
   height: 40px;
@@ -1145,6 +1152,7 @@
 .profile-section-table{
   margin-top: 20px;
   margin-left: 50px;
+  margin-right: 50px;
   width: 90%;
   border-collapse: collapse;
   font-size: 0.9em;
@@ -1172,3 +1180,4 @@
 .profile-section-table tbody tr {
   border-bottom: 1px solid #dddddd;
 }
+

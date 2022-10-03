@@ -10,17 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_31_100140) do
-  create_table "agencies", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "url"
-    t.string "logo"
-    t.string "phone_number"
-    t.text "description"
-  end
-
+ActiveRecord::Schema[7.0].define(version: 2022_10_03_182330) do
   create_table "companies", force: :cascade do |t|
     t.boolean "family", default: false
     t.boolean "romantic", default: false
@@ -71,6 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_31_100140) do
     t.integer "preference_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "relax"
     t.index ["preference_id"], name: "index_topics_on_preference_id"
   end
 
@@ -79,14 +70,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_31_100140) do
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "agency_id"
     t.decimal "price", default: "0.0"
     t.decimal "rating", default: "0.0"
     t.string "image"
     t.string "country"
     t.string "city"
     t.string "description"
-    t.index ["agency_id"], name: "index_trips_on_agency_id"
+    t.integer "organizer_id", null: false
+    t.index ["organizer_id"], name: "index_trips_on_organizer_id"
   end
 
   create_table "trips_users", id: false, force: :cascade do |t|
@@ -117,5 +108,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_31_100140) do
   add_foreign_key "reviews", "users"
   add_foreign_key "services", "preferences"
   add_foreign_key "topics", "preferences"
-  add_foreign_key "trips", "agencies"
+  add_foreign_key "trips", "users", column: "organizer_id"
 end

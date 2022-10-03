@@ -35,10 +35,10 @@
 				<p class="survey-container-title"><%= image_tag("wallet.png") %> Presupuesto deseable</p>
 				<hr><br>
 				<div class="survey-container-options">
-					<input name="maxp300" type="checkbox" id="maxp300", onclick="checkPriceMax300()"><label>Menos de 300€</label><br>
-					<input name="betwp35" type="checkbox" id="betwp35", onclick="checkPriceBetw35()"><label>Entre 300 y 500€</label><br>
-					<input name="betwp510" type="checkbox" id="betwp510", onclick="checkPriceBetw510()"><label>Entre 500 y 1000€</label><br>
-					<input name="minp1000" type="checkbox" id="minp1000", onclick="checkPriceMin1000()"><label>Más de 1000€</label><br>
+					<input name="maxp500" type="checkbox" id="maxp500", onclick="checkPriceMax500()"><label>Menos de 500€</label><br>
+					<input name="betwp510" type="checkbox" id="betwp510", onclick="checkPriceBetw510()"><label>Entre 300 y 500€</label><br>
+					<input name="betwp1015" type="checkbox" id="betwp1015", onclick="checkPriceBetw1015()"><label>Entre 500 y 1000€</label><br>
+					<input name="minp1500" type="checkbox" id="minp1500", onclick="checkPriceMin1500()"><label>Más de 1000€</label><br>
 				</div>
 			</div>
 		</div>
@@ -60,8 +60,9 @@
 				<hr><br>
 				<div class="survey-container-options">
 					<input name="tourism" type="checkbox" id="tourism", onclick="checkTourism()"><label>Turismo y cultura</label><br>
-					<input name="beach" type="checkbox" id="beach", onclick="checkBeach()"><label>Playa</label><br>
 					<input name="nature" type="checkbox" id="nature", onclick="checkNature()"><label>Naturaleza</label><br>
+					<input name="beach" type="checkbox" id="beach", onclick="checkBeach()"><label>Playa</label><br>
+					<input name="relax" type="checkbox" id="relax", onclick="checkRelax()"><label>No hacer nada</label><br>
 				</div>
 
 			</div>
@@ -199,35 +200,35 @@
 	// Budget functions
 	/////////////////////////////////////////////
 
-	function checkPriceMax300() {
-	    if(document.getElementById("maxp300").checked){
-	    	document.getElementById("betwp35").checked = false;
-	        document.getElementById("betwp510").checked = false;
-	        document.getElementById("minp1000").checked = false;
-	    }
-	}
-
-	function checkPriceBetw35() {
-	    if(document.getElementById("betwp35").checked){
-	    	document.getElementById("maxp300").checked = false;
-	        document.getElementById("betwp510").checked = false;
-	        document.getElementById("minp1000").checked = false;
+	function checkPriceMax500() {
+	    if(document.getElementById("maxp500").checked){
+	    	document.getElementById("betwp510").checked = false;
+	        document.getElementById("betwp1015").checked = false;
+	        document.getElementById("minp1500").checked = false;
 	    }
 	}
 
 	function checkPriceBetw510() {
 	    if(document.getElementById("betwp510").checked){
-	    	document.getElementById("betwp35").checked = false;
-	        document.getElementById("maxp300").checked = false;
-	        document.getElementById("minp1000").checked = false;
+	    	document.getElementById("maxp500").checked = false;
+	        document.getElementById("betwp1015").checked = false;
+	        document.getElementById("minp1500").checked = false;
 	    }
 	}
 
-	function checkPriceMin1000() {
-	    if(document.getElementById("minp1000").checked){
-	    	document.getElementById("betwp35").checked = false;
-	        document.getElementById("betwp510").checked = false;
-	        document.getElementById("maxp300").checked = false;
+	function checkPriceBetw1015() {
+	    if(document.getElementById("betwp1015").checked){
+	    	document.getElementById("betwp510").checked = false;
+	        document.getElementById("maxp500").checked = false;
+	        document.getElementById("minp1500").checked = false;
+	    }
+	}
+
+	function checkPriceMin1500() {
+	    if(document.getElementById("minp1500").checked){
+	    	document.getElementById("betwp510").checked = false;
+	        document.getElementById("betwp1015").checked = false;
+	        document.getElementById("maxp500").checked = false;
 	    }
 	}
 
@@ -275,6 +276,7 @@
 	    if(document.getElementById("tourism").checked){
 	    	document.getElementById("beach").checked = false;
 	        document.getElementById("nature").checked = false;
+	        document.getElementById("relax").checked = false;
 	    }
 	}
 
@@ -282,6 +284,7 @@
 	    if(document.getElementById("beach").checked){
 	    	document.getElementById("tourism").checked = false;
 	        document.getElementById("nature").checked = false;
+	        document.getElementById("relax").checked = false;
 	    }
 	}
 
@@ -289,6 +292,15 @@
 	    if(document.getElementById("nature").checked){
 	    	document.getElementById("beach").checked = false;
 	        document.getElementById("tourism").checked = false;
+	        document.getElementById("relax").checked = false;
+	    }
+	}
+
+	function checkRelax() {
+	    if(document.getElementById("relax").checked){
+	    	document.getElementById("beach").checked = false;
+	        document.getElementById("tourism").checked = false;
+	        document.getElementById("nature").checked = false;
 	    }
 	}
 

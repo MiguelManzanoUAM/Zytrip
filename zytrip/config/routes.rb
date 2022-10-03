@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :trips, only: [:index, :show]
-  resources :agencies, only: [:index, :show]
 
   devise_for :users
 

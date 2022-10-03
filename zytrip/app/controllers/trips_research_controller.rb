@@ -28,18 +28,18 @@ class TripsResearchController < ApplicationController
       @message_destination = "No especificado"
     end
 
-    if (params[:maxp300] || params[:betwp35] || params[:betwp510] || params[:minp1000])
+    if (params[:maxp500] || params[:betwp510] || params[:betwp1015] || params[:minp1500])
 
       @filter_budget = true
 
-      if params[:maxp300]
-        @message_budget = "Menos de 300€"
-      elsif params[:betwp35]
-        @message_budget = "300€-500€"
+      if params[:maxp500]
+        @message_budget = "Menos de 500€"
       elsif params[:betwp510]
         @message_budget = "500€-1000€"
+      elsif params[:betwp1015]
+        @message_budget = "1000€-1500€"
       else
-        @message_budget = "Más de 1000€"
+        @message_budget = "Más de 1500€"
       end
     else
       @filter_budget = false
@@ -100,7 +100,7 @@ class TripsResearchController < ApplicationController
       @message_company = "No especificado"
     end
 
-    if(params[:beach] || params[:nature] || params[:tourism])
+    if(params[:beach] || params[:nature] || params[:tourism] || params[:relax])
 
       @filter_topic = true
 
@@ -108,6 +108,8 @@ class TripsResearchController < ApplicationController
         @message_topic = "Playa"
       elsif params[:nature]
         @message_topic = "Naturaleza"
+      elsif params[:relax]
+        @message_topic = "Descansar"
       else
         @message_topic = "Turismo y cultura"
       end
@@ -159,23 +161,23 @@ class TripsResearchController < ApplicationController
 
       # ------------ 2) budget ------------ #
 
-      if (params[:maxp300] || params[:betwp35] || params[:betwp510] || params[:minp1000])
+      if (params[:maxp500] || params[:betwp510] || params[:betwp1015] || params[:minp1500])
 
         @budget_trips = []
 
-        if params[:maxp300]
+        if params[:maxp500]
           @destination_trips.each do |t|
             if t.preference.budget_low?
               @budget_trips << t
             end
           end
-        elsif params[:betwp35]
+        elsif params[:betwp510]
           @destination_trips.each do |t|
             if t.preference.budget_medium?
               @budget_trips << t
             end
           end
-        elsif params[:betwp510]
+        elsif params[:betwp1015]
           @destination_trips.each do |t|
             if t.preference.budget_high?
               @budget_trips << t
@@ -287,7 +289,7 @@ class TripsResearchController < ApplicationController
 
               # ------------ 6) Topic ------------ #
 
-              if(params[:beach] || params[:nature] || params[:tourism])
+              if(params[:beach] || params[:nature] || params[:tourism] || params[:relax])
 
                 @topic_trips = []
 
@@ -300,6 +302,12 @@ class TripsResearchController < ApplicationController
                 elsif params[:nature]
                   @company_trips.each do |t|
                     if t.preference.nature_as_main_topic?
+                      @topic_trips << t
+                    end
+                  end
+                elsif params[:relax]
+                  @company_trips.each do |t|
+                    if t.preference.relax_as_main_topic?
                       @topic_trips << t
                     end
                   end
@@ -323,7 +331,7 @@ class TripsResearchController < ApplicationController
 
               # ------------ 6) Topic ------------ #
 
-              if(params[:beach] || params[:nature] || params[:tourism])
+              if(params[:beach] || params[:nature] || params[:tourism] || params[:relax])
 
                 @topic_trips = []
 
@@ -336,6 +344,12 @@ class TripsResearchController < ApplicationController
                 elsif params[:nature]
                   @company_trips.each do |t|
                     if t.preference.nature_as_main_topic?
+                      @topic_trips << t
+                    end
+                  end
+                elsif params[:relax]
+                  @company_trips.each do |t|
+                    if t.preference.relax_as_main_topic?
                       @topic_trips << t
                     end
                   end
@@ -399,7 +413,7 @@ class TripsResearchController < ApplicationController
 
               # ------------ 6) Topic ------------ #
 
-              if(params[:beach] || params[:nature] || params[:tourism])
+              if(params[:beach] || params[:nature] || params[:tourism] || params[:relax])
 
                 @topic_trips = []
 
@@ -412,6 +426,12 @@ class TripsResearchController < ApplicationController
                 elsif params[:nature]
                   @company_trips.each do |t|
                     if t.preference.nature_as_main_topic?
+                      @topic_trips << t
+                    end
+                  end
+                elsif params[:relax]
+                  @company_trips.each do |t|
+                    if t.preference.relax_as_main_topic?
                       @topic_trips << t
                     end
                   end
@@ -435,7 +455,7 @@ class TripsResearchController < ApplicationController
 
               # ------------ 6) Topic ------------ #
 
-              if(params[:beach] || params[:nature] || params[:tourism])
+              if(params[:beach] || params[:nature] || params[:tourism] || params[:relax])
 
                 @topic_trips = []
 
@@ -448,6 +468,12 @@ class TripsResearchController < ApplicationController
                 elsif params[:nature]
                   @company_trips.each do |t|
                     if t.preference.nature_as_main_topic?
+                      @topic_trips << t
+                    end
+                  end
+                elsif params[:relax]
+                  @company_trips.each do |t|
+                    if t.preference.relax_as_main_topic?
                       @topic_trips << t
                     end
                   end
@@ -538,7 +564,7 @@ class TripsResearchController < ApplicationController
 
               # ------------ 6) Topic ------------ #
 
-              if(params[:beach] || params[:nature] || params[:tourism])
+              if(params[:beach] || params[:nature] || params[:tourism] || params[:relax])
 
                 @topic_trips = []
 
@@ -551,6 +577,12 @@ class TripsResearchController < ApplicationController
                 elsif params[:nature]
                   @company_trips.each do |t|
                     if t.preference.nature_as_main_topic?
+                      @topic_trips << t
+                    end
+                  end
+                elsif params[:relax]
+                  @company_trips.each do |t|
+                    if t.preference.relax_as_main_topic?
                       @topic_trips << t
                     end
                   end
@@ -574,7 +606,7 @@ class TripsResearchController < ApplicationController
 
               # ------------ 6) Topic ------------ #
 
-              if(params[:beach] || params[:nature] || params[:tourism])
+              if(params[:beach] || params[:nature] || params[:tourism] || params[:relax])
 
                 @topic_trips = []
 
@@ -587,6 +619,12 @@ class TripsResearchController < ApplicationController
                 elsif params[:nature]
                   @company_trips.each do |t|
                     if t.preference.nature_as_main_topic?
+                      @topic_trips << t
+                    end
+                  end
+                elsif params[:relax]
+                  @company_trips.each do |t|
+                    if t.preference.relax_as_main_topic?
                       @topic_trips << t
                     end
                   end
@@ -650,7 +688,7 @@ class TripsResearchController < ApplicationController
 
               # ------------ 6) Topic ------------ #
 
-              if(params[:beach] || params[:nature] || params[:tourism])
+              if(params[:beach] || params[:nature] || params[:tourism] || params[:relax])
 
                 @topic_trips = []
 
@@ -663,6 +701,12 @@ class TripsResearchController < ApplicationController
                 elsif params[:nature]
                   @company_trips.each do |t|
                     if t.preference.nature_as_main_topic?
+                      @topic_trips << t
+                    end
+                  end
+                elsif params[:relax]
+                  @company_trips.each do |t|
+                    if t.preference.relax_as_main_topic?
                       @topic_trips << t
                     end
                   end
@@ -686,7 +730,7 @@ class TripsResearchController < ApplicationController
 
               # ------------ 6) Topic ------------ #
 
-              if(params[:beach] || params[:nature] || params[:tourism])
+              if(params[:beach] || params[:nature] || params[:tourism] || params[:relax])
 
                 @topic_trips = []
 
@@ -699,6 +743,12 @@ class TripsResearchController < ApplicationController
                 elsif params[:nature]
                   @company_trips.each do |t|
                     if t.preference.nature_as_main_topic?
+                      @topic_trips << t
+                    end
+                  end
+                elsif params[:relax]
+                  @company_trips.each do |t|
+                    if t.preference.relax_as_main_topic?
                       @topic_trips << t
                     end
                   end
@@ -824,7 +874,7 @@ class TripsResearchController < ApplicationController
 
               # ------------ 6) Topic ------------ #
 
-              if(params[:beach] || params[:nature] || params[:tourism])
+              if(params[:beach] || params[:nature] || params[:tourism] || params[:relax])
 
                 @topic_trips = []
 
@@ -837,6 +887,12 @@ class TripsResearchController < ApplicationController
                 elsif params[:nature]
                   @company_trips.each do |t|
                     if t.preference.nature_as_main_topic?
+                      @topic_trips << t
+                    end
+                  end
+                elsif params[:relax]
+                  @company_trips.each do |t|
+                    if t.preference.relax_as_main_topic?
                       @topic_trips << t
                     end
                   end
@@ -860,7 +916,7 @@ class TripsResearchController < ApplicationController
 
               # ------------ 6) Topic ------------ #
 
-              if(params[:beach] || params[:nature] || params[:tourism])
+              if(params[:beach] || params[:nature] || params[:tourism] || params[:relax])
 
                 @topic_trips = []
 
@@ -873,6 +929,12 @@ class TripsResearchController < ApplicationController
                 elsif params[:nature]
                   @company_trips.each do |t|
                     if t.preference.nature_as_main_topic?
+                      @topic_trips << t
+                    end
+                  end
+                elsif params[:relax]
+                  @company_trips.each do |t|
+                    if t.preference.relax_as_main_topic?
                       @topic_trips << t
                     end
                   end
@@ -936,7 +998,7 @@ class TripsResearchController < ApplicationController
 
               # ------------ 6) Topic ------------ #
 
-              if(params[:beach] || params[:nature] || params[:tourism])
+              if(params[:beach] || params[:nature] || params[:tourism] || params[:relax])
 
                 @topic_trips = []
 
@@ -949,6 +1011,12 @@ class TripsResearchController < ApplicationController
                 elsif params[:nature]
                   @company_trips.each do |t|
                     if t.preference.nature_as_main_topic?
+                      @topic_trips << t
+                    end
+                  end
+                elsif params[:relax]
+                  @company_trips.each do |t|
+                    if t.preference.relax_as_main_topic?
                       @topic_trips << t
                     end
                   end
@@ -972,7 +1040,7 @@ class TripsResearchController < ApplicationController
 
               # ------------ 6) Topic ------------ #
 
-              if(params[:beach] || params[:nature] || params[:tourism])
+              if(params[:beach] || params[:nature] || params[:tourism] || params[:relax])
 
                 @topic_trips = []
 
@@ -985,6 +1053,12 @@ class TripsResearchController < ApplicationController
                 elsif params[:nature]
                   @company_trips.each do |t|
                     if t.preference.nature_as_main_topic?
+                      @topic_trips << t
+                    end
+                  end
+                elsif params[:relax]
+                  @company_trips.each do |t|
+                    if t.preference.relax_as_main_topic?
                       @topic_trips << t
                     end
                   end
@@ -1075,7 +1149,7 @@ class TripsResearchController < ApplicationController
 
               # ------------ 6) Topic ------------ #
 
-              if(params[:beach] || params[:nature] || params[:tourism])
+              if(params[:beach] || params[:nature] || params[:tourism] || params[:relax])
 
                 @topic_trips = []
 
@@ -1088,6 +1162,12 @@ class TripsResearchController < ApplicationController
                 elsif params[:nature]
                   @company_trips.each do |t|
                     if t.preference.nature_as_main_topic?
+                      @topic_trips << t
+                    end
+                  end
+                elsif params[:relax]
+                  @company_trips.each do |t|
+                    if t.preference.relax_as_main_topic?
                       @topic_trips << t
                     end
                   end
@@ -1111,7 +1191,7 @@ class TripsResearchController < ApplicationController
 
               # ------------ 6) Topic ------------ #
 
-              if(params[:beach] || params[:nature] || params[:tourism])
+              if(params[:beach] || params[:nature] || params[:tourism] || params[:relax])
 
                 @topic_trips = []
 
@@ -1124,6 +1204,12 @@ class TripsResearchController < ApplicationController
                 elsif params[:nature]
                   @company_trips.each do |t|
                     if t.preference.nature_as_main_topic?
+                      @topic_trips << t
+                    end
+                  end
+                elsif params[:relax]
+                  @company_trips.each do |t|
+                    if t.preference.relax_as_main_topic?
                       @topic_trips << t
                     end
                   end
@@ -1187,7 +1273,7 @@ class TripsResearchController < ApplicationController
 
               # ------------ 6) Topic ------------ #
 
-              if(params[:beach] || params[:nature] || params[:tourism])
+              if(params[:beach] || params[:nature] || params[:tourism] || params[:relax])
 
                 @topic_trips = []
 
@@ -1200,6 +1286,12 @@ class TripsResearchController < ApplicationController
                 elsif params[:nature]
                   @company_trips.each do |t|
                     if t.preference.nature_as_main_topic?
+                      @topic_trips << t
+                    end
+                  end
+                elsif params[:relax]
+                  @company_trips.each do |t|
+                    if t.preference.relax_as_main_topic?
                       @topic_trips << t
                     end
                   end
@@ -1223,7 +1315,7 @@ class TripsResearchController < ApplicationController
 
               # ------------ 6) Topic ------------ #
 
-              if(params[:beach] || params[:nature] || params[:tourism])
+              if(params[:beach] || params[:nature] || params[:tourism] || params[:relax])
 
                 @topic_trips = []
 
@@ -1236,6 +1328,12 @@ class TripsResearchController < ApplicationController
                 elsif params[:nature]
                   @company_trips.each do |t|
                     if t.preference.nature_as_main_topic?
+                      @topic_trips << t
+                    end
+                  end
+                elsif params[:relax]
+                  @company_trips.each do |t|
+                    if t.preference.relax_as_main_topic?
                       @topic_trips << t
                     end
                   end
@@ -1267,23 +1365,23 @@ class TripsResearchController < ApplicationController
 
       # ------------ 2) budget ------------ #
 
-      if (params[:maxp300] || params[:betwp35] || params[:betwp510] || params[:minp1000])
+      if (params[:maxp500] || params[:betwp510] || params[:betwp1015] || params[:minp1500])
 
         @budget_trips = []
 
-        if params[:maxp300]
+        if params[:maxp500]
           @destination_trips.each do |t|
             if t.preference.budget_low?
               @budget_trips << t
             end
           end
-        elsif params[:betwp35]
+        elsif params[:betwp510]
           @destination_trips.each do |t|
             if t.preference.budget_medium?
               @budget_trips << t
             end
           end
-        elsif params[:betwp510]
+        elsif params[:betwp1015]
           @destination_trips.each do |t|
             if t.preference.budget_high?
               @budget_trips << t
@@ -1395,7 +1493,7 @@ class TripsResearchController < ApplicationController
 
               # ------------ 6) Topic ------------ #
 
-              if(params[:beach] || params[:nature] || params[:tourism])
+              if(params[:beach] || params[:nature] || params[:tourism] || params[:relax])
 
                 @topic_trips = []
 
@@ -1408,6 +1506,12 @@ class TripsResearchController < ApplicationController
                 elsif params[:nature]
                   @company_trips.each do |t|
                     if t.preference.nature_as_main_topic?
+                      @topic_trips << t
+                    end
+                  end
+                elsif params[:relax]
+                  @company_trips.each do |t|
+                    if t.preference.relax_as_main_topic?
                       @topic_trips << t
                     end
                   end
@@ -1431,7 +1535,7 @@ class TripsResearchController < ApplicationController
 
               # ------------ 6) Topic ------------ #
 
-              if(params[:beach] || params[:nature] || params[:tourism])
+              if(params[:beach] || params[:nature] || params[:tourism] || params[:relax])
 
                 @topic_trips = []
 
@@ -1444,6 +1548,12 @@ class TripsResearchController < ApplicationController
                 elsif params[:nature]
                   @company_trips.each do |t|
                     if t.preference.nature_as_main_topic?
+                      @topic_trips << t
+                    end
+                  end
+                elsif params[:relax]
+                  @company_trips.each do |t|
+                    if t.preference.relax_as_main_topic?
                       @topic_trips << t
                     end
                   end
@@ -1507,7 +1617,7 @@ class TripsResearchController < ApplicationController
 
               # ------------ 6) Topic ------------ #
 
-              if(params[:beach] || params[:nature] || params[:tourism])
+              if(params[:beach] || params[:nature] || params[:tourism] || params[:relax])
 
                 @topic_trips = []
 
@@ -1520,6 +1630,12 @@ class TripsResearchController < ApplicationController
                 elsif params[:nature]
                   @company_trips.each do |t|
                     if t.preference.nature_as_main_topic?
+                      @topic_trips << t
+                    end
+                  end
+                elsif params[:relax]
+                  @company_trips.each do |t|
+                    if t.preference.relax_as_main_topic?
                       @topic_trips << t
                     end
                   end
@@ -1543,7 +1659,7 @@ class TripsResearchController < ApplicationController
 
               # ------------ 6) Topic ------------ #
 
-              if(params[:beach] || params[:nature] || params[:tourism])
+              if(params[:beach] || params[:nature] || params[:tourism] || params[:relax])
 
                 @topic_trips = []
 
@@ -1556,6 +1672,12 @@ class TripsResearchController < ApplicationController
                 elsif params[:nature]
                   @company_trips.each do |t|
                     if t.preference.nature_as_main_topic?
+                      @topic_trips << t
+                    end
+                  end
+                elsif params[:relax]
+                  @company_trips.each do |t|
+                    if t.preference.relax_as_main_topic?
                       @topic_trips << t
                     end
                   end
@@ -1646,7 +1768,7 @@ class TripsResearchController < ApplicationController
 
               # ------------ 6) Topic ------------ #
 
-              if(params[:beach] || params[:nature] || params[:tourism])
+              if(params[:beach] || params[:nature] || params[:tourism] || params[:relax])
 
                 @topic_trips = []
 
@@ -1659,6 +1781,12 @@ class TripsResearchController < ApplicationController
                 elsif params[:nature]
                   @company_trips.each do |t|
                     if t.preference.nature_as_main_topic?
+                      @topic_trips << t
+                    end
+                  end
+                elsif params[:relax]
+                  @company_trips.each do |t|
+                    if t.preference.relax_as_main_topic?
                       @topic_trips << t
                     end
                   end
@@ -1682,7 +1810,7 @@ class TripsResearchController < ApplicationController
 
               # ------------ 6) Topic ------------ #
 
-              if(params[:beach] || params[:nature] || params[:tourism])
+              if(params[:beach] || params[:nature] || params[:tourism] || params[:relax])
 
                 @topic_trips = []
 
@@ -1695,6 +1823,12 @@ class TripsResearchController < ApplicationController
                 elsif params[:nature]
                   @company_trips.each do |t|
                     if t.preference.nature_as_main_topic?
+                      @topic_trips << t
+                    end
+                  end
+                elsif params[:relax]
+                  @company_trips.each do |t|
+                    if t.preference.relax_as_main_topic?
                       @topic_trips << t
                     end
                   end
@@ -1758,7 +1892,7 @@ class TripsResearchController < ApplicationController
 
               # ------------ 6) Topic ------------ #
 
-              if(params[:beach] || params[:nature] || params[:tourism])
+              if(params[:beach] || params[:nature] || params[:tourism] || params[:relax])
 
                 @topic_trips = []
 
@@ -1771,6 +1905,12 @@ class TripsResearchController < ApplicationController
                 elsif params[:nature]
                   @company_trips.each do |t|
                     if t.preference.nature_as_main_topic?
+                      @topic_trips << t
+                    end
+                  end
+                elsif params[:relax]
+                  @company_trips.each do |t|
+                    if t.preference.relax_as_main_topic?
                       @topic_trips << t
                     end
                   end
@@ -1794,7 +1934,7 @@ class TripsResearchController < ApplicationController
 
               # ------------ 6) Topic ------------ #
 
-              if(params[:beach] || params[:nature] || params[:tourism])
+              if(params[:beach] || params[:nature] || params[:tourism] || params[:relax])
 
                 @topic_trips = []
 
@@ -1807,6 +1947,12 @@ class TripsResearchController < ApplicationController
                 elsif params[:nature]
                   @company_trips.each do |t|
                     if t.preference.nature_as_main_topic?
+                      @topic_trips << t
+                    end
+                  end
+                elsif params[:relax]
+                  @company_trips.each do |t|
+                    if t.preference.relax_as_main_topic?
                       @topic_trips << t
                     end
                   end
@@ -1932,7 +2078,7 @@ class TripsResearchController < ApplicationController
 
               # ------------ 6) Topic ------------ #
 
-              if(params[:beach] || params[:nature] || params[:tourism])
+              if(params[:beach] || params[:nature] || params[:tourism] || params[:relax])
 
                 @topic_trips = []
 
@@ -1945,6 +2091,12 @@ class TripsResearchController < ApplicationController
                 elsif params[:nature]
                   @company_trips.each do |t|
                     if t.preference.nature_as_main_topic?
+                      @topic_trips << t
+                    end
+                  end
+                elsif params[:relax]
+                  @company_trips.each do |t|
+                    if t.preference.relax_as_main_topic?
                       @topic_trips << t
                     end
                   end
@@ -1968,7 +2120,7 @@ class TripsResearchController < ApplicationController
 
               # ------------ 6) Topic ------------ #
 
-              if(params[:beach] || params[:nature] || params[:tourism])
+              if(params[:beach] || params[:nature] || params[:tourism] || params[:relax])
 
                 @topic_trips = []
 
@@ -1981,6 +2133,12 @@ class TripsResearchController < ApplicationController
                 elsif params[:nature]
                   @company_trips.each do |t|
                     if t.preference.nature_as_main_topic?
+                      @topic_trips << t
+                    end
+                  end
+                elsif params[:relax]
+                  @company_trips.each do |t|
+                    if t.preference.relax_as_main_topic?
                       @topic_trips << t
                     end
                   end
@@ -2044,7 +2202,7 @@ class TripsResearchController < ApplicationController
 
               # ------------ 6) Topic ------------ #
 
-              if(params[:beach] || params[:nature] || params[:tourism])
+              if(params[:beach] || params[:nature] || params[:tourism] || params[:relax])
 
                 @topic_trips = []
 
@@ -2057,6 +2215,12 @@ class TripsResearchController < ApplicationController
                 elsif params[:nature]
                   @company_trips.each do |t|
                     if t.preference.nature_as_main_topic?
+                      @topic_trips << t
+                    end
+                  end
+                elsif params[:relax]
+                  @company_trips.each do |t|
+                    if t.preference.relax_as_main_topic?
                       @topic_trips << t
                     end
                   end
@@ -2080,7 +2244,7 @@ class TripsResearchController < ApplicationController
 
               # ------------ 6) Topic ------------ #
 
-              if(params[:beach] || params[:nature] || params[:tourism])
+              if(params[:beach] || params[:nature] || params[:tourism] || params[:relax])
 
                 @topic_trips = []
 
@@ -2093,6 +2257,12 @@ class TripsResearchController < ApplicationController
                 elsif params[:nature]
                   @company_trips.each do |t|
                     if t.preference.nature_as_main_topic?
+                      @topic_trips << t
+                    end
+                  end
+                elsif params[:relax]
+                  @company_trips.each do |t|
+                    if t.preference.relax_as_main_topic?
                       @topic_trips << t
                     end
                   end
@@ -2183,7 +2353,7 @@ class TripsResearchController < ApplicationController
 
               # ------------ 6) Topic ------------ #
 
-              if(params[:beach] || params[:nature] || params[:tourism])
+              if(params[:beach] || params[:nature] || params[:tourism] || params[:relax])
 
                 @topic_trips = []
 
@@ -2196,6 +2366,12 @@ class TripsResearchController < ApplicationController
                 elsif params[:nature]
                   @company_trips.each do |t|
                     if t.preference.nature_as_main_topic?
+                      @topic_trips << t
+                    end
+                  end
+                elsif params[:relax]
+                  @company_trips.each do |t|
+                    if t.preference.relax_as_main_topic?
                       @topic_trips << t
                     end
                   end
@@ -2219,7 +2395,7 @@ class TripsResearchController < ApplicationController
 
               # ------------ 6) Topic ------------ #
 
-              if(params[:beach] || params[:nature] || params[:tourism])
+              if(params[:beach] || params[:nature] || params[:tourism] || params[:relax])
 
                 @topic_trips = []
 
@@ -2232,6 +2408,12 @@ class TripsResearchController < ApplicationController
                 elsif params[:nature]
                   @company_trips.each do |t|
                     if t.preference.nature_as_main_topic?
+                      @topic_trips << t
+                    end
+                  end
+                elsif params[:relax]
+                  @company_trips.each do |t|
+                    if t.preference.relax_as_main_topic?
                       @topic_trips << t
                     end
                   end
@@ -2295,7 +2477,7 @@ class TripsResearchController < ApplicationController
 
               # ------------ 6) Topic ------------ #
 
-              if(params[:beach] || params[:nature] || params[:tourism])
+              if(params[:beach] || params[:nature] || params[:tourism] || params[:relax])
 
                 @topic_trips = []
 
@@ -2308,6 +2490,12 @@ class TripsResearchController < ApplicationController
                 elsif params[:nature]
                   @company_trips.each do |t|
                     if t.preference.nature_as_main_topic?
+                      @topic_trips << t
+                    end
+                  end
+                elsif params[:relax]
+                  @company_trips.each do |t|
+                    if t.preference.relax_as_main_topic?
                       @topic_trips << t
                     end
                   end
@@ -2331,7 +2519,7 @@ class TripsResearchController < ApplicationController
 
               # ------------ 6) Topic ------------ #
 
-              if(params[:beach] || params[:nature] || params[:tourism])
+              if(params[:beach] || params[:nature] || params[:tourism] || params[:relax])
 
                 @topic_trips = []
 
@@ -2344,6 +2532,12 @@ class TripsResearchController < ApplicationController
                 elsif params[:nature]
                   @company_trips.each do |t|
                     if t.preference.nature_as_main_topic?
+                      @topic_trips << t
+                    end
+                  end
+                elsif params[:relax]
+                  @company_trips.each do |t|
+                    if t.preference.relax_as_main_topic?
                       @topic_trips << t
                     end
                   end

@@ -110,6 +110,11 @@ class Preference < ApplicationRecord
 		return false
 	end
 
+	def relax_as_main_topic?
+		return true if self.topic.relax == true
+		return false
+	end
+
 	#Exporta todos los datos en un csv
   	def self.to_csv(fields = column_names, options = {})
   		CSV.generate(options) do |csv|

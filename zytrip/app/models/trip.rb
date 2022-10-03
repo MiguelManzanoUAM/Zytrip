@@ -1,5 +1,5 @@
 class Trip < ApplicationRecord
-	belongs_to :agency
+	belongs_to :organizer, class_name: "User"
 	has_and_belongs_to_many :users
 	has_many :reviews, dependent: :destroy
 	has_one :preference, dependent: :destroy

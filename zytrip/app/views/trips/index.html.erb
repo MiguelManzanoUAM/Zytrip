@@ -66,7 +66,7 @@
                             <% if trip.image %>
                                 <%= image_tag(trip.image) %>
                             <% else %>
-                                <%= image_tag("no-image-available.png") %>
+                                <%= image_tag("local/no-image-available.png") %>
                             <% end %>
                         </div>
                         <div class="col-6">
@@ -75,7 +75,6 @@
                                     <p><b><%=trip.title%></b></p>
                                 <% end %>
                             </div>
-                            <p class="trips-results-box-info"><%= trip.city %>, <%=trip.country%></p>
                         </div>
                         <div class="col">
                             <p class="trips-results-box-price"><b><%= trip.price %>€</b></p>

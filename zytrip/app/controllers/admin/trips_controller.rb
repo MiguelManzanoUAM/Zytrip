@@ -9,7 +9,7 @@ class Admin::TripsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.csv { send_data @trips.to_csv(['id', 'title', 'agency_id', 'price', 'country', 'city']) }
+      format.csv { send_data @trips.to_csv(['id', 'organizer_id', 'title', 'subtitle', 'price', 'duration', 'image']) }
     end
 
     @trips = Trip.search(params[:search])

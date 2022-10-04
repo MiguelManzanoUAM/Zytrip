@@ -25,9 +25,14 @@ p "Borrando base de datos actual..."
 # Creación de un usuario administrador
 ########################################
 
-User.create!(name:"Miguel", surname:"Admin", admin:true, password:"adminadmin", email:"miguel@email.es",
+User.create!(name:"Admin", surname:"User", admin:true, password:"adminadmin", email:"admin@email.es",
 	password_confirmation:"adminadmin", id:1)
 
+User.create!(name:"Nautilus", surname: "Viajes", admin:false, password:"nautilUs01", email:"nautilus@email.es", id:2, image:"users/nautilus.png", phone_number: "916528536")
+
+User.create!(name:"Viajes", surname: "El Turista Inglés", admin:false, password:"turistaIngles02", email:"viajeselturistaingles@email.es", id:3, image:"users/turista_ingles.png", phone_number: "916832141")
+
+p "Se están creando los primeros usuarios..."
 p "Se han creado un usuario administrador..."
 ########################################
 
@@ -35,8 +40,6 @@ p "Se han creado un usuario administrador..."
 # Creación de usuarios
 ########################################
 
-User.create!(name:"Turista", surname:"prueba", admin:false, password:"manzano99", email:"prueba@email.es",
-	password_confirmation:"manzano99", id:2)
 
 ########################################
 # Creación de algunas Agencias
@@ -46,7 +49,7 @@ User.create!(name:"Turista", surname:"prueba", admin:false, password:"manzano99"
 ########################################
 # Creación de Viajes
 ########################################
-Trip.create!(title:"Viaje Prueba", organizer_id: 2)
+
 
 ########################################
 # Creación de Preferencias

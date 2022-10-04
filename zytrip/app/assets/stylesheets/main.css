@@ -54,11 +54,11 @@
 }
 
 .registration-form-img{
-  background-image: url(landscape1.jpeg);
+  background-image: url(local/landscape1.jpeg);
 }
 
 .login-form-img{
-  background-image: url(travelling.jpg);
+  background-image: url(local/travelling.jpg);
 }
 
 .registration-form-container{
@@ -199,7 +199,7 @@
   background-position: center;
   background-size: cover;
   position: relative;
-  background-image: url(landscape2.jpeg);
+  background-image: url(local/landscape2.jpeg);
   filter: none;
 
   /*Estilos segun navegador */
@@ -338,7 +338,7 @@
   border: 1px solid white;
   margin-top: 50px;
   border-radius: 10px;
-  background-image: url(vacaciones.jpg);
+  background-image: url(local/vacaciones.jpg);
   width: 63%;
   height: 600px;
 
@@ -424,7 +424,7 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-image: url(landscape3.jpg);
+  background-image: url(local/landscape3.jpg);
   filter: none;
 
   /*Estilos segun navegador */
@@ -774,7 +774,7 @@
 }
 
 .main-survey-img{
-  background-image: url(landscape4.jpeg);
+  background-image: url(local/landscape4.jpeg);
 }
 
 .survey-title{

@@ -7,14 +7,13 @@
             <% if @trip.image %>
                 <%= image_tag(@trip.image) %>
             <% else %>
-                <%= image_tag("no-image-available.png") %>
+                <%= image_tag("local/no-image-available.png") %>
             <% end %>
         </div>
         <div class="col">
             <div class="trip-main-box-title">
               <p><b><%=@trip.title%></b></p>
             </div>
-            <p class="trip-main-box-info"><%= @trip.city %>, <%= @trip.country%></p>
             <div class="row trip-main-box-price-container">
               <div class="col-8">
                 <p class="trip-price-info">Desde <b class="trip-price-colored"><%= @trip.price%>€</b></p>
@@ -39,10 +38,10 @@
           <p class="trip-section-title">Organizado por</p>
           <hr>
           <p class="trip-section-info">
-            <% if @agency.logo %>
-              <%= image_tag(@agency.logo) %> <%= @agency.name %> (<%= @agency.phone_number %>)
+            <% if @organizer.image %>
+              <%= image_tag(@organizer.image) %> <%= @organizer.name %> <%= @organizer.surname %> (<%= @organizer.phone_number %>)
             <% else %>
-              <%= image_tag("user.jpeg") %> <%= @agency.name %> (<%= @agency.phone_number %>)
+              <%= image_tag("local/user.jpeg") %> <%= @agency.name %> <%= @organizer.name %> <%= @organizer.surname %> (<%= @organizer.phone_number %>)
             <% end %>
           </p>
         </div>

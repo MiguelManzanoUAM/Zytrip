@@ -1,6 +1,35 @@
-id,title,agency_id,price,country,city
-1,Viaje prueba,1,1050.0,Over the Rainbow,Somewhere
-2,Madrid,1,75.0,España,Madrid
-3,Londres,2,385.0,Reino Unido,Londres
-4,Viaje prueba 2,1,10.0,Prueba,prueba
-5,Viaje prueba 3,2,550.0,Mexico,Cancun
+id,organizer_id,title,subtitle,price,duration,image
+1,2,Burgos y las Merindades,Secretos del mundo rural,350,4,trips/burgos_merindades.jpg
+2,2,Los Arribes del Duero,Maravillosos y escarpados cañones de más de 200 metros de desnivel,325,4,trips/arribes_duero.jpg
+3,2,Teruel y Albarracín,Varios de los pueblos más bonitos de España,350,4,trips/teruel_albarracin.jpg
+4,2,Benidorm,Ahora toca disfrutar,420,5,trips/benidorm.jpg
+5,2,"Galicia, Rías Baixas",Especial Año Xacobeo,570,6,trips/galicia_baixas.jpg
+6,2,Asturias,Naturaleza escondida y sus costumbres,500,6,trips/asturias.jpg
+7,2,Euskadi: Mar y Montaña,¡Aupa!,544,6,trips/euskadi.jpg
+8,2,Granada,El motivo para perderse,575,6,trips/granada.jpg
+9,2,Portugal Monumental,"Castillos, Abadías y Palacios de Portugal",429,6,trips/portugal.jpg
+10,2,Tenerife,A la sombra del Teide,670,6,trips/tenerife.jpg
+11,2,Gran Canaria,Isla para soñar sin cerrar los ojos,665,6,trips/gran_canaria.jpg
+12,2,Berlín,La ciudad que cambió el mundo,934,5,trips/berlin.jpg
+13,2,Praga,Ciudad de cuentos y leyendas,940,5,trips/praga.jpg
+14,2,Roma,La ciudad eterna,955,5,trips/roma.jpg
+15,2,Madeira,El paraíso de las flores,1224,8,trips/madeira.jpg
+16,2,Londres y París,Distinas pero imprescindibles,1495,8,trips/londres_paris.jpg
+17,2,Tirol y Baviera,Mucho más que chocolate y relojes de cuco,1165,8,trips/tirol_baviera.jpeg
+18,2,Joyas de Polonia,Vive un gran cuento,1349,8,trips/polonia.jpg
+19,2,Transilvania y Rumanía,El jardín de los cárpatos,1145,8,trips/transilvania.jpg
+20,2,Marruecos al completo,Un mundo de sensaciones,1070,8,trips/marruecos.jpg
+21,2,Lo mejor de Túnez,Paisajes del desierto,1026,8,trips/tunez.jpg
+22,2,Egipto,Cuna de faraones,1440,8,trips/egipto.jpg
+23,2,Georgia y Armenia,Viaje a los confines de Europa,1675,9,trips/georgia.jpeg
+24,2,Uzbekistán,La ruta de la seda,1700,9,trips/uzbekistan.jpg
+25,2,Tierra Santa,Lugar sagrado,1710,8,trips/tierra_santa.jpg
+26,2,Nueva York,La gran manzana,2215,8,trips/nueva_york.jpeg
+27,2,Encantos de Canadá,Naturaleza salvaje,1990,8,trips/canada.jpg
+28,2,Costa Rica,Descubre la pura vida,1810,9,trips/costa_rica.jpg
+29,2,Panamá fascinante,Déjate impresionar por su gran canal,1830,8,trips/panama.jpg
+30,2,Cuba,Recuerdos del Che Guevara,1530,9,trips/cuba.jpg
+31,2,Crucero fluvial Rhin,El crucero de rincones con encanto,1374,8,trips/crucero_rhin.jpg
+32,3,Islas Griegas y Malta,Crucero por la costa pacífica,1049,8,trips/islas_griegas.jpg
+33,3,"Italia, Grecia y Venecia",La ruta de la armonía,999,8,trips/crucero_italia.jpg
+34,3,Camino de Santiago,Y que esto no pare,390,6,trips/camino_santiago.jpg

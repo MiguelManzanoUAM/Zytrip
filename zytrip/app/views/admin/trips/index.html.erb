@@ -37,7 +37,7 @@
       <thead>
         <tr>
           <th>Viaje</th>
-          <th>Agencia(id)</th>
+          <th>Organizador(id)</th>
           <th>Precio</th>
           <th>Nº Usuarios</th>
           <th>Valoración</th>
@@ -49,7 +49,7 @@
         <% @trips.each do |trip| %>
           <tr>
             <td><%= trip.title %></td>
-            <td><%= trip.agency_id %></td>
+            <td><%= trip.organizer_id %></td>
             <td><%= trip.price %></td>
             <td><%= trip.users.size %></td>
             <td>

@@ -5,7 +5,12 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-user-container">
-                    <%= image_tag "user.jpeg", class:"profile-img-center" %>
+                    <% if @user.image %>
+                        <%= image_tag @user.image, class:"profile-img-center" %>
+                    <% else %>
+                        <%= image_tag "local/user.jpeg", class:"profile-img-center" %>
+                    <% end %>
+                    
                     <div class="profile-info">
                         <%= @user.name %> <%= @user.surname %>
                     </div>
@@ -59,7 +64,7 @@
                                               <% if trip.image %>
                                                 <%= image_tag(trip.image) %> <%= trip.title %>
                                               <% else %>
-                                                <%= image_tag("user.jpeg") %> <%= trip.title %>
+                                                <%= image_tag("local/user.jpeg") %> <%= trip.title %>
                                               <% end %>
                                             </td>
 
@@ -90,8 +95,8 @@
                     <p class="profile-contact-title">Contacto</p>
                     <hr>
                     <div class="profile-contact">
-                        <p><%= image_tag "telephone.png", class: "profile-contact-icon" %><b>Teléfono:</b> 916543245</p>
-                        <p><%= image_tag "envelope.png", class: "profile-contact-icon" %><b>Correo:</b> <%= @user.email %></p>
+                        <p><%= image_tag "local/telephone.png", class: "profile-contact-icon" %><b>Teléfono:</b> 916543245</p>
+                        <p><%= image_tag "local/envelope.png", class: "profile-contact-icon" %><b>Correo:</b> <%= @user.email %></p>
                     </div>
                 </div>
             </div>

@@ -7,7 +7,7 @@
 	<%= form_for "", url: trips_research_results_path, method: :get do %>
 		<div class="row">
 			<div class="col col-lg-3 survey-container">
-				<p class="survey-container-title"><%= image_tag("earth.png") %> ¿Dónde te gustaría viajar?</p>
+				<p class="survey-container-title"><%= image_tag("local/earth.png") %> ¿Dónde te gustaría viajar?</p>
 				<hr><br>
 				<div class="survey-container-options">
 					<input name="iberic" type="checkbox" id="iberic", onclick="checkIberic()"><label>Rutas Ibéricas</label><br>
@@ -20,7 +20,7 @@
 			</div>
 
 			<div class="col col-lg-3 survey-container">
-				<p class="survey-container-title"><%= image_tag("friends.png") %> Compañía para tu viaje</p>
+				<p class="survey-container-title"><%= image_tag("local/friends.png") %> Compañía para tu viaje</p>
 				<hr><br>
 				<div class="survey-container-options">
 					<input name="family" type="checkbox" id="family", onclick="checkFamily()"><label>Viaje Familiar</label><br>
@@ -32,7 +32,7 @@
 			</div>
 
 			<div class="col col-lg-3 survey-container">
-				<p class="survey-container-title"><%= image_tag("wallet.png") %> Presupuesto deseable</p>
+				<p class="survey-container-title"><%= image_tag("local/wallet.png") %> Presupuesto deseable</p>
 				<hr><br>
 				<div class="survey-container-options">
 					<input name="maxp500" type="checkbox" id="maxp500", onclick="checkPriceMax500()"><label>Menos de 500€</label><br>
@@ -45,7 +45,7 @@
 
 		<div class="row">
 			<div class="col col-lg-3 survey-container">
-				<p class="survey-container-title"><%= image_tag("duration.png") %> Duración de tu viaje</p>
+				<p class="survey-container-title"><%= image_tag("local/duration.png") %> Duración de tu viaje</p>
 				<hr><br>
 				<div class="survey-container-options">
 					<input name="maxd3" type="checkbox" id="maxd3", onclick="checkDurationMax3()"><label>Menos de 3 días</label><br>
@@ -56,7 +56,7 @@
 			</div>
 
 			<div class="col col-lg-3 survey-container">
-				<p class="survey-container-title"><%= image_tag("beach.png") %> Interés principal</p>
+				<p class="survey-container-title"><%= image_tag("local/beach.png") %> Interés principal</p>
 				<hr><br>
 				<div class="survey-container-options">
 					<input name="tourism" type="checkbox" id="tourism", onclick="checkTourism()"><label>Turismo y cultura</label><br>
@@ -68,7 +68,7 @@
 			</div>
 
 			<div class="col col-lg-3 survey-container">
-				<p class="survey-container-title"><%= image_tag("eating.png") %> Si pudieses destacar una...</p>
+				<p class="survey-container-title"><%= image_tag("local/eating.png") %> Si pudieses destacar una...</p>
 				<hr><br>
 				<div class="survey-container-options">
 					<input name="lodging" type="checkbox" id="lodging", onclick="checkLodging()"><label>Una buena habitación</label><br>

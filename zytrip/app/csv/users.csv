@@ -1,0 +1,4 @@
+id,name,surname,email,phone_number,image,admin,created_at,updated_at,encrypted_password,reset_password_token,reset_password_sent_at,remember_created_at
+1,Admin,User,admin@email.es,,,true,2022-10-04 16:17:12 UTC,2022-10-04 16:17:12 UTC,$2a$12$glmPDf/9WGSVCO2IjxGRF.vFpHTC3oMKZ/lG7eHPQIoTdKTz78Bz.,,,
+2,Nautilus,Viajes,nautilus@email.es,916528536,users/nautilus.png,false,2022-10-04 16:17:12 UTC,2022-10-04 16:17:12 UTC,$2a$12$LpgYWzQwDioZHyujmW0Lee4y.9lgRjQlPeukWvpeN7KnkJS5B3ndu,,,
+3,Viajes,El Turista Inglés,viajeselturistaingles@email.es,916832141,users/turista_ingles.png,false,2022-10-04 16:17:12 UTC,2022-10-04 16:17:12 UTC,$2a$12$rDexikghSaafXyHArQR74eUuRZQ25lI8tLthVeZ86z1Ex0WHs5eUO,,,

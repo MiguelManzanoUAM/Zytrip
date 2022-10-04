@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_03_182330) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_04_171552) do
   create_table "companies", force: :cascade do |t|
     t.boolean "family", default: false
     t.boolean "romantic", default: false
@@ -67,16 +67,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_03_182330) do
 
   create_table "trips", force: :cascade do |t|
     t.string "title"
-    t.text "body"
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "price", default: "0.0"
     t.decimal "rating", default: "0.0"
     t.string "image"
-    t.string "country"
-    t.string "city"
-    t.string "description"
+    t.string "subtitle"
     t.integer "organizer_id", null: false
+    t.string "duration"
     t.index ["organizer_id"], name: "index_trips_on_organizer_id"
   end
 
@@ -98,6 +97,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_03_182330) do
     t.boolean "admin", default: false
     t.string "name"
     t.string "surname"
+    t.string "phone_number"
+    t.string "image"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

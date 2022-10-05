@@ -61,7 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_04_171552) do
     t.integer "preference_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "relax"
+    t.boolean "relax", default: false
     t.index ["preference_id"], name: "index_topics_on_preference_id"
   end
 

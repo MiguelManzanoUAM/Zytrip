@@ -1361,7 +1361,7 @@ class TripsResearchController < ApplicationController
 
     # ------------ 1) No destination ------------ #
     else
-      @destination_trips = Trip.all
+      @destination_trips = @trips
 
       # ------------ 2) budget ------------ #
 
@@ -1700,7 +1700,7 @@ class TripsResearchController < ApplicationController
 
         # ------------ 3) No duration ------------ #
         else
-          @duration = @budget_trips
+          @duration_trips = @budget_trips
 
           # ------------ 4) Services ------------ #
 

@@ -480,15 +480,16 @@
 }
 
 .trips-main{
-  margin-left: 15%;
+  margin-left: 5%;
   margin-right: 15%;
   margin-top: 50px;
 }
 
 .trips-sidebar-container{
   background-color: white;
-  width: 300px;
+  width: 350px;
   border-radius: 5px;
+  margin-top: 0%;
   padding-left: 10px;
   padding-right: 10px;
   border: 1px solid white;
@@ -572,15 +573,17 @@
 }
 
 .trips-results-box-info{
-  font-size: 16px;
+  font-size: 20px;
   color: grey;
+  font-family: arial;
+  text-decoration: none;
 }
 
 .trips-results-box-price{
   font-size: 22px;
   color: green;
   text-align: right;
-  padding-top: 80px;
+  padding-top: 120px;
   padding-right: 25px;
 }
 
@@ -644,6 +647,15 @@
   margin-left: 20px;
   padding-top: 10px;
   padding-right: 10px;
+}
+
+.trip-main-box-subtitle{
+  font-size: 25px;
+  font-family: arial;
+  font-weight: bold;
+  margin-left: 20px;
+  padding-right: 10px;
+  color: grey;
 }
 
 .trip-main-box-info{

@@ -9,7 +9,7 @@ class Admin::TopicsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.csv { send_data @topics.to_csv(['id', 'preference_id', 'beach', 'nature', 'tourism']) }
+      format.csv { send_data @topics.to_csv(['id', 'preference_id', 'beach', 'nature', 'tourism', 'relax']) }
     end
   end
 

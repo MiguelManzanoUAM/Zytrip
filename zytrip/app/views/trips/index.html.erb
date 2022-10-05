@@ -75,12 +75,13 @@
                                     <p><b><%=trip.title%></b></p>
                                 <% end %>
                             </div>
+
+                            <div class="trips-results-box-info">
+                                <p><b><%= trip.subtitle %></b></p>
+                            </div>
                         </div>
                         <div class="col">
                             <p class="trips-results-box-price"><b><%= trip.price %>€</b></p>
-                            <div class="trips-results-booking">
-                                RESERVAR
-                            </div>
                         </div>
                     </div><br>
                 <% end %>

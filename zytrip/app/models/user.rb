@@ -28,7 +28,7 @@ class User < ApplicationRecord
         csv << user.attributes.values_at(*fields)
       end
     end
-    self.export_user_trips()
+    #self.export_user_trips()
   end
 
   #####################################################

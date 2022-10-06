@@ -42,4 +42,29 @@ class Trip < ApplicationRecord
   			trip.update(trip_hash)
   		end
   	end
+
+  	#####################################################
+  	# Obtiene la valoración media de los viajes
+  	#####################################################
+  	def self.trips_ratings
+  		trips = Trip.all
+  		reviews = Review.all
+
+  		trips.each do |trip|
+  			rating = 0
+  			n_trips = 0
+  			reviews.each do |review|
+  				if review.trip_id == trip.id
+  					rating = rating + review.rating
+  					n_trips = n_trips + 1
+  				end
+  			end
+
+  			if n_trips > 0
+  				trip.rating = rating/n_trips
+  				trip.save
+  			end
+  		end
+  	end
+
 end

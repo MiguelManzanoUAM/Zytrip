@@ -35,5 +35,8 @@ class Review < ApplicationRecord
   			end
   			review.update(review_hash)
   		end
+  		
+  		#Actualizamos la valoracion media de los viajes
+  		Trip.trips_ratings()
   	end
 end

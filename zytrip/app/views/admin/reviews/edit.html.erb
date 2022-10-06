@@ -1,0 +1,24 @@
+<%= render "layouts/sidebar" %>
+
+<section>
+  <div class="create-edit-styled-box">
+    <h2 class="create-edit-header">Editar Valoración</h2>
+    <%= form_for(@review, url: admin_review_path(@review)) do |f| %>
+      <%= render partial: "review_form_fields", :locals => {:f => f} %>
+      <div class="actions-btns">
+        <div class="row">
+          <div class="col-lg-6 col-md-12 col-sm-12 text-center create-edit-form-cancel-btn">
+                <%= link_to "Volver", :back, class: "create-edit-form-cancel-link" %>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 text-center ">
+                <%= f.submit "Guardar cambios", class: "create-edit-form-submit-btn" %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+    </div>
+</section>
+
+<% content_for :view_specific_css do %>
+    <%= stylesheet_link_tag "admin" %>
+<% end %>

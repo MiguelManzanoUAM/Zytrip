@@ -65,7 +65,7 @@ class User < ApplicationRecord
       user.update(user_hash)
     end
 
-    self.import_trips()
+    #self.import_trips()
 
   end
 
@@ -86,6 +86,10 @@ class User < ApplicationRecord
 
   #####################################################
   # Importa los viajes de un usuario
+  # ---------------------------------------------------
+  # Por el momento no será necesario este método
+  # ya que se añadirá la asociación viajes usuarios
+  # con las reviews
   #####################################################
   def self.import_trips
     path = Rails.root + "app/csv/users_trips.csv"

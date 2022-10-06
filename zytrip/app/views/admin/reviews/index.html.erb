@@ -1,0 +1,81 @@
+<%= render "layouts/sidebar" %>
+
+<section>
+  <div class="admin-main" id="users">
+    <h2 class="admin-model-title"><strong>Administración de valoraciones</strong></h2>
+
+    <div class="admin-new-panel">
+      <div class="row ">
+        <div class="col-7 admin-search">
+        </div>
+
+        <div class="col-5">
+          <%= form_tag import_admin_reviews_path, multipart: true, class: "form-inline" do %>
+            <div class="row">
+              <div class="col-4 import-form-btn text-center">
+                <%= link_to "Añadir valoración", new_admin_review_path, class: "import-form-btn-link" %>
+              </div>
+              <div class="col-4 import-form-btn text-center">
+                <%= link_to "Exportar CSV", admin_reviews_path(format: :csv), class: "import-form-btn-link" %>
+              </div>
+              <div class="col -4 text-center">
+                <%= submit_tag "Importar valoraciones", class:"import-form-submit-btn" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <table class="admin-model-table">
+      <thead>
+        <tr>
+          <th>ID Valoración</th>
+          <th>ID Viaje</th>
+          <th>ID Usuario</th>
+          <th>Valoración</th>
+          <th>Administración</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @reviews.each do |review| %>
+          <tr>
+            <td><%= review.id %></td>
+            <td><%= review.trip_id %></td>
+            <td><%= review.user_id %></td>
+            <td>
+              <% review.rating.round().times do  %>
+                <i class="fas fa-star"></i>
+              <% end %>
+
+              <% (5 - review.rating.round()).times do %>
+                <i class="far fa-star"></i>
+              <% end %>
+            </td>
+            <td>
+              <div class="row justify-content-center">
+                <div class="col-2">
+                  <%= link_to edit_admin_review_path(review), title:"Editar" do %>
+                    <i class="fas fa-briefcase"></i>
+                  <% end %>
+                </div>
+
+                <div class="col-2">
+                  <%= button_to admin_review_path(review), method: :delete, class:"admin-delete-button", title:"Eliminar" do %> 
+                    <i class="fas fa-briefcase admin-delete"></i>
+                  <% end %>
+                </div>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<% content_for :view_specific_css do %>
+    <%= stylesheet_link_tag "admin" %>
+<% end %>

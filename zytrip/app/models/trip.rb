@@ -4,7 +4,9 @@ class Trip < ApplicationRecord
 	has_many :reviews, dependent: :destroy
 	has_one :preference, dependent: :destroy
 
+	#####################################################
 	#Busqueda de viajes mediante barra de busqueda
+	#####################################################
   	def self.search(search)
     	if search
       		where(["title like ?", "%#{search}%"])
@@ -13,7 +15,9 @@ class Trip < ApplicationRecord
     	end
   	end
 
+  	#####################################################
   	#Exporta todos los datos en un csv
+  	#####################################################
   	def self.to_csv(fields = column_names, options = {})
   		CSV.generate(options) do |csv|
   			csv << fields
@@ -23,7 +27,9 @@ class Trip < ApplicationRecord
   		end
   	end
 
+  	#####################################################
   	#Importa los datos desde un csv
+  	#####################################################
   	def self.import
   		path = Rails.root + "app/csv/trips.csv"
   		CSV.foreach(path, headers: true) do |row|

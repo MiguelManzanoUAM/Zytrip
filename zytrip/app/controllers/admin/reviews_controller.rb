@@ -9,7 +9,7 @@ class Admin::ReviewsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.csv { send_data @reviews.to_csv(['id', 'user_id', 'trip_id', 'rating', 'comment']) }
+      format.csv { send_data @reviews.to_csv(['id', 'user_id', 'trip_id', 'rating', 'comment', 'created_at', 'updated_at']) }
     end
 
   end

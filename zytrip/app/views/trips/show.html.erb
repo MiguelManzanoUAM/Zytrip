@@ -46,7 +46,7 @@
             <% if @organizer.image %>
               <%= image_tag(@organizer.image) %> <%= @organizer.name %> <%= @organizer.surname %> (<%= @organizer.phone_number %>)
             <% else %>
-              <%= image_tag("local/user.jpeg") %> <%= @agency.name %> <%= @organizer.name %> <%= @organizer.surname %> (<%= @organizer.phone_number %>)
+              <%= image_tag("local/user.jpeg") %> <%= @organizer.name %> <%= @organizer.surname %> (<%= @organizer.phone_number %>)
             <% end %>
           </p>
         </div>
@@ -61,24 +61,49 @@
 
       <div class="col-6">
         <div class="trip-itinerary">
-          <p class="trip-section-title">Itinerario de actividades</p>
+          <p class="trip-section-title">Información del viaje</p>
           <hr>
-          <p class="trip-section-info">Aqui ira detallado el itinerario de actividades</p>
-          <% if @trip.preference %>
-            <p>Servicio comida <%= @trip.preference.service.gastronomy %></p>
-            <p>Duración: <%= @trip.preference.duration %></p>
-          <% else %>
-            <p> No se especifican preferencias </p>
-          <% end %>
+          <p class="trip-section-info"><%= @trip.description %></p>
         </div>
       </div>
     </div>
   </div>
 
   <div class="trip-ratings">
-    <p class="trip-section-title">Valoraciones de los usuarios</p>
+    <% if @reviews %>
+      <p class="trip-section-title">Valoraciones de los usuarios (<%= @reviews.size %>)</p>
+    <% else %>
+      <p class="trip-section-title">Valoraciones de los usuarios (0)</p>
+    <% end %>
     <hr>
-    <p class="trip-section-info">cajita de comentario con foto + comentario</p>
+    
+    <% if @reviews %>
+      <% @reviews.each do |review| %>
+        <div class="trip-section-review">
+          <% if Review.get_user(review).image %>
+            <%= image_tag(Review.get_user(review).image) %> <%= Review.get_user(review).name %> <%= Review.get_user(review).surname %> <text class="trip-section-review-date"><%= review.created_at.strftime("%d/%m/%Y") %></text>
+          <% else %>
+              <%= image_tag("local/user.jpeg") %> <%= Review.get_user(review).name %> <%= Review.get_user(review).surname %>
+              <text class="trip-section-review-date"><%= review.created_at.strftime("%d/%m/%Y") %></text>
+          <% end %>
+          <br>
+
+          <% Review.get_trip(review).rating.round().times do  %>
+            <i class="fas fa-star"></i>
+          <% end %>
+
+          <% (5 - Review.get_trip(review).rating.round()).times do %>
+            <i class="far fa-star"></i>
+          <% end %>
+
+          <% if review.comment %>
+            <div class="trip-section-review-comment-container">
+              <p><%= review.comment %></p>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </div>
 

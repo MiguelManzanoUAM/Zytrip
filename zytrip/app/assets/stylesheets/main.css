@@ -720,8 +720,8 @@
 }
 
 .trip-section img{
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
   border-radius: 25%;
   margin-right: 20px;
   margin-left: 20px;
@@ -757,12 +757,41 @@
   border: 1px solid grey;
   padding-left: 10px;
   padding-right: 10px;
+  padding-bottom: 20px;
 }
 
 .trip-ratings hr{
   border: 1px solid grey;
   width: 100%;
 }
+
+.trip-ratings img{
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  border-radius: 25%;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.trip-section-review{
+  font-size: 16px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.trip-section-review-date{
+  color: lightgrey;
+  margin-left: 50px;
+}
+
+.trip-section-review-comment-container{
+  margin-right: 10%;
+}
+
+
+
 
 /**********************************************
  * Survey styles

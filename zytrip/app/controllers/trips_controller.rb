@@ -72,6 +72,7 @@ class TripsController < ApplicationController
   def show
     @trip = Trip.find(params[:id])
     @organizer = User.find_by(id: @trip.organizer_id)
+    @reviews = Review.trip_reviews(@trip)
   end
 
 end

@@ -51,6 +51,6 @@ class Admin::TripsController < ApplicationController
   private
 
   def trip_params
-    params.require(:trip).permit(:title, :agency_id, :body, :price, :rating)
+    params.require(:trip).permit(:title, :organizer, :body, :price, :rating)
   end
 end

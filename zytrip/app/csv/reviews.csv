@@ -1,43 +1,43 @@
-id,user_id,trip_id,rating,comment
-1,4,18,4.0,"Cuántas cosas por descubrir quedan en este mundo, totalmente recomendado."
-2,4,10,2.5,"Tenerife como tal está bien, pero deben mejorar las medidas de sanidad cuanto antes, casi no hemos podido hacer nada de lo planeado"
-3,5,6,4.5,"Asturias patria querida, que experiencia!"
-4,6,5,3.5,
-5,6,14,4.0,
-6,6,1,4.0,
-7,7,28,4.5,"Una gran experiencia, la recomiendo mucho. Pura vida!"
-8,8,20,4.5,Ideal si lo que quieres es descubrir nuevas culturas. Muy recomedable
-9,8,16,1.5,Demasiadas actividades y muy poco tiempo para descansar. Además dejan poco tiempo en las excursiones
-10,9,22,3.5,Esto sí es Egipto si señor
-11,9,32,4.0,
-12,9,8,3.5,
-13,9,21,3.5,
-14,9,13,4.5,"Menuda ciudad, que pedazo experiencia!"
-15,10,15,4.5,Fui con mis padres hace poco menos de un mes y me sorprendió. El mar hace honor a su fama
-16,10,22,4.5,Pensaba que las esfinges no eran para tanto pero que impresión. Recomiendo mucho probar este viaje
-17,10,16,3.0,Muy buenas excursiones pero en mi opinión deberían dejar más tiempo para ir a tu aire
-18,11,32,4.5,"Nunca había estado en un crucero y la verdad impresiona. Malta es precioso además, muy recomendable"
-19,12,3,3.5,Que pueblos tan bonitos!
-20,12,1,2.5,
-21,12,8,4.5,"nunca había estado por Granada y la verdad que es precioso, muy recomendable"
-22,12,23,4.0,Es un viaje que muy poca gente hace y debería tener más visibilidad. Lo recomiendo enormemente
-23,13,26,3.0,
-24,13,24,5.0,"Ha sido la mejor experiencia de mi vida. Fui de pequeño con mis padres y no me pareció para tanto, pero hace unos días fui con mi novia porque ella quería ir y le propuse matrimonio. Dijo que sí!"
-25,14,11,4.0,Que buen sitio para desconectar y disfrutar de la playita que en esta época se agradece
-26,15,13,4.0,"Muy buena experiencia, la recomiendo mucho"
-27,15,22,4.5,Que maravilla de país. Hay tantas cosas por ver….Os animo a que le deis una oportunidad
-28,15,33,3.5,Una buena travesía por Italia y nunca mejor dicho
-29,15,30,2.0,"Me ha decepcionado bastante, el servicio y el lugar no era lo que me esperaba desde luego."
-30,16,28,3.5,
-31,16,23,3.5,
-32,16,22,4.0,
-33,17,11,3.5,"Me ha gustado el viaje, la comida y el servicio muy buenos."
-34,18,14,3.5,
-35,18,24,4.0,Es una nueva cultura y una experiencia por descubrir. He salido del viaje con una nueva mentalidad. Muy recomendado
-36,18,31,4.5,"Vaya vistas y que grandes ciudades, aunque lo mejor el buffete del crucero :)"
-37,18,27,5.0,Que maravilla de experiencia y vaya vistas. Es un viaje para desconectar y descubrir este maravilloso país
-38,19,13,3.5,
-39,19,24,4.0,
-40,20,26,4.0,"Es tan bonito como dicen, recomiendo ir al menos una vez en la vida"
-41,20,25,3.5,"Es una experiencia la verdad, conoces otro mundo y otra gente. Sin duda lo recomiendo"
-42,20,2,4.5,"He de reconocer que había menospreciado este viaje cuando hice la reserva aunque era el que más me llamaba la atención, y la verdad me ha sorprendido para bien, vaya vistas"
+id,user_id,trip_id,rating,comment,created_at,updated_at
+1,4,18,4.0,"Cuántas cosas por descubrir quedan en este mundo, totalmente recomendado.",2022-10-06 18:24:03 UTC,2022-10-06 18:24:03 UTC
+2,4,10,2.5,"Tenerife como tal está bien, pero deben mejorar las medidas de sanidad cuanto antes, casi no hemos podido hacer nada de lo planeado",2022-10-06 18:24:03 UTC,2022-10-06 18:24:03 UTC
+3,5,6,4.5,"Asturias patria querida, que experiencia!",2022-10-06 18:24:03 UTC,2022-10-06 18:24:03 UTC
+4,6,5,3.5,,2022-10-06 18:24:04 UTC,2022-10-06 18:24:04 UTC
+5,6,14,4.0,,2022-10-06 18:24:04 UTC,2022-10-06 18:24:04 UTC
+6,6,1,4.0,,2022-10-06 18:24:04 UTC,2022-10-06 18:24:04 UTC
+7,7,28,4.5,"Una gran experiencia, la recomiendo mucho. Pura vida!",2022-10-06 18:24:04 UTC,2022-10-06 18:24:04 UTC
+8,8,20,4.5,Ideal si lo que quieres es descubrir nuevas culturas. Muy recomedable,2022-10-06 18:24:04 UTC,2022-10-06 18:24:04 UTC
+9,8,16,1.5,Demasiadas actividades y muy poco tiempo para descansar. Además dejan poco tiempo en las excursiones,2022-10-06 18:24:04 UTC,2022-10-06 18:24:04 UTC
+10,9,22,3.5,Esto sí es Egipto si señor,2022-10-06 18:24:05 UTC,2022-10-06 18:24:05 UTC
+11,9,32,4.0,,2022-10-06 18:24:05 UTC,2022-10-06 18:24:05 UTC
+12,9,8,3.5,,2022-10-06 18:24:05 UTC,2022-10-06 18:24:05 UTC
+13,9,21,3.5,,2022-10-06 18:24:05 UTC,2022-10-06 18:24:05 UTC
+14,9,13,4.5,"Menuda ciudad, que pedazo experiencia!",2022-10-06 18:24:05 UTC,2022-10-06 18:24:05 UTC
+15,10,15,4.5,Fui con mis padres hace poco menos de un mes y me sorprendió. El mar hace honor a su fama,2022-10-06 18:24:05 UTC,2022-10-06 18:24:05 UTC
+16,10,22,4.5,Pensaba que las esfinges no eran para tanto pero que impresión. Recomiendo mucho probar este viaje,2022-10-06 18:24:06 UTC,2022-10-06 18:24:06 UTC
+17,10,16,3.0,Muy buenas excursiones pero en mi opinión deberían dejar más tiempo para ir a tu aire,2022-10-06 18:24:06 UTC,2022-10-06 18:24:06 UTC
+18,11,32,4.5,"Nunca había estado en un crucero y la verdad impresiona. Malta es precioso además, muy recomendable",2022-10-06 18:24:06 UTC,2022-10-06 18:24:06 UTC
+19,12,3,3.5,Que pueblos tan bonitos!,2022-10-06 18:24:06 UTC,2022-10-06 18:24:06 UTC
+20,12,1,2.5,,2022-10-06 18:24:06 UTC,2022-10-06 18:24:06 UTC
+21,12,8,4.5,"nunca había estado por Granada y la verdad que es precioso, muy recomendable",2022-10-06 18:24:06 UTC,2022-10-06 18:24:06 UTC
+22,12,23,4.0,Es un viaje que muy poca gente hace y debería tener más visibilidad. Lo recomiendo enormemente,2022-10-06 18:24:07 UTC,2022-10-06 18:24:07 UTC
+23,13,24,3.0,,2022-10-06 18:24:07 UTC,2022-10-06 18:24:07 UTC
+24,13,26,5.0,"Ha sido la mejor experiencia de mi vida. Fui de pequeño con mis padres y no me pareció para tanto, pero hace unos días fui con mi novia porque ella quería ir y le propuse matrimonio. Dijo que sí!",2022-10-06 18:24:07 UTC,2022-10-06 18:24:07 UTC
+25,14,11,4.0,Que buen sitio para desconectar y disfrutar de la playita que en esta época se agradece,2022-10-06 18:24:07 UTC,2022-10-06 18:24:07 UTC
+26,15,13,4.0,"Muy buena experiencia, la recomiendo mucho",2022-10-06 18:24:07 UTC,2022-10-06 18:24:07 UTC
+27,15,22,4.5,Que maravilla de país. Hay tantas cosas por ver….Os animo a que le deis una oportunidad,2022-10-06 18:24:07 UTC,2022-10-06 18:24:07 UTC
+28,15,33,3.5,Una buena travesía por Italia y nunca mejor dicho,2022-10-06 18:24:08 UTC,2022-10-06 18:24:08 UTC
+29,15,30,2.0,"Me ha decepcionado bastante, el servicio y el lugar no era lo que me esperaba desde luego.",2022-10-06 18:24:08 UTC,2022-10-06 18:24:08 UTC
+30,16,28,3.5,,2022-10-06 18:24:08 UTC,2022-10-06 18:24:08 UTC
+31,16,23,3.5,,2022-10-06 18:24:08 UTC,2022-10-06 18:24:08 UTC
+32,16,22,4.0,,2022-10-06 18:24:08 UTC,2022-10-06 18:24:08 UTC
+33,17,11,3.5,"Me ha gustado el viaje, la comida y el servicio muy buenos.",2022-10-06 18:24:09 UTC,2022-10-06 18:24:09 UTC
+34,18,14,3.5,,2022-10-06 18:24:09 UTC,2022-10-06 18:24:09 UTC
+35,18,24,4.0,Es una nueva cultura y una experiencia por descubrir. He salido del viaje con una nueva mentalidad. Muy recomendado,2022-10-06 18:24:09 UTC,2022-10-06 18:24:09 UTC
+36,18,31,4.5,"Vaya vistas y que grandes ciudades, aunque lo mejor el buffete del crucero :)",2022-10-06 18:24:09 UTC,2022-10-06 18:24:09 UTC
+37,18,27,5.0,Que maravilla de experiencia y vaya vistas. Es un viaje para desconectar y descubrir este maravilloso país,2022-10-06 18:24:09 UTC,2022-10-06 18:24:09 UTC
+38,19,13,3.5,,2022-10-06 18:24:10 UTC,2022-10-06 18:24:10 UTC
+39,19,24,4.0,,2022-10-06 18:24:10 UTC,2022-10-06 18:24:10 UTC
+40,20,26,4.0,"Es tan bonito como dicen, recomiendo ir al menos una vez en la vida",2022-10-06 18:24:10 UTC,2022-10-06 18:24:10 UTC
+41,20,25,3.5,"Es una experiencia la verdad, conoces otro mundo y otra gente. Sin duda lo recomiendo",2022-10-06 18:24:10 UTC,2022-10-06 18:24:10 UTC
+42,20,2,4.5,"He de reconocer que había menospreciado este viaje cuando hice la reserva aunque era el que más me llamaba la atención, y la verdad me ha sorprendido para bien, vaya vistas",2022-10-06 18:24:10 UTC,2022-10-06 18:24:10 UTC

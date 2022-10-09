@@ -5,8 +5,8 @@
 	</div>
 
 	<div class="col-md-6 mb-3">
-		<%= f.label(:organizer, "Organizador", class:"create-edit-form-label") %>
-		<%= f.collection_select(:organizer, User.all, :id, :name, {include_blank: 'Seleccionar Organizador'}, required: true, 
+		<%= f.label(:organizer_id, "Organizador", class:"create-edit-form-label") %>
+		<%= f.collection_select(:organizer_id, User.all, :id, :name, {include_blank: 'Seleccionar Organizador'}, required: true, 
 		class:"create-edit-form-input") %>
 	</div>
 </div>

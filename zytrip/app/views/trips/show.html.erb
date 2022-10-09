@@ -32,10 +32,6 @@
     </div>
   </div>
 
-  <div class="trip-description">
-    <p><%=@trip.description %></p>
-  </div>
-
   <div class="trip-about">
     <div class="row">
       <div class="col-3">
@@ -63,7 +59,7 @@
         <div class="trip-itinerary">
           <p class="trip-section-title">Información del viaje</p>
           <hr>
-          <p class="trip-section-info"><%= @trip.description %></p>
+          <p class="trip-section-info"><%= simple_format(@trip.description) %></p>
         </div>
       </div>
     </div>

@@ -9,7 +9,7 @@ class Admin::TripsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.csv { send_data @trips.to_csv(['id', 'organizer_id', 'title', 'subtitle', 'price', 'duration', 'image']) }
+      format.csv { send_data @trips.to_csv(['id', 'organizer_id', 'title', 'subtitle', 'price', 'duration', 'image', 'description']) }
     end
 
     @trips = Trip.search(params[:search])
@@ -51,6 +51,6 @@ class Admin::TripsController < ApplicationController
   private
 
   def trip_params
-    params.require(:trip).permit(:title, :organizer, :body, :price, :rating)
+    params.require(:trip).permit(:title, :organizer_id, :subtitle, :price, :rating, :description)
   end
 end

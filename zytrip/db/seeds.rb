@@ -60,8 +60,8 @@ p "Se han creado un usuario administrador..."
 # Creación de Viajes
 ########################################
 
-Trip.create!(title:"viaje1", organizer_id:2, id:1)
-Trip.create!(title:"viaje2", organizer_id:2, id:2)
+#Trip.create!(title:"viaje1", organizer_id:2, id:1)
+#Trip.create!(title:"viaje2", organizer_id:2, id:2)
 
 #user = User.find_by(id:2)
 #trip1 = Trip.first
@@ -71,16 +71,17 @@ Trip.create!(title:"viaje2", organizer_id:2, id:2)
 #user.trips << trip1
 #user2.trips << trip2
 
-#Trip.import()
+Trip.import()
 
 ########################################
 # Creación de Preferencias
 ########################################
 
-#Preference.import()
-#Company.import()
-#Topic.import()
-#Service.import()
+Review.import()
+Preference.import()
+Company.import()
+Topic.import()
+Service.import()
 
 p "Pensando un precio para los viajes..."
 

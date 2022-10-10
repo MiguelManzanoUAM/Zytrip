@@ -15,6 +15,10 @@ Rails.application.routes.draw do
     get '/users/:id/profile', to: 'users#profile', as: 'users_profile'
   end
 
+  devise_scope :users do
+    get '/users/:id/test', to: 'users#test', as: 'users_test'
+  end
+
   root to: 'landing#home'
 
   namespace :admin do
@@ -53,6 +57,7 @@ Rails.application.routes.draw do
 
       get "/dashboards/landing", to: "dashboards#landing"
       get "/dashboards/dashboard", to: "dashboards#dashboard"
+      get "/dashboards/testing", to: "dashboards#testing"
     end
   end
 end

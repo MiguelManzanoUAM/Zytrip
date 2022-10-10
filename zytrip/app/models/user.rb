@@ -105,5 +105,52 @@ class User < ApplicationRecord
         user.save
       end
     end
-  end 
+  end
+
+  
+
+  #####################################################
+  # Obtenemos los viajes que ha realizado un usuario
+  # junto a sus valoraciones
+  #####################################################
+  def self.user_trips_rating(user)
+    user_reviews = Review.where(user_id: user.id)
+    trips_with_rating = {}
+
+    user_reviews.each do |review|
+      trips_with_rating[review.trip_id] = review.rating
+    end
+
+    return trips_with_rating
+  end
+
+
+  def self.user_trips_preferences(user)
+    user_reviews = Review.where(user_id: user.id)
+    trips = []
+    preferences = []
+
+    user_reviews.each do |review|
+      trip = Trip.find_by(id: review.trip_id)
+      trips << trip
+    end
+
+    trips.each do |trip|
+      preferences_of_trip = Trip.trip_preferences(trip)
+      preferences_of_trip.each do |pref|
+        if !(preferences.include? pref)
+          preferences << pref
+        end
+      end
+    end
+
+    return preferences
+  end
+  
+  #####################################################
+  # Algoritmo de recomendación por conocimiento
+  # ---------------------------------------------------
+  # 1) obtenemos los viajes que ha realizado un usuario
+  #    junto a sus valoraciones
+  #####################################################
 end

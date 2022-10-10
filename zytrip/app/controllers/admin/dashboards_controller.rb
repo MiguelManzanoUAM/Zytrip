@@ -8,4 +8,13 @@ class Admin::DashboardsController < ApplicationController
 	def dashboard
 
 	end
+
+	def testing
+		@user = User.find_by(id: params[:user_id])
+
+		if @user
+			@trips_rating = User.user_trips_rating(@user)
+			@preferences = User.user_trips_preferences(@user)
+		end
+	end
 end

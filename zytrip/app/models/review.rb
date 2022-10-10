@@ -69,4 +69,13 @@ class Review < ApplicationRecord
   		trip = Trip.find_by(id: review.trip_id)
   		return trip
   	end
+
+  	#####################################################
+  	# Obtiene la valoración que un usuario ha dado
+  	# a un viaje en específico
+  	#####################################################
+  	def self.get_review(user, trip)
+  		review = Review.find_by(user_id: user.id, trip_id: trip.id)
+  		return review.rating
+  	end
 end

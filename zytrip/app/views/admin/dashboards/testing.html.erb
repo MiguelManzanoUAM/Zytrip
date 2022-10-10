@@ -1,0 +1,118 @@
+<%= render "layouts/sidebar" %>
+
+<div class="main-testing-container">
+	<div class="main-testing-title">
+		<p> Apartado de pruebas </p>
+	</div>
+
+	<div class="main-testing-body">
+		<div class="testing-container">
+			<p class="testing-container-title">1) Algoritmo de recomendación por conocimiento</p>
+			<hr>
+
+			<%= form_for "", url: admin_dashboards_testing_path, method: :get do |f|%>
+				<div class="form-group row justify-content-center row">
+					<div class="col-sm-3">
+						<%= f.collection_select(:user_id, User.all, :id, :id, {include_blank: 'Selecciona un usuario'}, required: true, class:"create-edit-form-input") %>
+					</div>
+					
+					<div class="col-sm-2">
+	      				<%= submit_tag "Confirmar" %>
+	    			</div>
+				</div>
+			<% end %>
+
+			<div class="testing-container-results">
+				<% if !@user %>
+					<p><text class="testing-container-step">-></text> Debe seleccionarse un usuario para realizar el test </p>
+				<% else %>
+					<p><text class="testing-container-step">-></text> El usuario seleccionado ha sido <b><%=@user.name%> <%=@user.surname %></b> con id: <b><%=@user.id %></b> </p>
+					<p><text class="testing-container-step">-></text> Estos son los viajes realizados por el usuario: </p>
+
+					<table class="testing-table">
+						<thead>
+							<tr>
+								<td>ID Viaje</td>
+								<td>Valoración</td>
+							</tr>
+						</thead>
+
+						<tbody>
+							<% @trips_rating.each do |trip, rating| %>
+								<tr>
+									<td><%= trip %></td>
+									<td><%= rating %></td>
+								</tr>
+							<% end %>
+						</tbody>
+					</table>
+
+					<p><text class="testing-container-step">-></text> Estas son las preferencias encontradas en los viajes realizados: </p>
+
+					<table class="testing-table">
+						<thead>
+							<tr>
+								<td>Viaje</td>
+								<td>Valoración</td>
+								<% @preferences.each do |preference| %>
+									<td> <%= preference %></td>
+								<% end %>
+							</tr>
+						</thead>
+
+						<tbody>
+							<% @user.trips.each do |trip| %>
+								<tr>
+									<td><%= trip.id %></td>
+									<td><%= Review.get_review(@user, trip) %> x </td>
+									<% @preferences.each do |preference| %>
+										<td>
+											<% if Trip.trip_has_preference(trip, preference) %>
+												1
+											<% end %>
+										</td>
+									<% end %>
+								</tr>
+							<% end %>
+						</tbody>
+					</table>
+
+					<p><text class="testing-container-step">-></text> Matriz codificada según el enfoque ONE-HOT de las preferencias </p>
+
+					<table class="testing-table">
+						<thead>
+							<tr>
+								<td>Viaje</td>
+								<% @preferences.each do |preference| %>
+									<td> <%= preference %></td>
+								<% end %>
+							</tr>
+						</thead>
+
+						<tbody>
+							<% @user.trips.each do |trip| %>
+								<tr>
+									<td><%= trip.id %></td>
+									<% @preferences.each do |preference| %>
+										<td>
+											<% if Trip.trip_has_preference(trip, preference) %>
+												<%= Review.get_review(@user, trip) %>
+											<% else %>
+												0
+											<% end %>
+										</td>
+									<% end %>
+								</tr>
+							<% end %>
+						</tbody>
+					</table>
+
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<% content_for :view_specific_css do %>
+    <%= stylesheet_link_tag "admin" %>
+<% end %>

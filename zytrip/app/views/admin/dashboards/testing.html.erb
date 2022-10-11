@@ -90,7 +90,7 @@
 						</thead>
 
 						<tbody>
-							<% @user.trips.each do |trip| %>
+							<% 	@user.trips.each do |trip| %>
 								<tr>
 									<td><%= trip.id %></td>
 									<% @preferences.each do |preference| %>
@@ -102,6 +102,104 @@
 											<% end %>
 										</td>
 									<% end %>
+								</tr>
+							<% end %>
+						</tbody>
+					</table>
+
+					<p><text class="testing-container-step">-></text> Calculamos la importancia de cada preferencia según sus valoraciones y el total de preferencias </p>
+
+					<table class="testing-table">
+						<thead>
+							<tr>
+								<td>Total</td>
+								<% @preferences.each do |preference| %>
+									<td> <%= preference %></td>
+								<% end %>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr>
+								<td></td>
+								<% @preferences_values.keys.each do |key| %>
+									<td> <%= @preferences_values[key] %></td>
+								<% end %>
+							</tr>
+						</tbody>
+					</table>
+
+					<p><text class="testing-container-step">-></text> Estas son las 3 preferencias que más podrían interesar al usuario a primera vista: </p>
+
+					<table class="testing-table">
+						<thead>
+							<tr>
+								<% @final_preferences.each do |preference| %>
+									<td> <%= preference %></td>
+								<% end %>
+							</tr>
+						</thead>
+					</table>
+
+					<p><text class="testing-container-step">-></text> La forma de hallar los viajes más interesantes para este usuario es mediante una matriz de candidatos </p>
+
+					<table class="testing-table">
+						<thead>
+							<tr>
+								<td>Viaje</td>
+								<% @preferences.each do |preference| %>
+									<td> <%= preference %></td>
+								<% end %>
+							</tr>
+						</thead>
+
+						<tbody>
+							<% @candidates.keys.each do |trip| %>
+								<tr>
+									<td><%= trip %></td>
+									<% @candidates[trip].keys.each do |pref| %>
+										<td><%= @candidates[trip][pref] %></td>
+									<% end %>
+								</tr>
+							<% end %>
+						</tbody>
+					</table>
+
+					<p><text class="testing-container-step">-></text> De esta forma podremos obtener la afinidad que tiene cada viaje con el usuario </p>
+
+					<table class="testing-table">
+						<thead>
+							<tr>
+								<td>Viaje</td>
+								<td>Afinidad</td>
+							</tr>
+						</thead>
+
+						<tbody>
+							<% @candidates_affinities.keys.each do |trip| %>
+								<tr>
+									<td><%= trip %></td>
+									<td><%= @candidates_affinities[trip] %></td>
+								</tr>
+							<% end %>
+						</tbody>
+					</table>
+
+					<p><text class="testing-container-step">-></text> Por último, nos quedaremos con los 3 viajes que más afinidad tengan con el usuario, los cuales son: </p>
+
+					<table class="testing-table">
+						<thead>
+							<tr>
+								<td>ID Viaje</td>
+								<td>Título</td>
+							</tr>
+						</thead>
+
+						<tbody>
+							<% @final_candidates.each do |trip| %>
+								<tr>
+									<td><%= trip.id %></td>
+									<td><%= trip.title %></td>
 								</tr>
 							<% end %>
 						</tbody>

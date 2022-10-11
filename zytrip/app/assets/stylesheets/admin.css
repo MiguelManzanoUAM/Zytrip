@@ -350,7 +350,7 @@
   margin-left: 5%;
   width: 30%;
   border-collapse: collapse;
-  margin-bottom: 2%;
+  margin-bottom: 3%;
 }
 
 .testing-table thead tr{
@@ -365,28 +365,5 @@
 }
 
 .testing-table tbody tr {
-  border-bottom: 1px solid #dddddd;
-}
-
-.testing-table-preferences{
-  margin-top: 2%;
-  margin-left: 5%;
-  border-collapse: collapse;
-  margin-bottom: 2%;
-  font-size: 8px;
-}
-
-.testing-table-preferences thead tr{
-  background-color: #c4d6ed;
-  color: #6e9bd5;
-  text-align: center;
-}
-
-.testing-table-preferences th, td{
-  padding: 12px 15px;
-  text-align: center;
-}
-
-.testing-table-preferences tbody tr {
   border-bottom: 1px solid #dddddd;
 }

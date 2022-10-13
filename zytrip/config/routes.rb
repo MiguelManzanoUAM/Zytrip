@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  resources :trips, only: [:index, :show]
+  resources :trips
 
   devise_for :users
 

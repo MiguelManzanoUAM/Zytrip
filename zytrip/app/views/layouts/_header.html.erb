@@ -29,6 +29,9 @@
               <li>
                 <%= link_to 'Mi perfil', users_profile_path(current_user), class: 'dropdown-item' %>
               </li>
+              <li>
+                <%= link_to 'Crear Viaje', new_trip_path, class: 'dropdown-item' %>
+              </li>
               <li><hr class="dropdown-divider"></li>
               <li>
                 <%= button_to 'Sign out', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>

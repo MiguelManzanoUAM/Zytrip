@@ -26,10 +26,20 @@
                         </div>
                     <% end %>
                 </div>
+
+                
+                <div class="profile-contact-container">
+                    <p class="profile-contact-title">Contacto</p>
+                    <hr>
+                    <div class="profile-contact">
+                        <p><%= image_tag "local/telephone.png", class: "profile-contact-icon" %><b>Teléfono:</b> 916543245</p>
+                        <p><%= image_tag "local/envelope.png", class: "profile-contact-icon" %><b>Correo:</b> <%= @user.email %></p>
+                    </div>
+                </div>
             </div>
 
             <div class="col-md-8">
-                <div class="profile-container">
+                <div class="profile-sections-container">
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item profile-selected-option-btn" id="friendsbtn">
                             <p onclick="show_friends()", id="friendsnav", class="profile-btn-text">Amigos</p>
@@ -87,20 +97,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-4">
-                <div class="profile-container">
-                    <p class="profile-contact-title">Contacto</p>
-                    <hr>
-                    <div class="profile-contact">
-                        <p><%= image_tag "local/telephone.png", class: "profile-contact-icon" %><b>Teléfono:</b> 916543245</p>
-                        <p><%= image_tag "local/envelope.png", class: "profile-contact-icon" %><b>Correo:</b> <%= @user.email %></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </div>   
     </div>
 </div>
 

@@ -303,6 +303,7 @@
   border:  1px solid lightgrey;
   margin-left: 20px;
   border-radius: 20px;
+  margin-bottom: 3%;
 }
 
 .landing-results-recomendations-box img{
@@ -1069,18 +1070,14 @@
   border-radius: 50%;
 }
 
-.profile-container{
+.profile-sections-container{
   background-color: white;
   margin-top: 20px;
   border: 1px solid lightgrey;
   padding-top: 20px;
   padding-bottom: 50px;
-}
-
-.profile-container hr{
-  border: 1px solid grey;
-  width: 90%;
-  margin-left: 20px;
+  height: 632px;
+  overflow-y: auto;
 }
 
 .profile-info{
@@ -1095,6 +1092,20 @@
   color: grey;
   font-size: 16px;
   text-align: center;
+}
+
+.profile-contact-container{
+  background-color: white;
+  margin-top: 20px;
+  border: 1px solid lightgrey;
+  padding-top: 20px;
+  padding-bottom: 50px;
+}
+
+.profile-contact-container hr{
+  border: 1px solid grey;
+  width: 90%;
+  margin-left: 20px;
 }
 
 .profile-contact-title{
@@ -1208,7 +1219,7 @@
 
 .profile-section-table th, td{
   padding: 12px 15px;
-  text-align: center;
+  text-align: unset;
 }
 
 .profile-section-table img{
@@ -1222,4 +1233,32 @@
 .profile-section-table tbody tr {
   border-bottom: 1px solid #dddddd;
 }
+
+/**********************************************
+ * Adding trips by users styles
+**********************************************/
+.create-edit-trip{
+  background: linear-gradient(45deg,#91fb63,#a9f7ae);
+  padding-bottom: 350px;
+  padding-top: 10px;
+}
+
+.create-edit-trip-box{
+  margin-top: 25%;
+  margin-left: 25%;
+  margin-right: 25%;
+  padding: 40px 40px;
+  margin-top:10px;
+  background-color: white;
+  border-radius: 25px;
+}
+
+.create-edit-trip-title{
+  color: #91fb63;
+  font-weight: bold;
+  font-size: 30px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
 

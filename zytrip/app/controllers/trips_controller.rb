@@ -75,4 +75,30 @@ class TripsController < ApplicationController
     @reviews = Review.trip_reviews(@trip)
   end
 
+  def new
+    @trip = Trip.new
+  end
+
+  def create
+    @trip = Trip.new(trip_params)
+    @trip.save
+    redirect_to admin_trips_path
+  end
+
+  def edit
+    @trip = Trip.find_by(id: params[:id])
+    redirect_to admin_trips_path unless @trip
+  end
+
+  def update
+    @trip = Trip.find_by(id: params[:id])
+    @trip.update(trip_params)
+    redirect_to admin_trips_path
+  end
+
+  private
+
+  def trip_params
+    params.require(:trip).permit(:title, :organizer_id, :subtitle, :price, :rating, :description)
+  end
 end

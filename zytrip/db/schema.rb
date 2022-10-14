@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_04_171552) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_14_095315) do
   create_table "companies", force: :cascade do |t|
     t.boolean "family", default: false
     t.boolean "romantic", default: false
@@ -76,6 +76,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_04_171552) do
     t.string "subtitle"
     t.integer "organizer_id", null: false
     t.string "duration"
+    t.string "image_url"
     t.index ["organizer_id"], name: "index_trips_on_organizer_id"
   end
 

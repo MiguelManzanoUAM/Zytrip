@@ -4,7 +4,7 @@
     <h2 class="create-edit-trip-title">Cuéntanos tu experiencia</h2>
     <%= form_for(@trip, url: trips_path(@trip)) do |f| %>
       <%= render partial: "trip_form_fields", :locals => {:f => f} %>
-      <div class="actions-btns">
+      <!--<div class="actions-btns">
         <div class="row">
           <div class="col-lg-6 col-md-12 col-sm-12 text-center create-edit-form-cancel-btn">
             <%= link_to "Volver", :back, class: "create-edit-form-cancel-link" %>
@@ -13,7 +13,7 @@
             <%= f.submit "Crear", class: "create-edit-form-submit-btn" %>
           </div>
         </div>
-      </div>
+      </div>-->
     <% end %>
   </div>
 </div>

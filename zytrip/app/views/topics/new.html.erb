@@ -2,9 +2,9 @@
 <section>
   <div class="create-edit-trip">
     <div class="create-edit-trip-box">
-      <h2 class="create-edit-trip-title">Cuéntanos tu experiencia</h2>
-      <%= form_for(@trip, url: trips_path(@trip)) do |f| %>
-        <%= render partial: "user_trip_form_fields", :locals => {:f => f} %>
+      <h2 class="create-edit-trip-title">Unas últimas preguntas antes de terminar</h2>
+      <%= form_for(@topic, url: topics_path(@topic)) do |f| %>
+        <%= render partial: "topic_form_fields", :locals => {:f => f} %>
         <div class="create-edit-trip-btns">
           <div class="row">
             <div class="col-lg-6 col-md-12 col-sm-12 text-center create-edit-trip-form-cancel-btn">
@@ -19,8 +19,8 @@
     </div>
   </div>
 </section>
-<%= render "layouts/footer" %>
 
+<%= render "layouts/footer" %>
 <% content_for :view_specific_css do %>
     <%= stylesheet_link_tag "main" %>
 <% end %>

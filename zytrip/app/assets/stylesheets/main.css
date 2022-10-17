@@ -1244,13 +1244,12 @@
 }
 
 .create-edit-trip-box{
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 25%;
+  margin-right: 25%;
   padding: 40px 40px;
   margin-top: 2%;
   background-color: white;
   border-radius: 25px;
-  max-height: 700px;
 }
 
 .create-edit-trip-title{
@@ -1259,7 +1258,7 @@
   font-size: 30px;
   text-align: center;
   text-transform: uppercase;
-  margin-bottom: 2%;
+  margin-bottom: 3%;
 }
 
 .create-edit-trip-form-label{
@@ -1281,19 +1280,115 @@
 
 .create-edit-trip-form-description{
   width: 100%;
-  height: 250px;
+  height: 150px;
   padding: 12px 20px;
   box-sizing: border-box;
   border: 2px solid #ccc;
   border-radius: 4px;
   background-color: #f8f8f8;
   resize: none;
+  margin-bottom: 20px;
 }
 
 .create-edit-trip-form-input-short{
   width: 20%;
-  margin-bottom: 20px;
   border: 1px solid black;
   background: transparent;
   outline: none;
+}
+
+.create-edit-trip-btns{
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.create-edit-trip-form-submit-btn{
+  height: 40px;
+  color: #fff;
+  font-size: 15px;
+  background: #a9f7ae;
+  cursor: pointer;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  font-weight: bold;
+  width: 100%;
+  margin-bottom: 2%;
+}
+
+.create-edit-trip-form-cancel-btn{
+  height: 40px;
+  color: #fff;
+  font-size: 15px;
+  padding-top: 10px;
+  background-color: grey;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  width: 100%;
+  margin-bottom: 2%;
+}
+
+.create-edit-trip-form-cancel-link{
+  color: #fff;
+  font-size: 15px;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  margin-bottom: 2%;
+  font-weight: bold;
+}
+
+.create-edit-trip-form-cancel-link:hover{
+  color: #fff;
+}
+
+.create-edit-trip-form-select{
+  position: relative;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.create-edit-trip-form-select select{
+  width: 200px;
+  background: #f6f3f3;
+  border-radius: 3px;
+  border: 2px solid #b5b3b3;
+  padding: 0 10px;
+  cursor: pointer;
+  margin-top: 5px;
+  appearance: none;
+}
+
+.create-edit-trip-form-select::after{
+  content: '';
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent;
+  border-top-color: #222;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  border-radius: 2px;
+}
+
+.create-edit-trip-form-section-title{
+  font-size: 22px;
+  font-weight: bold;
+  margin-left: 5%;
+  margin-top: 5%;
+}
+
+.create-edit-trip-form-section-option{
+  font-size: 16px;
+  font-weight: bold;
+  color: lightgrey;
+  margin-bottom: 2%;
+}
+
+.create-edit-trip-form-checkbox{
+  margin-bottom: 20px;
+  background: transparent;
+  background-color: #eee;
+  margin-left: 6%;
 }

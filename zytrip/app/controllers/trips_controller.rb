@@ -65,7 +65,6 @@ class TripsController < ApplicationController
         end
       end
     end
-
   end
 
   # GET /trips/1 or /trips/1.json
@@ -80,25 +79,27 @@ class TripsController < ApplicationController
   end
 
   def create
-    @trip = Trip.new(trip_params)
+    @trip = Trip.new(trip_params.merge(organizer_id: current_user.id))
     @trip.save
-    redirect_to admin_trips_path
+    redirect_to new_preference_path(trip_id: @trip.id)
   end
 
   def edit
     @trip = Trip.find_by(id: params[:id])
-    redirect_to admin_trips_path unless @trip
+    redirect_to trips_path unless @trip
   end
 
   def update
     @trip = Trip.find_by(id: params[:id])
     @trip.update(trip_params)
-    redirect_to admin_trips_path
+    redirect_to trips_path
   end
 
   private
-
+  
   def trip_params
-    params.require(:trip).permit(:title, :organizer_id, :subtitle, :price, :rating, :description)
+    params.require(:trip).permit(:title, :subtitle, :image_url, :description, :price)
   end
+
+  
 end

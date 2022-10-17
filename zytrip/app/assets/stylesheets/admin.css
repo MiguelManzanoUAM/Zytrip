@@ -164,6 +164,7 @@
   width: 90%;
   border-collapse: collapse;
   font-size: 0.9em;
+  text-align: center;
 }
 
 .admin-model-table thead tr{
@@ -351,6 +352,7 @@
   width: 30%;
   border-collapse: collapse;
   margin-bottom: 3%;
+  text-align: center;
 }
 
 .testing-table thead tr{

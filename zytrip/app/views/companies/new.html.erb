@@ -3,11 +3,11 @@
   <div class="create-edit-trip">
     <div class="create-edit-trip-box">
       <h2 class="create-edit-trip-title">Unas últimas preguntas antes de terminar</h2>
-      <%= form_for(@topic, url: topics_path(@topic)) do |f| %>
-        <%= render partial: "topic_form_fields", :locals => {:f => f} %>
+      <%= form_for(@company, url: companies_path(@company)) do |f| %>
+        <%= render partial: "company_form_fields", :locals => {:f => f} %>
         <div class="create-edit-trip-btns">
           <div class="row justify-content-center">
-            <div class="col-7">
+            <div class="col-6">
               <%= f.submit "Siguiente", class: "create-edit-trip-form-submit-btn" %>
             </div>
           </div>

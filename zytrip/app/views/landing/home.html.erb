@@ -45,7 +45,9 @@
 			<div class="row justify-content-md-center">
 				<% @popular_trips.each do |trip| %>
 					<div class="col col-lg-3 landing-results-recomendations-box">
-						<% if trip.image %>
+						<% if trip.image_url %>
+              				<%= image_tag("#{trip.image_url}") %>
+						<% elsif trip.image %>
 							<%= image_tag(trip.image) %>
 						<% else %>
                 			<%= image_tag("local/no-image-available.png") %>

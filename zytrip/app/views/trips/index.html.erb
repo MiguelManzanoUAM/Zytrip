@@ -63,7 +63,9 @@
                 <% @trips.each do |trip| %>
                     <div class="row trips-results-box">
                         <div class="col">
-                            <% if trip.image %>
+                            <% if trip.image_url %>
+                                <%= image_tag("#{trip.image_url}") %>
+                            <% elsif trip.image %>
                                 <%= image_tag(trip.image) %>
                             <% else %>
                                 <%= image_tag("local/no-image-available.png") %>

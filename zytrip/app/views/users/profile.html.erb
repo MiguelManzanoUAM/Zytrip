@@ -71,11 +71,13 @@
                                     <% @user.trips.each do |trip| %>
                                         <tr>
                                             <td>
-                                              <% if trip.image %>
-                                                <%= image_tag(trip.image) %> <%= trip.title %>
-                                              <% else %>
-                                                <%= image_tag("local/user.jpeg") %> <%= trip.title %>
-                                              <% end %>
+                                                <% if trip.image_url %>
+                                                    <%= image_tag("#{trip.image_url}") %>
+                                                <% elsif trip.image %>
+                                                    <%= image_tag(trip.image) %> <%= trip.title %>
+                                                <% else %>
+                                                    <%= image_tag("local/user.jpeg") %> <%= trip.title %>
+                                                <% end %>
                                             </td>
 
                                             <td>

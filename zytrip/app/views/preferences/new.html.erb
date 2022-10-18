@@ -6,11 +6,8 @@
       <%= form_for(@preference, url: preferences_path(@preference)) do |f| %>
         <%= render partial: "preference_form_fields", :locals => {:f => f} %>
         <div class="create-edit-trip-btns">
-          <div class="row">
-            <div class="col-lg-6 col-md-12 col-sm-12 text-center create-edit-trip-form-cancel-btn">
-              <%= link_to "Volver", :back, class: "create-edit-trip-form-cancel-link" %>
-            </div>
-            <div class="col-lg-6 col-md-12 col-sm-12 text-center ">
+          <div class="row justify-content-center">
+            <div class="col-6">
               <%= f.submit "Siguiente", class: "create-edit-trip-form-submit-btn" %>
             </div>
           </div>

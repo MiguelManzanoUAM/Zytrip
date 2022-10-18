@@ -11,7 +11,7 @@ class TripsController < ApplicationController
     #########################################
 
     if params[:sch].present?
-      @trips = Trip.where("title like ? OR city like ? OR country like ?", params[:sch], params[:sch], params[:sch])
+      @trips = Trip.search(params[:search])
     else
       if params[:minp].present?
         if params[:maxp].present?
@@ -65,6 +65,7 @@ class TripsController < ApplicationController
         end
       end
     end
+
   end
 
   # GET /trips/1 or /trips/1.json

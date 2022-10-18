@@ -7,17 +7,8 @@ class TopicsController < ApplicationController
   		@preference = Preference.last
     	@topic = Topic.new(topic_params.merge(preference_id: @preference.id))
     	@topic.save
-    	redirect_to trips_path
+    	redirect_to new_company_path
   	end
-
-  	def destroy
-    	@topic = Topic.find_by(id: params[:id])
-    	redirect_to admin_topics_path unless @topic
-    	@topic.destroy
-    	redirect_to admin_topics_path
-  	end
-
-  	private
 
   	def topic_params
     	params.require(:topic).permit(:beach, :nature, :tourism, :relax)

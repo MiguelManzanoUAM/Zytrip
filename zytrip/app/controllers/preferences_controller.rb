@@ -6,7 +6,7 @@ class PreferencesController < ApplicationController
   	def create
   		@trip = Trip.last
 
-  		if preference_params[:destination] == 0
+  		if preference_params[:destination] == "Rutas Ibéricas"
   			@destination = 0
   		elsif preference_params[:destination] == "Europa"
   			@destination = 1
@@ -28,29 +28,23 @@ class PreferencesController < ApplicationController
   			@duration = 3
   		end
 
+  		@new_pref_id = (Preference.all.size + 1)
   		if @trip.price < 500
-  			@preference = Preference.new(trip_id: @trip.id, budget: 0, destination: @destination, duration: @duration)
+  			@preference = Preference.new(id: @new_pref_id, trip_id: @trip.id, budget: 0, destination: @destination, duration: @duration)
   			#@preference = Preference.new(preference_params.merge(trip_id: @trip.id, budget: 0))
     	elsif (@trip.price >= 500 && @trip.price < 1000)
-    		@preference = Preference.new(trip_id: @trip.id, budget: 1, destination: @destination, duration: @duration)
+    		@preference = Preference.new(id: @new_pref_id, trip_id: @trip.id, budget: 1, destination: @destination, duration: @duration)
     		#@preference = Preference.new(preference_params.merge(trip_id: @trip.id, budget: 1))
     	elsif (@trip.price >= 1000 && @trip.price < 1500)
-    		@preference = Preference.new(trip_id: @trip.id, budget: 2, destination: @destination, duration: @duration)
+    		@preference = Preference.new(id: @new_pref_id, trip_id: @trip.id, budget: 2, destination: @destination, duration: @duration)
     		#@preference = Preference.new(preference_params.merge(trip_id: @trip.id, budget: 2))
     	else
-    		@preference = Preference.new(trip_id: @trip.id, budget: 3, destination: @destination, duration: @duration)
+    		@preference = Preference.new(id: @new_pref_id, trip_id: @trip.id, budget: 3, destination: @destination, duration: @duration)
     		#@preference = Preference.new(preference_params.merge(trip_id: @trip.id, budget: 3))
     	end
 
     	@preference.save
     	redirect_to new_topic_path(preference_id: @preference.id)
-  	end
-
-  	def destroy
-    	@preference = Preference.find_by(id: params[:id])
-    	redirect_to preferences_path unless @preference
-    	@preference.destroy
-    	redirect_to preferences_path
   	end
 
   	private

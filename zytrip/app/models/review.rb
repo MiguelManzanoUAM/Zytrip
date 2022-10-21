@@ -41,6 +41,34 @@ class Review < ApplicationRecord
   	end
 
   	#####################################################
+  	# Añadir review a un viaje y usuario
+  	#####################################################
+  	def self.add_review(user_id, trip_id, rat, com)
+  		user = User.find_by(id: user_id)
+  		trip = Trip.find_by(id: trip_id)
+
+		if !(user.trips.include? trip)
+			review = Review.create!(user_id: user.id, trip_id: trip.id, rating: rat, comment: com)
+			user.trips << trip
+			user.save
+		end
+	end
+
+	#####################################################
+  	# Añade el viaje a la lista de viajes del usuario
+  	# si no estaba aún
+  	#####################################################
+  	def self.add_user_to_trip(review)
+  		user = User.find_by(id: review.user_id)
+  		trip = Trip.find_by(id: review.trip_id)
+
+  		if !(user.trips.include? trip)
+			user.trips << trip
+			user.save
+		end
+	end
+
+  	#####################################################
   	# Obtiene las valoraciones de un viaje
   	#####################################################
   	def self.trip_reviews(trip)

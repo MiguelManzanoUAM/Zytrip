@@ -11,7 +11,7 @@ class TripsController < ApplicationController
     #########################################
 
     if params[:sch].present?
-      @trips = Trip.search(params[:search])
+      @trips = Trip.search(params[:sch])
     else
       if params[:minp].present?
         if params[:maxp].present?

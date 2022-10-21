@@ -738,6 +738,12 @@
   color: grey;
 }
 
+.trip-section-description{
+  font-size: 16px;
+  font-family: arial;
+  color: grey;
+}
+
 .trip-section-info{
   font-size: 16px;
 }
@@ -792,6 +798,27 @@
   margin-right: 10%;
 }
 
+.trip-review-btn{
+  background-color: #F5F4F5;
+  border-radius: 5px;
+  border:  1px solid #000;
+  outline: none;
+  text-align: center;
+  width: 80%;
+  margin-left: 10%;
+}
+
+.trip-review-btn-link{
+  color: #000;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.trip-review-btn-link:hover{
+  color: #000;
+}
 
 
 
@@ -1391,4 +1418,124 @@
   background: transparent;
   background-color: #eee;
   margin-left: 6%;
+}
+
+/**********************************************
+ * Landing user add trip container styles
+**********************************************/
+
+.landing-user-trip-container{
+  margin-left: 19%;
+  margin-right: 19%;
+  border: 1px solid white;
+  margin-top: 30px;
+  border-radius: 10px;
+  width: 63%;
+  height: 270px;
+  background: linear-gradient(to right bottom,#91fb63,#a9f7ae);
+}
+
+.landing-user-trip-container img{
+  margin-top: 30px;
+  height: 210px;
+  width: 95%;
+  margin-left: 20px;
+}
+
+.landing-user-trip-description-container{
+  margin-top: 30px;
+  margin-left: 100px;
+  height: 210px;
+  background-color: #fff;
+  margin-right: 50px;
+}
+
+.landing-user-trip-title{
+  font-size: 30px;
+  font-weight: bold;
+  padding-top: 1%;
+  padding-left: 3%;
+  color: #91fb63;
+}
+
+.landing-user-trip-description-text{
+  font-size: 20px;
+  color: lightgrey;
+  padding-top: 5px;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+
+.landing-user-trip-btn{
+  float: right;
+  background-color: #91fb63;
+  border-radius: 5px;
+  border:  1px solid #91fb63;
+  outline: none;
+  margin-right: 15px;
+  margin-top: 0px;
+}
+
+.landing-user-trip-btn-link{
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.landing-user-trip-btn-link:hover{
+  color: white;
+}
+
+/**********************************************
+ * Trip add review
+**********************************************/
+
+.create-review-trip-form-label{
+  margin-left: 20px;
+  padding: 0;
+  font-weight: bold;
+}
+
+.create-review-trip-form-description{
+  width: 100%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+
+.create-review-trip-form-input-short{
+  width: 10%;
+  border: 1px solid black;
+  background: transparent;
+  outline: none;
+}
+
+.create-review-trip-btns{
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.create-review-trip-form-submit-btn{
+  background-color: #F5F4F5;
+  border-radius: 5px;
+  border:  1px solid #000;
+  outline: none;
+  text-align: center;
+  width: 80%;
+  margin-left: 10%;
+  color: #000;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
 }

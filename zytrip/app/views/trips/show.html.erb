@@ -86,11 +86,11 @@
           <% end %>
           <br>
 
-          <% Review.get_trip(review).rating.round().times do  %>
+          <% review.rating.round().times do  %>
             <i class="fas fa-star"></i>
           <% end %>
 
-          <% (5 - Review.get_trip(review).rating.round()).times do %>
+          <% (5 - review.rating.round()).times do %>
             <i class="far fa-star"></i>
           <% end %>
 
@@ -101,9 +101,74 @@
           <% end %>
         </div>
       <% end %>
+      
+    <% end %>
+
+    <% if user_signed_in?%>
+      <hr>
+      <p class="trip-section-title">Valora este viaje</p>
+      <p class="trip-section-description">Comparte tu opinión acerca de esta experiencia con otros usuarios</p>
+
+      <div id="reviewoption">
+        <div class="row">
+          <div class="col-4">
+            <div class="trip-review-btn">
+              <text onclick="show_form()", id="reviewbtn", class="trip-review-btn-link">Cuéntanos tu experiencia</text>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="reviewform">  
+        <% @review = Review.new() %>
+        <%= form_tag reviews_path(@review), :method => 'post' do %>
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              <label class="create-review-trip-form-label">Valoración:</label>
+              <%= text_field_tag :rating, params[:rating], class:"create-review-trip-form-input-short", autofocus: true, required: true %>
+              <%= hidden_field_tag :trip_id, @trip.id %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-11 mb-3">
+              <label class="create-review-trip-form-label">Comentario</label>
+              <%= text_area_tag :comment, params[:comment], class:"create-review-trip-form-description", autofocus: true %>
+            </div>
+          </div>
+
+          <div class="create-review-trip-btns">
+            <div class="row justify-content-center">
+              <div class="col-4">
+                <%= submit_tag "Publicar valoración", class: "create-review-trip-form-submit-btn" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      
     <% end %>
   </div>
 </div>
+
+<!-- Funciones javascript -->
+
+<script type="text/javascript">
+
+  document.getElementById('reviewform').style.display = 'none';
+
+  /////////////////////////////////////////////
+  // Change dynamic info and styles
+  /////////////////////////////////////////////
+
+  function show_form(){
+      if(document.getElementById('reviewform').style.display == 'none'){
+          document.getElementById('reviewform').style.display = 'block';
+          document.getElementById('reviewoption').style.display = 'none';
+      }
+  }
+
+</script>
 
 
 <!-- render footer -->

@@ -1,9 +1,19 @@
-<h1>New review</h1>
+<section>
+  <p class="trip-section-title">Valora este viaje</p>
+  <p class="trip-section-description">Comparte tu opinión acerca de esta experiencia con otros usuarios</p>
 
-<%= render "form", review: @review %>
+  <%= form_for(@review, url: reviews_path(@review)) do |f| %>
+    <%= render partial: "review_form_fields", :locals => {:f => f} %>
+    <div class="create-edit-trip-btns">
+      <div class="row justify-content-center">
+        <div class="col-6">
+          <%= f.submit "Siguiente", class: "create-edit-trip-form-submit-btn" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</section>
 
-<br>
-
-<div>
-  <%= link_to "Back to reviews", reviews_path %>
-</div>
+<% content_for :view_specific_css do %>
+    <%= stylesheet_link_tag "main" %>
+<% end %>

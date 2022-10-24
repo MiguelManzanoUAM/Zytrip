@@ -61,6 +61,10 @@ Rails.application.routes.draw do
         collection { post :import }
       end
 
+      resources :friendships, only: [:new, :create, :index, :destroy] do
+        collection { post :import }
+      end
+
       get "/dashboards/landing", to: "dashboards#landing"
       get "/dashboards/dashboard", to: "dashboards#dashboard"
       get "/dashboards/testing", to: "dashboards#testing"

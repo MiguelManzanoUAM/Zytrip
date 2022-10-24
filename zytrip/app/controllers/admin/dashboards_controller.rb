@@ -10,6 +10,11 @@ class Admin::DashboardsController < ApplicationController
 	end
 
 	def testing
+
+		#####################################################################
+		# Test recomendador basado en contenido y categorias (conocimiento)
+		#####################################################################
+
 		@user = User.find_by(id: params[:user_id])
 
 		if @user
@@ -21,5 +26,13 @@ class Admin::DashboardsController < ApplicationController
 			@candidates_affinities = User.user_candidate_preferences_afinity(@user)
 			@final_candidates = User.most_afinity_preferences_trips(@user)
 		end
+
+		#####################################################################
+		# Test recomendador colaborativo (filtrado social)
+		#####################################################################
+
+		@user_social = User.find_by(id: params[:social_id])
+
+		
 	end
 end

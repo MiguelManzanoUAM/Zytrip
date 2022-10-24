@@ -6,6 +6,11 @@
 	</div>
 
 	<div class="main-testing-body">
+
+		<!-- ########################################################### -->
+		<!-- # Técnica de recomendación por conocimiento (categorías)  # -->
+		<!-- ########################################################### -->
+
 		<div class="testing-container">
 			<p class="testing-container-title">1) Algoritmo de recomendación por conocimiento</p>
 			<hr>
@@ -212,6 +217,61 @@
 				<% end %>
 			</div>
 		</div>
+
+		<!-- ########################################################### -->
+		<!-- # Técnica de recomendación colaborativo (filtrado social) # -->
+		<!-- ########################################################### -->
+
+		<div class="testing-container">
+			<p class="testing-container-title">2) Algoritmo de recomendación colaborativo</p>
+			<hr>
+
+			<%= form_for "", url: admin_dashboards_testing_path, method: :get do |f|%>
+				<div class="form-group row justify-content-center row">
+					<div class="col-sm-3">
+						<%= f.collection_select(:social_id, User.all, :id, :id, {include_blank: 'Selecciona un usuario'}, required: true, class:"create-edit-form-input") %>
+					</div>
+					
+					<div class="col-sm-2">
+	      				<%= submit_tag "Confirmar" %>
+	    			</div>
+				</div>
+			<% end %>
+
+			<div class="testing-container-results">
+				<% if !@user_social %>
+					<p><text class="testing-container-step">-></text> Debe seleccionarse un usuario para realizar el test </p>
+				<% else %>
+					<p><text class="testing-container-step">-></text> El usuario seleccionado ha sido <b><%=@user_social.name%> <%=@user_social.surname %></b> con id: <b><%=@user_social.id %></b> </p>
+
+					<% if @user_social.friends.size == 0 %>
+						<p><text class="testing-container-step">-></text> El usuario no sigue a otros usuarios</p>
+					<% else %>
+						<p><text class="testing-container-step">-></text> Estos son los amigos del usuario: </p>
+
+						<table class="testing-table">
+							<thead>
+								<tr>
+									<td>ID Usuario</td>
+									<td>Nombre</td>
+								</tr>
+							</thead>
+
+							<tbody>
+								<% @user_social.friends.each do |friend| %>
+									<tr>
+										<td><%= friend.id %></td>
+										<td><%= friend.name %> <%=friend.surname %></td>
+									</tr>
+								<% end %>
+							</tbody>
+						</table>
+					<% end %>
+				<% end %>
+			</div>
+		</div>
+
+
 	</div>
 </div>
 

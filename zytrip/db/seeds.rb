@@ -10,6 +10,7 @@
 # Borrado de la base de datos
 ########################################
 
+Friendship.destroy_all
 Service.destroy_all
 Topic.destroy_all
 Company.destroy_all

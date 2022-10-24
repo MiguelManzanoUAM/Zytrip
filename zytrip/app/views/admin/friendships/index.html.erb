@@ -1,0 +1,66 @@
+<%= render "layouts/sidebar" %>
+
+<section>
+  <div class="admin-main" id="users">
+    <h2 class="admin-model-title"><strong>Administración de amistades</strong></h2>
+
+    <div class="admin-new-panel">
+      <div class="row ">
+        <div class="col-7 admin-search">
+        </div>
+
+        <div class="col-5">
+          <%= form_tag import_admin_friendships_path, multipart: true, class: "form-inline" do %>
+            <div class="row">
+              <div class="col-4 import-form-btn text-center">
+                <%= link_to "Añadir amistad", new_admin_friendship_path, class: "import-form-btn-link" %>
+              </div>
+              <div class="col-4 import-form-btn text-center">
+                <%= link_to "Exportar CSV", admin_friendships_path(format: :csv), class: "import-form-btn-link" %>
+              </div>
+              <div class="col -4 text-center">
+                <%= submit_tag "Importar amistades", class:"import-form-submit-btn" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <table class="admin-model-table">
+      <thead>
+        <tr>
+          <th>ID Relación</th>
+          <th>ID Usuario</th>
+          <th>ID Amigo</th>
+          <th>Administración</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @friendships.each do |friendship| %>
+          <tr>
+            <td><%= friendship.id %></td>
+            <td><%= friendship.user_id %></td>
+            <td><%= friendship.friend_id %></td>
+            <td>
+              <div class="row justify-content-center">
+                
+                <div class="col-2">
+                  <%= button_to admin_friendship_path(friendship), method: :delete, class:"admin-delete-button", title:"Eliminar" do %> 
+                    <i class="fas fa-briefcase admin-delete"></i>
+                  <% end %>
+                </div>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<% content_for :view_specific_css do %>
+    <%= stylesheet_link_tag "admin" %>
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_15_104342) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_24_091949) do
   create_table "companies", force: :cascade do |t|
     t.boolean "family", default: false
     t.boolean "romantic", default: false
@@ -21,6 +21,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_15_104342) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["preference_id"], name: "index_companies_on_preference_id"
+  end
+
+  create_table "friendships", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "friend_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["friend_id"], name: "index_friendships_on_friend_id"
+    t.index ["user_id"], name: "index_friendships_on_user_id"
   end
 
   create_table "preferences", force: :cascade do |t|
@@ -105,6 +114,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_15_104342) do
   end
 
   add_foreign_key "companies", "preferences"
+  add_foreign_key "friendships", "users"
+  add_foreign_key "friendships", "users", column: "friend_id"
   add_foreign_key "preferences", "trips"
   add_foreign_key "reviews", "trips"
   add_foreign_key "reviews", "users"

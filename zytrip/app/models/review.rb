@@ -100,10 +100,175 @@ class Review < ApplicationRecord
 
   	#####################################################
   	# Obtiene la valoración que un usuario ha dado
-  	# a un viaje en específico
+  	# a un viaje en específico. Al haber podido dar más
+  	# de una valoracion a un mismo viaje, nos interesa
+  	# la última que ha hecho.
   	#####################################################
   	def self.get_review(user, trip)
-  		review = Review.find_by(user_id: user.id, trip_id: trip.id)
-  		return review.rating
+  		reviews = Review.where(user_id: user.id, trip_id: trip.id)
+
+  		if reviews.size == 1
+  			return reviews.first.rating
+  		else
+  			return reviews.order('created_at DESC').first.rating
+  		end
   	end
+
+  	#####################################################
+  	# Obtiene la última Review que un usuario haya hecho
+  	# en un viaje 
+  	#####################################################
+  	def self.get_best_user_trip_review(user, trip_id)
+  		reviews = Review.where(user_id: user.id, trip_id: trip_id)
+
+  		if reviews.size == 1
+  			return reviews.first
+  		else
+  			return reviews.order('created_at DESC').first
+  		end
+  	end
+
+  	#####################################################
+  	# Obtiene las valoraciones de un usuario en concreto
+  	#####################################################
+  	def self.get_user_reviews(user)
+  		user_reviews = Review.where(user_id: user.id)
+  		reviews = []
+  		trips_ids = []
+
+  		user_reviews.each do |review|
+  			if !(trips_ids.include? review.trip_id)
+  				trips_ids << review.trip_id
+  			end
+  		end
+
+  		trips_ids.each do |trip|
+  			reviews << self.get_best_user_trip_review(user, trip)
+  		end
+
+  		return reviews
+  	end
+
+  	#####################################################
+  	# Obtiene las valoraciones de los usuarios que han 
+  	# hecho una valoracion en alguno de los viajes del 
+  	# usuario
+  	#####################################################
+  	def self.get_users_sharing_trips(user)
+  		user_reviews = Review.get_user_reviews(user)
+  		trips_ids = []
+  		users_sharing_trip = []
+  		other_user_reviews = []
+
+  		user_reviews.each do |review|
+  			if !(trips_ids.include? review.trip_id)
+  				trips_ids << review.trip_id
+  			end
+  		end
+
+  		trips_ids.each do |trip_id|
+  			trip = Trip.find_by(id: trip_id)
+  			trip_reviews = Review.trip_reviews(trip)
+
+  			trip_reviews.each do |review|
+  				if (review.user_id != user.id)
+  					other = User.find_by(id: review.user_id)
+  					other_user_reviews << Review.get_best_user_trip_review(other, trip_id)
+  				end
+  			end
+  		end
+
+  		return other_user_reviews
+  	end
+
+  	#####################################################
+  	# Obtiene las reviews de los usuarios que han hecho 
+  	# una valoracion parecida en alguno de los viajes 
+  	# del usuario.
+  	# Consideraremos valoraciones parecidas aquellas que
+  	# se encuentren en un intervalo < 0.5 de diferencia
+  	#####################################################
+  	def self.get_similar_reviews(user)
+  		user_reviews = Review.get_user_reviews(user)
+  		other_reviews = Review.get_users_sharing_trips(user)
+  		similar_reviews = []
+
+  		user_reviews.each do |user_review|
+  			other_reviews.each do |other_review|
+  				if (user_review.trip_id == other_review.trip_id)
+  					if ((user_review.rating - other_review.rating).abs() <= 0.5)
+  						similar_reviews << other_review
+  					end
+  				end
+  			end
+  		end
+
+  		return similar_reviews
+  	end
+
+  	#####################################################
+  	# Obtiene los usuarios que han hecho una valoracion
+  	# parecida en alguno de los viajes del usuario
+  	#####################################################
+  	def self.get_similar_reviews_users(user)
+  		similar_reviews = Review.get_similar_reviews(user)
+  		similar_reviews_users = []
+
+  		similar_reviews.each do |review|
+  			user_of_review = User.find_by(id: review.user_id)
+  			if !(similar_reviews_users.include? user_of_review)
+  				similar_reviews_users << user_of_review
+  			end
+  		end
+
+  		return similar_reviews_users
+  	end
+
+  	#####################################################
+  	# Obtiene la diferencia de valoraciones entre los
+  	# usuarios con los que hayamos compartido viajes
+  	#####################################################
+  	def self.get_similar_users_by_reviews(user)
+  		similar_users_ratings = {}
+  		similar_users = Review.get_similar_reviews_users(user)
+
+  		similar_users.each do |user|
+  			similar_users_ratings[user] = 0
+  		end
+
+  		user_reviews = Review.get_user_reviews(user)
+  		other_reviews = Review.get_users_sharing_trips(user)
+
+  		user_reviews.each do |user_review|
+  			other_reviews.each do |other_review|
+  				if (user_review.trip_id == other_review.trip_id)
+  					similar_users_ratings[User.find_by(id: other_review.user_id)] += (user_review.rating - other_review.rating).abs()
+  				end
+  			end
+  		end
+
+  		similar_users_ratings.keys.each do |key|
+      		similar_users_ratings[key] = (similar_users_ratings[key].to_f).round(3)
+    	end
+
+  		return similar_users_ratings
+  	end
+
+  	#####################################################
+  	# Obtiene los 3 usuarios cuya diferencia de
+  	# valoraciones sea la más parecida (menor) respecto
+  	# a nuestro usuario
+  	#####################################################
+  	def self.get_most_similar_users_by_reviews(user)
+  		similar_users = Review.get_similar_users_by_reviews(user)
+  		most_similar_users = []
+
+  		similar_users_sorted = similar_users.sort {|a1,a2| a2[1]<=>a1[1]}.reverse.to_h
+
+    	most_similar_users = similar_users_sorted.keys.first(3)
+
+    	return most_similar_users
+
+    end
+
 end

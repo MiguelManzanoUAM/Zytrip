@@ -33,6 +33,14 @@ class Admin::DashboardsController < ApplicationController
 
 		@user_social = User.find_by(id: params[:social_id])
 
+		if @user_social
+			@user_reviews = Review.get_user_reviews(@user_social)
+			@other_user_reviews = Review.get_users_sharing_trips(@user_social)
+			@similar_reviews = Review.get_similar_reviews(@user_social)
+			@similiar_reviews_users = Review.get_similar_reviews_users(@user_social)
+			@similar_reviews_users_difference = Review.get_similar_users_by_reviews(@user_social)
+			@most_similar_users_by_reviews = Review.get_most_similar_users_by_reviews(@user_social)
+		end
 		
 	end
 end

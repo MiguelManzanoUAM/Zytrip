@@ -297,4 +297,5 @@ class User < ApplicationRecord
 
     return candidates
   end
+
 end

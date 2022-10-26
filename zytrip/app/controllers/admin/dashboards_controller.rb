@@ -12,6 +12,12 @@ class Admin::DashboardsController < ApplicationController
 	def testing
 
 		#####################################################################
+		# Test recomendador basado en popularidad
+		#####################################################################
+		@trips_by_clients = Trip.trips_by_clients_number()
+		@most_popular_trips = Trip.get_most_popular_trips()
+
+		#####################################################################
 		# Test recomendador basado en contenido y categorias (conocimiento)
 		#####################################################################
 

@@ -257,17 +257,28 @@ class Review < ApplicationRecord
   	#####################################################
   	# Obtiene los 3 usuarios cuya diferencia de
   	# valoraciones sea la más parecida (menor) respecto
-  	# a nuestro usuario
+  	# a nuestro usuario.
+  	# A su vez comprobaremos si los usuarios pertenecen ya
+  	# a la lista de amigos de nuestro usuario para evitar
+  	# recomendarselo al ser ya amigos
   	#####################################################
   	def self.get_most_similar_users_by_reviews(user)
-  		similar_users = Review.get_similar_users_by_reviews(user)
+  		similar_users_with_difference = Review.get_similar_users_by_reviews(user)
+  		similar_users = []
+  		max_friends = 0
   		most_similar_users = []
 
-  		similar_users_sorted = similar_users.sort {|a1,a2| a2[1]<=>a1[1]}.reverse.to_h
 
-    	most_similar_users = similar_users_sorted.keys.first(3)
+  		similar_users_sorted = similar_users_with_difference.sort {|a1,a2| a2[1]<=>a1[1]}.reverse.to_h
+    	similar_users = similar_users_sorted.keys
 
-    	return most_similar_users
+    	similar_users.each do |other|
+			if !(user.friends.include? other)
+				most_similar_users << other
+			end
+		end
+
+    	return most_similar_users.first(3)
 
     end
 

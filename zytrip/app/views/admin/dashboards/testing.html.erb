@@ -8,11 +8,94 @@
 	<div class="main-testing-body">
 
 		<!-- ########################################################### -->
+		<!-- # Técnica de recomendación por popularidad # -->
+		<!-- ########################################################### -->
+
+		<div class="testing-container">
+			<p class="testing-container-title">1) Algoritmo de recomendación por popularidad</p>
+			<hr>
+
+
+			<div class="testing-container-results">
+
+				<div class="row">
+					<div class="col-7">
+						<text class="testing-container-step">-></text> Se mostrarán al usuario los viajes/experiencias más populares según su número de clientes y valoración.
+					</div>
+
+					<div class="col-5">
+						<div class="testing-btn">
+              				<text onclick="show_test()", id="showbtn", class="testing-btn-link">Mostrar</text>
+              				<text onclick="hide_test()", id="hidebtn", class="testing-btn-link">Ocultar</text>
+              			</div>
+              		</div>
+              	</div>
+
+
+            	<div id="populartrips"> 
+
+            		<br>
+					<p><text class="testing-container-step">-></text> En primer lugar obtenemos la lista de viajes con el número de clientes que tienen y su valoración</p>
+
+					<p><text class="testing-container-step">-></text> Ordenaremos la lista según el número de clientes que tienen y su valoración</p>
+
+					<table class="testing-table">
+						<thead>
+							<tr>
+								<td>ID Viaje</td>
+								<td>Viaje</td>
+								<td>Nº Usuarios</td>
+								<td>Valoración</td>
+							</tr>
+						</thead>
+
+						<tbody>
+							<% @trips_by_clients.each do |trip| %>
+								<tr>
+									<td><%= trip.id %></td>
+									<td><%= trip.title %></td>
+									<td><%= trip.users.size %></td>
+									<td><%= trip.rating %></td>
+								</tr>
+							<% end %>
+						</tbody>
+					</table>
+
+					<p><text class="testing-container-step">-></text> De esta lista nos quedaremos con los 3 viajes que mayor número de clientes tengan y en caso de empate, mayor valoración</p>
+
+					<table class="testing-table">
+						<thead>
+							<tr>
+								<td>ID Viaje</td>
+								<td>Viaje</td>
+								<td>Nº Usuarios</td>
+								<td>Valoración</td>
+							</tr>
+						</thead>
+
+						<tbody>
+							<% @most_popular_trips.each do |trip| %>
+								<tr>
+									<td><%= trip.id %></td>
+									<td><%= trip.title %></td>
+									<td><%= trip.users.size %></td>
+									<td><%= trip.rating %></td>
+								</tr>
+							<% end %>
+						</tbody>
+					</table>
+
+					<p><text class="testing-container-step">-></text> Otra posible solución sería mostrar los 3 más populares según diferentes criterios como el que más clientes tenga, el que mejor valoración tenga y el que mejor relación valoracion/clientes tenga</p>
+				</div>
+			</div>
+		</div>
+
+		<!-- ########################################################### -->
 		<!-- # Técnica de recomendación por conocimiento (categorías)  # -->
 		<!-- ########################################################### -->
 
 		<div class="testing-container">
-			<p class="testing-container-title">1) Algoritmo de recomendación por conocimiento</p>
+			<p class="testing-container-title">2) Algoritmo de recomendación por conocimiento</p>
 			<hr>
 
 			<%= form_for "", url: admin_dashboards_testing_path, method: :get do |f|%>
@@ -224,7 +307,7 @@
 		<!-- ########################################################### -->
 
 		<div class="testing-container">
-			<p class="testing-container-title">2) Algoritmo de recomendación colaborativo</p>
+			<p class="testing-container-title">3) Algoritmo de recomendación colaborativo</p>
 			<hr>
 
 			<%= form_for "", url: admin_dashboards_testing_path, method: :get do |f|%>
@@ -358,7 +441,7 @@
 							</tbody>
 						</table>
 
-						<p><text class="testing-container-step">-></text> Los 3 usuarios con menor diferencia en nuestras valoraciones son: </p>
+						<p><text class="testing-container-step">-></text> De estos usuarios ignoraremos los que ya pertenecen a la lista de amigos de nuestro usuario, para evitar recomendarle usuarios que ya conoce. Los 3 usuarios con menor diferencia en nuestras valoraciones son: </p>
 
 						<table class="testing-table">
 							<thead>
@@ -382,9 +465,37 @@
 			</div>
 		</div>
 
-
 	</div>
 </div>
+
+<script type="text/javascript">
+
+  	document.getElementById('showbtn').style.display = 'block';
+  	document.getElementById('hidebtn').style.display = 'none';
+  	document.getElementById('populartrips').style.display = 'none';
+
+
+	/////////////////////////////////////////////
+	// Change dynamic info and styles
+	/////////////////////////////////////////////
+
+	function show_test(){
+	    if(document.getElementById('populartrips').style.display == 'none'){
+        	document.getElementById('populartrips').style.display = 'block';
+          	document.getElementById('showbtn').style.display = 'none';
+          	document.getElementById('hidebtn').style.display = 'block';
+	    }
+	}
+
+	function hide_test(){
+	    if(document.getElementById('populartrips').style.display == 'block'){
+        	document.getElementById('populartrips').style.display = 'none';
+          	document.getElementById('showbtn').style.display = 'block';
+          	document.getElementById('hidebtn').style.display = 'none';
+	    }
+	}
+
+</script>
 
 <% content_for :view_specific_css do %>
     <%= stylesheet_link_tag "admin" %>

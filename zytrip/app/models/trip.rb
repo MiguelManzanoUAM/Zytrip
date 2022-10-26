@@ -265,4 +265,24 @@ class Trip < ApplicationRecord
   		return false
   	end
 
+  	#####################################################
+  	# Obtiene los viajes ordenados según su número de
+  	# clientes
+  	#####################################################
+  	def self.trips_by_clients_number()
+  		trips_by_clients = Trip.all.sort_by {|trip| [trip.users.size, trip.rating]}.reverse
+
+  		return trips_by_clients
+  	end
+
+  	#####################################################
+  	# Obtiene los 3 viajes más populares
+  	#####################################################
+  	def self.get_most_popular_trips()
+  		trips_by_clients = Trip.trips_by_clients_number()
+  		most_popular_trips = trips_by_clients.first(3)
+
+  		return most_popular_trips
+  	end
+
 end

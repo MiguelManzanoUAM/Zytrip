@@ -369,3 +369,24 @@
 .testing-table tbody tr {
   border-bottom: 1px solid #dddddd;
 }
+
+.testing-btn{
+  background-color: #F5F4F5;
+  border-radius: 5px;
+  border:  1px solid #000;
+  outline: none;
+  text-align: center;
+  width: 200px;
+}
+
+.testing-btn-link{
+  color: #000;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.testing-btn-link:hover{
+  color: #000;
+}

@@ -136,14 +136,16 @@ class Review < ApplicationRecord
   		reviews = []
   		trips_ids = []
 
-  		user_reviews.each do |review|
-  			if !(trips_ids.include? review.trip_id)
-  				trips_ids << review.trip_id
-  			end
-  		end
+  		if user_reviews.size != 0
+	  		user_reviews.each do |review|
+	  			if !(trips_ids.include? review.trip_id)
+	  				trips_ids << review.trip_id
+	  			end
+	  		end
 
-  		trips_ids.each do |trip|
-  			reviews << self.get_best_user_trip_review(user, trip)
+	  		trips_ids.each do |trip|
+  				reviews << self.get_best_user_trip_review(user, trip)
+  			end
   		end
 
   		return reviews
@@ -160,23 +162,25 @@ class Review < ApplicationRecord
   		users_sharing_trip = []
   		other_user_reviews = []
 
-  		user_reviews.each do |review|
-  			if !(trips_ids.include? review.trip_id)
-  				trips_ids << review.trip_id
-  			end
-  		end
+  		if user_reviews.size != 0
+	  		user_reviews.each do |review|
+	  			if !(trips_ids.include? review.trip_id)
+	  				trips_ids << review.trip_id
+	  			end
+	  		end
 
-  		trips_ids.each do |trip_id|
-  			trip = Trip.find_by(id: trip_id)
-  			trip_reviews = Review.trip_reviews(trip)
+	  		trips_ids.each do |trip_id|
+	  			trip = Trip.find_by(id: trip_id)
+	  			trip_reviews = Review.trip_reviews(trip)
 
-  			trip_reviews.each do |review|
-  				if (review.user_id != user.id)
-  					other = User.find_by(id: review.user_id)
-  					other_user_reviews << Review.get_best_user_trip_review(other, trip_id)
-  				end
-  			end
-  		end
+	  			trip_reviews.each do |review|
+	  				if (review.user_id != user.id)
+	  					other = User.find_by(id: review.user_id)
+	  					other_user_reviews << Review.get_best_user_trip_review(other, trip_id)
+	  				end
+	  			end
+	  		end
+	  	end
 
   		return other_user_reviews
   	end
@@ -193,15 +197,17 @@ class Review < ApplicationRecord
   		other_reviews = Review.get_users_sharing_trips(user)
   		similar_reviews = []
 
-  		user_reviews.each do |user_review|
-  			other_reviews.each do |other_review|
-  				if (user_review.trip_id == other_review.trip_id)
-  					if ((user_review.rating - other_review.rating).abs() <= 0.5)
-  						similar_reviews << other_review
-  					end
-  				end
-  			end
-  		end
+  		if ((user_reviews.size != 0) && (other_reviews.size != 0))
+	  		user_reviews.each do |user_review|
+	  			other_reviews.each do |other_review|
+	  				if (user_review.trip_id == other_review.trip_id)
+	  					if ((user_review.rating - other_review.rating).abs() <= 0.5)
+	  						similar_reviews << other_review
+	  					end
+	  				end
+	  			end
+	  		end
+	  	end
 
   		return similar_reviews
   	end
@@ -214,15 +220,50 @@ class Review < ApplicationRecord
   		similar_reviews = Review.get_similar_reviews(user)
   		similar_reviews_users = []
 
-  		similar_reviews.each do |review|
-  			user_of_review = User.find_by(id: review.user_id)
-  			if !(similar_reviews_users.include? user_of_review)
-  				similar_reviews_users << user_of_review
-  			end
-  		end
+  		if similar_reviews.size != 0
+	  		similar_reviews.each do |review|
+	  			user_of_review = User.find_by(id: review.user_id)
+	  			if !(similar_reviews_users.include? user_of_review)
+	  				similar_reviews_users << user_of_review
+	  			end
+	  		end
+	  	end
 
   		return similar_reviews_users
   	end
+
+  	#####################################################
+  	# Obtiene las valoraciones que los usuarios parecidos
+  	# han realizado en viajes en los que también hemos
+  	# valorado
+  	#####################################################
+  	def self.get_similar_users_reviews_sharing_trip(user)
+  		similar_users = Review.get_similar_reviews_users(user)
+  		user_reviews = Review.get_user_reviews(user)
+  		user_reviews_trips_ids = []
+  		other_reviews = []
+
+  		if user_reviews.size != 0
+	  		user_reviews.each do |review|
+	  			if !(user_reviews_trips_ids.include? review.trip_id)
+	  				user_reviews_trips_ids << review.trip_id
+	  			end
+	  		end
+
+	  		user_reviews_trips_ids.each do |trip_id|
+	  			similar_users.each do |other|
+	  				review = Review.find_by(trip_id: trip_id, user_id: other.id)
+	  				if review
+	  					if !(other_reviews.include? review)
+	  						other_reviews << review
+	  					end
+	  				end
+	  			end
+	  		end
+	  	end
+
+	  	return other_reviews
+	end
 
   	#####################################################
   	# Obtiene la diferencia de valoraciones entre los
@@ -232,24 +273,30 @@ class Review < ApplicationRecord
   		similar_users_ratings = {}
   		similar_users = Review.get_similar_reviews_users(user)
 
-  		similar_users.each do |user|
-  			similar_users_ratings[user] = 0
+  		if similar_users.size == 0
+  			return similar_users_ratings
+  		end
+
+  		similar_users.each do |similar_user|
+  			similar_users_ratings[similar_user] = 0
   		end
 
   		user_reviews = Review.get_user_reviews(user)
-  		other_reviews = Review.get_users_sharing_trips(user)
+  		other_reviews = Review.get_similar_users_reviews_sharing_trip(user)
 
-  		user_reviews.each do |user_review|
-  			other_reviews.each do |other_review|
-  				if (user_review.trip_id == other_review.trip_id)
-  					similar_users_ratings[User.find_by(id: other_review.user_id)] += (user_review.rating - other_review.rating).abs()
-  				end
-  			end
-  		end
+  		if ((user_reviews.size != 0) && (other_reviews.size != 0))
+	  		user_reviews.each do |user_review|
+	  			other_reviews.each do |other_review|
+	  				if (user_review.trip_id == other_review.trip_id)
+	  					similar_users_ratings[User.find_by(id: other_review.user_id)] += (user_review.rating - other_review.rating).abs()
+	  				end
+	  			end
+	  		end
 
-  		similar_users_ratings.keys.each do |key|
-      		similar_users_ratings[key] = (similar_users_ratings[key].to_f).round(3)
-    	end
+	  		similar_users_ratings.keys.each do |key|
+	      		similar_users_ratings[key] = (similar_users_ratings[key].to_f).round(3)
+	    	end
+	    end
 
   		return similar_users_ratings
   	end
@@ -268,7 +315,10 @@ class Review < ApplicationRecord
   		max_friends = 0
   		most_similar_users = []
 
-
+  		if similar_users_with_difference.keys.size == 0
+  			return most_similar_users
+  		end
+  		
   		similar_users_sorted = similar_users_with_difference.sort {|a1,a2| a2[1]<=>a1[1]}.reverse.to_h
     	similar_users = similar_users_sorted.keys
 

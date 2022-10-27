@@ -359,107 +359,129 @@
 
 						<p><text class="testing-container-step">-></text> El siguiente paso es obtener las valoraciones de usuarios que hayan valorado en los mismos viajes que nuestro usuario.</p>
 
-						<table class="testing-table">
-							<thead>
-								<tr>
-									<td>ID Usuario</td>
-									<td>ID Viaje</td>
-									<td>Valoración</td>
-								</tr>
-							</thead>
-
-							<tbody>
-								<% @other_user_reviews.each do |review| %>
+						<% if @other_user_reviews.size != 0 %>
+							<table class="testing-table">
+								<thead>
 									<tr>
-										<td><%= review.user_id %></td>
-										<td><%= review.trip_id %></td>
-										<td><%= review.rating %></td>
+										<td>ID Usuario</td>
+										<td>ID Viaje</td>
+										<td>Valoración</td>
 									</tr>
+								</thead>
+
+								<tbody>
+									<% @other_user_reviews.each do |review| %>
+										<tr>
+											<td><%= review.user_id %></td>
+											<td><%= review.trip_id %></td>
+											<td><%= review.rating %></td>
+										</tr>
+									<% end %>
+								</tbody>
+							</table>
+
+							<p><text class="testing-container-step">-></text> Una vez obtenidos estos usuarios, debemos seleccionar aquellos con los que compartamos una opinión cercana, es decir, que nuestras valoraciones en alguno de los viajes sean parecidas. <br>(Las valoraciones parecidas serán consideradas si pertenecen a un intervalo <= 0,5 de diferencia.) </p>
+
+							<% if @similar_reviews.size != 0 %>
+								<table class="testing-table">
+									<thead>
+										<tr>
+											<td>ID Usuario</td>
+											<td>ID Viaje</td>
+											<td>Valoración</td>
+										</tr>
+									</thead>
+
+									<tbody>
+										<% @similar_reviews.each do |review| %>
+											<tr>
+												<td><%= review.user_id %></td>
+												<td><%= review.trip_id %></td>
+												<td><%= review.rating %></td>
+											</tr>
+										<% end %>
+									</tbody>
+								</table>
+
+								<p><text class="testing-container-step">-></text> Los usuarios cuyas valoraciones en los viajes son parecidas a las de nuestro usuario (como podemos ver en la tabla anterior) son:</p>
+
+								<table class="testing-table">
+									<thead>
+										<tr>
+											<td>ID Usuario</td>
+											<td>Usuario</td>
+										</tr>
+									</thead>
+
+									<tbody>
+										<% @similar_reviews_users.each do |user| %>
+											<tr>
+												<td><%= user.id %></td>
+												<td><%= user.name %> <%= user.surname %></td>
+											</tr>
+										<% end %>
+									</tbody>
+								</table>
+
+								<%= @message %>
+
+								<% if @similar_reviews_users_difference %>
+									<p><text class="testing-container-step">-></text> Con esta información podemos obtener los usuarios más afines según el filtrado social con el usuario.Para esto, obtendremos la diferencia que han tenido a lo largo de las valoraciones y nos quedaremos con los usuarios que menor diferencia tengan respecto del nuestro. </p>
+
+									<table class="testing-table">
+										<thead>
+											<tr>
+												<td>ID Usuario</td>
+												<td>Diferencia entre valoraciones</td>
+											</tr>
+										</thead>
+
+										<tbody>
+											<% @similar_reviews_users_difference.keys.each do |user| %>
+												<tr>
+													<td><%= user.id %></td>
+													<td><%= @similar_reviews_users_difference[user] %></td>
+												</tr>
+											<% end %>
+										</tbody>
+									</table>
+
+									<p><text class="testing-container-step">-></text> De estos usuarios ignoraremos los que ya pertenecen a la lista de amigos de nuestro usuario, para evitar recomendarle usuarios que ya conoce. Los 3 usuarios con menor diferencia en nuestras valoraciones son: </p>
+
+									<table class="testing-table">
+										<thead>
+											<tr>
+												<td>ID Usuario</td>
+												<td>Usuario</td>
+											</tr>
+										</thead>
+
+										<tbody>
+											<% @most_similar_users_by_reviews.each do |user| %>
+												<tr>
+													<td><%= user.id %></td>
+													<td><%= user.name %><%= user.surname %></td>
+												</tr>
+											<% end %>
+										</tbody>
+									</table>
 								<% end %>
-							</tbody>
-						</table>
 
-						<p><text class="testing-container-step">-></text> Una vez obtenidos estos usuarios, debemos seleccionar aquellos con los que compartamos una opinión cercana, es decir, que nuestras valoraciones de los viajes sean parecidas.</p>
 
-						<table class="testing-table">
-							<thead>
-								<tr>
-									<td>ID Usuario</td>
-									<td>ID Viaje</td>
-									<td>Valoración</td>
-								</tr>
-							</thead>
+							<% else %>
+								<p><text class="testing-container-step">-></text> El usuario seleccionado no tiene valoraciones similares a otros usuarios</p>
+							<% end %>
 
-							<tbody>
-								<% @similar_reviews.each do |review| %>
-									<tr>
-										<td><%= review.user_id %></td>
-										<td><%= review.trip_id %></td>
-										<td><%= review.rating %></td>
-									</tr>
-								<% end %>
-							</tbody>
-						</table>
+						<% else %>
+							<p><text class="testing-container-step">-></text> El usuario seleccionado no comparte valoraciones con otros usuarios</p>
+						<% end %>
 
-						<p><text class="testing-container-step">-></text> Los usuarios cuyas valoraciones en los viajes son parecidas a las de nuestro usuario (como podemos ver en la tabla anterior) son: </p>
 
-						<table class="testing-table">
-							<thead>
-								<tr>
-									<td>ID Usuario</td>
-									<td>Usuario</td>
-								</tr>
-							</thead>
 
-							<tbody>
-								<% @similiar_reviews_users.each do |user| %>
-									<tr>
-										<td><%= user.id %></td>
-										<td><%= user.name %> <%= user.surname %></td>
-									</tr>
-								<% end %>
-							</tbody>
-						</table>
 
-						<p><text class="testing-container-step">-></text> Con esta información podemos obtener los usuarios más afines según el filtrado social con el usuario.Para esto, obtendremos la diferencia que han tenido a lo largo de las valoraciones y nos quedaremos con los usuarios que menor diferencia tengan respecto del nuestro. </p>
 
-						<table class="testing-table">
-							<thead>
-								<tr>
-									<td>ID Usuario</td>
-									<td>Diferencia entre valoraciones</td>
-								</tr>
-							</thead>
 
-							<tbody>
-								<% @similar_reviews_users_difference.keys.each do |user| %>
-									<tr>
-										<td><%= user.id %></td>
-										<td><%= @similar_reviews_users_difference[user] %></td>
-									</tr>
-								<% end %>
-							</tbody>
-						</table>
 
-						<p><text class="testing-container-step">-></text> De estos usuarios ignoraremos los que ya pertenecen a la lista de amigos de nuestro usuario, para evitar recomendarle usuarios que ya conoce. Los 3 usuarios con menor diferencia en nuestras valoraciones son: </p>
-
-						<table class="testing-table">
-							<thead>
-								<tr>
-									<td>ID Usuario</td>
-									<td>Usuario</td>
-								</tr>
-							</thead>
-
-							<tbody>
-								<% @most_similar_users_by_reviews.each do |user| %>
-									<tr>
-										<td><%= user.id %></td>
-										<td><%= user.name %><%= user.surname %></td>
-									</tr>
-								<% end %>
-							</tbody>
-						</table>
 					<% end %>
 				<% end %>
 			</div>

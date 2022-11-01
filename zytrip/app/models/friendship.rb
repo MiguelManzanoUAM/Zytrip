@@ -34,4 +34,33 @@ class Friendship < ApplicationRecord
       
     end
   end
+
+  #####################################################
+  # Añadimos un amigo a la lista del usuario
+  #####################################################
+  def self.add_friend(user, friend)
+
+    if !(user.friends.include? friend)
+      friendship = Friendship.create!(user_id: user.id, friend_id: friend.id)
+      friendship.save
+    end
+
+  end
+
+  #####################################################
+  # Eliminamos un amigo de la lista del usuario
+  #####################################################
+  def self.delete_friend(user, friend)
+    friendship = Friendship.find_by(user_id: user.id, friend_id: friend.id)
+
+    if friendship
+      friendship.destroy
+    end
+
+
+    if (user.friends.include? friend)
+      user.friends.delete(friend)
+    end
+
+  end
 end

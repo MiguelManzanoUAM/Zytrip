@@ -11,7 +11,7 @@ class Admin::UsersController < ApplicationController
 
     	respond_to do |format|
       		format.html
-      		format.csv { send_data @users.to_csv(['id', 'name', 'surname', 'email', 'phone_number', 'image', 'admin', 'created_at', 'updated_at', 'encrypted_password', 'reset_password_token', 'reset_password_sent_at', 'remember_created_at']) }
+      		format.csv { send_data @users.to_csv(['id', 'name', 'surname', 'description', 'email', 'phone_number', 'image', 'image_url', 'admin', 'created_at', 'updated_at', 'encrypted_password', 'reset_password_token', 'reset_password_sent_at', 'remember_created_at']) }
     	end
 
     	@users = User.search(params[:search])

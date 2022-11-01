@@ -8,12 +8,15 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :trips
-
   resources :preferences, only: [:new, :create]
   resources :topics, only: [:new, :create]
   resources :companies, only: [:new, :create]
   resources :services, only: [:new, :create]
   resources :reviews, only: [:new, :create]
+
+  resources :friendships, only: [:destroy]
+  get "/friendships/add_friend", to: "friendships#add_friend"
+  get "/friendships/delete_friend", to: "friendships#delete_friend"
 
   devise_for :users
 

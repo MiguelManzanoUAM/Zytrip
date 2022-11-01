@@ -53,7 +53,7 @@ User.create!(id: 19, name:"Lara", surname:"Lorenzo", email:"laraenzo@outlook.es"
 User.create!(id: 20, name:"Flavio", surname:"Palma", email:"flapalma@outlook.es", phone_number: "605573698", password:"palmaBillarFla98", admin:false)
 
 p "Se están creando los primeros usuarios..."
-p "Se han creado un usuario administrador..."
+p "Se ha creado un usuario administrador..."
 ########################################
 
 
@@ -83,6 +83,7 @@ Preference.import()
 Company.import()
 Topic.import()
 Service.import()
+Friendship.import()
 
 p "Pensando un precio para los viajes..."
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_24_091949) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_01_102906) do
   create_table "companies", force: :cascade do |t|
     t.boolean "family", default: false
     t.boolean "romantic", default: false
@@ -109,6 +109,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_24_091949) do
     t.string "surname"
     t.string "phone_number"
     t.string "image"
+    t.string "image_url"
+    t.string "description"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

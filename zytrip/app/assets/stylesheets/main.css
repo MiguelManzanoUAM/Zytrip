@@ -304,6 +304,7 @@
   margin-left: 20px;
   border-radius: 20px;
   margin-bottom: 5%;
+  background-color: #fff;
 }
 
 .landing-results-recomendations-box img{
@@ -321,6 +322,7 @@
   margin-left: 20px;
   border-radius: 20px;
   margin-bottom: 5%;
+  background-color: #fff;
 }
 
 .landing-results-users-recomendations-box img{
@@ -354,6 +356,16 @@
 
 .result-info-user{
   text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  color: #000;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.result-info-user:hover{
+  color: #000;
 }
 
 .result-follow-btn{
@@ -1224,6 +1236,31 @@
   color: #fff;
 }
 
+.profile-followed-btn{
+  margin-top: 10px;
+  height: 40px;
+  color: #000;
+  font-size: 15px;
+  padding-top: 10px;
+  background-color: #eeeded;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+
+.profile-followed-btn-link{
+  color: #000;
+  font-size: 15px;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.profile-unfollow-btn{
+  color: #000;
+  background-color: #eb7878;
+}
+
 .profile-option-btn{
   margin-top: 10px;
   height: 40px;
@@ -1232,7 +1269,7 @@
   padding-top: 10px;
   background-color: #eeeded;
   border-radius: 1px;
-  border: none;
+  border-right: 2px solid #fff;
   outline: none;
   cursor: pointer;
 }

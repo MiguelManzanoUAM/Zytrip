@@ -6,7 +6,7 @@ class LandingController < ApplicationController
 		if current_user
 			@user = current_user
 			@trips_recomendated = User.most_afinity_preferences_trips(@user)
-			@most_similar_users = Review.get_most_similar_users_by_reviews(@user)
+			@most_similar_users = Review.get_most_similar_users_by_reviews(@user).first(3)
 
 		end
 

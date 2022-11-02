@@ -328,7 +328,7 @@ class Review < ApplicationRecord
 			end
 		end
 
-    	return most_similar_users.first(3)
+    	return most_similar_users
 
     end
 

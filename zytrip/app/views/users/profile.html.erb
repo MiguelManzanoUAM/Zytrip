@@ -30,20 +30,11 @@
                         </div>
                     <% elsif !(current_user.friends.include? @user) %>
                         <div class="profile-edit-btn text-center profile-img-center">
-                            <%= link_to "Seguir", friendships_add_friend_path(id: @user.id), class:"profile-edit-btn-link"%>
+                            <%= link_to "Seguir", friendships_add_friend_path(id: @user.id, source:"friend"), class:"profile-edit-btn-link"%>
                         </div>
                     <% else %>
-                        
-                        <div class="nav-item dropdown profile-followed-btn text-center profile-img-center">
-                            
-                            <p class="profile-followed-btn-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Seguido</p>
-
-                            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                              <li class="profile-unfollow-btn">
-                                <%= link_to 'Dejar de seguir', friendships_delete_friend_path(id: @user.id), class: "dropdown-item" %>
-                              </li>
-                            </ul>
-
+                        <div class="profile-followed-btn text-center profile-img-center">
+                            <p class="profile-followed-btn-link">Seguido</p>
                         </div>
                     <% end %>
                 </div>
@@ -62,7 +53,10 @@
             <div class="col-md-8">
                 <div class="profile-sections-container">
                     <ul class="nav nav-tabs" role="tablist">
-                        <li class="nav-item profile-selected-option-btn" id="friendsbtn">
+                        <li class="nav-item profile-selected-option-btn" id="profilebtn">
+                            <p onclick="show_profile()", id="profilenav", class="profile-btn-text">Perfil</p>
+                        </li>
+                        <li class="nav-item profile-option-btn" id="friendsbtn">
                             <p onclick="show_friends()", id="friendsnav", class="profile-btn-text">Amigos</p>
                         </li>
                         <li class="nav-item profile-option-btn" id="tripsbtn">
@@ -72,6 +66,17 @@
                             <p onclick="show_organized_trips()", id="organizedtripsnav", class="profile-btn-text">Viajes organizados</p>
                         </li>
                     </ul>
+
+                    <!-- #################################################### -->
+                    <!-- ################ Seccion Usuario ################### -->
+                    <!-- #################################################### -->
+                    <div id="profile" class="profile-section">
+                        <% if @user.id == current_user.id %>
+                            <p>Eres el usuario</p>
+                        <% else %>
+                            <p>No eres el usuario</p>
+                        <% end %>
+                    </div>
 
                     <!-- #################################################### -->
                     <!-- ################# Seccion Amigos ################### -->
@@ -94,10 +99,13 @@
 
                         <% if @user.friends.size != 0 %>
 
+
                             <table class="profile-section-table">
                                 <thead>
                                     <tr>
+                                        <th></th>
                                         <th>Amigos</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
 
@@ -105,16 +113,50 @@
                                     <% @user.friends.each do |user| %>
                                         <tr>
                                             <td>
-                                                <% @user_name = user.name + " " + user.surname %>
-
                                                 <% if user.image_url %>
-                                                    <%= image_tag("#{user.image_url}") %> <%= link_to @user_name, users_profile_path(user.id), class: "result-info-user" %>
+                                                    <%= image_tag("#{user.image_url}") %>
                                                 <% elsif user.image %>
-                                                    <%= image_tag(user.image) %> <%= link_to @user_name, users_profile_path(user.id), class: "result-info-user" %>
+                                                    <%= image_tag(user.image) %>
                                                 <% else %>
-                                                    <%= image_tag("local/user.jpeg") %> <%= link_to @user_name, users_profile_path(user.id), class: "result-info-user" %>
+                                                    <%= image_tag("local/user.jpeg") %>
                                                 <% end %>
                                             </td>
+
+                                            <td>
+                                                <% @user_name = user.name + " " + user.surname %>
+                                                <%= link_to @user_name, users_profile_path(user.id), class: "result-info-user" %>
+                                            </td>
+
+                                            <td>
+                                                <% if user.id != current_user.id %>
+                                                    <% if !(current_user.friends.include? user) %>
+                                                        <div class="row justify-content-md-center">
+
+                                                            <div class="col-12 profile-edit-btn text-center profile-img-center">
+                                                                <%= link_to "Seguir", friendships_add_friend_path(id: user.id, source:"list", source_user: @user.id), class:"profile-edit-btn-link"%>
+                                                            </div>
+                                                        </div>
+                                                    <% else %>
+                                                        
+                                                        <div class="row justify-content-md-center">
+                                                            <div class="col-8 profile-followed-btn">
+                                                                <p class="profile-followed-btn-link">Seguido</p>
+                                                            </div>
+                                                            
+                                                            <div class="col-3 nav-item dropdown profile-unfollow-btn text-center profile-img-center">
+                                                                <% if @user.id == current_user.id %>
+                                                                    <%= link_to "x ", friendships_delete_friend_path(id: user.id, source:"mylist"), class:"profile-edit-btn-link", alt:"Dejar de seguir"%>
+                                                                <% else %>
+                                                                    <%= link_to "x ", friendships_delete_friend_path(id: user.id, source:"list", source_user: @user.id), class:"profile-edit-btn-link", alt:"Dejar de seguir"%>
+                                                                <% end %>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    <% end %>
+                                                <% end %>
+                                            </td>
+
+
                                         </tr>
                                     <% end %>
                                 </tbody>
@@ -132,76 +174,58 @@
                                 <p class="profile-section-results text-center"> Has realizado <text class="profile-section-results-red"> <%= @user.trips.size %> </text>viajes</p>
                             <% else %>
                                 <p class="profile-section-results text-center"> Has realizado <text class="profile-section-results-green"> <%= @user.trips.size %> </text>viajes</p>
-
-                                <table class="profile-section-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Viaje</th>
-                                            <th>Opciones</th>
-                                        </tr>
-                                    </thead>
-
-                                    <tbody>
-                                        <% @user.trips.each do |trip| %>
-                                            <tr>
-                                                <td>
-                                                    <% if trip.image_url %>
-                                                        <%= image_tag("#{trip.image_url}") %>
-                                                    <% elsif trip.image %>
-                                                        <%= image_tag(trip.image) %> <%= trip.title %>
-                                                    <% else %>
-                                                        <%= image_tag("local/user.jpeg") %> <%= trip.title %>
-                                                    <% end %>
-                                                </td>
-
-                                                <td>
-                                                  <div class="row justify-content-center">
-                                                    <div class="col-4">
-                                                      Opción 1
-                                                    </div>
-
-                                                    <div class="col-4">
-                                                      Opción 2
-                                                    </div>
-                                                  </div>
-                                                </td>
-                                            </tr>
-                                        <% end %>
-                                    </tbody>
-                                </table>
                             <% end %>
-
                         <% else %>
-
                             <% if @user.trips.size == 0 %>
                                 <p class="profile-section-results text-center"> El usuario ha realizado <text class="profile-section-results-red"> <%= @user.trips.size %> </text>viajes</p>
                             <% else %>
                                 <p class="profile-section-results text-center"> El usuario ha realizado <text class="profile-section-results-green"> <%= @user.trips.size %> </text>viajes</p>
-
-                                <table class="profile-section-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Viaje</th>
-                                        </tr>
-                                    </thead>
-
-                                    <tbody>
-                                        <% @user.trips.each do |trip| %>
-                                            <tr>
-                                                <td>
-                                                    <% if trip.image_url %>
-                                                        <%= image_tag("#{trip.image_url}") %>
-                                                    <% elsif trip.image %>
-                                                        <%= image_tag(trip.image) %> <%= trip.title %>
-                                                    <% else %>
-                                                        <%= image_tag("local/user.jpeg") %> <%= trip.title %>
-                                                    <% end %>
-                                                </td>
-                                            </tr>
-                                        <% end %>
-                                    </tbody>
-                                </table>
                             <% end %>
+                        <% end %>
+
+                        <% if @user.trips.size != 0 %>
+
+                            <table class="profile-section-table">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Realizados</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <% @user.trips.each do |trip| %>
+                                        <tr>
+                                            <td>
+                                                <% if trip.image_url %>
+                                                    <%= image_tag("#{trip.image_url}") %>
+                                                <% elsif trip.image %>
+                                                    <%= image_tag(trip.image) %>
+                                                <% else %>
+                                                    <%= image_tag("local/user.jpeg") %>
+                                                <% end %>
+                                            </td>
+
+                                            <td>
+                                                <%=link_to trip, class:"result-info-user" do%>
+                                                    <%=trip.title%>
+                                                <% end %>
+                                            </td>
+
+                                            <td>
+                                                <% trip.rating.round().times do  %>
+                                                    <i class="fas fa-star"></i>
+                                                <% end %>
+
+                                                <% (5 - trip.rating.round()).times do %>
+                                                    <i class="far fa-star"></i>
+                                                <% end %>
+                                            </td>
+                                        </tr>
+                                    <% end %>
+                                </tbody>
+                            </table>
                         <% end %>
                     </div>
 
@@ -215,79 +239,60 @@
                                 <p class="profile-section-results text-center"> Has organizado <text class="profile-section-results-red"> <%= @organized_trips.size %> </text>viajes</p>
                             <% else %>
                                 <p class="profile-section-results text-center"> Has organizado <text class="profile-section-results-green"> <%= @organized_trips.size %> </text>viajes</p>
-
-                                <table class="profile-section-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Viaje</th>
-                                            <th>Opciones</th>
-                                        </tr>
-                                    </thead>
-
-                                    <tbody>
-                                        <% @organized_trips.each do |trip| %>
-                                            <tr>
-                                                <td>
-                                                    <% if trip.image_url %>
-                                                        <%= image_tag("#{trip.image_url}") %>
-                                                    <% elsif trip.image %>
-                                                        <%= image_tag(trip.image) %> <%= trip.title %>
-                                                    <% else %>
-                                                        <%= image_tag("local/user.jpeg") %> <%= trip.title %>
-                                                    <% end %>
-                                                </td>
-
-                                                <td>
-                                                  <div class="row justify-content-center">
-                                                    <div class="col-4">
-                                                      Opción 1
-                                                    </div>
-
-                                                    <div class="col-4">
-                                                      Opción 2
-                                                    </div>
-                                                  </div>
-                                                </td>
-                                            </tr>
-                                        <% end %>
-                                    </tbody>
-                                </table>
                             <% end %>
-
                         <% else %>
-
                             <% if @organized_trips.size == 0 %>
                                 <p class="profile-section-results text-center"> El usuario ha organizado <text class="profile-section-results-red"> <%= @organized_trips.size %> </text>viajes</p>
                             <% else %>
                                 <p class="profile-section-results text-center"> El usuario ha organizado <text class="profile-section-results-green"> <%= @organized_trips.size %> </text>viajes</p>
-
-                                <table class="profile-section-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Viaje</th>
-                                        </tr>
-                                    </thead>
-
-                                    <tbody>
-                                        <% @organized_trips.each do |trip| %>
-                                            <tr>
-                                                <td>
-                                                    <% if trip.image_url %>
-                                                        <%= image_tag("#{trip.image_url}") %>
-                                                    <% elsif trip.image %>
-                                                        <%= image_tag(trip.image) %> <%= trip.title %>
-                                                    <% else %>
-                                                        <%= image_tag("local/user.jpeg") %> <%= trip.title %>
-                                                    <% end %>
-                                                </td>
-                                            </tr>
-                                        <% end %>
-                                    </tbody>
-                                </table>
                             <% end %>
                         <% end %>
-                    </div>
 
+                        <% if @organized_trips.size != 0 %>
+
+                            <table class="profile-section-table">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Organizados</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <% @organized_trips.each do |trip| %>
+                                        <tr>
+                                            <td>
+                                                <% if trip.image_url %>
+                                                    <%= image_tag("#{trip.image_url}") %>
+                                                <% elsif trip.image %>
+                                                    <%= image_tag(trip.image) %>
+                                                <% else %>
+                                                    <%= image_tag("local/user.jpeg") %>
+                                                <% end %>
+                                            </td>
+
+                                            <td>
+                                                <%=link_to trip, class:"result-info-user" do%>
+                                                    <%=trip.title%>
+                                                <% end %>
+                                            </td>
+
+                                            <td>
+                                                <% trip.rating.round().times do  %>
+                                                    <i class="fas fa-star"></i>
+                                                <% end %>
+
+                                                <% (5 - trip.rating.round()).times do %>
+                                                    <i class="far fa-star"></i>
+                                                <% end %>
+                                            </td>
+                                        </tr>
+                                    <% end %>
+                                </tbody>
+                            </table>
+                        <% end %>
+                    </div>
                 </div>
             </div>
         </div>   
@@ -298,6 +303,7 @@
 
 <script type="text/javascript">
 
+    document.getElementById('friends').style.display = 'none';
     document.getElementById('trips').style.display = 'none';
     document.getElementById('organizedtrips').style.display = 'none';
 
@@ -305,11 +311,30 @@
     // Change dynamic info and styles
     /////////////////////////////////////////////
 
+    function show_profile(){
+        if(document.getElementById('profile').style.display == 'none'){
+            document.getElementById('profile').style.display = 'block';
+            document.getElementById('trips').style.display = 'none';
+            document.getElementById('organizedtrips').style.display = 'none';
+            document.getElementById('friendsnav').style.color = '#000';
+            document.getElementById('friendsbtn').style.backgroundColor = '#eeeded';
+            document.getElementById('tripsnav').style.color = '#000';
+            document.getElementById('tripsbtn').style.backgroundColor = '#eeeded';
+            document.getElementById('organizedtripsnav').style.color = '#000';
+            document.getElementById('organizedtripsbtn').style.backgroundColor = '#eeeded';
+            document.getElementById('profilenav').style.color = '#fff';
+            document.getElementById('profilebtn').style.backgroundColor = '#6e9bd5';
+        }
+    }
+
     function show_friends(){
         if(document.getElementById('friends').style.display == 'none'){
             document.getElementById('friends').style.display = 'block';
+            document.getElementById('profile').style.display = 'none';
             document.getElementById('trips').style.display = 'none';
             document.getElementById('organizedtrips').style.display = 'none';
+            document.getElementById('profilenav').style.color = '#000';
+            document.getElementById('profilebtn').style.backgroundColor = '#eeeded';
             document.getElementById('tripsnav').style.color = '#000';
             document.getElementById('tripsbtn').style.backgroundColor = '#eeeded';
             document.getElementById('organizedtripsnav').style.color = '#000';
@@ -322,8 +347,11 @@
     function show_trips(){
         if(document.getElementById('trips').style.display == 'none'){
             document.getElementById('trips').style.display = 'block';
+            document.getElementById('profile').style.display = 'none';
             document.getElementById('friends').style.display = 'none';
             document.getElementById('organizedtrips').style.display = 'none';
+            document.getElementById('profilenav').style.color = '#000';
+            document.getElementById('profilebtn').style.backgroundColor = '#eeeded';
             document.getElementById('friendsnav').style.color = '#000';
             document.getElementById('friendsbtn').style.backgroundColor = '#eeeded';
             document.getElementById('organizedtripsnav').style.color = '#000';
@@ -336,8 +364,11 @@
     function show_organized_trips(){
         if(document.getElementById('organizedtrips').style.display == 'none'){
             document.getElementById('organizedtrips').style.display = 'block';
+            document.getElementById('profile').style.display = 'none';
             document.getElementById('friends').style.display = 'none';
             document.getElementById('trips').style.display = 'none';
+            document.getElementById('profilenav').style.color = '#000';
+            document.getElementById('profilebtn').style.backgroundColor = '#eeeded';
             document.getElementById('friendsnav').style.color = '#000';
             document.getElementById('friendsbtn').style.backgroundColor = '#eeeded';
             document.getElementById('tripsnav').style.color = '#000';

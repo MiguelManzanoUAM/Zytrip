@@ -19,7 +19,7 @@
                         <% if @user.description %>
                             <p> <%= @user.description %> </p>
                         <% else %>
-                            <p> Descripción de usuario </p>
+                            <p> Localización usuario </p>
                         <% end %>
                     </div>
                     
@@ -41,7 +41,7 @@
 
                 
                 <div class="profile-contact-container">
-                    <p class="profile-contact-title">Contacto</p>
+                    <p class="profile-section-title">Contacto</p>
                     <hr>
                     <div class="profile-contact">
                         <p><%= image_tag "local/telephone.png", class: "profile-contact-icon" %><b>Teléfono:</b> 916543245</p>
@@ -53,10 +53,7 @@
             <div class="col-md-8">
                 <div class="profile-sections-container">
                     <ul class="nav nav-tabs" role="tablist">
-                        <li class="nav-item profile-selected-option-btn" id="profilebtn">
-                            <p onclick="show_profile()", id="profilenav", class="profile-btn-text">Perfil</p>
-                        </li>
-                        <li class="nav-item profile-option-btn" id="friendsbtn">
+                        <li class="nav-item profile-selected-option-btn" id="friendsbtn">
                             <p onclick="show_friends()", id="friendsnav", class="profile-btn-text">Amigos</p>
                         </li>
                         <li class="nav-item profile-option-btn" id="tripsbtn">
@@ -66,17 +63,6 @@
                             <p onclick="show_organized_trips()", id="organizedtripsnav", class="profile-btn-text">Viajes organizados</p>
                         </li>
                     </ul>
-
-                    <!-- #################################################### -->
-                    <!-- ################ Seccion Usuario ################### -->
-                    <!-- #################################################### -->
-                    <div id="profile" class="profile-section">
-                        <% if @user.id == current_user.id %>
-                            <p>Eres el usuario</p>
-                        <% else %>
-                            <p>No eres el usuario</p>
-                        <% end %>
-                    </div>
 
                     <!-- #################################################### -->
                     <!-- ################# Seccion Amigos ################### -->
@@ -303,7 +289,6 @@
 
 <script type="text/javascript">
 
-    document.getElementById('friends').style.display = 'none';
     document.getElementById('trips').style.display = 'none';
     document.getElementById('organizedtrips').style.display = 'none';
 
@@ -311,30 +296,11 @@
     // Change dynamic info and styles
     /////////////////////////////////////////////
 
-    function show_profile(){
-        if(document.getElementById('profile').style.display == 'none'){
-            document.getElementById('profile').style.display = 'block';
-            document.getElementById('trips').style.display = 'none';
-            document.getElementById('organizedtrips').style.display = 'none';
-            document.getElementById('friendsnav').style.color = '#000';
-            document.getElementById('friendsbtn').style.backgroundColor = '#eeeded';
-            document.getElementById('tripsnav').style.color = '#000';
-            document.getElementById('tripsbtn').style.backgroundColor = '#eeeded';
-            document.getElementById('organizedtripsnav').style.color = '#000';
-            document.getElementById('organizedtripsbtn').style.backgroundColor = '#eeeded';
-            document.getElementById('profilenav').style.color = '#fff';
-            document.getElementById('profilebtn').style.backgroundColor = '#6e9bd5';
-        }
-    }
-
     function show_friends(){
         if(document.getElementById('friends').style.display == 'none'){
             document.getElementById('friends').style.display = 'block';
-            document.getElementById('profile').style.display = 'none';
             document.getElementById('trips').style.display = 'none';
             document.getElementById('organizedtrips').style.display = 'none';
-            document.getElementById('profilenav').style.color = '#000';
-            document.getElementById('profilebtn').style.backgroundColor = '#eeeded';
             document.getElementById('tripsnav').style.color = '#000';
             document.getElementById('tripsbtn').style.backgroundColor = '#eeeded';
             document.getElementById('organizedtripsnav').style.color = '#000';
@@ -347,11 +313,8 @@
     function show_trips(){
         if(document.getElementById('trips').style.display == 'none'){
             document.getElementById('trips').style.display = 'block';
-            document.getElementById('profile').style.display = 'none';
             document.getElementById('friends').style.display = 'none';
             document.getElementById('organizedtrips').style.display = 'none';
-            document.getElementById('profilenav').style.color = '#000';
-            document.getElementById('profilebtn').style.backgroundColor = '#eeeded';
             document.getElementById('friendsnav').style.color = '#000';
             document.getElementById('friendsbtn').style.backgroundColor = '#eeeded';
             document.getElementById('organizedtripsnav').style.color = '#000';
@@ -364,11 +327,8 @@
     function show_organized_trips(){
         if(document.getElementById('organizedtrips').style.display == 'none'){
             document.getElementById('organizedtrips').style.display = 'block';
-            document.getElementById('profile').style.display = 'none';
             document.getElementById('friends').style.display = 'none';
             document.getElementById('trips').style.display = 'none';
-            document.getElementById('profilenav').style.color = '#000';
-            document.getElementById('profilebtn').style.backgroundColor = '#eeeded';
             document.getElementById('friendsnav').style.color = '#000';
             document.getElementById('friendsbtn').style.backgroundColor = '#eeeded';
             document.getElementById('tripsnav').style.color = '#000';

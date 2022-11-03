@@ -20,7 +20,6 @@ class Admin::DashboardsController < ApplicationController
 		#####################################################################
 		# Test recomendador basado en contenido y categorias (conocimiento)
 		#####################################################################
-
 		@user = User.find_by(id: params[:user_id])
 
 		if @user
@@ -36,7 +35,6 @@ class Admin::DashboardsController < ApplicationController
 		#####################################################################
 		# Test recomendador colaborativo (filtrado social)
 		#####################################################################
-
 		@user_social = User.find_by(id: params[:social_id])
 
 		if @user_social
@@ -53,11 +51,23 @@ class Admin::DashboardsController < ApplicationController
 
 						if @similar_reviews_users
 							@similar_reviews_users_difference = Review.get_similar_users_by_reviews(@user_social)
-							@most_similar_users_by_reviews = Review.get_most_similar_users_by_reviews(@user_social)
+							@most_similar_users_by_reviews = Review.get_most_similar_users_by_reviews(@user_social).first(3)
 						end
 					end
 				end
 			end
+		end
+
+		#####################################################################
+		# Test recomendación según usuarios que sigues
+		#####################################################################
+		@follower_user = User.find_by(id: params[:follower_id])
+
+		if @follower_user
+			@friends = @follower_user.friends
+			@followed_reviews = Review.get_followed_users_reviews(@follower_user)
+			@friends_popular_trips = Review.get_most_popular_friends_trips(@follower_user)
+			@friends_most_popular_trips = @friends_popular_trips.keys.first(3)
 		end
 		
 	end

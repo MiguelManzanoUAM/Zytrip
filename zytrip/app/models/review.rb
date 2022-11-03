@@ -329,7 +329,74 @@ class Review < ApplicationRecord
 		end
 
     	return most_similar_users
-
     end
+
+    #####################################################
+  	# Obtiene las valoraciones de los usuarios seguidos
+  	# por nuestro usuario
+  	#####################################################
+  	def self.get_followed_users_reviews(user)
+  		friends = user.friends
+  		friends_reviews = []
+  		friend_reviews = []
+
+  		if friends.size != 0
+	  		friends.each do |friend|
+	  			friend_reviews = Review.get_user_reviews(friend)
+
+	  			if friend_reviews
+		  			friend_reviews.each do |review|
+		  				if !(friends_reviews.include? review)
+		  					friends_reviews << review
+		  				end
+		  			end
+		  		end
+	  		end
+	  	end
+
+	  	return friends_reviews
+	end
+
+	#####################################################
+  	# Obtiene los viajes más populares de entre nuestros
+  	# amigos, ordenados por valoración media y en caso
+  	# de empate por nº veces realizado por los amigos
+  	#####################################################
+  	def self.get_most_popular_friends_trips(user)
+  		friends_reviews = Review.get_followed_users_reviews(user)
+  		friends_reviews_trips = []
+  		popular_trips = {}
+
+  		if friends_reviews.size != 0
+	  		friends_reviews.each do |review|
+	  			trip_review = Trip.find_by(id: review.trip_id)
+	  			if !(friends_reviews_trips.include? trip_review)
+	  				friends_reviews_trips << trip_review
+	  			end
+	  		end
+
+	  		friends_reviews_trips.each do |trip|
+	  			if !(user.trips.include? trip)
+		  			popular_trips[trip] = {}
+		  			popular_trips[trip]["rating"] = 0.0
+		  			popular_trips[trip]["friends"] = 0
+		  		end
+	  		end
+
+	  		if popular_trips.keys.size != 0
+		  		friends_reviews.each do |review|
+		  			trip_review = Trip.find_by(id: review.trip_id)
+		  			if !(user.trips.include? trip_review)
+			  			popular_trips[trip_review]["friends"] = popular_trips[trip_review]["friends"] + 1
+			  			popular_trips[trip_review]["rating"] = ((popular_trips[trip_review]["rating"] + review.rating.to_f) / popular_trips[trip_review]["friends"].to_f).round(3)
+			  		end
+			  	end
+
+		  		popular_trips = popular_trips.sort_by {|a1| [ a1[1]["rating"], a1[1]["friends"]]}.reverse.to_h
+	  		end
+	  	end 
+
+	  	return popular_trips
+	end
 
 end

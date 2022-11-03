@@ -166,14 +166,14 @@
 			<% if @most_similar_users %>
 				<div class="landing-results-info ">
 					<div class="landing-results-info-text">
-						<h2>En construcción ...</h2>
+						<h2>Destinos que podrían interesarte</h2>
 						<p>Recomendaciones según los usuarios que sigues</p>
 					</div>
 				</div>
 
 				<div class="landing-results-recomendations">
 					<div class="row justify-content-md-center">
-						<% @trips_recomendated.each do |trip| %>
+						<% @friends_trips.each do |trip| %>
 							<div class="col col-lg-3 landing-results-recomendations-box">
 								<% if trip.image %>
 									<%= image_tag(trip.image) %>

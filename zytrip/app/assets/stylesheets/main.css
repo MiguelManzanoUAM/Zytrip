@@ -1178,6 +1178,13 @@
   text-align: center;
 }
 
+.profile-section-title{
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  color: #6e9bd5;
+}
+
 .profile-contact-container{
   background-color: white;
   margin-top: 20px;
@@ -1190,13 +1197,6 @@
   border: 1px solid grey;
   width: 90%;
   margin-left: 20px;
-}
-
-.profile-contact-title{
-  text-align: center;
-  font-weight: bold;
-  font-size: 20px;
-  color: #6e9bd5;
 }
 
 .profile-contact{
@@ -1302,6 +1302,12 @@
 
 .profile-section{
   margin-top: 20px;
+}
+
+.profile-section hr{
+  border: 1px solid grey;
+  width: 90%;
+  margin-left: 20px;
 }
 
 .profile-section-results{

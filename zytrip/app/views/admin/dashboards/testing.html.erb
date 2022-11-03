@@ -476,17 +476,135 @@
 							<p><text class="testing-container-step">-></text> El usuario seleccionado no comparte valoraciones con otros usuarios</p>
 						<% end %>
 
-
-
-
-
-
-
 					<% end %>
 				<% end %>
 			</div>
 		</div>
 
+		<!-- ########################################################### -->
+		<!-- # Recomendaciones según usuarios seguidos # -->
+		<!-- ########################################################### -->
+
+		<div class="testing-container">
+			<p class="testing-container-title">4) Test recomendaciones según usuarios seguidos</p>
+			<hr>
+
+			<%= form_for "", url: admin_dashboards_testing_path, method: :get do |f|%>
+				<div class="form-group row justify-content-center row">
+					<div class="col-sm-3">
+						<%= f.collection_select(:follower_id, User.all, :id, :id, {include_blank: 'Selecciona un usuario'}, required: true, class:"create-edit-form-input") %>
+					</div>
+					
+					<div class="col-sm-2">
+	      				<%= submit_tag "Confirmar" %>
+	    			</div>
+				</div>
+			<% end %>
+
+			<div class="testing-container-results">
+				<% if !@follower_user %>
+					<p><text class="testing-container-step">-></text> Debe seleccionarse un usuario para realizar el test </p>
+				<% else %>
+					<p><text class="testing-container-step">-></text> Esta recomendación se centra en los usuarios que sigue nuestro usuario para ofrecer un resultado según la afinidad con estos.</p>
+
+					<p><text class="testing-container-step">-></text> El usuario seleccionado ha sido <b><%=@follower_user.name%> <%=@follower_user.surname %></b> con id: <b><%=@follower_user.id %></b> </p>
+
+					<% if @friends.size == 0 %>
+						<p><text class="testing-container-step">-></text> El usuario no sigue a otros usuarios</p>
+					<% else %>
+						<p><text class="testing-container-step">-></text> Estos son los usuarios seguidos por <%= @follower_user.name %></p>
+
+						<table class="testing-table">
+							<thead>
+								<tr>
+									<td>ID Usuario</td>
+									<td>Usuario</td>
+								</tr>
+							</thead>
+
+							<tbody>
+								<% @friends.each do |user| %>
+									<tr>
+										<td><%= user.id %></td>
+										<td><%= user.name %><%= user.surname %></td>
+									</tr>
+								<% end %>
+							</tbody>
+						</table>
+
+						<p><text class="testing-container-step">-></text> Podemos ver esta recomendación como una continuación de la técnica de recomendación por filtrado social (colaborativo), por lo que una vez encontradas estas personas B, los cuales serían las personas que hemos decidido seguir, ahora nos interesan aquellos viajes que mejor ha valorado B, ya que por el algoritmo anterior, serán con los que estadísticamente podamos tener una mayor satisfacción.</p>
+
+						<p><text class="testing-container-step">-></text> De esta forma, obtendremos los viajes de los usuarios a los que sigue nuestro usuario junto con sus valoraciones.</p>
+
+						<% if @followed_reviews.size == 0 %>
+							<p><text class="testing-container-step">-></text> Los usuarios seguidos por nuestro usuario no han realizado ninguna valoración</p>
+						<% else %>
+							<table class="testing-table">
+								<thead>
+									<tr>
+										<td>ID Usuario</td>
+										<td>Viaje</td>
+										<td>Valoración</td>
+									</tr>
+								</thead>
+
+								<tbody>
+									<% @followed_reviews.each do |review| %>
+										<tr>
+											<td><%= review.user_id %></td>
+											<td><%= review.trip_id %></td>
+											<td><%= review.rating %></td>
+										</tr>
+									<% end %>
+								</tbody>
+							</table>
+
+							<p><text class="testing-container-step">-></text> Una vez obtenidos estos viajes, como se ha mencionado anteriormente, nos quedaremos con aquellos que mejor valoración media le hayan dado nuestros amigos, y en caso de empate, el que más se haya realizado por nuestros amigos.</p>
+
+							<table class="testing-table">
+								<thead>
+									<tr>
+										<td>Viaje</td>
+										<td>Valoración</td>
+										<td>Realizada por x amigos</td>
+									</tr>
+								</thead>
+
+								<tbody>
+									<% @friends_popular_trips.keys.each do |trip| %>
+										<tr>
+											<td><%= trip.id %></td>
+											<td><%= @friends_popular_trips[trip]["rating"] %></td>
+											<td><%= @friends_popular_trips[trip]["friends"] %></td>
+										</tr>
+									<% end %>
+								</tbody>
+							</table>
+
+							<p><text class="testing-container-step">-></text> Nos quedaremos con los 3 más populares de entre los viajes realizados por los usuarios que sigue nuestro usuario. Por lo tanto, estos serán los 3 viajes que se le recomendarán al usuario:</p>
+
+							<table class="testing-table">
+								<thead>
+									<tr>
+										<td>ID Viaje</td>
+										<td>Viaje</td>
+									</tr>
+								</thead>
+
+								<tbody>
+									<% @friends_most_popular_trips.each do |trip| %>
+										<tr>
+											<td><%= trip.id %></td>
+											<td><%= trip.title %></td>
+										</tr>
+									<% end %>
+								</tbody>
+							</table>
+						<% end %>
+					<% end %>
+				<% end %>
+			</div>
+		</div>
 	</div>
 </div>
 

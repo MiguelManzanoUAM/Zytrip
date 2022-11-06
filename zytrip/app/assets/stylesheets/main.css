@@ -394,7 +394,6 @@
   margin-left: 19%;
   margin-right: 19%;
   border: 1px solid white;
-  margin-top: 50px;
   border-radius: 10px;
   background-image: url(local/vacaciones.jpg);
   width: 63%;
@@ -880,9 +879,9 @@
 
 
 /**********************************************
- * Survey styles
+ * poll styles
 **********************************************/
-.main-survey{
+.main-preferences-poll{
   content: '';
   position: fixed;
   width: 100%;
@@ -900,11 +899,11 @@
   -moz-filter: blur(10px);*/
 }
 
-.main-survey-img{
+.main-preferences-poll-img{
   background-image: url(local/landscape4.jpeg);
 }
 
-.survey-title{
+.preferences-poll-title{
   text-align: center;
   font-size: 50px;
   font-weight: bold;
@@ -914,7 +913,7 @@
   margin-bottom: 100px;
 }
 
-.survey-container{
+.preferences-poll-container{
   margin-left: 120px;
   margin-bottom: 100px;
   width: 400px;
@@ -923,13 +922,13 @@
   border-radius: 20px;
 }
 
-.survey-container hr{
+.preferences-poll-container hr{
   border: 1px solid white;
   width: 90%;
   margin-left: 20px;
 }
 
-.survey-container-title{
+.preferences-poll-container-title{
   margin-top: 20px;
   padding-left: 20px;
   padding-right: 20px;
@@ -938,32 +937,32 @@
   color: white;
 }
 
-.survey-container img{
+.preferences-poll-container img{
   width: 50px;
   height: 50px;
   margin-right: 20px;
   background-color: transparents;
 }
 
-.survey-container-options{
+.preferences-poll-container-options{
   padding-left: 50px;
   font-size: 20px;
 }
 
-.survey-container-options input{
+.preferences-poll-container-options input{
   margin-right: 20px;
 }
 
-.survey-container-options label{
+.preferences-poll-container-options label{
   margin-bottom: 10px;
   color: lightgrey;
 }
 
-.survey-options{
+.preferences-poll-options{
   margin-bottom: 100px;
 }
 
-.survey-back-btn{
+.preferences-poll-back-btn{
   height: 50px;
   color: #fff;
   font-size: 20px;
@@ -976,7 +975,7 @@
   margin-right: 50px;
 }
 
-.survey-back-link{
+.preferences-poll-back-link{
   color: #fff;
   font-size: 20px;
   text-decoration: none;
@@ -984,11 +983,11 @@
   text-align: center;
 }
 
-.survey-back-link:hover{
+.preferences-poll-back-link:hover{
   color: #fff;
 }
 
-.survey-submit-btn{
+.preferences-poll-submit-btn{
   height: 50px;
   color: #fff;
   font-size: 20px;
@@ -1585,6 +1584,74 @@
   color: white;
 }
 
+/**********************************************
+ * Landing user opinion survey container styles
+**********************************************/
+.landing-user-survey-container{
+  margin-left: 19%;
+  margin-right: 19%;
+  border: 1px solid white;
+  border-radius: 10px;
+  width: 63%;
+  height: 270px;
+  background: linear-gradient(to right bottom,#7239fb,#baa0f7);
+  margin-bottom: 5%;
+}
+
+.landing-user-survey-container img{
+  margin-top: 30px;
+  height: 210px;
+  width: 95%;
+  padding-right: 20px;
+}
+
+.landing-user-survey-description-container{
+  margin-top: 30px;
+  margin-left: 20px;
+  height: 210px;
+  background-color: #fff;
+  margin-right: 100px;
+}
+
+.landing-user-survey-title{
+  font-size: 30px;
+  font-weight: bold;
+  padding-top: 1%;
+  padding-left: 3%;
+  color: #7239fb;
+}
+
+.landing-user-survey-description-text{
+  font-size: 20px;
+  color: lightgrey;
+  padding-top: 5px;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+
+.landing-user-survey-btn{
+  float: right;
+  background-color: #7239fb;
+  border-radius: 5px;
+  border:  1px solid #7239fb;
+  outline: none;
+  margin-right: 15px;
+  margin-top: 0px;
+}
+
+.landing-user-survey-btn-link{
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.landing-user-survey-btn-link:hover{
+  color: white;
+}
 /**********************************************
  * Trip add review
 **********************************************/

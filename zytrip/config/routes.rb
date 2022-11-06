@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'trips_research/survey'
+  resources :surveys
+  get 'trips_research/preferences_poll', to: "trips_research#preferences_poll", as: "preferences_poll"
   get 'trips_research/results'
   
 
@@ -13,6 +14,7 @@ Rails.application.routes.draw do
   resources :companies, only: [:new, :create]
   resources :services, only: [:new, :create]
   resources :reviews, only: [:new, :create]
+  resources :surveys, only: [:new, :create]
 
   resources :friendships, only: [:destroy]
   get "/friendships/add_friend", to: "friendships#add_friend"
@@ -61,6 +63,10 @@ Rails.application.routes.draw do
       end
 
       resources :reviews do
+        collection { post :import }
+      end
+
+      resources :surveys do
         collection { post :import }
       end
 

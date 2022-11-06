@@ -1,0 +1,99 @@
+<%= render "layouts/sidebar" %>
+
+<section>
+  <div class="admin-main" id="users">
+    <h2 class="admin-model-title"><strong>Administración de encuestas</strong></h2>
+
+    <div class="admin-new-panel">
+      <div class="row ">
+        <div class="col-7 admin-search">
+        </div>
+
+        <div class="col-5">
+          <%= form_tag import_admin_surveys_path, multipart: true, class: "form-inline" do %>
+            <div class="row">
+              <div class="col-4 import-form-btn text-center">
+                <%= link_to "Añadir encuesta", new_admin_survey_path, class: "import-form-btn-link" %>
+              </div>
+              <div class="col-4 import-form-btn text-center">
+                <%= link_to "Exportar CSV", admin_surveys_path(format: :csv), class: "import-form-btn-link" %>
+              </div>
+              <div class="col -4 text-center">
+                <%= submit_tag "Importar encuestas", class:"import-form-submit-btn" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <table class="admin-model-table">
+      <thead>
+        <tr>
+          <th>ID Encuesta</th>
+          <th>ID Usuario</th>
+          <th>Satisfacción resultados</th>
+          <th>Valoración Zytrip</th>
+          <th>Valoración búsqueda</th>
+          <th>Administración</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @surveys.each do |survey| %>
+          <tr>
+            <td><%= survey.id %></td>
+            <td><%= survey.user_id %></td>
+            <td>
+              <% survey.results_rating.round().times do  %>
+                <i class="fas fa-star"></i>
+              <% end %>
+
+              <% (5 - survey.results_rating.round()).times do %>
+                <i class="far fa-star"></i>
+              <% end %>
+            </td>
+            <td>
+              <% survey.zytrip_rating.round().times do  %>
+                <i class="fas fa-star"></i>
+              <% end %>
+
+              <% (5 - survey.zytrip_rating.round()).times do %>
+                <i class="far fa-star"></i>
+              <% end %>
+            </td>
+            <td>
+              <% survey.preferences_poll_rating.round().times do  %>
+                <i class="fas fa-star"></i>
+              <% end %>
+
+              <% (5 - survey.preferences_poll_rating.round()).times do %>
+                <i class="far fa-star"></i>
+              <% end %>
+            </td>
+            <td>
+              <div class="row justify-content-center">
+                <div class="col-2">
+                  <%= link_to edit_admin_survey_path(survey), title:"Editar" do %>
+                    <i class="fas fa-briefcase"></i>
+                  <% end %>
+                </div>
+
+                <div class="col-2">
+                  <%= button_to admin_survey_path(survey), method: :delete, class:"admin-delete-button", title:"Eliminar" do %> 
+                    <i class="fas fa-briefcase admin-delete"></i>
+                  <% end %>
+                </div>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<% content_for :view_specific_css do %>
+    <%= stylesheet_link_tag "admin" %>
+<% end %>

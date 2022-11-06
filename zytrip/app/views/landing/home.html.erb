@@ -200,6 +200,27 @@
 		<% end %>
 	</div>
 
+	<% if user_signed_in?%>
+		<div class="landing-user-survey-container">
+			<div class="row">
+				<div class="col-8">
+					<div class="landing-user-survey-description-container">
+						<p class="landing-user-survey-title">Queremos saber tu opinión </p>
+						<p class="landing-user-survey-description-text">¿Cuál es tu satisfacción con zytrip y los resultados obtenidos de las distintas recomendaciones?</p>
+
+						<div class="landing-user-survey-btn">
+							<%=link_to 'Realizar encuesta', new_trip_path, class:"landing-user-survey-btn-link"%>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-4">
+					<%= image_tag("local/survey.png") %>
+				</div>
+			</div>
+		</div>
+	<% end %>
+
 	<div class="landing-form-container">
 		<div class="landing-form-section">
 			<div class="landing-form-section-info">
@@ -209,7 +230,7 @@
 					Te facilitamos un proceso interactivo para conseguir el mejor de los resultados, y de esta forma, puedas encontrar tu viaje ideal
 				</p>
 				<div class="landing-form-info-btn">
-					<%=link_to 'Pruébalo', trips_research_survey_path, class:"landing-form-info-btn-link"%>
+					<%=link_to 'Pruébalo', preferences_poll_path, class:"landing-form-info-btn-link"%>
 				</div>
 			</div>
 		</div>

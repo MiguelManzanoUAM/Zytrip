@@ -1,5 +1,5 @@
 class TripsResearchController < ApplicationController
-  def survey
+  def preferences_poll
   end
 
   def results

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_01_102906) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_06_105451) do
   create_table "companies", force: :cascade do |t|
     t.boolean "family", default: false
     t.boolean "romantic", default: false
@@ -61,6 +61,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_01_102906) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["preference_id"], name: "index_services_on_preference_id"
+  end
+
+  create_table "surveys", force: :cascade do |t|
+    t.text "comment"
+    t.decimal "results_rating"
+    t.decimal "zytrip_rating"
+    t.decimal "preferences_poll_rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_surveys_on_user_id"
   end
 
   create_table "topics", force: :cascade do |t|
@@ -122,6 +133,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_01_102906) do
   add_foreign_key "reviews", "trips"
   add_foreign_key "reviews", "users"
   add_foreign_key "services", "preferences"
+  add_foreign_key "surveys", "users"
   add_foreign_key "topics", "preferences"
   add_foreign_key "trips", "users", column: "organizer_id"
 end

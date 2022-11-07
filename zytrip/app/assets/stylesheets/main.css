@@ -1652,6 +1652,81 @@
 .landing-user-survey-btn-link:hover{
   color: white;
 }
+
+.landing-user-survey-form-container{
+  margin-left: 19%;
+  margin-right: 19%;
+  border: 1px solid white;
+  border-radius: 10px;
+  width: 63%;
+  background: linear-gradient(to right bottom,#7239fb,#baa0f7);
+  margin-bottom: 5%;
+}
+
+.landing-user-survey-form-container img{
+  margin-top: 30px;
+  height: 210px;
+  width: 95%;
+  padding-right: 20px;
+}
+
+.landing-user-survey-form-description-container{
+  margin-top: 30px;
+  margin-left: 50px;
+  background-color: #fff;
+  margin-right: 50px;
+  margin-bottom: 20px;
+}
+
+.landing-user-survey-form-title{
+  font-size: 30px;
+  font-weight: bold;
+  padding-top: 1%;
+  text-align: center;
+  color: #7239fb;
+}
+
+.landing-user-survey-form-description-container hr{
+  border: 1px solid #7239fb;
+  width: 90%;
+  margin-left: 5%;
+}
+
+.landing-user-survey-form-step{
+  color: #7239fb;
+}
+
+.landing-user-survey-form-comment-area{
+  width: 100%;
+  height: 70px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+  margin-left: 20px;
+}
+
+.landing-user-survey-form-btns{
+  margin-top: 1%;
+  margin-bottom: 2%;
+}
+
+.landing-user-survey-form-submit-btn{
+  background-color: #7239fb;
+  border-radius: 5px;
+  border:  1px solid #7239fb;
+  outline: none;
+  text-align: center;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+
 /**********************************************
  * Trip add review
 **********************************************/

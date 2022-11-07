@@ -201,24 +201,89 @@
 	</div>
 
 	<% if user_signed_in?%>
-		<div class="landing-user-survey-container">
-			<div class="row">
-				<div class="col-8">
-					<div class="landing-user-survey-description-container">
-						<p class="landing-user-survey-title">Queremos saber tu opinión </p>
-						<p class="landing-user-survey-description-text">¿Cuál es tu satisfacción con zytrip y los resultados obtenidos de las distintas recomendaciones?</p>
 
-						<div class="landing-user-survey-btn">
-							<%=link_to 'Realizar encuesta', new_trip_path, class:"landing-user-survey-btn-link"%>
+		<div id="surveycontainer">
+			<div class="landing-user-survey-container">
+				<div class="row">
+					<div class="col-8">
+						<div class="landing-user-survey-description-container">
+							<p class="landing-user-survey-title">Queremos saber tu opinión </p>
+							<p class="landing-user-survey-description-text">¿Cuál es tu satisfacción con zytrip y los resultados obtenidos de las distintas recomendaciones?</p>
+
+							<div class="landing-user-survey-btn">
+								<text onclick="show_survey_form()", id="surveybtn", class="landing-user-survey-btn-link">Realizar encuesta</text>
+							</div>
 						</div>
 					</div>
-				</div>
 
-				<div class="col-4">
-					<%= image_tag("local/survey.png") %>
+					<div class="col-4">
+						<%= image_tag("local/survey.png") %>
+					</div>
 				</div>
 			</div>
 		</div>
+
+		<div id="surveyform">
+			<div class="landing-user-survey-form-container">
+				<div class="landing-user-survey-form-description-container">
+					<p class="landing-user-survey-title text-center">Queremos saber tu opinión </p>
+
+			        <% @survey = Survey.new() %>
+			        <%= form_tag surveys_path(@survey), :method => 'post' do %>
+				        <div class="row">
+				            <div class="col-md-12 mb-3">
+				            	<label class="create-review-trip-form-label"><text class="landing-user-survey-form-step"> -> </text>Satisfacción con los resultados obtenidos de las distintas recomendaciones:</label>
+				              	<i class="far fa-star" aria-hidden="true" id="r_s1" onclick="r_s1_click()"></i>
+				              	<i class="far fa-star" aria-hidden="true" id="r_s2" onclick="r_s2_click()"></i>
+				              	<i class="far fa-star" aria-hidden="true" id="r_s3" onclick="r_s3_click()"></i>
+				              	<i class="far fa-star" aria-hidden="true" id="r_s4" onclick="r_s4_click()"></i>
+				              	<i class="far fa-star" aria-hidden="true" id="r_s5" onclick="r_s5_click()"></i>
+				              	<input name="results_rating" type="hidden" id="results_rating">
+				            </div>
+				        </div>
+
+				        <div class="row">
+				            <div class="col-md-12 mb-3">
+				            	<label class="create-review-trip-form-label"><text class="landing-user-survey-form-step"> -> </text>¿Cómo valorarías la búsqueda interactiva que ofrece Zytrip?:</label>
+				              	<i class="far fa-star" aria-hidden="true" id="p_s1" onclick="p_s1_click()"></i>
+				              	<i class="far fa-star" aria-hidden="true" id="p_s2" onclick="p_s2_click()"></i>
+				              	<i class="far fa-star" aria-hidden="true" id="p_s3" onclick="p_s3_click()"></i>
+				              	<i class="far fa-star" aria-hidden="true" id="p_s4" onclick="p_s4_click()"></i>
+				              	<i class="far fa-star" aria-hidden="true" id="p_s5" onclick="p_s5_click()"></i>
+				              	<input name="preferences_poll_rating" type="hidden" id="preferences_poll_rating">
+				            </div>
+				        </div>
+
+				        <div class="row">
+				            <div class="col-md-12 mb-3">
+				            	<label class="create-review-trip-form-label"><text class="landing-user-survey-form-step"> -> </text>Valoración general de Zytrip:</label>
+				              	<i class="far fa-star" aria-hidden="true" id="z_s1" onclick="z_s1_click()"></i>
+				              	<i class="far fa-star" aria-hidden="true" id="z_s2" onclick="z_s2_click()"></i>
+				              	<i class="far fa-star" aria-hidden="true" id="z_s3" onclick="z_s3_click()"></i>
+				              	<i class="far fa-star" aria-hidden="true" id="z_s4" onclick="z_s4_click()"></i>
+				              	<i class="far fa-star" aria-hidden="true" id="z_s5" onclick="z_s5_click()"></i>
+				              	<input name="zytrip_rating" type="hidden" id="zytrip_rating">
+				            </div>
+				        </div>
+
+				        <div class="row">
+				            <div class="col-md-11 mb-3">
+				              	<label class="create-review-trip-form-label"><text class="landing-user-survey-form-step"> -> </text>Puedes dejar una valoración o cualquier mejora que te gustaría ver en nuestras futuras versiones</label>
+				              	<%= text_area_tag :comment, params[:comment], class:"landing-user-survey-form-comment-area", autofocus: true %>
+				            </div>
+				        </div>
+
+				        <div class="landing-user-survey-form-btns">
+				            <div class="row justify-content-center">
+				              	<div class="col-4 text-center">
+				                	<%= submit_tag "Publicar valoración", class: "landing-user-survey-form-submit-btn", onclick:"set_ratings_values();" %>
+				              	</div>
+				            </div>
+				        </div>
+				    <% end %>
+				</div>
+			</div>
+      	</div>
 	<% end %>
 
 	<div class="landing-form-container">
@@ -237,6 +302,615 @@
 	</div>
 
 </div>
+
+<!-- Funciones javascript -->
+
+<script type="text/javascript">
+
+	document.getElementById('surveycontainer').style.display = 'block';
+  	document.getElementById('surveyform').style.display = 'none';
+
+	/////////////////////////////////////////////
+	// Change dynamic info and styles
+	/////////////////////////////////////////////
+
+	function show_survey_form(){
+	    if(document.getElementById('surveyform').style.display == 'none'){
+	        document.getElementById('surveyform').style.display = 'block';
+	        document.getElementById('surveycontainer').style.display = 'none';
+	    }
+	}
+
+	/////////////////////////////////////////////
+	// Survey star results inputs styles onclick
+	/////////////////////////////////////////////
+
+	function r_s1_click(){
+		if(document.getElementById('r_s1').className == "far fa-star"){
+			document.getElementById('r_s1').className = "fas fa-star";
+			document.getElementById('r_s1').style.color = "#7239fb";
+			document.getElementById('r_s2').className = "far fa-star";
+			document.getElementById('r_s2').style.color = "black";
+			document.getElementById('r_s3').className = "far fa-star";
+			document.getElementById('r_s3').style.color = "black";
+			document.getElementById('r_s4').className = "far fa-star";
+			document.getElementById('r_s4').style.color = "black";
+			document.getElementById('r_s5').className = "far fa-star";
+			document.getElementById('r_s5').style.color = "black";
+		}else if ((document.getElementById('r_s2').className == "fas fa-star") || (document.getElementById('r_s3').className == "fas fa-star") || (document.getElementById('r_s4').className == "fas fa-star") || (document.getElementById('r_s5').className == "fas fa-star")) {
+			document.getElementById('r_s1').className = "fas fa-star";
+			document.getElementById('r_s1').style.color = "#7239fb";
+			document.getElementById('r_s2').className = "far fa-star";
+			document.getElementById('r_s2').style.color = "black";
+			document.getElementById('r_s3').className = "far fa-star";
+			document.getElementById('r_s3').style.color = "black";
+			document.getElementById('r_s4').className = "far fa-star";
+			document.getElementById('r_s4').style.color = "black";
+			document.getElementById('r_s5').className = "far fa-star";
+			document.getElementById('r_s5').style.color = "black";
+		}else{
+			document.getElementById('r_s1').className = "far fa-star";
+			document.getElementById('r_s1').style.color = "black";
+			document.getElementById('r_s2').className = "far fa-star";
+			document.getElementById('r_s2').style.color = "black";
+			document.getElementById('r_s3').className = "far fa-star";
+			document.getElementById('r_s3').style.color = "black";
+			document.getElementById('r_s4').className = "far fa-star";
+			document.getElementById('r_s4').style.color = "black";
+			document.getElementById('r_s5').className = "far fa-star";
+			document.getElementById('r_s5').style.color = "black";
+		}
+	}
+
+	function r_s2_click(){
+		if(document.getElementById('r_s2').className == "far fa-star"){
+			document.getElementById('r_s1').className = "fas fa-star";
+			document.getElementById('r_s1').style.color = "#7239fb";
+			document.getElementById('r_s2').className = "fas fa-star";
+			document.getElementById('r_s2').style.color = "#7239fb";
+			document.getElementById('r_s3').className = "far fa-star";
+			document.getElementById('r_s3').style.color = "black";
+			document.getElementById('r_s4').className = "far fa-star";
+			document.getElementById('r_s4').style.color = "black";
+			document.getElementById('r_s5').className = "far fa-star";
+			document.getElementById('r_s5').style.color = "black";
+		}else if ((document.getElementById('r_s3').className == "fas fa-star") || (document.getElementById('r_s4').className == "fas fa-star") || (document.getElementById('r_s5').className == "fas fa-star")) {
+			document.getElementById('r_s1').className = "fas fa-star";
+			document.getElementById('r_s1').style.color = "#7239fb";
+			document.getElementById('r_s2').className = "fas fa-star";
+			document.getElementById('r_s2').style.color = "#7239fb";
+			document.getElementById('r_s3').className = "far fa-star";
+			document.getElementById('r_s3').style.color = "black";
+			document.getElementById('r_s4').className = "far fa-star";
+			document.getElementById('r_s4').style.color = "black";
+			document.getElementById('r_s5').className = "far fa-star";
+			document.getElementById('r_s5').style.color = "black";
+		}else{
+			document.getElementById('r_s1').className = "far fa-star";
+			document.getElementById('r_s1').style.color = "black";
+			document.getElementById('r_s2').className = "far fa-star";
+			document.getElementById('r_s2').style.color = "black";
+			document.getElementById('r_s3').className = "far fa-star";
+			document.getElementById('r_s3').style.color = "black";
+			document.getElementById('r_s4').className = "far fa-star";
+			document.getElementById('r_s4').style.color = "black";
+			document.getElementById('r_s5').className = "far fa-star";
+			document.getElementById('r_s5').style.color = "black";
+		}
+	}
+
+	function r_s3_click(){
+		if(document.getElementById('r_s3').className == "far fa-star"){
+			document.getElementById('r_s1').className = "fas fa-star";
+			document.getElementById('r_s1').style.color = "#7239fb";
+			document.getElementById('r_s2').className = "fas fa-star";
+			document.getElementById('r_s2').style.color = "#7239fb";
+			document.getElementById('r_s3').className = "fas fa-star";
+			document.getElementById('r_s3').style.color = "#7239fb";
+			document.getElementById('r_s4').className = "far fa-star";
+			document.getElementById('r_s4').style.color = "black";
+			document.getElementById('r_s5').className = "far fa-star";
+			document.getElementById('r_s5').style.color = "black";
+		}else if ((document.getElementById('r_s4').className == "fas fa-star") || (document.getElementById('r_s5').className == "fas fa-star")) {
+			document.getElementById('r_s1').className = "fas fa-star";
+			document.getElementById('r_s1').style.color = "#7239fb";
+			document.getElementById('r_s2').className = "fas fa-star";
+			document.getElementById('r_s2').style.color = "#7239fb";
+			document.getElementById('r_s3').className = "fas fa-star";
+			document.getElementById('r_s3').style.color = "#7239fb";
+			document.getElementById('r_s4').className = "far fa-star";
+			document.getElementById('r_s4').style.color = "black";
+			document.getElementById('r_s5').className = "far fa-star";
+			document.getElementById('r_s5').style.color = "black";
+		}else{
+			document.getElementById('r_s1').className = "far fa-star";
+			document.getElementById('r_s1').style.color = "black";
+			document.getElementById('r_s2').className = "far fa-star";
+			document.getElementById('r_s2').style.color = "black";
+			document.getElementById('r_s3').className = "far fa-star";
+			document.getElementById('r_s3').style.color = "black";
+			document.getElementById('r_s4').className = "far fa-star";
+			document.getElementById('r_s4').style.color = "black";
+			document.getElementById('r_s5').className = "far fa-star";
+			document.getElementById('r_s5').style.color = "black";
+		}
+	}
+
+	function r_s4_click(){
+		if(document.getElementById('r_s4').className == "far fa-star"){
+			document.getElementById('r_s1').className = "fas fa-star";
+			document.getElementById('r_s1').style.color = "#7239fb";
+			document.getElementById('r_s2').className = "fas fa-star";
+			document.getElementById('r_s2').style.color = "#7239fb";
+			document.getElementById('r_s3').className = "fas fa-star";
+			document.getElementById('r_s3').style.color = "#7239fb";
+			document.getElementById('r_s4').className = "fas fa-star";
+			document.getElementById('r_s4').style.color = "#7239fb";
+			document.getElementById('r_s5').className = "far fa-star";
+			document.getElementById('r_s5').style.color = "black";
+		}else if (document.getElementById('r_s5').className == "fas fa-star") {
+			document.getElementById('r_s1').className = "fas fa-star";
+			document.getElementById('r_s1').style.color = "#7239fb";
+			document.getElementById('r_s2').className = "fas fa-star";
+			document.getElementById('r_s2').style.color = "#7239fb";
+			document.getElementById('r_s3').className = "fas fa-star";
+			document.getElementById('r_s3').style.color = "#7239fb";
+			document.getElementById('r_s4').className = "fas fa-star";
+			document.getElementById('r_s4').style.color = "#7239fb";
+			document.getElementById('r_s5').className = "far fa-star";
+			document.getElementById('r_s5').style.color = "black";
+		}else{
+			document.getElementById('r_s1').className = "far fa-star";
+			document.getElementById('r_s1').style.color = "black";
+			document.getElementById('r_s2').className = "far fa-star";
+			document.getElementById('r_s2').style.color = "black";
+			document.getElementById('r_s3').className = "far fa-star";
+			document.getElementById('r_s3').style.color = "black";
+			document.getElementById('r_s4').className = "far fa-star";
+			document.getElementById('r_s4').style.color = "black";
+			document.getElementById('r_s5').className = "far fa-star";
+			document.getElementById('r_s5').style.color = "black";
+		}
+	}
+
+	function r_s5_click(){
+		if(document.getElementById('r_s5').className == "far fa-star"){
+			document.getElementById('r_s1').className = "fas fa-star";
+			document.getElementById('r_s1').style.color = "#7239fb";
+			document.getElementById('r_s2').className = "fas fa-star";
+			document.getElementById('r_s2').style.color = "#7239fb";
+			document.getElementById('r_s3').className = "fas fa-star";
+			document.getElementById('r_s3').style.color = "#7239fb";
+			document.getElementById('r_s4').className = "fas fa-star";
+			document.getElementById('r_s4').style.color = "#7239fb";
+			document.getElementById('r_s5').className = "fas fa-star";
+			document.getElementById('r_s5').style.color = "#7239fb";
+		}else{
+			document.getElementById('r_s1').className = "far fa-star";
+			document.getElementById('r_s1').style.color = "black";
+			document.getElementById('r_s2').className = "far fa-star";
+			document.getElementById('r_s2').style.color = "black";
+			document.getElementById('r_s3').className = "far fa-star";
+			document.getElementById('r_s3').style.color = "black";
+			document.getElementById('r_s4').className = "far fa-star";
+			document.getElementById('r_s4').style.color = "black";
+			document.getElementById('r_s5').className = "far fa-star";
+			document.getElementById('r_s5').style.color = "black";
+		}
+	}
+
+	/////////////////////////////////////////////
+	// Survey star poll inputs styles onclick
+	/////////////////////////////////////////////
+
+	function p_s1_click(){
+		if(document.getElementById('p_s1').className == "far fa-star"){
+			document.getElementById('p_s1').className = "fas fa-star";
+			document.getElementById('p_s1').style.color = "#7239fb";
+			document.getElementById('p_s2').className = "far fa-star";
+			document.getElementById('p_s2').style.color = "black";
+			document.getElementById('p_s3').className = "far fa-star";
+			document.getElementById('p_s3').style.color = "black";
+			document.getElementById('p_s4').className = "far fa-star";
+			document.getElementById('p_s4').style.color = "black";
+			document.getElementById('p_s5').className = "far fa-star";
+			document.getElementById('p_s5').style.color = "black";
+		}else if ((document.getElementById('p_s2').className == "fas fa-star") || (document.getElementById('p_s3').className == "fas fa-star") || (document.getElementById('p_s4').className == "fas fa-star") || (document.getElementById('p_s5').className == "fas fa-star")) {
+			document.getElementById('p_s1').className = "fas fa-star";
+			document.getElementById('p_s1').style.color = "#7239fb";
+			document.getElementById('p_s2').className = "far fa-star";
+			document.getElementById('p_s2').style.color = "black";
+			document.getElementById('p_s3').className = "far fa-star";
+			document.getElementById('p_s3').style.color = "black";
+			document.getElementById('p_s4').className = "far fa-star";
+			document.getElementById('p_s4').style.color = "black";
+			document.getElementById('p_s5').className = "far fa-star";
+			document.getElementById('p_s5').style.color = "black";
+		}else{
+			document.getElementById('p_s1').className = "far fa-star";
+			document.getElementById('p_s1').style.color = "black";
+			document.getElementById('p_s2').className = "far fa-star";
+			document.getElementById('p_s2').style.color = "black";
+			document.getElementById('p_s3').className = "far fa-star";
+			document.getElementById('p_s3').style.color = "black";
+			document.getElementById('p_s4').className = "far fa-star";
+			document.getElementById('p_s4').style.color = "black";
+			document.getElementById('p_s5').className = "far fa-star";
+			document.getElementById('p_s5').style.color = "black";
+		}
+	}
+
+	function p_s2_click(){
+		if(document.getElementById('p_s2').className == "far fa-star"){
+			document.getElementById('p_s1').className = "fas fa-star";
+			document.getElementById('p_s1').style.color = "#7239fb";
+			document.getElementById('p_s2').className = "fas fa-star";
+			document.getElementById('p_s2').style.color = "#7239fb";
+			document.getElementById('p_s3').className = "far fa-star";
+			document.getElementById('p_s3').style.color = "black";
+			document.getElementById('p_s4').className = "far fa-star";
+			document.getElementById('p_s4').style.color = "black";
+			document.getElementById('p_s5').className = "far fa-star";
+			document.getElementById('p_s5').style.color = "black";
+		}else if ((document.getElementById('p_s3').className == "fas fa-star") || (document.getElementById('p_s4').className == "fas fa-star") || (document.getElementById('p_s5').className == "fas fa-star")) {
+			document.getElementById('p_s1').className = "fas fa-star";
+			document.getElementById('p_s1').style.color = "#7239fb";
+			document.getElementById('p_s2').className = "fas fa-star";
+			document.getElementById('p_s2').style.color = "#7239fb";
+			document.getElementById('p_s3').className = "far fa-star";
+			document.getElementById('p_s3').style.color = "black";
+			document.getElementById('p_s4').className = "far fa-star";
+			document.getElementById('p_s4').style.color = "black";
+			document.getElementById('p_s5').className = "far fa-star";
+			document.getElementById('p_s5').style.color = "black";
+		}else{
+			document.getElementById('p_s1').className = "far fa-star";
+			document.getElementById('p_s1').style.color = "black";
+			document.getElementById('p_s2').className = "far fa-star";
+			document.getElementById('p_s2').style.color = "black";
+			document.getElementById('p_s3').className = "far fa-star";
+			document.getElementById('p_s3').style.color = "black";
+			document.getElementById('p_s4').className = "far fa-star";
+			document.getElementById('p_s4').style.color = "black";
+			document.getElementById('p_s5').className = "far fa-star";
+			document.getElementById('p_s5').style.color = "black";
+		}
+	}
+
+	function p_s3_click(){
+		if(document.getElementById('p_s3').className == "far fa-star"){
+			document.getElementById('p_s1').className = "fas fa-star";
+			document.getElementById('p_s1').style.color = "#7239fb";
+			document.getElementById('p_s2').className = "fas fa-star";
+			document.getElementById('p_s2').style.color = "#7239fb";
+			document.getElementById('p_s3').className = "fas fa-star";
+			document.getElementById('p_s3').style.color = "#7239fb";
+			document.getElementById('p_s4').className = "far fa-star";
+			document.getElementById('p_s4').style.color = "black";
+			document.getElementById('p_s5').className = "far fa-star";
+			document.getElementById('p_s5').style.color = "black";
+		}else if ((document.getElementById('p_s4').className == "fas fa-star") || (document.getElementById('p_s5').className == "fas fa-star")) {
+			document.getElementById('p_s1').className = "fas fa-star";
+			document.getElementById('p_s1').style.color = "#7239fb";
+			document.getElementById('p_s2').className = "fas fa-star";
+			document.getElementById('p_s2').style.color = "#7239fb";
+			document.getElementById('p_s3').className = "fas fa-star";
+			document.getElementById('p_s3').style.color = "#7239fb";
+			document.getElementById('p_s4').className = "far fa-star";
+			document.getElementById('p_s4').style.color = "black";
+			document.getElementById('p_s5').className = "far fa-star";
+			document.getElementById('p_s5').style.color = "black";
+		}else{
+			document.getElementById('p_s1').className = "far fa-star";
+			document.getElementById('p_s1').style.color = "black";
+			document.getElementById('p_s2').className = "far fa-star";
+			document.getElementById('p_s2').style.color = "black";
+			document.getElementById('p_s3').className = "far fa-star";
+			document.getElementById('p_s3').style.color = "black";
+			document.getElementById('p_s4').className = "far fa-star";
+			document.getElementById('p_s4').style.color = "black";
+			document.getElementById('p_s5').className = "far fa-star";
+			document.getElementById('p_s5').style.color = "black";
+		}
+	}
+
+	function p_s4_click(){
+		if(document.getElementById('p_s4').className == "far fa-star"){
+			document.getElementById('p_s1').className = "fas fa-star";
+			document.getElementById('p_s1').style.color = "#7239fb";
+			document.getElementById('p_s2').className = "fas fa-star";
+			document.getElementById('p_s2').style.color = "#7239fb";
+			document.getElementById('p_s3').className = "fas fa-star";
+			document.getElementById('p_s3').style.color = "#7239fb";
+			document.getElementById('p_s4').className = "fas fa-star";
+			document.getElementById('p_s4').style.color = "#7239fb";
+			document.getElementById('p_s5').className = "far fa-star";
+			document.getElementById('p_s5').style.color = "black";
+		}else if (document.getElementById('p_s5').className == "fas fa-star") {
+			document.getElementById('p_s1').className = "fas fa-star";
+			document.getElementById('p_s1').style.color = "#7239fb";
+			document.getElementById('p_s2').className = "fas fa-star";
+			document.getElementById('p_s2').style.color = "#7239fb";
+			document.getElementById('p_s3').className = "fas fa-star";
+			document.getElementById('p_s3').style.color = "#7239fb";
+			document.getElementById('p_s4').className = "fas fa-star";
+			document.getElementById('p_s4').style.color = "#7239fb";
+			document.getElementById('p_s5').className = "far fa-star";
+			document.getElementById('p_s5').style.color = "black";
+		}else{
+			document.getElementById('p_s1').className = "far fa-star";
+			document.getElementById('p_s1').style.color = "black";
+			document.getElementById('p_s2').className = "far fa-star";
+			document.getElementById('p_s2').style.color = "black";
+			document.getElementById('p_s3').className = "far fa-star";
+			document.getElementById('p_s3').style.color = "black";
+			document.getElementById('p_s4').className = "far fa-star";
+			document.getElementById('p_s4').style.color = "black";
+			document.getElementById('p_s5').className = "far fa-star";
+			document.getElementById('p_s5').style.color = "black";
+		}
+	}
+
+	function p_s5_click(){
+		if(document.getElementById('p_s5').className == "far fa-star"){
+			document.getElementById('p_s1').className = "fas fa-star";
+			document.getElementById('p_s1').style.color = "#7239fb";
+			document.getElementById('p_s2').className = "fas fa-star";
+			document.getElementById('p_s2').style.color = "#7239fb";
+			document.getElementById('p_s3').className = "fas fa-star";
+			document.getElementById('p_s3').style.color = "#7239fb";
+			document.getElementById('p_s4').className = "fas fa-star";
+			document.getElementById('p_s4').style.color = "#7239fb";
+			document.getElementById('p_s5').className = "fas fa-star";
+			document.getElementById('p_s5').style.color = "#7239fb";
+		}else{
+			document.getElementById('p_s1').className = "far fa-star";
+			document.getElementById('p_s1').style.color = "black";
+			document.getElementById('p_s2').className = "far fa-star";
+			document.getElementById('p_s2').style.color = "black";
+			document.getElementById('p_s3').className = "far fa-star";
+			document.getElementById('p_s3').style.color = "black";
+			document.getElementById('p_s4').className = "far fa-star";
+			document.getElementById('p_s4').style.color = "black";
+			document.getElementById('p_s5').className = "far fa-star";
+			document.getElementById('p_s5').style.color = "black";
+		}
+	}
+
+	/////////////////////////////////////////////
+	// Survey star zytrip inputs styles onclick
+	/////////////////////////////////////////////
+
+	function z_s1_click(){
+		if(document.getElementById('z_s1').className == "far fa-star"){
+			document.getElementById('z_s1').className = "fas fa-star";
+			document.getElementById('z_s1').style.color = "#7239fb";
+			document.getElementById('z_s2').className = "far fa-star";
+			document.getElementById('z_s2').style.color = "black";
+			document.getElementById('z_s3').className = "far fa-star";
+			document.getElementById('z_s3').style.color = "black";
+			document.getElementById('z_s4').className = "far fa-star";
+			document.getElementById('z_s4').style.color = "black";
+			document.getElementById('z_s5').className = "far fa-star";
+			document.getElementById('z_s5').style.color = "black";
+		}else if ((document.getElementById('z_s2').className == "fas fa-star") || (document.getElementById('z_s3').className == "fas fa-star") || (document.getElementById('z_s4').className == "fas fa-star") || (document.getElementById('z_s5').className == "fas fa-star")) {
+			document.getElementById('z_s1').className = "fas fa-star";
+			document.getElementById('z_s1').style.color = "#7239fb";
+			document.getElementById('z_s2').className = "far fa-star";
+			document.getElementById('z_s2').style.color = "black";
+			document.getElementById('z_s3').className = "far fa-star";
+			document.getElementById('z_s3').style.color = "black";
+			document.getElementById('z_s4').className = "far fa-star";
+			document.getElementById('z_s4').style.color = "black";
+			document.getElementById('z_s5').className = "far fa-star";
+			document.getElementById('z_s5').style.color = "black";
+		}else{
+			document.getElementById('z_s1').className = "far fa-star";
+			document.getElementById('z_s1').style.color = "black";
+			document.getElementById('z_s2').className = "far fa-star";
+			document.getElementById('z_s2').style.color = "black";
+			document.getElementById('z_s3').className = "far fa-star";
+			document.getElementById('z_s3').style.color = "black";
+			document.getElementById('z_s4').className = "far fa-star";
+			document.getElementById('z_s4').style.color = "black";
+			document.getElementById('z_s5').className = "far fa-star";
+			document.getElementById('z_s5').style.color = "black";
+		}
+	}
+
+	function z_s2_click(){
+		if(document.getElementById('z_s2').className == "far fa-star"){
+			document.getElementById('z_s1').className = "fas fa-star";
+			document.getElementById('z_s1').style.color = "#7239fb";
+			document.getElementById('z_s2').className = "fas fa-star";
+			document.getElementById('z_s2').style.color = "#7239fb";
+			document.getElementById('z_s3').className = "far fa-star";
+			document.getElementById('z_s3').style.color = "black";
+			document.getElementById('z_s4').className = "far fa-star";
+			document.getElementById('z_s4').style.color = "black";
+			document.getElementById('z_s5').className = "far fa-star";
+			document.getElementById('z_s5').style.color = "black";
+		}else if ((document.getElementById('z_s3').className == "fas fa-star") || (document.getElementById('z_s4').className == "fas fa-star") || (document.getElementById('z_s5').className == "fas fa-star")) {
+			document.getElementById('z_s1').className = "fas fa-star";
+			document.getElementById('z_s1').style.color = "#7239fb";
+			document.getElementById('z_s2').className = "fas fa-star";
+			document.getElementById('z_s2').style.color = "#7239fb";
+			document.getElementById('z_s3').className = "far fa-star";
+			document.getElementById('z_s3').style.color = "black";
+			document.getElementById('z_s4').className = "far fa-star";
+			document.getElementById('z_s4').style.color = "black";
+			document.getElementById('z_s5').className = "far fa-star";
+			document.getElementById('z_s5').style.color = "black";
+		}else{
+			document.getElementById('z_s1').className = "far fa-star";
+			document.getElementById('z_s1').style.color = "black";
+			document.getElementById('z_s2').className = "far fa-star";
+			document.getElementById('z_s2').style.color = "black";
+			document.getElementById('z_s3').className = "far fa-star";
+			document.getElementById('z_s3').style.color = "black";
+			document.getElementById('z_s4').className = "far fa-star";
+			document.getElementById('z_s4').style.color = "black";
+			document.getElementById('z_s5').className = "far fa-star";
+			document.getElementById('z_s5').style.color = "black";
+		}
+	}
+
+	function z_s3_click(){
+		if(document.getElementById('z_s3').className == "far fa-star"){
+			document.getElementById('z_s1').className = "fas fa-star";
+			document.getElementById('z_s1').style.color = "#7239fb";
+			document.getElementById('z_s2').className = "fas fa-star";
+			document.getElementById('z_s2').style.color = "#7239fb";
+			document.getElementById('z_s3').className = "fas fa-star";
+			document.getElementById('z_s3').style.color = "#7239fb";
+			document.getElementById('z_s4').className = "far fa-star";
+			document.getElementById('z_s4').style.color = "black";
+			document.getElementById('z_s5').className = "far fa-star";
+			document.getElementById('z_s5').style.color = "black";
+		}else if ((document.getElementById('z_s4').className == "fas fa-star") || (document.getElementById('z_s5').className == "fas fa-star")) {
+			document.getElementById('z_s1').className = "fas fa-star";
+			document.getElementById('z_s1').style.color = "#7239fb";
+			document.getElementById('z_s2').className = "fas fa-star";
+			document.getElementById('z_s2').style.color = "#7239fb";
+			document.getElementById('z_s3').className = "fas fa-star";
+			document.getElementById('z_s3').style.color = "#7239fb";
+			document.getElementById('z_s4').className = "far fa-star";
+			document.getElementById('z_s4').style.color = "black";
+			document.getElementById('z_s5').className = "far fa-star";
+			document.getElementById('z_s5').style.color = "black";
+		}else{
+			document.getElementById('z_s1').className = "far fa-star";
+			document.getElementById('z_s1').style.color = "black";
+			document.getElementById('z_s2').className = "far fa-star";
+			document.getElementById('z_s2').style.color = "black";
+			document.getElementById('z_s3').className = "far fa-star";
+			document.getElementById('z_s3').style.color = "black";
+			document.getElementById('z_s4').className = "far fa-star";
+			document.getElementById('z_s4').style.color = "black";
+			document.getElementById('z_s5').className = "far fa-star";
+			document.getElementById('z_s5').style.color = "black";
+		}
+	}
+
+	function z_s4_click(){
+		if(document.getElementById('z_s4').className == "far fa-star"){
+			document.getElementById('z_s1').className = "fas fa-star";
+			document.getElementById('z_s1').style.color = "#7239fb";
+			document.getElementById('z_s2').className = "fas fa-star";
+			document.getElementById('z_s2').style.color = "#7239fb";
+			document.getElementById('z_s3').className = "fas fa-star";
+			document.getElementById('z_s3').style.color = "#7239fb";
+			document.getElementById('z_s4').className = "fas fa-star";
+			document.getElementById('z_s4').style.color = "#7239fb";
+			document.getElementById('z_s5').className = "far fa-star";
+			document.getElementById('z_s5').style.color = "black";
+		}else if (document.getElementById('z_s5').className == "fas fa-star") {
+			document.getElementById('z_s1').className = "fas fa-star";
+			document.getElementById('z_s1').style.color = "#7239fb";
+			document.getElementById('z_s2').className = "fas fa-star";
+			document.getElementById('z_s2').style.color = "#7239fb";
+			document.getElementById('z_s3').className = "fas fa-star";
+			document.getElementById('z_s3').style.color = "#7239fb";
+			document.getElementById('z_s4').className = "fas fa-star";
+			document.getElementById('z_s4').style.color = "#7239fb";
+			document.getElementById('z_s5').className = "far fa-star";
+			document.getElementById('z_s5').style.color = "black";
+		}else{
+			document.getElementById('z_s1').className = "far fa-star";
+			document.getElementById('z_s1').style.color = "black";
+			document.getElementById('z_s2').className = "far fa-star";
+			document.getElementById('z_s2').style.color = "black";
+			document.getElementById('z_s3').className = "far fa-star";
+			document.getElementById('z_s3').style.color = "black";
+			document.getElementById('z_s4').className = "far fa-star";
+			document.getElementById('z_s4').style.color = "black";
+			document.getElementById('z_s5').className = "far fa-star";
+			document.getElementById('z_s5').style.color = "black";
+		}
+	}
+
+	function z_s5_click(){
+		if(document.getElementById('z_s5').className == "far fa-star"){
+			document.getElementById('z_s1').className = "fas fa-star";
+			document.getElementById('z_s1').style.color = "#7239fb";
+			document.getElementById('z_s2').className = "fas fa-star";
+			document.getElementById('z_s2').style.color = "#7239fb";
+			document.getElementById('z_s3').className = "fas fa-star";
+			document.getElementById('z_s3').style.color = "#7239fb";
+			document.getElementById('z_s4').className = "fas fa-star";
+			document.getElementById('z_s4').style.color = "#7239fb";
+			document.getElementById('z_s5').className = "fas fa-star";
+			document.getElementById('z_s5').style.color = "#7239fb";
+		}else{
+			document.getElementById('z_s1').className = "far fa-star";
+			document.getElementById('z_s1').style.color = "black";
+			document.getElementById('z_s2').className = "far fa-star";
+			document.getElementById('z_s2').style.color = "black";
+			document.getElementById('z_s3').className = "far fa-star";
+			document.getElementById('z_s3').style.color = "black";
+			document.getElementById('z_s4').className = "far fa-star";
+			document.getElementById('z_s4').style.color = "black";
+			document.getElementById('z_s5').className = "far fa-star";
+			document.getElementById('z_s5').style.color = "black";
+		}
+	}
+
+	function get_r_stars(){
+		if(document.getElementById('r_s5').className == "fas fa-star"){
+			return 5;
+		}else if(document.getElementById('r_s4').className == "fas fa-star"){
+			return 4;
+		}else if(document.getElementById('r_s3').className == "fas fa-star"){
+			return 3;
+		}else if(document.getElementById('r_s2').className == "fas fa-star"){
+			return 2;
+		}else if(document.getElementById('r_s1').className == "fas fa-star"){
+			return 1;
+		}else{
+			return 0;
+		}
+	}
+
+	function get_p_stars(){
+		if(document.getElementById('p_s5').className == "fas fa-star"){
+			return 5;
+		}else if(document.getElementById('p_s4').className == "fas fa-star"){
+			return 4;
+		}else if(document.getElementById('p_s3').className == "fas fa-star"){
+			return 3;
+		}else if(document.getElementById('p_s2').className == "fas fa-star"){
+			return 2;
+		}else if(document.getElementById('p_s1').className == "fas fa-star"){
+			return 1;
+		}else{
+			return 0;
+		}
+	}
+
+	function get_z_stars(){
+		if(document.getElementById('z_s5').className == "fas fa-star"){
+			return 5;
+		}else if(document.getElementById('z_s4').className == "fas fa-star"){
+			return 4;
+		}else if(document.getElementById('z_s3').className == "fas fa-star"){
+			return 3;
+		}else if(document.getElementById('z_s2').className == "fas fa-star"){
+			return 2;
+		}else if(document.getElementById('z_s1').className == "fas fa-star"){
+			return 1;
+		}else{
+			return 0;
+		}
+	}
+
+	function set_ratings_values(){
+		document.getElementById('results_rating').value = get_r_stars();
+		document.getElementById('preferences_poll_rating').value = get_p_stars();
+		document.getElementById('zytrip_rating').value = get_z_stars();
+	}
+
+
+</script>
 
 <%= render "layouts/footer" %>
 

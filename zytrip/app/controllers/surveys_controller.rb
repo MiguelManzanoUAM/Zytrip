@@ -4,14 +4,14 @@ class SurveysController < ApplicationController
   end
 
   def create
-    @survey = Survey.new(user_id: current_user.id, trip_id: params[:trip_id], rating: params[:rating], comment: params[:comment])
+    @survey = Survey.new(user_id: current_user.id, results_rating: params[:results_rating], preferences_poll_rating: params[:preferences_poll_rating], zytrip_rating: params[:zytrip_rating], comment: params[:comment])
     @survey.save
-    redirect_to trips_path
+    redirect_to root_path
   end
 
   private
   
   def survey_params
-    params.require(:survey).permit(:rating, :trip_id, :comment)
+    params.require(:survey).permit(:results_rating, :preferences_poll_rating, :zytrip_rating, :comment)
   end
 end

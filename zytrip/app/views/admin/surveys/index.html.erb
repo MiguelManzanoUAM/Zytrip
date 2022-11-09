@@ -2,23 +2,23 @@
 
 <section>
   <div class="admin-main" id="users">
-    <h2 class="admin-model-title"><strong>Administración de encuestas</strong></h2>
-
+    
     <div class="admin-new-panel">
       <div class="row ">
-        <div class="col-7 admin-search">
+        <div class="col-6 admin-model-title">
+          <strong>Encuestas</strong>
         </div>
 
-        <div class="col-5">
+        <div class="col-6">
           <%= form_tag import_admin_surveys_path, multipart: true, class: "form-inline" do %>
             <div class="row">
-              <div class="col-4 import-form-btn text-center">
+              <div class="col import-form-btn text-center">
                 <%= link_to "Añadir encuesta", new_admin_survey_path, class: "import-form-btn-link" %>
               </div>
-              <div class="col-4 import-form-btn text-center">
+              <div class="col import-form-btn text-center">
                 <%= link_to "Exportar CSV", admin_surveys_path(format: :csv), class: "import-form-btn-link" %>
               </div>
-              <div class="col -4 text-center">
+              <div class="col text-center">
                 <%= submit_tag "Importar encuestas", class:"import-form-submit-btn" %>
               </div>
             </div>
@@ -74,12 +74,6 @@
             
             <td>
               <div class="row justify-content-center">
-                <div class="col-2">
-                  <%= link_to edit_admin_survey_path(survey), title:"Editar" do %>
-                    <i class="fas fa-briefcase"></i>
-                  <% end %>
-                </div>
-
                 <div class="col-2">
                   <%= button_to admin_survey_path(survey), method: :delete, class:"admin-delete-button", title:"Eliminar" do %> 
                     <i class="fas fa-briefcase admin-delete"></i>

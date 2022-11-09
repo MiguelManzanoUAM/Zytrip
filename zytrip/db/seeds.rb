@@ -10,6 +10,7 @@
 # Borrado de la base de datos
 ########################################
 
+Survey.destroy_all
 Friendship.destroy_all
 Service.destroy_all
 Topic.destroy_all
@@ -84,6 +85,7 @@ Company.import()
 Topic.import()
 Service.import()
 Friendship.import()
+Survey.import()
 
 p "Pensando un precio para los viajes..."
 

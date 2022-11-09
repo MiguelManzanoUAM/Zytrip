@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 		#redirect to admin_path if admin
 		def after_sign_in_path_for(resource)
 			if current_user.admin == true
-				admin_dashboards_landing_path
+				admin_dashboards_dashboard_path
 			else
 				root_path
 			end

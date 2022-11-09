@@ -1,1 +1,110 @@
 <%= render "layouts/sidebar" %>
+
+<div class="admin-main">
+	<div class="main-dashboard-title">
+		<p> Estadísticas </p>
+	</div>
+
+	<div class="main-dashboard-body">
+		<div class="row justify-content-center">
+			<div class="col-6 dashboard-main-statistics-container">
+				<div class="row text-center">
+					<div class="col dashboard-main-statistics-square">
+						<p class="dashboard-main-statistics-title">Nº Usuarios</p>
+						<p class="dashboard-main-statistics-stat"><%= @users %></p>
+					</div>
+
+					<div class="col dashboard-main-statistics-square">
+						<p class="dashboard-main-statistics-title">Nº Viajes</p>
+						<p class="dashboard-main-statistics-stat"><%= @trips %></p>
+					</div>
+
+					<div class="col dashboard-main-statistics-square">
+						<p class="dashboard-main-statistics-title">Otro</p>
+						<p class="dashboard-main-statistics-stat">6</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="dashboards-surveys-container">
+			<p class="dashboards-surveys-title"> Encuestas realizadas por los usuarios:</p>
+			<hr>
+
+			<div class="row">
+				<div class="col-6">
+					<ul class="dashboards-surveys-list">
+						<li class="dashboards-surveys-item">
+							<p><text class="dashboards-surveys-item-step">-> </text>Satisfacción de los usuarios con los resultados:</p>
+
+							<div class="progress">
+								<div class="progress-bar" role="progressbar" aria-valuenow="<%= @users_results_percentage %>" aria-valuemin="0" aria-valuemax="100" style="width:<%= @users_results_percentage %>%">
+									<%= @users_results_percentage %>%
+								</div>
+							</div> 
+						</li>
+		 
+						<li class="dashboards-surveys-item">
+							<p><text class="dashboards-surveys-item-step">-> </text>Valoración búsquedas interactivas:</p>
+
+							<div class="progress">
+								<div class="progress-bar" role="progressbar" aria-valuenow="<%= @users_searches_percentage %>" aria-valuemin="0" aria-valuemax="100" style="width:<%= @users_searches_percentage %>%">
+									<%= @users_searches_percentage %>%
+								</div>
+							</div> 
+						</li>
+
+						<li class="dashboards-surveys-item">
+							<p><text class="dashboards-surveys-item-step">-> </text>Valoración general Zytrip:</p>
+
+							<div class="progress">
+								<div class="progress-bar" role="progressbar" aria-valuenow="<%= @users_zytrip_percentage %>" aria-valuemin="0" aria-valuemax="100" style="width:<%= @users_zytrip_percentage %>%">
+									<%= @users_zytrip_percentage %>%
+								</div>
+							</div> 
+						</li>
+					</ul>
+				</div>
+
+				<div class="col-6">
+					<ul class="dashboards-surveys-list">
+						<li class="dashboards-surveys-item">
+							<p><text class="dashboards-surveys-item-step">-> </text>Satisfacción de los usuarios con los resultados:</p>
+
+							<div class="progress">
+								<div class="progress-bar" role="progressbar" aria-valuenow="<%= @users_results_percentage %>" aria-valuemin="0" aria-valuemax="100" style="width:<%= @users_results_percentage %>%">
+									<%= @users_results_percentage %>%
+								</div>
+							</div> 
+						</li>
+		 
+						<li class="dashboards-surveys-item">
+							<p><text class="dashboards-surveys-item-step">-> </text>Valoración búsquedas interactivas:</p>
+
+							<div class="progress">
+								<div class="progress-bar" role="progressbar" aria-valuenow="<%= @users_searches_percentage %>" aria-valuemin="0" aria-valuemax="100" style="width:<%= @users_searches_percentage %>%">
+									<%= @users_searches_percentage %>%
+								</div>
+							</div> 
+						</li>
+
+						<li class="dashboards-surveys-item">
+							<p><text class="dashboards-surveys-item-step">-> </text>Valoración general Zytrip:</p>
+
+							<div class="progress">
+								<div class="progress-bar" role="progressbar" aria-valuenow="<%= @users_zytrip_percentage %>" aria-valuemin="0" aria-valuemax="100" style="width:<%= @users_zytrip_percentage %>%">
+									<%= @users_zytrip_percentage %>%
+								</div>
+							</div> 
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<p><%= @users_results_difference %></p>
+			<p><%= @users_searches_difference %></p>
+			<p><%= @users_zytrip_difference %></p>
+
+		</div>
+	</div>
+</div>

@@ -2,29 +2,23 @@
 
 <section>
 	<div class="admin-main" id="users">
-    <h2 class="admin-model-title"><strong>Administración de usuarios</strong></h2>
 
     <div class="admin-new-panel">
       <div class="row ">
-        <div class="col-8 admin-search">
-          <%= form_tag admin_users_path, :method => 'get' do %>
-            <%= text_field_tag :search, params[:search], class:"admin-search-bar", placeholder:"Búsqueda por usuario..." %>
-            <%= button_tag(type: 'submit', class: "admin-search-button") do %>
-              <i class="fas fa-search"></i>
-            <% end %>
-          <% end %>
+        <div class="col-6 admin-model-title">
+          <strong>Usuarios</strong>
         </div>
 
-        <div class="col-4">
+        <div class="col-6">
           <%= form_tag import_admin_users_path, multipart: true, class: "form-inline" do %>
             <div class="row">
-              <div class="col-4 import-form-btn text-center">
+              <div class="col import-form-btn text-center">
                 <%= link_to "Añadir usuario", new_admin_user_path, class: "import-form-btn-link" %>
               </div>
-              <div class="col-4 import-form-btn text-center">
+              <div class="col import-form-btn text-center">
                 <%= link_to "Exportar CSV", admin_users_path(format: :csv), class: "import-form-btn-link" %>
               </div>
-              <div class="col -4 text-center">
+              <div class="col text-center">
                 <%= submit_tag "Importar usuarios", class:"import-form-submit-btn" %>
               </div>
             </div>
@@ -32,6 +26,17 @@
         </div>
       </div>
     </div>
+
+    <!--<div class="row justify-content-center">
+      <div class="col-4 text-center admin-search-bar-container">
+        <%= form_tag admin_users_path, :method => 'get' do %>
+          <%= text_field_tag :search, params[:search], class:"admin-search-bar", placeholder:"Búsqueda por usuario..." %>
+          <%= button_tag(type: 'submit', class: "admin-search-button") do %>
+            <i class="fas fa-search"></i>
+          <% end %>
+        <% end %>
+      </div>
+    </div>-->
 
     <table class="admin-model-table">
       <thead>

@@ -74,7 +74,6 @@ Rails.application.routes.draw do
         collection { post :import }
       end
 
-      get "/dashboards/landing", to: "dashboards#landing"
       get "/dashboards/dashboard", to: "dashboards#dashboard"
       get "/dashboards/testing", to: "dashboards#testing"
     end

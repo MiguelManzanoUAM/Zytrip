@@ -1,2 +1,26 @@
-id,user_id,results_rating,zytrip_rating,preferences_poll_rating,comment,created_at,updated_at
-1,6,3.0,4.0,2.5,,2022-11-06 11:45:05 UTC,2022-11-06 11:45:31 UTC
+id,user_id,results_rating,preferences_poll_rating,zytrip_rating,comment
+1,4,4,3,4,
+2,5,3,3,4,"me pierde un poco el sistema de búsquedas, me gustaría que fuese más intuitivo"
+3,5,3,4,5,me encanta el nuevo formulario de búsqueda para ayudarte a encontrar tu viaje ideal
+4,6,4,3,4,
+5,7,1,3,2,"siento que he perdido el tiempo, necesitas registrarte para que te saque resultados con un mínimo de sentido y ni aun así me convencen esas recomendaciones, esperaba mucho más"
+6,8,5,4,3,
+7,9,3,2,4,"entiendo que es la primera versión y tiene errores, pero las búsquedas devuelven siempre lo mismo"
+8,9,3,4,4,"se ha solucionado el problema que comenté, me gusta mucho la nueva versión"
+9,9,4,4,5,"me encanta zytrip, espero ver futuras versiones con nuevas secciones ya que sois muy creativos :)"
+10,10,4,5,3,
+11,11,5,3,3,
+12,12,5,4,4,
+13,13,4,4,4,
+14,13,3,5,4,"algunos resultados de las recomendaciones no me terminan de convencer, espero lo mejoren para futuras versiones"
+15,14,5,2,5,
+16,15,4,3,3,
+17,15,4,3,4,
+18,16,5,4,5,"andaba buscando un recomendador como este para mis salidas, muchas gracias"
+19,17,4,5,3,
+20,18,4,3,4,"muy buen recomendador, lo único me gustaría que se mejorase el sistema de búsquedas ya que me pierdo un poco entre los formularios"
+21,18,5,3,5,
+22,19,4,2,3,
+23,19,3,4,4,
+24,20,4,4,3,"muy contento en general, pero el proceso de añadir yo mi propio viaje se hace un poco pesado, me gustaría pedir que se amenizase un poco"
+25,20,4,4,4,he visto la nueva versión y agradezco los cambios realizados en el apartado de cuenta tu experiencia

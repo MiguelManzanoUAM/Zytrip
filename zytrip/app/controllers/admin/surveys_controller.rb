@@ -9,7 +9,7 @@ class Admin::SurveysController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.csv { send_data @surveys.to_csv(['id', 'user_id', 'results_rating', 'zytrip_rating', 'preferences_poll_rating', 'comment', 'created_at', 'updated_at']) }
+      format.csv { send_data @surveys.to_csv(['id', 'user_id', 'results_rating', 'preferences_poll_rating', 'zytrip_rating', 'comment', 'created_at', 'updated_at']) }
     end
 
   end

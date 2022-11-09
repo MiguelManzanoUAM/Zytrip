@@ -1,79 +1,83 @@
 <section class="sidebar">
-  <div class ="sidebar-title">
-    <h1>ZyTrip</h1>
+  <div class="sidebar-title-container">
+    <%= link_to 'Zytrip', root_path, class: 'sidebar-title' %>
   </div>
 
   <hr>
+  <p class="sidebar-section-title">Pruebas</p>
+  <hr>
 
   <div class="sidebar-menu">
-    <ul class="nav nav-pills flex-column mb-auto">
-      <li class="nav-item sidebar-item">
-        <%= link_to admin_dashboards_landing_path, class: 'sidebar-nav-link' do %>
-          <strong class="sidebar-nav-opt"> Home</strong>
-        <% end %>
-      </li>
-
-      <li class="nav-item sidebar-item">
-        <%= link_to admin_dashboards_dashboard_path, class: 'sidebar-nav-link' do %>
-          <strong class="sidebar-nav-opt">Estadísticas</strong>
-        <% end %>
-      </li>
-
-      <li class="nav-item sidebar-item">
+    <ul class="sidebar-list">
+      
+      <li class="sidebar-item">
         <%= link_to admin_dashboards_testing_path, class: 'sidebar-nav-link' do %>
           <strong class="sidebar-nav-opt"> Testing</strong>
         <% end %>
       </li>
 
-      <li class="nav-item sidebar-item">
+      <li class="sidebar-item">
+        <%= link_to admin_dashboards_dashboard_path, class: 'sidebar-nav-link' do %>
+          <strong class="sidebar-nav-opt">Estadísticas</strong>
+        <% end %>
+      </li>
+      
+    </ul>
+
+    <hr>
+    <p class="sidebar-section-title">Administración</p>
+    <hr>
+
+    <ul class="sidebar-list">
+      <li class="sidebar-item">
         <%= link_to admin_users_path, class: 'sidebar-nav-link' do %>
           <strong class="sidebar-nav-opt">Usuarios</strong>
         <% end %>
       </li>
 
-      <li class="nav-item sidebar-item">
+      <li class="sidebar-item">
         <%= link_to admin_trips_path, class: 'sidebar-nav-link' do %>
           <strong class="sidebar-nav-opt"> Viajes</strong>
         <% end %>
       </li>
 
-      <li class="nav-item sidebar-item">
+      <li class="sidebar-item">
         <%= link_to admin_reviews_path, class: 'sidebar-nav-link' do %>
           <strong class="sidebar-nav-opt"> Reviews</strong>
         <% end %>
       </li>
 
-      <li class="nav-item sidebar-item">
+      <li class="sidebar-item">
         <%= link_to admin_surveys_path, class: 'sidebar-nav-link' do %>
           <strong class="sidebar-nav-opt"> Encuestas</strong>
         <% end %>
       </li>
 
-      <li class="nav-item sidebar-item">
+      <li class="sidebar-item">
         <%= link_to admin_preferences_path, class: 'sidebar-nav-link' do %>
           <strong class="sidebar-nav-opt"> Preferencias</strong>
         <% end %>
       </li>
 
-      <li class="nav-item sidebar-item">
+      <li class="sidebar-item">
         <%= link_to admin_services_path, class: 'sidebar-nav-link' do %>
           <strong class="sidebar-nav-opt"> Servicios</strong>
         <% end %>
       </li>
 
-      <li class="nav-item sidebar-item">
+      <li class="sidebar-item">
         <%= link_to admin_topics_path, class: 'sidebar-nav-link' do %>
           <strong class="sidebar-nav-opt"> Temáticas</strong>
         <% end %>
       </li>
 
-      <li class="nav-item sidebar-item">
+      <li class="sidebar-item">
         <%= link_to admin_companies_path, class: 'sidebar-nav-link' do %>
           <strong class="sidebar-nav-opt"> Compañías</strong>
         <% end %>
       </li>
 
-      <li class="nav-item sidebar-item">
+      <li class="sidebar-item">
         <%= link_to admin_friendships_path, class: 'sidebar-nav-link' do %>
           <strong class="sidebar-nav-opt"> Amistades</strong>
         <% end %>
@@ -82,18 +86,18 @@
   </div>
 
   <hr>
+  <p class="sidebar-section-title">Usuario</p>
+  <hr>
 
-  <div class="sidebar-footer">
+  <div class="sidebar-footer text-center">
     <div class="dropdown">
       <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
         <i class="fas fa-user-tie rounded-circle me-2"></i>
         <strong>Administrador</strong>
       </a>
       <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
-        <li><a class="dropdown-item" href="#">Settings</a></li>
-        <li><hr class="dropdown-divider"></li>
         <li>
-          <%= button_to 'Sign out', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
+          <%= button_to 'Cerrar sesión', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
         </li>
       </ul>
     </div>

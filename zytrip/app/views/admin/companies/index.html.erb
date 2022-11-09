@@ -2,23 +2,23 @@
 
 <section>
   <div class="admin-main" id="users">
-    <h2 class="admin-model-title"><strong>Administración de compañías</strong></h2>
 
     <div class="admin-new-panel">
       <div class="row ">
-        <div class="col-7 admin-search">
+        <div class="col-6 admin-model-title">
+          <strong>Compañías</strong>
         </div>
 
-        <div class="col-5">
+        <div class="col-6">
           <%= form_tag import_admin_companies_path, multipart: true, class: "form-inline" do %>
             <div class="row">
-              <div class="col-4 import-form-btn text-center">
+              <div class="col import-form-btn text-center">
                 <%= link_to "Añadir compañía", new_admin_company_path, class: "import-form-btn-link" %>
               </div>
-              <div class="col-4 import-form-btn text-center">
+              <div class="col import-form-btn text-center">
                 <%= link_to "Exportar CSV", admin_companies_path(format: :csv), class: "import-form-btn-link" %>
               </div>
-              <div class="col -4 text-center">
+              <div class="col text-center">
                 <%= submit_tag "Importar compañías", class:"import-form-submit-btn" %>
               </div>
             </div>

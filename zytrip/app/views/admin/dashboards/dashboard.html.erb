@@ -20,8 +20,8 @@
 					</div>
 
 					<div class="col dashboard-main-statistics-square">
-						<p class="dashboard-main-statistics-title">Otro</p>
-						<p class="dashboard-main-statistics-stat">6</p>
+						<p class="dashboard-main-statistics-title">Nº Encuestas</p>
+						<p class="dashboard-main-statistics-stat"><%= Survey.all.size %></p>
 					</div>
 				</div>
 			</div>
@@ -69,42 +69,224 @@
 				<div class="col-6">
 					<ul class="dashboards-surveys-list">
 						<li class="dashboards-surveys-item">
-							<p><text class="dashboards-surveys-item-step">-> </text>Satisfacción de los usuarios con los resultados:</p>
+							<p><text class="dashboards-surveys-item-step">-> </text>% Mejora en la satisfacción de los usuarios con los resultados:</p>
 
-							<div class="progress">
-								<div class="progress-bar" role="progressbar" aria-valuenow="<%= @users_results_percentage %>" aria-valuemin="0" aria-valuemax="100" style="width:<%= @users_results_percentage %>%">
-									<%= @users_results_percentage %>%
+							<% if @users_results_improved_percentage > 10 %>
+								<div class="progress">
+									<div class="progress-bar" role="progressbar" aria-valuenow="<%= @users_results_improved_percentage %>" aria-valuemin="0" aria-valuemax="100" style="width:<%= @users_results_improved_percentage %>%">
+										<%= @users_results_improved_percentage %>%
+									</div>
 								</div>
-							</div> 
+							<% elsif ((@users_results_improved_percentage >= 0) && (@users_results_improved_percentage <= 10)) %>
+								<div class="progress">
+									<div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:10%;">
+										<%= @users_results_improved_percentage %>%
+									</div>
+								</div>
+							<% elsif ((@users_results_improved_percentage < 0) && (@users_results_improved_percentage > -10)) %>
+								<div class="progress" style="border: 1px solid #fb3953">
+									<div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:10%; background-image: linear-gradient(#fb3953, #fb3953);">
+										<%= @users_results_improved_percentage %>%
+									</div>
+								</div>
+							<% else %>
+								<div class="progress" style="border: 1px solid #fb3953">
+									<div class="progress-bar" role="progressbar" aria-valuenow="<%= @users_results_improved_percentage %>" aria-valuemin="0" aria-valuemax="100" style="width:<%= @users_results_improved_percentage %>%; background-image: linear-gradient(#fb3953, #fb3953);">
+										<%= @users_results_improved_percentage %>%
+									</div>
+								</div>
+							<% end %>
 						</li>
 		 
 						<li class="dashboards-surveys-item">
-							<p><text class="dashboards-surveys-item-step">-> </text>Valoración búsquedas interactivas:</p>
+							<p><text class="dashboards-surveys-item-step">-> </text>% Mejora en la valoración búsquedas interactivas:</p>
 
-							<div class="progress">
-								<div class="progress-bar" role="progressbar" aria-valuenow="<%= @users_searches_percentage %>" aria-valuemin="0" aria-valuemax="100" style="width:<%= @users_searches_percentage %>%">
-									<%= @users_searches_percentage %>%
+							<% if @users_searches_improved_percentage > 10 %>
+								<div class="progress">
+									<div class="progress-bar" role="progressbar" aria-valuenow="<%= @users_searches_improved_percentage %>" aria-valuemin="0" aria-valuemax="100" style="width:<%= @users_searches_improved_percentage %>%">
+										<%= @users_searches_improved_percentage %>%
+									</div>
 								</div>
-							</div> 
+							<% elsif ((@users_searches_improved_percentage >= 0) && (@users_searches_improved_percentage <= 10)) %>
+								<div class="progress">
+									<div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:10%;">
+										<%= @users_searches_improved_percentage %>%
+									</div>
+								</div>
+							<% elsif ((@users_searches_improved_percentage < 0) && (@users_searches_improved_percentage > -10)) %>
+								<div class="progress" style="border: 1px solid #fb3953">
+									<div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:10%; background-image: linear-gradient(#fb3953, #fb3953);">
+										<%= @users_searches_improved_percentage %>%
+									</div>
+								</div>
+							<% else %>
+								<div class="progress" style="border: 1px solid #fb3953">
+									<div class="progress-bar" role="progressbar" aria-valuenow="<%= @users_searches_improved_percentage %>" aria-valuemin="0" aria-valuemax="100" style="width:<%= @users_searches_improved_percentage %>%; background-image: linear-gradient(#fb3953, #fb3953);">
+										<%= @users_searches_improved_percentage %>%
+									</div>
+								</div>
+							<% end %>
 						</li>
 
 						<li class="dashboards-surveys-item">
-							<p><text class="dashboards-surveys-item-step">-> </text>Valoración general Zytrip:</p>
+							<p><text class="dashboards-surveys-item-step">-> </text>% Mejora en la valoración general Zytrip:</p>
 
-							<div class="progress">
-								<div class="progress-bar" role="progressbar" aria-valuenow="<%= @users_zytrip_percentage %>" aria-valuemin="0" aria-valuemax="100" style="width:<%= @users_zytrip_percentage %>%">
-									<%= @users_zytrip_percentage %>%
+							<% if @users_zytrip_improved_percentage > 10 %>
+								<div class="progress">
+									<div class="progress-bar" role="progressbar" aria-valuenow="<%= @users_zytrip_improved_percentage %>" aria-valuemin="0" aria-valuemax="100" style="width:<%= @users_zytrip_improved_percentage %>%">
+										<%= @users_zytrip_improved_percentage %>%
+									</div>
 								</div>
-							</div> 
+							<% elsif ((@users_zytrip_improved_percentage >= 0) && (@users_zytrip_improved_percentage <= 10)) %>
+								<div class="progress">
+									<div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:10%;">
+										<%= @users_zytrip_improved_percentage %>%
+									</div>
+								</div>
+							<% elsif ((@users_zytrip_improved_percentage < 0) && (@users_zytrip_improved_percentage > -10)) %>
+								<div class="progress" style="border: 1px solid #fb3953">
+									<div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:10%; background-image: linear-gradient(#fb3953, #fb3953);">
+										<%= @users_zytrip_improved_percentage %>%
+									</div>
+								</div>
+							<% else %>
+								<div class="progress" style="border: 1px solid #fb3953">
+									<div class="progress-bar" role="progressbar" aria-valuenow="<%= @users_zytrip_improved_percentage %>" aria-valuemin="0" aria-valuemax="100" style="width:<%= @users_zytrip_improved_percentage %>%; background-image: linear-gradient(#fb3953, #fb3953);">
+										<%= @users_zytrip_improved_percentage %>%
+									</div>
+								</div>
+							<% end %>
 						</li>
 					</ul>
 				</div>
 			</div>
 
-			<p><%= @users_results_difference %></p>
-			<p><%= @users_searches_difference %></p>
-			<p><%= @users_zytrip_difference %></p>
+			<p class="dashboards-surveys-title"> Algunos comentarios de los usuarios:</p>
+			<hr>
 
+			<div class="user-surveys-container">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item user-survey-selected-option-btn" id="lowestbtn">
+                        <p onclick="show_lowest()", id="lowestnav", class="user-survey-btn-text">Valoraciones a mejorar</p>
+                    </li>
+                    <li class="nav-item user-survey-option-btn" id="latestbtn">
+                        <p onclick="show_latest()", id="latestnav", class="user-survey-btn-text">últimas valoraciones</p>
+                    </li>
+                </ul>
+
+				<div id="lowest">
+					<% if @lowest_surveys_rating.size != 0 %>
+
+						<% @lowest_surveys_rating.each do |survey| %>
+							<div class="user-survey">
+								<% if Survey.get_user_survey(survey).image_url %>
+			          				<%= image_tag("#{Survey.get_user_survey(survey).image_url}") %><%= Survey.get_user_survey(survey).name %> <%= Survey.get_user_survey(survey).surname %> <text class="user-survey-date"><%= survey.created_at.strftime("%d/%m/%Y") %></text>
+
+								<% elsif Survey.get_user_survey(survey).image %>
+			                        <%= image_tag Survey.get_user_survey(survey).image %><%= Survey.get_user_survey(survey).name %> <%= Survey.get_user_survey(survey).surname %> <text class="user-survey-date"><%= survey.created_at.strftime("%d/%m/%Y") %></text>
+			                    <% else %>
+			                        <%= image_tag "local/user.jpeg" %><%= Survey.get_user_survey(survey).name %> <%= Survey.get_user_survey(survey).surname %> <text class="user-survey-date"><%= survey.created_at.strftime("%d/%m/%Y") %></text>
+			                    <% end %>
+			                    
+			                    <br>
+
+			                    <div class="user-survey-stars">
+								    <% Survey.get_survey_media_rating(survey).round().times do  %>
+							        	<i class="fas fa-star" style="color: #7239fb;"></i>
+						            <% end %>
+
+
+						            <% (5 - Survey.get_survey_media_rating(survey).round()).times do %>
+						            	<i class="far fa-star"></i>
+						            <% end %>
+					            </div>
+
+			                    <% if survey.comment %>
+						            <div class="user-survey-comment-container">
+						            	<p><%= survey.comment %></p>
+						            </div>
+						        <% end %>
+						    </div>
+						<% end %>
+
+					<% end %>
+				</div>
+
+				<div id="latest">
+					<% if @latest_surveys.size != 0 %>
+
+						<% @latest_surveys.each do |survey| %>
+							<div class="user-survey">
+								<% if Survey.get_user_survey(survey).image_url %>
+			          				<%= image_tag("#{Survey.get_user_survey(survey).image_url}") %><%= Survey.get_user_survey(survey).name %> <%= Survey.get_user_survey(survey).surname %> <text class="user-survey-date"><%= survey.created_at.strftime("%d/%m/%Y") %></text>
+
+								<% elsif Survey.get_user_survey(survey).image %>
+			                        <%= image_tag Survey.get_user_survey(survey).image %><%= Survey.get_user_survey(survey).name %> <%= Survey.get_user_survey(survey).surname %> <text class="user-survey-date"><%= survey.created_at.strftime("%d/%m/%Y") %></text>
+			                    <% else %>
+			                        <%= image_tag "local/user.jpeg" %><%= Survey.get_user_survey(survey).name %> <%= Survey.get_user_survey(survey).surname %> <text class="user-survey-date"><%= survey.created_at.strftime("%d/%m/%Y") %></text>
+			                    <% end %>
+			                    <br>
+
+			                    <div class="user-survey-stars">
+								    <% Survey.get_survey_media_rating(survey).round().times do  %>
+							        	<i class="fas fa-star" style="color: #7239fb;"></i>
+						            <% end %>
+
+						            <% (5 - Survey.get_survey_media_rating(survey).round()).times do %>
+						            	<i class="far fa-star"></i>
+						            <% end %>
+						        </div>
+
+			                    <% if survey.comment %>
+						            <div class="user-survey-comment-container">
+						            	<p><%= survey.comment %></p>
+						            </div>
+						        <% end %>
+						    </div>
+						<% end %>
+
+					<% end %>
+				</div>
+
+			</div>
 		</div>
 	</div>
 </div>
+
+<!-- Funciones javascript -->
+
+<script type="text/javascript">
+
+    document.getElementById('latest').style.display = 'none';
+
+    /////////////////////////////////////////////
+    // Change dynamic info and styles
+    /////////////////////////////////////////////
+
+    function show_lowest(){
+        if(document.getElementById('lowest').style.display == 'none'){
+            document.getElementById('lowest').style.display = 'block';
+            document.getElementById('latest').style.display = 'none';
+            document.getElementById('latestnav').style.color = '#000';
+            document.getElementById('latestbtn').style.backgroundColor = '#eeeded';
+            document.getElementById('lowestnav').style.color = '#fff';
+            document.getElementById('lowestbtn').style.backgroundColor = '#7239fb';
+        }
+    }
+
+    function show_latest(){
+        if(document.getElementById('latest').style.display == 'none'){
+            document.getElementById('latest').style.display = 'block';
+            document.getElementById('lowest').style.display = 'none';
+            document.getElementById('lowestnav').style.color = '#000';
+            document.getElementById('lowestbtn').style.backgroundColor = '#eeeded';
+            document.getElementById('latestnav').style.color = '#fff';
+            document.getElementById('latestbtn').style.backgroundColor = '#7239fb';
+        }
+    }
+
+</script>
+
+<% content_for :view_specific_css do %>
+    <%= stylesheet_link_tag "admin" %>
+<% end %>

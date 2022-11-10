@@ -5,7 +5,9 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-user-container">
-                    <% if @user.image %>
+                    <% if @user.image_url %>
+                        <%= image_tag("#{@user.image_url}", class:"profile-img-center") %>
+                    <% elsif @user.image %>
                         <%= image_tag @user.image, class:"profile-img-center" %>
                     <% else %>
                         <%= image_tag "local/user.jpeg", class:"profile-img-center" %>
@@ -141,8 +143,6 @@
                                                     <% end %>
                                                 <% end %>
                                             </td>
-
-
                                         </tr>
                                     <% end %>
                                 </tbody>

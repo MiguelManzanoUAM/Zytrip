@@ -9,9 +9,11 @@ class Admin::DashboardsController < ApplicationController
 		@users_searches_percentage = Survey.get_searches_rating_percentage
 		@users_zytrip_percentage = Survey.get_zytrip_rating_percentage
 		@users_with_various_surveys = Survey.get_users_with_various_surveys
-		@users_results_difference = Survey.get_users_results_rating_difference
-		@users_searches_difference = Survey.get_users_searches_rating_difference
-		@users_zytrip_difference = Survey.get_users_zytrip_rating_difference
+		@users_results_improved_percentage = Survey.get_users_results_rating_improved_percentage
+		@users_searches_improved_percentage = Survey.get_users_searches_rating_improved_percentage
+		@users_zytrip_improved_percentage = Survey.get_users_zytrip_rating_improved_percentage
+		@lowest_surveys_rating = Survey.get_lowest_rating_surveys
+		@latest_surveys = Survey.get_latest_surveys
 	end
 
 	def testing

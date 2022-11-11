@@ -33,3 +33,4 @@ id,preference_id,family,romantic,friends,alone,people
 32,32,true,true,false,true,false
 33,33,true,false,false,true,false
 34,34,true,false,true,true,true
+35,35,true,false,false,true,false

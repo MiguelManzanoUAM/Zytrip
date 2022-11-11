@@ -33,3 +33,4 @@ id,trip_id,destination,budget,duration
 32,32,europe,high,overlong
 33,33,europe,medium,overlong
 34,34,spain,low,long
+35,35,europe,medium,ordinary

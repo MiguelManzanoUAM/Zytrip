@@ -780,7 +780,7 @@
 .trip-section img{
   width: 50px;
   height: 50px;
-  border-radius: 25%;
+  border-radius: 50%;
   margin-right: 20px;
   margin-left: 20px;
   overflow: hidden;
@@ -811,6 +811,8 @@
   margin-left: 50px;
   padding-left: 10px;
   padding-right: 10px;
+  height: 327px;
+  overflow-y: scroll;
 }
 
 .trip-ratings{

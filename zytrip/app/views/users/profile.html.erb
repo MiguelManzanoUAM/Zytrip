@@ -46,7 +46,11 @@
                     <p class="profile-section-title">Contacto</p>
                     <hr>
                     <div class="profile-contact">
-                        <p><%= image_tag "local/telephone.png", class: "profile-contact-icon" %><b>Teléfono:</b> 916543245</p>
+                        <% if @user.phone_number %>
+                            <p><%= image_tag "local/telephone.png", class: "profile-contact-icon" %><b>Teléfono:</b> -</p>
+                        <% else %>
+                            <p><%= image_tag "local/telephone.png", class: "profile-contact-icon" %><b>Teléfono:</b> 916543245</p>
+                        <% end %>
                         <p><%= image_tag "local/envelope.png", class: "profile-contact-icon" %><b>Correo:</b> <%= @user.email %></p>
                     </div>
                 </div>

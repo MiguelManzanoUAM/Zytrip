@@ -33,3 +33,4 @@ id,preference_id,lodging,gastronomy,activities
 32,32,true,true,false
 33,33,true,true,false
 34,34,false,false,true
+35,35,true,true,true

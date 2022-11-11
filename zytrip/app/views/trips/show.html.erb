@@ -41,7 +41,9 @@
           <p class="trip-section-title">Organizado por</p>
           <hr>
           <p class="trip-section-info">
-            <% if @organizer.image %>
+            <% if @organizer.image_url %>
+              <%= image_tag("#{@organizer.image_url}") %><%= @organizer.name %> <%= @organizer.surname %>
+            <% elsif @organizer.image %>
               <%= image_tag(@organizer.image) %> <%= @organizer.name %> <%= @organizer.surname %> (<%= @organizer.phone_number %>)
             <% else %>
               <%= image_tag("local/user.jpeg") %> <%= @organizer.name %> <%= @organizer.surname %> (<%= @organizer.phone_number %>)
@@ -78,7 +80,9 @@
     <% if @reviews %>
       <% @reviews.each do |review| %>
         <div class="trip-section-review">
-          <% if Review.get_user(review).image %>
+          <% if Review.get_user(review).image_url %>
+              <%= image_tag("#{Review.get_user(review).image_url}") %> <%= Review.get_user(review).name %> <%= Review.get_user(review).surname %> <text class="trip-section-review-date"><%= review.created_at.strftime("%d/%m/%Y") %></text>
+          <% elsif Review.get_user(review).image %>
             <%= image_tag(Review.get_user(review).image) %> <%= Review.get_user(review).name %> <%= Review.get_user(review).surname %> <text class="trip-section-review-date"><%= review.created_at.strftime("%d/%m/%Y") %></text>
           <% else %>
               <%= image_tag("local/user.jpeg") %> <%= Review.get_user(review).name %> <%= Review.get_user(review).surname %>

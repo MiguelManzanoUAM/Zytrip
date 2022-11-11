@@ -33,3 +33,4 @@ id,preference_id,beach,nature,tourism,relax
 32,32,false,false,true,true
 33,33,false,false,true,true
 34,34,false,true,false,false
+35,35,false,false,true,false

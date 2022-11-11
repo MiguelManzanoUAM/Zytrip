@@ -1,17 +1,20 @@
+<%= render "layouts/header" %>
 <section>
-  <p class="trip-section-title">Valora este viaje</p>
-  <p class="trip-section-description">Comparte tu opinión acerca de esta experiencia con otros usuarios</p>
-
-  <%= form_for(@review, url: reviews_path(@review)) do |f| %>
-    <%= render partial: "review_form_fields", :locals => {:f => f} %>
-    <div class="create-edit-trip-btns">
-      <div class="row justify-content-center">
-        <div class="col-6">
-          <%= f.submit "Siguiente", class: "create-edit-trip-form-submit-btn" %>
+  <div class="create-edit-trip">
+    <div class="create-edit-trip-box">
+      <h2 class="create-edit-trip-title">Queremos saber más de tu experiencia</h2>
+      <%= form_for(@review, url: reviews_path(@review)) do |f| %>
+        <%= render partial: "review_form_fields", :locals => {:f => f} %>
+        <div class="create-edit-trip-btns">
+          <div class="row justify-content-center">
+            <div class="col-6">
+              <%= f.submit "Siguiente", class: "create-edit-trip-form-submit-btn" %>
+            </div>
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 </section>
 
 <% content_for :view_specific_css do %>

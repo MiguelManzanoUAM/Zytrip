@@ -454,17 +454,87 @@
 }
 
 
-
-
 /**********************************************
  * Footer styles
 **********************************************/
 .footer{
-  height: 100px;
-  background-color: black;
-  text-align: center;
+  background: linear-gradient(90deg, #2f3d47, #3f474d);
+  padding-bottom: 10px;
+}
+
+.footer hr{
+  border: 1px solid #e5f2fb;
+  margin: auto;
+}
+
+.footer-columns{
+  padding-top: 30px;
+  padding-bottom: 10px;
+}
+
+.footer-logo{
+  padding-top: 30px;
+}
+
+.footer img{
+  width: 90px;
+  height: 45px;
+}
+
+.footer-logo-name{
+  color:white;
+  font-size: 25px;
+  font-weight: bold;
+  font-family: monospace;
+}
+
+.footer-section{
   color: white;
-  overflow: hidden;
+  font-size: 16px;
+  margin-left: 50px;
+  /*text-align: center;*/
+}
+
+.footer-list{
+  padding-top: 30px;
+  list-style-type: none;
+}
+
+.footer-list-item{
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.footer-section i{
+  margin-right: 10px;
+}
+
+.footer-about-title{
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  margin-left: 12%;
+}
+
+.footer-about{
+  margin-right: 25%;
+  margin-top: 5px;
+  font-size: 14px;
+  justify-content: start;
+  text-align: unset;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+.footer-about-git{
+  padding-top: 10px;
+}
+
+.footer-copyright-line{
+  padding-top: 10px;
+  font-size: 12px;
+  color: white;
+  text-align: center;
 }
 
 

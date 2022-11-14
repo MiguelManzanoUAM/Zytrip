@@ -1,6 +1,33 @@
 <div class="footer">
-	<h1>Footer</h1>
-	<p>* En construcción... *</p>
+	<div class="row justify-content-md-center footer-columns">
+		<div class="col col-lg-3 footer-section">
+			<div class="row justify-content-md-center footer-logo">
+				<div class="col col-lg-3">
+					<%= image_tag "local/zytrip-high-resolution-z-logo.png" %>
+				</div>
+
+				<div class="col col-lg-3">
+					<p class="footer-logo-name">Zytrip</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="col col-lg-3 footer-section">
+			<ul class="footer-list">
+				<li class="footer-list-item"><i class="fas fa-map-marker-alt"></i>Universidad Autónoma Madrid</li>
+				<li class="footer-list-item"><i class="fas fa-envelope"></i>miguel.manzanom@estudiante.uam.es</li>
+			</ul>
+		</div>
+
+		<div class="col col-lg-3 footer-section">
+			<text class="footer-about-title text-center">Acerca de Zytrip</text>
+			<p class="footer-about">Proyecto de fin de grado basado en el desarrollo e implementación de un sistema de recomendaciones mixto utilizando el framework Ruby on Rails</p>
+			<i class="fab fa-github footer-about-git"></i>
+		</div>
+	</div>
+
+	<hr>
+	<p class="footer-copyright-line">2022 Copyright...</p>
 </div>
 
 <% content_for :view_specific_css do %>

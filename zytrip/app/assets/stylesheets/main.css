@@ -66,7 +66,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 500px;
+  width: 700px;
   height: 700px;
   padding: 80px 40px;
   background: rgba(0,0,0,0.6);
@@ -135,7 +135,7 @@
 }
 
 .registration-form-submit-btn{
-  margin-top: 15%;
+  margin-top: 7%;
   height: 40px;
   color: #fff;
   font-size: 15px;
@@ -178,6 +178,29 @@
 
 .login-registration-link:hover{
   color: #fff;
+}
+
+.invalid-field {
+  background: rgba(229,120,131,0.6);
+  color: lightgrey;
+  border: 3px solid #bd1626;
+  height: 35px;
+  font-size: 15px;
+  padding-top: 5px;
+  margin-bottom: 10px;
+}
+
+.invalid-field-step {
+  padding-left: 5px;
+  color: #bd1626;
+  margin-right: 5px;
+  font-weight: bold;
+}
+
+.required-star{
+  color: #bd1626;
+  font-weight: bold;
+  margin-left: 5px;
 }
 
 /**********************************************

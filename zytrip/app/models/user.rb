@@ -4,13 +4,38 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # Validaciones
+  validates :name, presence: {message: 'Introduzca un nombre de usuario'}
+  validates :surname, presence: {message: 'Introduzca un apellido'}
+  validates :email, presence: true, format: { with: /[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}/, message: 'Introduzca un email válido'}, uniqueness: {message: 'Ya existe esta cuenta de correo'}
+  validate :password_complexity
+  #validates :password, confirmation: true
+  #validates :password_confirmation, presence: true
+
+  # Relaciones
   has_and_belongs_to_many :trips
   has_many :reviews, dependent: :destroy
   has_many :surveys, dependent: :destroy
-
   has_many :friendships
   has_many :friends, through: :friendships
   
+  #####################################################
+  # Validación contraseña
+  #####################################################
+  def password_complexity
+    if password =~ /#{email}/
+      errors.add :password, 'La contraseña no puede contener el email del usuario'
+    end
+
+    if !(password =~ /[0-9a-zA-Z]{8,20}/)
+      errors.add :password, 'La contraseña debe tener una longitud de entre 8 y 20 caracteres'
+    end
+
+    if !(password =~ /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{3,20}$/)
+      errors.add :password, 'La contraseña ha de incluir una mayúscula, una minúscula y un dígito'
+    end
+  end
+
   #####################################################
   #Busqueda de usuarios mediante barra de busqueda
   #####################################################

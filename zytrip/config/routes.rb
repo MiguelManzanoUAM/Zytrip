@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   get "/friendships/add_friend", to: "friendships#add_friend"
   get "/friendships/delete_friend", to: "friendships#delete_friend"
 
+  get "/policies/privacy", to: "policies#privacy", as: 'privacy'
+  get "/policies/terms_of_use", to: "policies#terms_of_use", as: 'terms_of_use'
+
   devise_for :users
 
   devise_scope :users do

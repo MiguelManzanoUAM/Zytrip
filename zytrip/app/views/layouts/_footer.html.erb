@@ -2,7 +2,7 @@
 	<div class="row justify-content-md-center footer-columns">
 		<div class="col col-lg-3 footer-section">
 			<div class="row justify-content-md-center footer-logo">
-				<div class="col col-lg-3">
+				<div class="col col-lg-2">
 					<%= image_tag "local/zytrip-high-resolution-z-logo.png" %>
 				</div>
 
@@ -16,18 +16,26 @@
 			<ul class="footer-list">
 				<li class="footer-list-item"><i class="fas fa-map-marker-alt"></i>Universidad Autónoma Madrid</li>
 				<li class="footer-list-item"><i class="fas fa-envelope"></i>miguel.manzanom@estudiante.uam.es</li>
+				<li class="footer-list-item"><i class="fab fa-github"></i>MiguelManzanoUAM/Zytrip</li>
 			</ul>
 		</div>
 
 		<div class="col col-lg-3 footer-section">
 			<text class="footer-about-title text-center">Acerca de Zytrip</text>
 			<p class="footer-about">Proyecto de fin de grado basado en el desarrollo e implementación de un sistema de recomendaciones mixto utilizando el framework Ruby on Rails</p>
-			<i class="fab fa-github footer-about-git"></i>
 		</div>
 	</div>
 
 	<hr>
-	<p class="footer-copyright-line">2022 Copyright...</p>
+	<div class="row">
+		<div class="col-4"></div>
+		<div class="col-4">
+			<p class="footer-copyright-line">2022-2023 Zytrip</p>
+		</div>
+		<div class="col-4">
+			<p class="footer-copyright-line-links"><%= link_to "Términos de uso", terms_of_use_path, class:"footer-copyright-line-link" %><%= link_to "Política de Privacidad", privacy_path, class:"footer-copyright-line-link"%></p>
+		</div>
+	</div>
 </div>
 
 <% content_for :view_specific_css do %>

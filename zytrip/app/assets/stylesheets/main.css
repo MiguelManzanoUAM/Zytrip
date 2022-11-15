@@ -397,7 +397,7 @@
   border-radius: 10px;
   background-image: url(local/vacaciones.jpg);
   width: 63%;
-  height: 600px;
+  height: 450px;
 
   /*img*/
   background-repeat: no-repeat;
@@ -413,10 +413,10 @@
 
 .landing-form-section{
   background-color: white;
-  margin-top: 250px;
+  margin-top: 150px;
   float: right;
   margin-right: 50px;
-  height: 300px;
+  height: 250px;
   width: 600px;
   border-radius: 10px;
   border: 1px solid white;
@@ -436,7 +436,7 @@
   border:  1px solid #2a2c3b;
   outline: none;
   margin-right: 15px;
-  margin-top: 50px;
+  margin-top: 15px;
 }
 
 .landing-form-info-btn-link{
@@ -453,22 +453,30 @@
   color: white;
 }
 
+.landing-form-title-container{
+  margin-left: 10%;
+  margin-right: 10%;
+  font-size: 20px;
+}
+
 
 /**********************************************
  * Footer styles
 **********************************************/
 .footer{
   background: linear-gradient(90deg, #2f3d47, #3f474d);
-  padding-bottom: 10px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
 }
 
 .footer hr{
   border: 1px solid #e5f2fb;
   margin: auto;
+  width: 95%;
 }
 
 .footer-columns{
-  padding-top: 30px;
+  padding-top: 20px;
   padding-bottom: 10px;
 }
 
@@ -501,7 +509,7 @@
 }
 
 .footer-list-item{
-  font-size: 16px;
+  font-size: 14px;
   text-decoration: none;
 }
 
@@ -513,7 +521,7 @@
   color: white;
   font-size: 20px;
   text-align: center;
-  margin-left: 12%;
+  margin-left: 20%;
 }
 
 .footer-about{
@@ -526,10 +534,6 @@
   padding-bottom: 0px;
 }
 
-.footer-about-git{
-  padding-top: 10px;
-}
-
 .footer-copyright-line{
   padding-top: 10px;
   font-size: 12px;
@@ -537,7 +541,24 @@
   text-align: center;
 }
 
+.footer-copyright-line-links{
+  padding-top: 10px;
+  font-size: 14px;
+  text-align: right;
+  margin-right: 25px;
+}
 
+.footer-copyright-line-link{
+  text-decoration: none;
+  color: white;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.footer-copyright-line-link:hover{
+  text-decoration: none;
+  color: white;
+}
 
 /**********************************************
  * Trips styles
@@ -1848,3 +1869,21 @@
   cursor: pointer;
   text-decoration: none;
 }
+
+/**********************************************
+ * Policies styles
+**********************************************/
+.main-policy-container{
+  background-color: #F5F4F5;
+  padding-bottom: 50px;
+}
+
+.main-policy{
+  padding-top: 3%;
+  margin-left: 5%;
+  margin-right: 5%;
+  font-size: 16px;
+  text-align: justify;
+}
+
+

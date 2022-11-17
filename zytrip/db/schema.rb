@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_06_105451) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_17_111243) do
+  create_table "additional_informations", force: :cascade do |t|
+    t.string "phone_number"
+    t.string "slogan"
+    t.text "description"
+    t.string "image_url"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "instagram_nickname"
+    t.index ["user_id"], name: "index_additional_informations_on_user_id"
+  end
+
   create_table "companies", force: :cascade do |t|
     t.boolean "family", default: false
     t.boolean "romantic", default: false
@@ -118,14 +130,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_06_105451) do
     t.boolean "admin", default: false
     t.string "name"
     t.string "surname"
-    t.string "phone_number"
     t.string "image"
-    t.string "image_url"
-    t.string "description"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "additional_informations", "users"
   add_foreign_key "companies", "preferences"
   add_foreign_key "friendships", "users"
   add_foreign_key "friendships", "users", column: "friend_id"

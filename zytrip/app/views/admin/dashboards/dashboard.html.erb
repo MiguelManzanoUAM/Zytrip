@@ -179,8 +179,8 @@
 
 						<% @lowest_surveys_rating.each do |survey| %>
 							<div class="user-survey">
-								<% if Survey.get_user_survey(survey).image_url %>
-			          				<%= image_tag("#{Survey.get_user_survey(survey).image_url}") %><%= Survey.get_user_survey(survey).name %> <%= Survey.get_user_survey(survey).surname %> <text class="user-survey-date"><%= survey.created_at.strftime("%d/%m/%Y") %></text>
+								<% if Survey.get_user_survey(survey).additional_information && Survey.get_user_survey(survey).additional_information.image_url != "" %>
+			          				<%= image_tag("#{Survey.get_user_survey(survey).additional_information.image_url}") %><%= Survey.get_user_survey(survey).name %> <%= Survey.get_user_survey(survey).surname %> <text class="user-survey-date"><%= survey.created_at.strftime("%d/%m/%Y") %></text>
 
 								<% elsif Survey.get_user_survey(survey).image %>
 			                        <%= image_tag Survey.get_user_survey(survey).image %><%= Survey.get_user_survey(survey).name %> <%= Survey.get_user_survey(survey).surname %> <text class="user-survey-date"><%= survey.created_at.strftime("%d/%m/%Y") %></text>
@@ -217,8 +217,8 @@
 
 						<% @latest_surveys.each do |survey| %>
 							<div class="user-survey">
-								<% if Survey.get_user_survey(survey).image_url %>
-			          				<%= image_tag("#{Survey.get_user_survey(survey).image_url}") %><%= Survey.get_user_survey(survey).name %> <%= Survey.get_user_survey(survey).surname %> <text class="user-survey-date"><%= survey.created_at.strftime("%d/%m/%Y") %></text>
+								<% if Survey.get_user_survey(survey).additional_information && Survey.get_user_survey(survey).additional_information.image_url != "" %>
+			          				<%= image_tag("#{Survey.get_user_survey(survey).additional_information.image_url}") %><%= Survey.get_user_survey(survey).name %> <%= Survey.get_user_survey(survey).surname %> <text class="user-survey-date"><%= survey.created_at.strftime("%d/%m/%Y") %></text>
 
 								<% elsif Survey.get_user_survey(survey).image %>
 			                        <%= image_tag Survey.get_user_survey(survey).image %><%= Survey.get_user_survey(survey).name %> <%= Survey.get_user_survey(survey).surname %> <text class="user-survey-date"><%= survey.created_at.strftime("%d/%m/%Y") %></text>

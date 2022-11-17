@@ -1,17 +1,32 @@
+<%= render 'layouts/header' %>
 <div class="registration-form login-form-img">
   <div class="login-form-container">
     <%= image_tag("local/user.jpeg", alt: "imagen usuario", class:"registration-avatar") %>
     <h2>Iniciar Sesión</h2>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="field">
-        <%= f.label(:email, "Email", class:"registration-form-label") %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"registration-form-input", placeholder:"Introduzca su dirección de correo..." %>
+
+      <% flash.each do |key, value| %>
+        <div class="invalid-field">
+          <text class="invalid-field-step">-></text><%= value %>          
+          <% break %>
+        </div>
+      <% end %>
+
+      <br><br>
+
+      <div class="row">
+        <div class="col col-12">
+          <label class="registration-form-label">Email<text class="required-star">*</text></label>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"registration-form-input", placeholder:"Introduzca su dirección de correo..." %>
+        </div>
       </div>
 
-      <div class="field">
-        <%= f.label(:password, "Contraseña", class:"registration-form-label") %>
-        <%= f.password_field :password, autocomplete: "new-password", class:"registration-form-input", placeholder:"Introduzca su contraseña..." %>
+      <div class="row">
+        <div class="col col-12">
+          <label class="registration-form-label">Contraseña<text class="required-star">*</text></label>
+          <%= f.password_field :password, autocomplete: "new-password", class:"registration-form-input", placeholder:"Introduzca su contraseña..." %>
+        </div>
       </div>
 
       <div class="actions">

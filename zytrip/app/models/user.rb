@@ -5,10 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   # Validaciones
-  validates :name, presence: {message: 'Introduzca un nombre de usuario'}
-  validates :surname, presence: {message: 'Introduzca un apellido'}
+  validates :name, presence: {message: 'Introduzca un nombre de usuario'}, length: {maximum: 20, message: 'introduce un nombre más corto (máximo 20 caracteres)'}
+  validates :surname, presence: {message: 'Introduzca un apellido'}, length: {maximum: 20, message: 'introduce un apellido más corto (máximo 20 caracteres)'}
   validates :email, presence: true, format: { with: /[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}/, message: 'Introduzca un email válido'}, uniqueness: {message: 'Ya existe esta cuenta de correo'}
-  validate :password_complexity
+  validate :password_format_validation
   #validates :password, confirmation: true
   #validates :password_confirmation, presence: true
 
@@ -18,11 +18,12 @@ class User < ApplicationRecord
   has_many :surveys, dependent: :destroy
   has_many :friendships
   has_many :friends, through: :friendships
+  has_one :additional_information
   
   #####################################################
   # Validación contraseña
   #####################################################
-  def password_complexity
+  def password_format_validation
     if password =~ /#{email}/
       errors.add :password, 'La contraseña no puede contener el email del usuario'
     end

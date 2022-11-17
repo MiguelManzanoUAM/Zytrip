@@ -1,0 +1,75 @@
+<%= render "layouts/sidebar" %>
+
+<section>
+  <div class="admin-main" id="users">
+
+    <div class="admin-new-panel">
+      <div class="row ">
+        <div class="col-6 admin-model-title">
+          <strong>Información Adicional Usuarios</strong>
+        </div>
+
+        <div class="col-6">
+          <%= form_tag import_admin_additional_informations_path, multipart: true, class: "form-inline" do %>
+            <div class="row">
+              <div class="col import-form-btn text-center">
+                <%= link_to "Añadir información", new_admin_additional_information_path, class: "import-form-btn-link" %>
+              </div>
+              <div class="col import-form-btn text-center">
+                <%= link_to "Exportar CSV", admin_additional_informations_path(format: :csv), class: "import-form-btn-link" %>
+              </div>
+              <div class="col text-center">
+                <%= submit_tag "Importar informaciones", class:"import-form-submit-btn" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <table class="admin-model-table">
+      <thead>
+        <tr>
+          <th>ID Información</th>
+          <th>ID Usuario</th>
+          <th>Slogan</th>
+          <th>Nº Teléfono</th>
+          <th>Instagram</th>
+          <th>Administración</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @additional_informations.each do |additional_information| %>
+          <tr>
+            <td><%= additional_information.id %></td>
+            <td><%= additional_information.user_id %></td>
+            <td><%= additional_information.slogan %></td>
+            <td><%= additional_information.phone_number %></td>
+            <td><%= additional_information.instagram_nickname %></td>
+            <td>
+              <div class="row justify-content-center">
+                <div class="col-2">
+                  <%= link_to edit_admin_additional_information_path(additional_information), title:"Editar" do %>
+                    <i class="fas fa-briefcase"></i>
+                  <% end %>
+                </div>
+
+                <div class="col-2">
+                  <%= button_to admin_additional_information_path(additional_information), method: :delete, class:"admin-delete-button", title:"Eliminar" do %> 
+                    <i class="fas fa-briefcase admin-delete"></i>
+                  <% end %>
+                </div>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<% content_for :view_specific_css do %>
+    <%= stylesheet_link_tag "admin" %>
+<% end %>

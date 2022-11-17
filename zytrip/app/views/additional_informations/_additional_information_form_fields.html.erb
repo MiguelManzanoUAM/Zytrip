@@ -1,0 +1,37 @@
+<div class="row">
+	<div class="col-md-6 mb-3">
+		<%= f.label(:user_id, "Usuario", class:"create-edit-form-label") %>
+		<%= f.select(:user_id, options_for_select(User.ids), required: true) %>
+	</div>
+
+	<div class="col-md-6 mb-3">
+		<%= f.label(:slogan, "¿Cómo te definirías en una palabra?", class:"create-edit-form-label") %>
+		<%= f.text_field :slogan, class:"create-edit-form-input", autofocus: true %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-6 mb-3">
+		<%= f.label(:phone_number, "Nº Teléfono", class:"create-edit-form-label") %>
+		<%= f.text_field :phone_number, class:"create-edit-form-input", autofocus: true %>
+	</div>
+
+	<div class="col-md-6 mb-3">
+		<%= f.label(:instagram_nickname, "Instagram", class:"create-edit-form-label") %>
+		<%= f.text_field :instagram_nickname, class:"create-edit-form-input", autofocus: true %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12 mb-3">
+		<%= f.label(:image_url, "¿Quieres tener una imagen de perfil?", class:"create-edit-form-label") %>
+		<%= f.text_field :image_url, class:"create-edit-form-input", autofocus: true, placeholder: "copia la dirección URL de la imagen que deseas" %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12 mb-3">
+		<%= f.label(:description, "Cuéntanos un poco de ti", class:"create-edit-form-label") %>
+		<%= f.text_field :description, class:"create-edit-form-input", autofocus: true %>
+	</div>
+</div>

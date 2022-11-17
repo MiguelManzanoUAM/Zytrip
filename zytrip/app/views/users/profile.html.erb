@@ -5,8 +5,8 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-user-container">
-                    <% if @user.image_url %>
-                        <%= image_tag("#{@user.image_url}", class:"profile-img-center") %>
+                    <% if @user.additional_information && @user.additional_information.image_url != ""%>
+                        <%= image_tag("#{@user.additional_information.image_url}", class:"profile-img-center") %>
                     <% elsif @user.image %>
                         <%= image_tag @user.image, class:"profile-img-center" %>
                     <% else %>
@@ -18,10 +18,10 @@
                     </div>
 
                     <div class="profile-description">
-                        <% if @user.description %>
-                            <p> <%= @user.description %> </p>
+                        <% if @user.additional_information && @user.additional_information.slogan%>
+                            <p> <%= @user.additional_information.slogan %> </p>
                         <% else %>
-                            <p> Localización usuario </p>
+                            <p> Estoy usando Zytrip </p>
                         <% end %>
                     </div>
                     
@@ -46,10 +46,10 @@
                     <p class="profile-section-title">Contacto</p>
                     <hr>
                     <div class="profile-contact">
-                        <% if @user.phone_number %>
-                            <p><%= image_tag "local/telephone.png", class: "profile-contact-icon" %><b>Teléfono:</b> -</p>
+                        <% if @user.additional_information && @user.additional_information.phone_number != ""%>
+                            <p><%= image_tag "local/telephone.png", class: "profile-contact-icon" %><b>Teléfono:</b><%= @user.additional_information.phone_number %></p>
                         <% else %>
-                            <p><%= image_tag "local/telephone.png", class: "profile-contact-icon" %><b>Teléfono:</b> 916543245</p>
+                            <p><%= image_tag "local/telephone.png", class: "profile-contact-icon" %><b>Teléfono:</b> -</p>
                         <% end %>
                         <p><%= image_tag "local/envelope.png", class: "profile-contact-icon" %><b>Correo:</b> <%= @user.email %></p>
                     </div>
@@ -59,7 +59,10 @@
             <div class="col-md-8">
                 <div class="profile-sections-container">
                     <ul class="nav nav-tabs" role="tablist">
-                        <li class="nav-item profile-selected-option-btn" id="friendsbtn">
+                        <li class="nav-item profile-selected-option-btn" id="myprofilebtn">
+                            <p onclick="show_profile()", id="myprofilenav", class="profile-btn-text">Perfil</p>
+                        </li>
+                        <li class="nav-item profile-option-btn" id="friendsbtn">
                             <p onclick="show_friends()", id="friendsnav", class="profile-btn-text">Amigos</p>
                         </li>
                         <li class="nav-item profile-option-btn" id="tripsbtn">
@@ -68,7 +71,76 @@
                         <li class="nav-item profile-option-btn" id="organizedtripsbtn">
                             <p onclick="show_organized_trips()", id="organizedtripsnav", class="profile-btn-text">Viajes organizados</p>
                         </li>
+
                     </ul>
+
+                    <!-- #################################################### -->
+                    <!-- ############### Seccion Mi Perfil ################## -->
+                    <!-- #################################################### -->
+
+                    
+                    <div id="myprofile" class="profile-section">
+                        <% if @user.id == current_user.id %>
+                            <% if (!(@user.additional_information) || ((@user.additional_information.slogan == "") && (@user.additional_information.phone_number == "") && (@user.additional_information.description == "") && (@user.additional_information.image_url == "") && (@user.additional_information.instagram_nickname == ""))) %>
+
+                                <% @additionalInformation = AdditionalInformation.new() %>
+                                <%= form_tag additional_informations_path(@additionalInformation), :method => 'post' do %>
+                                    <p class="profile-section-form-title"> Completa tu perfil </p>
+                                    <p class="profile-section-form-subtitle"><text class="profile-section-form-step"> -> </text>Rellena únicamente la información que desees para completar tu perfil (esta información podrán verla los demás usuarios)</p>
+
+                                    <div class="profile-section-form-container">
+                                        <div class="profile-section-form">
+                                            <div class="row">
+                                                <div class="col-md-6 mb-3">
+                                                    <label class="profile-section-form-label">¿Cómo te definirías en una palabra?</label>
+                                                    <%= text_field_tag :slogan, params[:slogan], class:"profile-section-form-input", autofocus: true %>
+                                                    <% hidden_field_tag :id, @user.id %>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-6 mb-3">
+                                                    <label class="profile-section-form-label">Nº Teléfono</label>
+                                                    <%= text_field_tag :phone_number, params[:phone_number], class:"profile-section-form-input", autofocus: true %>
+                                                </div>
+
+                                                <div class="col-md-6 mb-3">
+                                                    <label class="profile-section-form-label">Instagram</label>
+                                                    <%= text_field_tag :instagram_nickname, params[:instagram_nickname], class:"profile-section-form-input", autofocus: true %>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <label class="profile-section-form-label">¿Quieres tener una imagen de perfil?</label>
+                                                <%= text_field_tag :image_url, params[:image_url], class:"profile-section-form-input", autofocus: true, placeholder: "copia la dirección URL de la imagen que deseas" %>
+                                            </div>
+
+                                            <div class="row">
+                                                <label class="profile-section-form-label">Cuéntanos un poco de ti</label>
+                                                <%= text_area_tag :description, params[:description], class:"profile-section-form-description-area", autofocus: true %>
+                                            </div>
+
+
+                                        </div>  
+
+                                        <div class="profile-section-form-btns">
+                                            <div class="row justify-content-center">
+                                              <div class="col-4">
+                                                <%= submit_tag "Guardar perfil", class: "profile-section-form-submit-btn" %>
+                                              </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                <% end %>
+                            <% else %>
+                                <p> stats de mi </p>
+                            <% end %>
+                        <% else %>
+                            <p> stats del usuario </p>
+                        <% end %>
+                    </div>
+                   
 
                     <!-- #################################################### -->
                     <!-- ################# Seccion Amigos ################### -->
@@ -105,8 +177,8 @@
                                     <% @user.friends.each do |user| %>
                                         <tr>
                                             <td>
-                                                <% if user.image_url %>
-                                                    <%= image_tag("#{user.image_url}") %>
+                                                <% if user.additional_information && user.additional_information.image_url%>
+                                                    <%= image_tag("#{user.additional_information.image_url}") %>
                                                 <% elsif user.image %>
                                                     <%= image_tag(user.image) %>
                                                 <% else %>
@@ -293,9 +365,10 @@
 
 <script type="text/javascript">
 
+    document.getElementById('friends').style.display = 'none';
     document.getElementById('trips').style.display = 'none';
     document.getElementById('organizedtrips').style.display = 'none';
-
+    
     /////////////////////////////////////////////
     // Change dynamic info and styles
     /////////////////////////////////////////////
@@ -303,8 +376,11 @@
     function show_friends(){
         if(document.getElementById('friends').style.display == 'none'){
             document.getElementById('friends').style.display = 'block';
+            document.getElementById('myprofile').style.display = 'none';
             document.getElementById('trips').style.display = 'none';
             document.getElementById('organizedtrips').style.display = 'none';
+            document.getElementById('myprofilenav').style.color = '#000';
+            document.getElementById('myprofilebtn').style.backgroundColor = '#eeeded';
             document.getElementById('tripsnav').style.color = '#000';
             document.getElementById('tripsbtn').style.backgroundColor = '#eeeded';
             document.getElementById('organizedtripsnav').style.color = '#000';
@@ -317,8 +393,11 @@
     function show_trips(){
         if(document.getElementById('trips').style.display == 'none'){
             document.getElementById('trips').style.display = 'block';
+            document.getElementById('myprofile').style.display = 'none';
             document.getElementById('friends').style.display = 'none';
             document.getElementById('organizedtrips').style.display = 'none';
+            document.getElementById('myprofilenav').style.color = '#000';
+            document.getElementById('myprofilebtn').style.backgroundColor = '#eeeded';
             document.getElementById('friendsnav').style.color = '#000';
             document.getElementById('friendsbtn').style.backgroundColor = '#eeeded';
             document.getElementById('organizedtripsnav').style.color = '#000';
@@ -331,14 +410,34 @@
     function show_organized_trips(){
         if(document.getElementById('organizedtrips').style.display == 'none'){
             document.getElementById('organizedtrips').style.display = 'block';
+            document.getElementById('myprofile').style.display = 'none';
             document.getElementById('friends').style.display = 'none';
             document.getElementById('trips').style.display = 'none';
+            document.getElementById('myprofilenav').style.color = '#000';
+            document.getElementById('myprofilebtn').style.backgroundColor = '#eeeded';
             document.getElementById('friendsnav').style.color = '#000';
             document.getElementById('friendsbtn').style.backgroundColor = '#eeeded';
             document.getElementById('tripsnav').style.color = '#000';
             document.getElementById('tripsbtn').style.backgroundColor = '#eeeded';
             document.getElementById('organizedtripsnav').style.color = '#fff';
             document.getElementById('organizedtripsbtn').style.backgroundColor = '#6e9bd5';
+        }
+    }
+
+    function show_profile(){
+        if(document.getElementById('myprofile').style.display == 'none'){
+            document.getElementById('myprofile').style.display = 'block';
+            document.getElementById('friends').style.display = 'none';
+            document.getElementById('trips').style.display = 'none';
+            document.getElementById('organizedtrips').style.display = 'none';
+            document.getElementById('friendsnav').style.color = '#000';
+            document.getElementById('friendsbtn').style.backgroundColor = '#eeeded';
+            document.getElementById('tripsnav').style.color = '#000';
+            document.getElementById('tripsbtn').style.backgroundColor = '#eeeded';
+            document.getElementById('organizedtripsnav').style.color = '#000';
+            document.getElementById('organizedtripsbtn').style.backgroundColor = '#eeeded';
+            document.getElementById('myprofilenav').style.color = '#fff';
+            document.getElementById('myprofilebtn').style.backgroundColor = '#6e9bd5';
         }
     }
 

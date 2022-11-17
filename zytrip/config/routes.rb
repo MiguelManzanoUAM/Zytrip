@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :additional_informations
   resources :surveys
   get 'trips_research/preferences_poll', to: "trips_research#preferences_poll", as: "preferences_poll"
   get 'trips_research/results'
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
   resources :services, only: [:new, :create]
   resources :reviews, only: [:new, :create]
   resources :surveys, only: [:new, :create]
+  resources :additional_informations, only: [:new, :create]
 
   resources :friendships, only: [:destroy]
   get "/friendships/add_friend", to: "friendships#add_friend"
@@ -27,6 +29,7 @@ Rails.application.routes.draw do
 
   devise_scope :users do
     get '/users/:id/profile', to: 'users#profile', as: 'users_profile'
+    get '/users/:id/update_aditional_info', to: 'users#update_aditional_info', as: 'users_profile_aditional_info'
   end
 
   devise_scope :users do
@@ -75,6 +78,10 @@ Rails.application.routes.draw do
 
       resources :friendships, only: [:new, :create, :index, :destroy] do
         collection { post :import }
+      end
+
+      resources :additional_informations do
+        collection { post :import}
       end
 
       get "/dashboards/dashboard", to: "dashboards#dashboard"

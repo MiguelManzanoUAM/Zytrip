@@ -140,9 +140,9 @@
 					<div class="row justify-content-md-center">
 						<% @most_similar_users.each do |user| %>
 							<div class="col col-lg-3 landing-results-users-recomendations-box">
-								<% if user.additional_information && user.additional_information.image_url != ""%>
+								<% if user.additional_information && !(user.additional_information.image_url.nil?) %>
 	                        		<%= image_tag("#{user.additional_information.image_url}", class:"profile-img-center") %>
-								<% elsif user.image %>
+								<% elsif !(user.image.nil?) && !(user.image.empty?)%>
 									<%= image_tag user.image, class:"profile-img-center" %>
 								<% else %>
 		                			<%= image_tag "local/user.jpeg", class:"profile-img-center" %>

@@ -21,7 +21,7 @@ class AdditionalInformation < ApplicationRecord
   			else
   				additional_information = AdditionalInformation.create!(additional_information_hash)
   			end
-  			additional_information.update(cadditional_information_hash)
+  			additional_information.update(additional_information_hash)
   		end
   	end
 end

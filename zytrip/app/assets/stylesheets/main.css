@@ -1305,6 +1305,7 @@
   padding-bottom: 50px;
   height: 632px;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .profile-info{
@@ -1333,7 +1334,7 @@
   margin-top: 20px;
   border: 1px solid lightgrey;
   padding-top: 20px;
-  padding-bottom: 50px;
+  padding-bottom: 10px;
 }
 
 .profile-contact-container hr{
@@ -1585,6 +1586,57 @@
   font-weight: bold;
   cursor: pointer;
   text-decoration: none;
+}
+
+.profile-statistics-container{
+  marign-top: 30px;
+  border: 1px solid #c4d6ed;
+  background-color: white;
+}
+
+.profile-statistics-square{
+  border-radius: 1px;
+  border-right: 1px solid #c4d6ed;
+}
+
+.profile-statistics-title{
+  font-size: 20px;
+  color: #6e9bd5;
+  font-weight: bold;
+  margin-bottom: 0px;
+  padding-bottom: 5px;
+}
+
+.profile-statistics-stat{
+  font-size: 16px;
+  margin-bottom: 0px;
+  padding-bottom: 5px;
+}
+
+.profile-myprofile-description-container{
+  padding-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
+
+.profile-myprofile-description-container hr{
+  margin-top: 0px;
+  width: 90%;
+  border: 1px solid #c4d6ed;
+  margin-left: 0px;
+}
+
+.profile-myprofile-description-title{
+  font-size: 20px;
+  color: #6e9bd5;
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+
+.profile-myprofile-description{
+  padding-top: 10px;
+  font-size: 16px;
 }
 
 /**********************************************

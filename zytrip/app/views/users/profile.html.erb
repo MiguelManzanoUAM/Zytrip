@@ -52,6 +52,11 @@
                             <p><%= image_tag "local/telephone.png", class: "profile-contact-icon" %><b>Teléfono:</b> -</p>
                         <% end %>
                         <p><%= image_tag "local/envelope.png", class: "profile-contact-icon" %><b>Correo:</b> <%= @user.email %></p>
+                        <% if @user.additional_information && @user.additional_information.instagram_nickname != ""%>
+                            <p><%= image_tag "local/instagram.png", class: "profile-contact-icon" %><b>Instagram:</b><%= @user.additional_information.instagram_nickname %></p>
+                        <% else %>
+                            <p><%= image_tag "local/instagram.png", class: "profile-contact-icon" %><b>Instagram:</b> -</p>
+                        <% end %>
                     </div>
                 </div>
             </div>
@@ -71,7 +76,6 @@
                         <li class="nav-item profile-option-btn" id="organizedtripsbtn">
                             <p onclick="show_organized_trips()", id="organizedtripsnav", class="profile-btn-text">Viajes organizados</p>
                         </li>
-
                     </ul>
 
                     <!-- #################################################### -->
@@ -134,7 +138,44 @@
 
                                 <% end %>
                             <% else %>
-                                <p> stats de mi </p>
+                                <div class="row justify-content-center">
+                                    <div class="col-9 profile-statistics-container">
+                                        <div class="row text-center">
+                                            <div class="col profile-statistics-square">
+                                                <p class="profile-statistics-title">Amigos</p>
+                                                <p class="profile-statistics-stat"><%= @user.friends.size %></p>
+                                            </div>
+
+                                            <div class="col profile-statistics-square">
+                                                <p class="profile-statistics-title">Viajes realizados</p>
+                                                <p class="profile-statistics-stat"><%= @user.trips.size %></p>
+                                            </div>
+
+                                            <div class="col profile-statistics-square">
+                                                <p class="profile-statistics-title">Viajes organizados</p>
+                                                <p class="profile-statistics-stat"><%= @organized_trips.size %></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="profile-myprofile-description-container">
+                                    <p class="profile-myprofile-description-title"> Acerca de mí </p>
+                                    <hr>
+                                    <% if @user.additional_information && @user.additional_information.description != "" %>
+                                        <p class="profile-myprofile-description"><%= @user.additional_information.description %></p>
+                                    <% else %>
+                                        <p class="profile-myprofile-description">Este usuario aún no ha completado la información de su perfil.</p>
+                                    <% end %>
+
+                                    <p class="profile-myprofile-description-title"> Mi viaje más recomendado: </p>
+                                    <hr>
+                                    <% if @user_most_recommendated_trip %>
+                                        <%= @user_most_recommendated_trip.title %>
+                                    <% else %>
+                                        <p class="profile-myprofile-description">Este usuario aún no ha realizado ningún viaje</p>
+                                    <% end %>
+                                </div>
                             <% end %>
                         <% else %>
                             <p> stats del usuario </p>

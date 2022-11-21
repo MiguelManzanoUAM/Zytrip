@@ -8,7 +8,8 @@ class User < ApplicationRecord
   validates :name, presence: {message: 'Introduzca un nombre de usuario'}, length: {maximum: 20, message: 'introduce un nombre más corto (máximo 20 caracteres)'}
   validates :surname, presence: {message: 'Introduzca un apellido'}, length: {maximum: 20, message: 'introduce un apellido más corto (máximo 20 caracteres)'}
   validates :email, presence: true, format: { with: /[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}/, message: 'Introduzca un email válido'}, uniqueness: {message: 'Ya existe esta cuenta de correo'}
-  validate :password_format_validation
+  #validate :password_format_validation
+  
   #validates :password, confirmation: true
   #validates :password_confirmation, presence: true
 
@@ -324,5 +325,25 @@ class User < ApplicationRecord
 
     return candidates
   end
+
+  #####################################################
+  # Obtenemos el viaje más recomendado por el usuario
+  # que será el que mejor valoración tenga y a su vez
+  # el mas reciente en caso de empate
+  #####################################################
+  def self.most_recommended_trip(user)
+
+    user_reviews = Review.get_user_reviews(user)
+
+    if user_reviews.size != 0
+      best_review = user_reviews.sort_by {|review| [review.rating, review.created_at]}.reverse.first
+      trip = Trip.find_by(id: best_review.trip_id)
+
+      return trip
+    end
+
+    return 
+  end
+
 
 end

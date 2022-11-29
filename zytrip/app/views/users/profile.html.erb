@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-user-container">
-                    <% if @user.additional_information && (!@user.additional_information.image_url.nil?) %>
+                    <% if @user.additional_information && (!@user.additional_information.image_url.nil?) && !(@user.additional_information.image_url.empty?) %>
                         <%= image_tag("#{@user.additional_information.image_url}", class:"profile-img-center") %>
                     <% elsif !(@user.image.nil?) && !(@user.image.empty?)%>
                         <%= image_tag @user.image, class:"profile-img-center" %>
@@ -18,7 +18,7 @@
                     </div>
 
                     <div class="profile-description">
-                        <% if @user.additional_information && @user.additional_information.slogan%>
+                        <% if @user.additional_information && !(@user.additional_information.slogan.empty?) && !(@user.additional_information.slogan.nil?) %>
                             <p> <%= @user.additional_information.slogan %> </p>
                         <% else %>
                             <p> Estoy usando Zytrip </p>
@@ -46,13 +46,13 @@
                     <p class="profile-section-title">Contacto</p>
                     <hr>
                     <div class="profile-contact">
-                        <% if @user.additional_information && !(@user.additional_information.phone_number.nil?)%>
+                        <% if @user.additional_information && !(@user.additional_information.phone_number.nil?) && !(@user.additional_information.phone_number.empty?) %>
                             <p><%= image_tag "local/telephone.png", class: "profile-contact-icon" %><b>Teléfono:</b><%= @user.additional_information.phone_number %></p>
                         <% else %>
                             <p><%= image_tag "local/telephone.png", class: "profile-contact-icon" %><b>Teléfono:</b> -</p>
                         <% end %>
                         <p><%= image_tag "local/envelope.png", class: "profile-contact-icon" %><b>Correo:</b> <%= @user.email %></p>
-                        <% if @user.additional_information && !(@user.additional_information.instagram_nickname.nil?)%>
+                        <% if @user.additional_information && !(@user.additional_information.instagram_nickname.nil?) && !(@user.additional_information.instagram_nickname.empty?) %>
                             <p><%= image_tag "local/instagram.png", class: "profile-contact-icon" %><b>Instagram:</b><%= @user.additional_information.instagram_nickname %></p>
                         <% else %>
                             <p><%= image_tag "local/instagram.png", class: "profile-contact-icon" %><b>Instagram:</b> -</p>
@@ -87,13 +87,21 @@
                         <% if @user.id == current_user.id %>
                             <% if !(@user.additional_information) %>
 
+                                <p class="profile-section-form-title"> Completa tu perfil </p>
+                                <p class="profile-section-form-subtitle"><text class="profile-section-form-step"> -> </text>Rellena únicamente la información que desees para completar tu perfil (esta información podrán verla los demás usuarios)</p>
+
                                 <% @additionalInformation = AdditionalInformation.new() %>
                                 <%= form_tag additional_informations_path(@additionalInformation), :method => 'post' do %>
-                                    <p class="profile-section-form-title"> Completa tu perfil </p>
-                                    <p class="profile-section-form-subtitle"><text class="profile-section-form-step"> -> </text>Rellena únicamente la información que desees para completar tu perfil (esta información podrán verla los demás usuarios)</p>
 
                                     <div class="profile-section-form-container">
                                         <div class="profile-section-form">
+
+                                            <% if flash[:additional_information_error] %>
+                                                <div class="invalid-field-profile">
+                                                  <p><text class="invalid-field-step">-></text><%= flash[:additional_information_error] %></p>        
+                                                </div>
+                                            <% end %>
+
                                             <div class="row">
                                                 <div class="col-md-6 mb-3">
                                                     <label class="profile-section-form-label">¿Cómo te definirías en un slogan?</label>
@@ -105,7 +113,7 @@
                                             <div class="row">
                                                 <div class="col-md-6 mb-3">
                                                     <label class="profile-section-form-label">Nº Teléfono</label>
-                                                    <%= text_field_tag :phone_number, params[:phone_number], class:"profile-section-form-input", autofocus: true %>
+                                                    <%= text_field_tag :phone_number, params[:phone_number], class:"profile-section-form-input", autofocus: true, placeholder: "Formato Internacional (+34.... o +55...)" %>
                                                 </div>
 
                                                 <div class="col-md-6 mb-3">
@@ -162,7 +170,7 @@
                                 <div class="profile-myprofile-description-container">
                                     <p class="profile-myprofile-description-title"> Acerca de mí </p>
                                     <hr>
-                                    <% if @user.additional_information && !(@user.additional_information.description.nil?) %>
+                                    <% if @user.additional_information && !(@user.additional_information.description.nil?) && !(@user.additional_information.description.empty?)  %>
                                         <p class="profile-myprofile-description"><%= @user.additional_information.description %></p>
                                     <% else %>
                                         <p class="profile-myprofile-description">Aún no has completado la información de tu perfil.</p>
@@ -236,7 +244,7 @@
                                 <div class="profile-myprofile-description-container">
                                     <p class="profile-myprofile-description-title"> Acerca de mí </p>
                                     <hr>
-                                    <% if @user.additional_information && !(@user.additional_information.description.nil?) %>
+                                    <% if @user.additional_information && !(@user.additional_information.description.nil?) && !(@user.additional_information.description.empty?)  %>
                                         <p class="profile-myprofile-description"><%= @user.additional_information.description %></p>
                                     <% else %>
                                         <p class="profile-myprofile-description">Este usuario aún no ha completado la información de su perfil.</p>

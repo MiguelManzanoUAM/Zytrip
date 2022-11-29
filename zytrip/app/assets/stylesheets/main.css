@@ -98,12 +98,11 @@
 }
 
 .registration-update-form{
-  content: '';
-  position: fixed;
+  background-color: #aab4c6;
+  padding-bottom: 350px;
+  padding-top: 80px;
   width: 100vw;
   height: 100vh;
-  filter: none;
-  background-color: #aab4c6;;
 }
 
 .registration-update-form-container{
@@ -114,9 +113,8 @@
   width: 700px;
   height: 700px;
   padding: 80px 40px;
-  background: rgba(0,0,0,0.6);
-  border-radius: 15px;
-  border: 1px solid #c4d6ed;
+  background-color: white;
+  border: 1px solid #6e9bd5;
 
   /*Estilos segun navegador */
   -webkit-transform: translate(-50%, -50%);
@@ -136,6 +134,14 @@
 }
 
 .registration-form h2{
+  margin: 0;
+  padding: 0 0 20px;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.registration-update-form h2{
   margin: 0;
   padding: 0 0 20px;
   color: #fff;
@@ -181,6 +187,19 @@
   font-size: 15px;
   background: #6e9bd5;
   padding-top: 10px;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  width: 100%;
+}
+
+.registration-update-form-delete-btn{
+  margin-top: 2%;
+  height: 40px;
+  color: #fff;
+  font-size: 15px;
+  background: #e9273c;
+  cursor: pointer;
   border-radius: 25px;
   border: none;
   outline: none;
@@ -1507,6 +1526,8 @@
   border: 1px solid #6e9bd5;
   padding-top: 20px;
   padding-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 .profile-section-form{
@@ -1522,6 +1543,14 @@
   text-align: center;
 }
 
+.profile-section-update-form-title{
+  font-size: 30px;
+  font-weight: bold;
+  color: #6e9bd5;
+  text-align: center;
+  text-transform: uppercase;
+}
+
 .profile-section-form-subtitle{
   font-size: 16px;
   font-weight: bold;
@@ -1530,6 +1559,15 @@
   margin-right: auto;
   width: 80%;
 }
+
+.profile-section-update-form-subtitle{
+  font-size: 20px;
+  font-weight: bold;
+  color: #aab4c6;
+  text-align: center;
+  margin-top: 2%;
+}
+
 
 .profile-section-form-step{
   font-size: 20px;
@@ -1637,6 +1675,13 @@
 .profile-myprofile-description{
   padding-top: 10px;
   font-size: 16px;
+}
+
+.invalid-field-profile {
+  color: #bd1626;
+  font-size: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 /**********************************************

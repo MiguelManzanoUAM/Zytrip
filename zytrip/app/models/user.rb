@@ -4,11 +4,20 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  cattr_reader :current_password
+
   # Validaciones
-  validates :name, presence: {message: 'Introduzca un nombre de usuario'}, length: {maximum: 20, message: 'introduce un nombre más corto (máximo 20 caracteres)'}
-  validates :surname, presence: {message: 'Introduzca un apellido'}, length: {maximum: 20, message: 'introduce un apellido más corto (máximo 20 caracteres)'}
-  validates :email, presence: true, format: { with: /[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}/, message: 'Introduzca un email válido'}, uniqueness: {message: 'Ya existe esta cuenta de correo'}
-  #validate :password_format_validation
+  validates :name, presence: {message: 'Introduzca un nombre de usuario'}, length: {maximum: 20, message: 'introduce un nombre más corto (máximo 20 caracteres)'}, on: :create
+  validates :name, presence: {message: 'Introduzca un nombre de usuario'}, length: {maximum: 20, message: 'introduce un nombre más corto (máximo 20 caracteres)'}, on: :update
+  
+  validates :surname, presence: {message: 'Introduzca un apellido'}, length: {maximum: 20, message: 'introduce un apellido más corto (máximo 20 caracteres)'}, on: :create
+  validates :surname, presence: {message: 'Introduzca un apellido'}, length: {maximum: 20, message: 'introduce un apellido más corto (máximo 20 caracteres)'}, on: :update
+  
+  validates :email, presence: true, format: { with: /[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}/, message: 'Introduzca un email válido'}, uniqueness: {message: 'Ya existe esta cuenta de correo'}, on: :create
+  validates :email, presence: true, format: { with: /[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}/, message: 'Introduzca un email válido'}, uniqueness: {message: 'Ya existe esta cuenta de correo'}, on: :update
+  
+  validate :password_format_validation, on: :create
+  validate :password_update_format_validation, on: :update, if: :password_changed?
   
   #validates :password, confirmation: true
   #validates :password_confirmation, presence: true
@@ -19,7 +28,7 @@ class User < ApplicationRecord
   has_many :surveys, dependent: :destroy
   has_many :friendships
   has_many :friends, through: :friendships
-  has_one :additional_information
+  has_one :additional_information, dependent: :destroy
   
   #####################################################
   # Validación contraseña
@@ -36,6 +45,28 @@ class User < ApplicationRecord
     if !(password =~ /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{3,20}$/)
       errors.add :password, 'La contraseña ha de incluir una mayúscula, una minúscula y un dígito'
     end
+  end
+
+  def password_update_format_validation
+    if current_password.nil?
+      errors.add :current_password, 'Introduzca su contraseña actual para confirmar los cambios'
+    end
+
+    if password =~ /#{email}/
+      errors.add :password, 'La contraseña no puede contener el email del usuario'
+    end
+
+    if !(password =~ /[0-9a-zA-Z]{8,20}/)
+      errors.add :password, 'La contraseña debe tener una longitud de entre 8 y 20 caracteres'
+    end
+
+    if !(password =~ /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{3,20}$/)
+      errors.add :password, 'La contraseña ha de incluir una mayúscula, una minúscula y un dígito'
+    end
+  end
+
+  def password_changed?
+    return true if password
   end
 
   #####################################################

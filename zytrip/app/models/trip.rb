@@ -4,6 +4,10 @@ class Trip < ApplicationRecord
 	has_many :reviews, dependent: :destroy
 	has_one :preference, dependent: :destroy
 
+	validates :title, presence: {message: 'Introduzca el título del viaje'}, length: {maximum: 30, message: 'introduce un título más corto (máximo 30 caracteres)'}
+	validates :subtitle, presence: {message: 'Piensa un subtítulo para el viaje'}, length: {maximum: 50, message: 'piensa un subtítulo más corto (máximo 50 caracteres)'}
+	validates :description, presence: {message: 'Cuéntanos un poco como fue tu experiencia (itinerario, actividades...)'}
+	validates :price, presence: {message: 'Introduce un precio aproximado para tu viaje'}, numericality: { only_integer: true, min: 0, message: "Introduce un precio (en euros) aproximado para tu viaje" }
 	#####################################################
 	#Busqueda de viajes mediante barra de busqueda
 	#####################################################
@@ -285,4 +289,24 @@ class Trip < ApplicationRecord
   		return most_popular_trips
   	end
 
+  	#####################################################
+  	# Elimina aquellos viajes que no se han guardado de
+  	# forma correcta como por ejemplo si te saltas
+  	# etapas del formulario "cuenta tu viaje"
+  	#####################################################s
+  	def self.destroy_unsaved_trips()
+  		trip = Trip.last
+
+  		trip_preferences = Preference.find_by(trip_id: trip.id)
+
+  		if trip_preferences
+  			trip_topics = Topic.find_by(preference_id: trip_preferences.id)
+  			trip_companies = Topic.find_by(preference_id: trip_preferences.id)
+  			trip_services = Topic.find_by(preference_id: trip_preferences.id)
+
+  			if trip_topics.nil? || trip_companies.nil? || trip_services.nil?
+  				trip.destroy
+  			end
+  		end
+  	end
 end

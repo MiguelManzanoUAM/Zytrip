@@ -1,7 +1,13 @@
 <%= render "layouts/header" %>
 <section>
   <div class="create-edit-trip">
-    <div class="create-edit-trip-box">
+    <div class="navigation-routes" style="background-color: #b1f2af">
+        <ol>
+            <li><%= link_to 'Zytrip', root_path, class:"navigation-routes-link", style:"color: #33e12d" %></li>
+            <li>Cuéntanos tu experiencia</li>
+        </ol>
+    </div>
+    <div class="create-edit-trip-preferences-box">
       <h2 class="create-edit-trip-title">Unas últimas preguntas antes de terminar</h2>
       <%= form_for(@company, url: companies_path(@company)) do |f| %>
         <%= render partial: "company_form_fields", :locals => {:f => f} %>

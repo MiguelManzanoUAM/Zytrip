@@ -1,5 +1,13 @@
 <%= render "layouts/header" %>
+<div class="navigation-routes">
+  <ol>
+      <li><%= link_to 'Zytrip', root_path, class:"navigation-routes-link" %></li>
+      <li><%= link_to 'Viajes', trips_path, class:"navigation-routes-link" %></li>
+      <li><%= @trip.title %></li>
+  </ol>
+</div>
 <div class="trip-main">
+
   <div class="trip-main-container-outside">
     <div class="trip-main-container">
       <div class="row trip-main-box">
@@ -67,7 +75,7 @@
         </div> 
       </div>
 
-      <div class="col-6">
+      <div class="col">
         <div class="trip-itinerary">
           <p class="trip-section-title">Información del viaje</p>
           <hr>
@@ -118,7 +126,12 @@
 
     <% if user_signed_in?%>
       <hr>
-      <p class="trip-section-title">Valora este viaje</p>
+      <p class="trip-section-title">
+        Valora este viaje
+        <% if flash[:notice] %>
+          <text class="invalid-field-step"><%= flash[:notice] %></text>
+        <% end %>
+      </p>
       <p class="trip-section-description">Comparte tu opinión acerca de esta experiencia con otros usuarios</p>
 
       <div id="reviewoption">
@@ -134,10 +147,17 @@
       <div id="reviewform">  
         <% @review = Review.new() %>
         <%= form_tag reviews_path(@review), :method => 'post' do %>
+
+          <% if flash[:review_error] %>
+            <div class="invalid-field-profile">
+              <p><text class="invalid-field-step">-></text><%= flash[:review_error] %></p>        
+            </div>
+          <% end %>
+
           <div class="row">
             <div class="col-md-4 mb-3">
-              <label class="create-review-trip-form-label">Valoración:</label>
-              <%= text_field_tag :rating, params[:rating], class:"create-review-trip-form-input-short", autofocus: true, required: true %>
+              <label class="create-review-trip-form-label">Valoración:<text class="required-star">*</text></label>
+              <%= number_field_tag :rating, params[:rating], min: 0, max: 5, value: 0, class:"create-review-trip-form-input-short", autofocus: true, required: true %>
               <%= hidden_field_tag :trip_id, @trip.id %>
             </div>
           </div>

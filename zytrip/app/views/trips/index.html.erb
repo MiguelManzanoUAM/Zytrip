@@ -19,6 +19,13 @@
         </div>
     </div>
 
+    <div class="navigation-routes">
+        <ol>
+            <li><%= link_to 'Zytrip', root_path, class:"navigation-routes-link" %></li>
+            <li>Viajes</li>
+        </ol>
+    </div>
+
     <div class="trips-main">
         <div class="row">
             <div class="col-md-4">
@@ -63,7 +70,7 @@
                 <% @trips.each do |trip| %>
                     <div class="row trips-results-box">
                         <div class="col">
-                            <% if trip.image_url %>
+                            <% if trip.image_url && !(trip.image_url.nil?) && !(trip.image_url.empty?) %>
                                 <%= image_tag("#{trip.image_url}") %>
                             <% elsif trip.image %>
                                 <%= image_tag(trip.image) %>

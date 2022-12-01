@@ -2,6 +2,9 @@ class Review < ApplicationRecord
 	belongs_to :user
 	belongs_to :trip
 
+	validates :rating, presence: {message: 'Introduzca una valoración'}, numericality: { less_than_or_equal_to: 5, only_integer: true, message: "Introduce un nº entre 0 y 5"}
+	validates :comment, length: {maximum: 150, message: 'introduce un comentario más corto (máximo 150 caracteres)'}
+	
 	#####################################################
   	# Exporta todos los datos en un csv
   	#####################################################

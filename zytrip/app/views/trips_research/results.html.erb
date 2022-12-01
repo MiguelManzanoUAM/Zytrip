@@ -1,103 +1,111 @@
 <%= render "layouts/header" %>
+<div class="navigation-routes">
+  <ol>
+      <li><%= link_to 'Zytrip', root_path, class:"navigation-routes-link" %></li>
+      <li><%= link_to 'Encuentra tu viaje ideal', preferences_poll_path, class:"navigation-routes-link" %></li>
+      <li>Resultados</li>
+  </ol>
+</div>
 
-<div class="main-results">
-	<div class="results-filters">
-		<div class="results-filter-container">
-			<div class="results-filter-container-title">
-				<%if @result_trips.size == 0 %>
-					<p> Hemos encontrado <text class="results-size-red"><%= @result_trips.size %> resultados </text></p>
-				<% else %>
-					<p> Hemos encontrado <text class="results-size-green"><%= @result_trips.size %> resultados </text> que podrían interesarte </p>
-				<% end %>
-			</div>
-			<hr>
-			<div class="results-filter-container-description">
-				<p> Estos han sido los parámetros establecidos en su búsqueda </p>
-			</div>
-			<div class="row results-filters text-center">
-				<div class="col-4">
-					<% if @filter_destination %>
-						<p><b>Destino: </b><text class="results-filters-true"><%= @message_destination %></text></p>
+<div class="main-results-container">
+	<div class="main-results">
+		<div class="results-filters">
+			<div class="results-filter-container">
+				<div class="results-filter-container-title">
+					<%if @result_trips.size == 0 %>
+						<p> Hemos encontrado <text class="results-size-red"><%= @result_trips.size %> resultados </text></p>
 					<% else %>
-						<p><b>Destino: </b><text class="results-filters-false"><%= @message_destination %></text></p>
+						<p> Hemos encontrado <text class="results-size-green"><%= @result_trips.size %> resultados </text> que podrían interesarte </p>
 					<% end %>
 				</div>
-				<div class="col-4">
-					<% if @filter_budget %>
-						<p><b>Presupuesto: </b><text class="results-filters-true"><%= @message_budget %></text></p>
-					<% else %>
-						<p><b>Presupuesto: </b><text class="results-filters-false"><%= @message_budget %></text></p>
-					<% end %>
+				<hr>
+				<div class="results-filter-container-description">
+					<p> Estos han sido los parámetros establecidos en su búsqueda </p>
 				</div>
-				<div class="col-4">
-					<% if @filter_duration %>
-						<p><b>Duración: </b><text class="results-filters-true"><%= @message_duration %></text></p>
-					<% else %>
-						<p><b>Duración: </b><text class="results-filters-false"><%= @message_duration %></text></p>
-					<% end %>
+				<div class="row results-filters text-center">
+					<div class="col-4">
+						<% if @filter_destination %>
+							<p><b>Destino: </b><text class="results-filters-true"><%= @message_destination %></text></p>
+						<% else %>
+							<p><b>Destino: </b><text class="results-filters-false"><%= @message_destination %></text></p>
+						<% end %>
+					</div>
+					<div class="col-4">
+						<% if @filter_budget %>
+							<p><b>Presupuesto: </b><text class="results-filters-true"><%= @message_budget %></text></p>
+						<% else %>
+							<p><b>Presupuesto: </b><text class="results-filters-false"><%= @message_budget %></text></p>
+						<% end %>
+					</div>
+					<div class="col-4">
+						<% if @filter_duration %>
+							<p><b>Duración: </b><text class="results-filters-true"><%= @message_duration %></text></p>
+						<% else %>
+							<p><b>Duración: </b><text class="results-filters-false"><%= @message_duration %></text></p>
+						<% end %>
+					</div>
 				</div>
-			</div>
 
-			<div class="row results-filters text-center">
-				<div class="col-4">
-					<% if @filter_company %>
-						<p><b>Compañía: </b><text class="results-filters-true"><%= @message_company %></text></p>
-					<% else %>
-						<p><b>Compañía: </b><text class="results-filters-false"><%= @message_company %></text></p>
-					<% end %>
+				<div class="row results-filters text-center">
+					<div class="col-4">
+						<% if @filter_company %>
+							<p><b>Compañía: </b><text class="results-filters-true"><%= @message_company %></text></p>
+						<% else %>
+							<p><b>Compañía: </b><text class="results-filters-false"><%= @message_company %></text></p>
+						<% end %>
+					</div>
+					<div class="col-4">
+						<% if @filter_services %>
+							<p><b>Otros intereses: </b><text class="results-filters-true"><%= @message_services %></text></p>
+						<% else %>
+							<p><b>Otros intereses: </b><text class="results-filters-false"><%= @message_services %></text></p>
+						<% end %>
+					</div>
+					<div class="col-4">
+						<% if @filter_topic %>
+							<p><b>Temática: </b><text class="results-filters-true"><%= @message_topic %></text></p>
+						<% else %>
+							<p><b>Temática: </b><text class="results-filters-false"><%= @message_topic %></text></p>
+						<% end %>
+					</div>
 				</div>
-				<div class="col-4">
-					<% if @filter_services %>
-						<p><b>Otros intereses: </b><text class="results-filters-true"><%= @message_services %></text></p>
-					<% else %>
-						<p><b>Otros intereses: </b><text class="results-filters-false"><%= @message_services %></text></p>
-					<% end %>
-				</div>
-				<div class="col-4">
-					<% if @filter_topic %>
-						<p><b>Temática: </b><text class="results-filters-true"><%= @message_topic %></text></p>
-					<% else %>
-						<p><b>Temática: </b><text class="results-filters-false"><%= @message_topic %></text></p>
-					<% end %>
-				</div>
-			</div>
 
 
-			<div class="results-survey-btn">
-				<%=link_to 'Cambiar parámetros', preferences_poll_path, class:"results-survey-btn-link"%>
+				<div class="results-survey-btn">
+					<%=link_to 'Cambiar parámetros', preferences_poll_path, class:"results-survey-btn-link"%>
+				</div>
 			</div>
 		</div>
-	</div>
 
-	<div class="results-list-view-container">
-		
-		<% @result_trips.each_with_index do |trip,aux| %>
-			<% if aux%3 == 0 %>
-				<div class="row">
-			<% end %>
-			<div class="col col-lg-3 recomendations-results-box">
-				<% if trip.image %>
-					<%= link_to image_tag(trip.image), trip %>
-				<% else %>
-        			<%= link_to image_tag("local/no-image-available.png"), trip %>
-        		<% end %>
+		<div class="results-list-view-container">
+			<div class="row">
+				<% @result_trips.each_with_index do |trip,aux| %>
+					<div class="col col-lg-3 recomendations-results-box">
+						<% if trip.image %>
+							<%= link_to image_tag(trip.image), trip %>
+						<% else %>
+	      			<%= link_to image_tag("local/no-image-available.png"), trip %>
+	      		<% end %>
 
-				<hr>
-				<p class="result-info">
-					<div class="row justify-content-between">
-						<div class="col-8">
-							<p class="result-info-title"><%= trip.title %></p>
-						</div>
-						<div class="col-4">
-							<p class="result-info-price"><%= trip.price %> €</p>
-						</div>
+						<hr>
+						<p class="result-info">
+							<div class="row justify-content-between">
+								<div class="col-8">
+									<p class="result-info-title"><%= trip.title %></p>
+								</div>
+								<div class="col-4">
+									<p class="result-info-price"><%= trip.price %> €</p>
+								</div>
+							</div>
+						</p>
 					</div>
-				</p>
+				<% end %>
 			</div>
-		<% end %>
 		</div>
 	</div>
 </div>
+
+<%= render "layouts/footer" %>
 
 <% content_for :view_specific_css do %>
     <%= stylesheet_link_tag "main" %>

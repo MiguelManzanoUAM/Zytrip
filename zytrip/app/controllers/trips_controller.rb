@@ -81,8 +81,26 @@ class TripsController < ApplicationController
 
   def create
     @trip = Trip.new(trip_params.merge(organizer_id: current_user.id))
-    @trip.save
-    redirect_to new_preference_path(trip_id: @trip.id)
+
+    if !@trip.save
+      if (trip_params[:title].empty?)
+        flash[:trip_error] = "Introduce un título para tu viaje"
+      elsif trip_params[:title].length > 30
+        flash[:trip_error] = "Introduce un título más corto (máximo 30 caracteres)"
+      elsif (trip_params[:subtitle].empty?)
+        flash[:trip_error] = "Rellena todos los campos que sean necesarios(*)"
+      elsif trip_params[:subtitle].length > 50
+        flash[:trip_error] = "piensa un subtítulo más corto (máximo 50 caracteres)"
+      elsif (trip_params[:description].empty?)
+        flash[:trip_error] = "Cuéntanos un poco como fue tu experiencia (itinerario, actividades...)"
+      else
+        flash[:trip_error] = "Introduce un precio (en euros) aproximado para tu viaje"
+      end
+
+      redirect_to new_trip_path(trip_id: @trip.id)
+    else
+      redirect_to new_preference_path(trip_id: @trip.id)
+    end
   end
 
   def edit

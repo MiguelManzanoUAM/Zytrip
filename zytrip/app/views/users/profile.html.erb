@@ -1,6 +1,16 @@
 <%= render "layouts/header" %>
 
 <div class="main-profile">
+    <div class="navigation-routes">
+        <ol>
+            <li><%= link_to 'Zytrip', root_path, class:"navigation-routes-link" %></li>
+            <% if @user.id == current_user.id %>
+                <li>Mi perfil</li>
+            <% else %>
+                <li><%= @user.name %> <%= @user.surname %></li>
+            <% end %>
+        </ol>
+    </div>
     <div class="main-profile-container">
         <div class="row">
             <div class="col-md-4">
@@ -18,7 +28,7 @@
                     </div>
 
                     <div class="profile-description">
-                        <% if @user.additional_information && !(@user.additional_information.slogan.empty?) && !(@user.additional_information.slogan.nil?) %>
+                        <% if @user.additional_information && !(@user.additional_information.slogan.nil?) && !(@user.additional_information.slogan.empty?) %>
                             <p> <%= @user.additional_information.slogan %> </p>
                         <% else %>
                             <p> Estoy usando Zytrip </p>
@@ -331,7 +341,7 @@
                                     <% @user.friends.each do |user| %>
                                         <tr>
                                             <td>
-                                                <% if user.additional_information && (!user.additional_information.image_url.nil?)%>
+                                                <% if ((user.additional_information) && !(user.additional_information.image_url.nil?) && !(user.additional_information.image_url.empty?))%>
                                                     <%= image_tag("#{user.additional_information.image_url}") %>
                                                 <% elsif !(user.image.nil?) && !(@user.image.empty?) %>
                                                     <%= image_tag(user.image) %>
@@ -515,6 +525,7 @@
     </div>
 </div>
 
+<%= render 'layouts/footer' %>
 <!-- Funciones javascript -->
 
 <script type="text/javascript">

@@ -1,6 +1,6 @@
 class Survey < ApplicationRecord
 	belongs_to :user
-
+	
 	#####################################################
   	# Exporta todos los datos en un csv
   	#####################################################

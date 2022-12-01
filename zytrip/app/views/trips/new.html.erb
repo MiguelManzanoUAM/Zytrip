@@ -1,6 +1,13 @@
 <%= render "layouts/header" %>
 <section>
   <div class="create-edit-trip">
+    <div class="navigation-routes" style="background-color: #b1f2af">
+        <ol>
+            <li><%= link_to 'Zytrip', root_path, class:"navigation-routes-link", style:"color: #33e12d" %></li>
+            <li>Cuéntanos tu experiencia</li>
+        </ol>
+    </div>
+
     <div class="create-edit-trip-box">
       <h2 class="create-edit-trip-title">Cuéntanos tu experiencia</h2>
       <%= form_for(@trip, url: trips_path(@trip)) do |f| %>

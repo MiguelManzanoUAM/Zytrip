@@ -1,104 +1,210 @@
 <%= render "layouts/header" %>
-<div class="main-landing">
-    <div class="trips-title-container">
-        <div class="trips-title-help-container">
-            <div class="trips-title-help-container-info">
-                <b>¿Tienes algún lugar en mente?</b>
-                <!--dropdown o barra busqueda -->
-                <%= form_for "", url: trips_path, role: "search_by_name", method: :get do %>
-                    <div class="row">
-                        <div class="col-md-8">
-                            <%= text_field_tag :sch, @search_name, class:"trips-title-destinations" %>
+<% if session[:theme] == "light" %>
+    <div class="main-landing">
+        <div class="trips-title-container">
+            <div class="trips-title-help-container">
+                <div class="trips-title-help-container-info">
+                    <b>¿Tienes algún lugar en mente?</b>
+                    <!--dropdown o barra busqueda -->
+                    <%= form_for "", url: trips_path, role: "search_by_name", method: :get do %>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <%= text_field_tag :sch, @search_name, class:"trips-title-destinations" %>
+                            </div>
+                            <div class="col-md-4">
+                                <%= submit_tag "Buscar", class:"trips-destination-search" %>
+                            </div>
                         </div>
-                        <div class="col-md-4">
-                            <%= submit_tag "Buscar", class:"trips-destination-search" %>
-                        </div>
-                    </div>
-                <% end %>
-            </div>
-        </div>
-    </div>
-
-    <div class="navigation-routes">
-        <ol>
-            <li><%= link_to 'Zytrip', root_path, class:"navigation-routes-link" %></li>
-            <li>Viajes</li>
-        </ol>
-    </div>
-
-    <div class="trips-main">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="trips-sidebar-container">
-                    <p class="trips-sidebar-title">Filtros de búsqueda</p>
-                    <hr>
-
-                    <!--secciones filtros -->
-                    <%= form_for "", url: trips_path, role: "search", method: :get do %>
-                        <div class="trips-sidebar-section">
-                            <p class="trips-sidebar-section-title">Por precio: </p>
-                            <div class="trips-sidebar-section-options input-group">
-                                <%= text_field_tag :minp, @search_min_price, placeholder: "Min...", class:"sidebar-prices"%>
-                                <div class="input-group-append">
-                                    <span class="input-group-text">€</span>
-                                </div>
-                            </div><br>
-
-                            <div class="trips-sidebar-section-options input-group">
-                                <%= text_field_tag :maxp, @search_max_price, placeholder: "Max...", class:"sidebar-prices"%>
-                                <div class="input-group-append">
-                                    <span class="input-group-text">€</span>
-                                </div>
-                            </div><br>
-                            <hr>
-                        </div>
-
-                        <div class="trips-sidebar-section">
-                            <p class="trips-sidebar-section-title">Por valoración de los usuarios: </p>
-                            <input name="stars4" type="checkbox" id="stars4", onclick="check4()"><label>4 estrellas o más</label><br>
-                            <input name="stars3" type="checkbox" id="stars3", onclick="check3()"><label>3 estrellas o más</label><br>
-                            <input name="stars2" type="checkbox" id="stars2", onclick="check2()"><label>2 estrellas o más</label><br>
-                            <input name="stars1" type="checkbox" id="stars1", onclick="check1()"><label>1 estrella o más</label><br>
-                        </div>
-
-                        <%= submit_tag "Buscar", class:"sidebar-submit" %>
                     <% end %>
                 </div>
             </div>
-            <div class="col-md-8">
-                <p class="trips-search-count"><b><%= @trips.size %></b> resultados encontrados</p>
-                <% @trips.each do |trip| %>
-                    <div class="row trips-results-box">
-                        <div class="col">
-                            <% if trip.image_url && !(trip.image_url.nil?) && !(trip.image_url.empty?) %>
-                                <%= image_tag("#{trip.image_url}") %>
-                            <% elsif trip.image %>
-                                <%= image_tag(trip.image) %>
-                            <% else %>
-                                <%= image_tag("local/no-image-available.png") %>
-                            <% end %>
-                        </div>
-                        <div class="col-6">
-                            <div class="trips-results-box-title">
-                                <%=link_to trip, class:"trips-results-box-title" do%>
-                                    <p><b><%=trip.title%></b></p>
+        </div>
+
+        <div class="navigation-routes">
+            <ol>
+                <li><%= link_to 'Zytrip', root_path, class:"navigation-routes-link" %></li>
+                <li>Viajes</li>
+            </ol>
+        </div>
+
+        <div class="trips-main">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="trips-sidebar-container">
+                        <p class="trips-sidebar-title">Filtros de búsqueda</p>
+                        <hr>
+
+                        <!--secciones filtros -->
+                        <%= form_for "", url: trips_path, role: "search", method: :get do %>
+                            <div class="trips-sidebar-section">
+                                <p class="trips-sidebar-section-title">Por precio: </p>
+                                <div class="trips-sidebar-section-options input-group">
+                                    <%= text_field_tag :minp, @search_min_price, placeholder: "Min...", class:"sidebar-prices"%>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">€</span>
+                                    </div>
+                                </div><br>
+
+                                <div class="trips-sidebar-section-options input-group">
+                                    <%= text_field_tag :maxp, @search_max_price, placeholder: "Max...", class:"sidebar-prices"%>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">€</span>
+                                    </div>
+                                </div><br>
+                                <hr>
+                            </div>
+
+                            <div class="trips-sidebar-section">
+                                <p class="trips-sidebar-section-title">Por valoración de los usuarios: </p>
+                                <input name="stars4" type="checkbox" id="stars4", onclick="check4()"><label>4 estrellas o más</label><br>
+                                <input name="stars3" type="checkbox" id="stars3", onclick="check3()"><label>3 estrellas o más</label><br>
+                                <input name="stars2" type="checkbox" id="stars2", onclick="check2()"><label>2 estrellas o más</label><br>
+                                <input name="stars1" type="checkbox" id="stars1", onclick="check1()"><label>1 estrella o más</label><br>
+                            </div>
+
+                            <%= submit_tag "Buscar", class:"sidebar-submit" %>
+                        <% end %>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <p class="trips-search-count"><b><%= @trips.size %></b> resultados encontrados</p>
+                    <% @trips.each do |trip| %>
+                        <div class="row trips-results-box">
+                            <div class="col">
+                                <% if trip.image_url && !(trip.image_url.nil?) && !(trip.image_url.empty?) %>
+                                    <%= image_tag("#{trip.image_url}") %>
+                                <% elsif trip.image %>
+                                    <%= image_tag(trip.image) %>
+                                <% else %>
+                                    <%= image_tag("local/no-image-available.png") %>
                                 <% end %>
                             </div>
+                            <div class="col-6">
+                                <div class="trips-results-box-title">
+                                    <%=link_to trip, class:"trips-results-box-title" do%>
+                                        <p><b><%=trip.title%></b></p>
+                                    <% end %>
+                                </div>
 
-                            <div class="trips-results-box-info">
-                                <p><b><%= trip.subtitle %></b></p>
+                                <div class="trips-results-box-info">
+                                    <p><b><%= trip.subtitle %></b></p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col">
-                            <p class="trips-results-box-price"><b><%= trip.price %>€</b></p>
-                        </div>
-                    </div><br>
-                <% end %>
+                            <div class="col">
+                                <p class="trips-results-box-price"><b><%= trip.price %>€</b></p>
+                            </div>
+                        </div><br>
+                    <% end %>
+                </div>
             </div>
         </div>
+
     </div>
 
-</div>
+<% else %>
+
+    <div class="main-landing-dark">
+        <div class="trips-title-container">
+            <div class="trips-title-help-container-dark">
+                <div class="trips-title-help-container-info">
+                    <b> ¿Tienes algún lugar en mente?</b>
+                    <!--dropdown o barra busqueda -->
+                    <%= form_for "", url: trips_path, role: "search_by_name", method: :get do %>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <%= text_field_tag :sch, @search_name, class:"trips-title-destinations" %>
+                            </div>
+                            <div class="col-md-4">
+                                <%= submit_tag "Buscar", class:"trips-destination-search-dark" %>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation-routes">
+            <ol>
+                <li><%= link_to 'Zytrip', root_path, class:"navigation-routes-link" %></li>
+                <li style="color: black;">Viajes</li>
+            </ol>
+        </div>
+
+        <div class="trips-main">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="trips-sidebar-container-dark">
+                        <p class="trips-sidebar-title">Filtros de búsqueda</p>
+                        <hr>
+
+                        <!--secciones filtros -->
+                        <%= form_for "", url: trips_path, role: "search", method: :get do %>
+                            <div class="trips-sidebar-section">
+                                <p class="trips-sidebar-section-title">Por precio: </p>
+                                <div class="trips-sidebar-section-options input-group">
+                                    <%= text_field_tag :minp, @search_min_price, placeholder: "Min...", class:"sidebar-prices"%>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">€</span>
+                                    </div>
+                                </div><br>
+
+                                <div class="trips-sidebar-section-options input-group">
+                                    <%= text_field_tag :maxp, @search_max_price, placeholder: "Max...", class:"sidebar-prices"%>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">€</span>
+                                    </div>
+                                </div><br>
+                                <hr>
+                            </div>
+
+                            <div class="trips-sidebar-section">
+                                <p class="trips-sidebar-section-title">Por valoración de los usuarios: </p>
+                                <input name="stars4" type="checkbox" id="stars4", onclick="check4()"><label>4 estrellas o más</label><br>
+                                <input name="stars3" type="checkbox" id="stars3", onclick="check3()"><label>3 estrellas o más</label><br>
+                                <input name="stars2" type="checkbox" id="stars2", onclick="check2()"><label>2 estrellas o más</label><br>
+                                <input name="stars1" type="checkbox" id="stars1", onclick="check1()"><label>1 estrella o más</label><br>
+                            </div>
+
+                            <%= submit_tag "Buscar", class:"sidebar-submit" %>
+                        <% end %>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <p class="trips-search-count"><b><%= @trips.size %></b> resultados encontrados</p>
+                    <% @trips.each do |trip| %>
+                        <div class="row trips-results-box-dark">
+                            <div class="col">
+                                <% if trip.image_url && !(trip.image_url.nil?) && !(trip.image_url.empty?) %>
+                                    <%= image_tag("#{trip.image_url}") %>
+                                <% elsif trip.image %>
+                                    <%= image_tag(trip.image) %>
+                                <% else %>
+                                    <%= image_tag("local/no-image-available.png") %>
+                                <% end %>
+                            </div>
+                            <div class="col-6">
+                                <div class="trips-results-box-title">
+                                    <%=link_to trip, class:"trips-results-box-title-dark" do%>
+                                        <p><b><%=trip.title%></b></p>
+                                    <% end %>
+                                </div>
+
+                                <div class="trips-results-box-info">
+                                    <p><b><%= trip.subtitle %></b></p>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <p class="trips-results-box-price"><b><%= trip.price %>€</b></p>
+                            </div>
+                        </div><br>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+<% end %>
 
 <script type="text/javascript">
     

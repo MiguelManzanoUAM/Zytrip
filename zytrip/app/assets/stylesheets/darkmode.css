@@ -1,0 +1,415 @@
+/**********************************************
+ * Darkmode styles
+**********************************************/
+
+/**********************************************
+ * Landing styles
+**********************************************/
+
+.main-landing-dark{
+  background-color: #1c2c3f;
+  padding-bottom: 100px;
+  color: white;
+}
+
+.landing-results-info-text-dark{
+  flex: 1 1 auto;
+  margin-left: 12%;
+}
+
+.landing-results-info-text-dark h2{
+  color: #d8a64c;
+}
+
+.landing-results-info-btn-dark{
+  flex: 0 0 auto;
+  margin-right: 12%;
+  background-color: #000;
+  border-radius: 3px;
+  border:  1px solid white;
+  outline: none;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.landing-results-info-btn-dark:hover{
+  background-color: #464444;
+}
+
+.landing-results-info-btn-link-dark{
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.landing-results-info-btn-link-dark:hover{
+  color: white;
+}
+
+.landing-results-recomendations-box-dark{
+  border:  1px solid lightgrey;
+  margin-left: 20px;
+  border-radius: 20px;
+  margin-bottom: 5%;
+  background-color: #323232;
+}
+
+.landing-results-recomendations-box-dark img{
+  height: 250px;
+  width:  100%;
+  padding-top: 10px;
+}
+
+.landing-results-recomendations-box-dark hr{
+  border: 1px solid lightgrey;
+}
+
+.landing-results-users-recomendations-box-dark{
+  border:  1px solid lightgrey;
+  margin-left: 20px;
+  border-radius: 20px;
+  margin-bottom: 5%;
+  background-color: #323232;
+  padding-bottom: 20px;
+}
+
+.landing-results-users-recomendations-box-dark img{
+  margin-top: 30px;
+  padding-top: 10px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.landing-results-users-recomendations-box-dark hr{
+  border: 1px solid lightgrey;
+}
+
+.result-info-user-dark{
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.result-info-user-dark:hover{
+  color: #fff;
+}
+
+.landing-form-section-dark{
+  background-color: #323232;
+  margin-top: 150px;
+  float: right;
+  margin-right: 50px;
+  height: 250px;
+  width: 600px;
+  border-radius: 10px;
+  border: 2px solid white;
+  color: white;
+}
+
+.landing-form-info-btn-dark{
+  float: right;
+  background-color: #000;
+  border-radius: 5px;
+  border:  1px solid #fff;
+  outline: none;
+  margin-right: 15px;
+  margin-top: 15px;
+}
+
+.landing-form-info-btn-dark:hover{
+  background-color: #504a4a;
+}
+
+.landing-form-info-btn-link-dark{
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.landing-form-info-btn-link-dark:hover{
+  color: white;
+}
+
+/**********************************************
+ * Trips Index styles
+**********************************************/
+.trips-sidebar-container-dark{
+  background-color: #323232;
+  width: 350px;
+  border-radius: 5px;
+  margin-top: 0%;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 1px solid white;
+  color: white;
+}
+
+.trips-sidebar-container-dark hr{
+  border: 1px solid lightgrey;
+  width: 100%;
+}
+
+.trips-title-help-container-dark{
+  background-color: #323232;
+  margin-top: 50px;
+  float: right;
+  margin-right: 35%;
+  height: 100px;
+  width: 600px;
+  border-radius: 10px;
+  border: 1px solid white;
+  color: white;
+}
+
+.trips-results-box-dark{
+  border:  1px solid lightgrey;
+  border-radius: 5px;
+  background-color: #323232;
+}
+
+.trips-results-box-dark img{
+  height: 200px;
+  width:  200px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+
+.trips-results-box-title-dark{
+  font-size: 22px;
+  padding-top: 20px;
+  font-family: arial;
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.trips-results-box-title-dark:hover{
+  color: #fff;
+}
+
+.trips-destination-search-dark{
+  background-color: #de2a35;
+  border: 1px solid #eaeaea;
+  border-radius: 1px;
+  cursor: pointer;
+  margin-top: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 150px;
+  height: 40px;
+  text-align: center;
+  color: white;
+}
+
+.trips-destination-search-dark:hover{
+  background-color: #e5535c;
+}
+
+/**********************************************
+ * Trip Show styles
+**********************************************/
+.trip-main-dark{
+  width: 100%;
+  background-color: #1c2c3f;
+  padding-top: 50px;
+  padding-bottom: 100px;
+  color: white;
+}
+
+.trip-main-container-outside-dark{
+  margin-left: 15%;
+  margin-right: 15%;
+  background-color: white;
+}
+
+.trip-main-box-dark{
+  border:  1px solid lightgrey;
+  border-radius: 5px;
+  background-color: #2b2a2f;
+}
+
+.trip-main-box-dark img{
+  height: 350px;
+  width:  700px;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-bottom: 20px;
+}
+
+.trip-section-dark{
+  background-color: #323232;
+  border: 1px solid grey;
+  margin-bottom: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: white;
+}
+
+.trip-section-dark img{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 20px;
+  margin-left: 20px;
+  overflow: hidden;
+}
+
+.trip-section-title-dark{
+  padding-top: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: arial;
+  color: #d8a64c;
+}
+
+.trip-itinerary-dark{
+  background-color: #323232;
+  border: 1px solid grey;
+  margin-bottom: 30px;
+  margin-left: 50px;
+  padding-left: 20px;
+  padding-right: 30px;
+  height: 327px;
+  overflow-y: scroll;
+  margin-right: 24%;
+}
+
+.trip-ratings-dark{
+  margin-top: 50px;
+  margin-left: 15%;
+  margin-right: 15%;
+  background-color: #2b2a2f;
+  border: 1px solid grey;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 20px;
+}
+
+.trip-ratings-dark hr{
+  border: 1px solid grey;
+  width: 100%;
+}
+
+.trip-ratings-dark img{
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  border-radius: 25%;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.trip-review-btn-dark{
+  background-color: #000;
+  border-radius: 5px;
+  border:  1px solid #fff;
+  outline: none;
+  text-align: center;
+  width: 80%;
+  margin-left: 10%;
+}
+
+.trip-review-btn-dark:hover{
+  background-color: #504a4a;
+}
+
+.trip-review-btn-link-dark{
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.trip-review-btn-link-dark:hover{
+  color: #fff;
+}
+
+/**********************************************
+ * Trip add review
+**********************************************/
+.create-review-trip-form-submit-btn-dark{
+  background-color: #000;
+  border-radius: 5px;
+  border:  1px solid #fff;
+  outline: none;
+  text-align: center;
+  width: 80%;
+  margin-left: 10%;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.create-review-trip-form-submit-btn-dark:hover{
+  background-color: #504a4a;
+}
+
+/**********************************************
+ * About styles
+**********************************************/
+.main-about-container-dark{
+  background-color: #1c2c3f;
+  padding-bottom: 50px;
+  color: #ffffff;
+}
+
+.main-about-dark{
+  padding-top: 3%;
+  margin-left: 10%;
+  margin-right: 10%;
+  font-size: 20px;
+  text-align: justify;
+}
+
+.main-about-dark h1{
+  font-size: 40px;
+  margin-bottom: 20px;
+  color: #d8a64c;
+}
+
+/**********************************************
+ * Navigation bar styles
+**********************************************/
+.navigation-routes-dark {
+  padding: 15px 0;
+  background-color: #deecf2;
+  min-height: 40px;
+  margin-left: 0%;
+  margin-right: 0%;
+  padding-left: 5%;
+  margin-bottom: 30px;
+}
+
+.navigation-routes-dark ol {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 20px;
+}
+
+.navigation-routes-dark ol li + li {
+  padding-left: 10px;
+}
+
+.navigation-routes-dark ol li + li::before {
+  display: inline-block;
+  padding-right: 10px;
+  color: #6c757d;
+  content: "/";
+}

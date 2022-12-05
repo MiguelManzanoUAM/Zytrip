@@ -2,6 +2,16 @@
   <div class="container-fluid d-flex">
     <%= link_to 'Zytrip', root_path, class: 'navbar-brand' %>
 
+    <% if session[:theme] == "light" %>
+      <%= link_to root_path(theme: "dark") do %>
+        <i class="fas fa-moon" style="color: white;"></i>
+      <% end %>
+    <% else %>
+      <%= link_to root_path(theme: "light") do %>
+        <i class="fas fa-sun" style="color: yellow;"></i>
+      <% end %>
+    <% end %>
+
     <ul class="navbar-nav ml-auto px-4">
       <% if user_signed_in?%>
         <% if current_user.admin == true %>

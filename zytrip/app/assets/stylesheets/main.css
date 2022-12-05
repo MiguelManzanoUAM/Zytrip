@@ -853,9 +853,9 @@
 .trip-main-box img{
   height: 350px;
   width:  700px;
-  padding-top: 10px;
-  padding-left: 10px;
-  padding-bottom: 10px;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-bottom: 20px;
 }
 
 .trip-main-box-title{
@@ -2089,6 +2089,7 @@
   border-radius: 4px;
   background-color: #f8f8f8;
   resize: none;
+  margin-top: 5px;
   margin-bottom: 20px;
   margin-left: 20px;
 }

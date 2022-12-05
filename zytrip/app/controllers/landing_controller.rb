@@ -2,6 +2,10 @@ class LandingController < ApplicationController
 	def home
 		#3 most popular trips
 
+		if !session[:theme]
+			session[:theme] = "light"
+		end
+		
 		Trip.destroy_unsaved_trips()
 		
 		@popular_trips = Trip.get_most_popular_trips()

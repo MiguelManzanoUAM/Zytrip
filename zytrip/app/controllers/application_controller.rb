@@ -1,6 +1,16 @@
 class ApplicationController < ActionController::Base
 	before_action :configure_permitted_parameters, if: :devise_controller?
 
+	before_action :set_theme
+
+	def set_theme
+	  if params[:theme].present?
+	    theme = params[:theme].to_sym
+	    session[:theme] = theme
+	    redirect_to(request.referrer || root_path)
+	  end
+	end
+
 	protected
 
 		#redirect to admin_path if admin
@@ -18,5 +28,7 @@ class ApplicationController < ActionController::Base
 
 	       devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:name, :surname, :email, :password, :current_password)}
 		end
+
+
 
 end

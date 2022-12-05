@@ -66,10 +66,22 @@ class TripsController < ApplicationController
       end
     end
 
+    if session[:trips_ids]
+      @session_trips = "Hay viajes de sesión"
+    else
+      @session_trips = "No hay viajes de sesión"
+    end
   end
 
   # GET /trips/1 or /trips/1.json
   def show
+    if session[:trips_ids]
+      session[:trips_ids] << params[:id]
+    else
+      session[:trips_ids] = []
+      session[:trips_ids] << params[:id]
+    end
+
     @trip = Trip.find(params[:id])
     @organizer = User.find_by(id: @trip.organizer_id)
     @reviews = Review.trip_reviews(@trip)

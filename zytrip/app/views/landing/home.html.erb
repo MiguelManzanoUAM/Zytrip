@@ -5,31 +5,36 @@
 			Zytrip
 		</div>
 		<div class="landing-description">
-			Encuentra el viaje que estás buscando
+			Expande tus horizontes
 		</div>
 		<div class="landing-steps">
 			<div class="row justify-content-md-center">
 				<div class="col col-lg-3 landing-steps-col">
-					<i class="fas fa-list"></i>
-					<p> 1. Puedes elegir tu viaje entre una gran selección de destinos posibles
-					</p>
+					<i class="fas fa-wrench"></i>
+					<p> 1. Te ofrecemos una herramienta para encontrar tu viaje ideal</p>
+					
 				</div>
 
 				<div class="col col-lg-3 landing-steps-col">
 					<i class="fas fa-plane"></i>
-					<p> 2. Tendrás a tu disposición una lista de los viajes más populares y recomendados
-					</p>
+					<p> 2. Tendrás a tu disposición una lista de los viajes más populares y recomendados</p>
+					
 				</div>
 
 				<div class="col col-lg-3 landing-steps-col">
-					<i class="fas fa-wrench"></i>
-					3. Te ofrecemos una herramienta para encontrar tu viaje ideal
+					<i class="fas fa-list"></i>
+					<p> 3. Conoce gente que te abrirá a nuevas experiencias y lugares maravillosos</p>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<div class="landing-results">
+
+		<!----------------------------------------------------------->
+		<!------------ Recomendaciones según Popularidad ------------>
+		<!----------------------------------------------------------->
+
 		<div class="landing-results-info ">
 			<div class="landing-results-info-text">
 				<h2>Nuestros destinos más populares</h2>
@@ -69,6 +74,10 @@
 			</div>
 		</div>
 
+		<!----------------------------------------------------------->
+		<!------------- Recomendaciones según Actividad ------------->
+		<!----------------------------------------------------------->
+
 		<% if @trips_recomendated && (@user.trips.size > 0) %>
 			<div class="landing-results-info ">
 				<div class="landing-results-info-text">
@@ -102,8 +111,45 @@
 					<% end %>
 				</div>
 			</div>
+		<% elsif session[:trips_ids] %>
+			<div class="landing-results-info ">
+				<div class="landing-results-info-text">
+					<h2>Destinos que podrían interesarte</h2>
+					<p>Recomendaciones resultantes de tu actividad</p>
+				</div>
+			</div>
+
+			<div class="landing-results-recomendations">
+				<div class="row justify-content-md-center">
+					<% @session_trips.each do |trip| %>
+						<div class="col col-lg-3 landing-results-recomendations-box">
+							<% if trip.image %>
+								<%= image_tag(trip.image) %>
+							<% else %>
+	                			<%= image_tag("local/no-image-available.png") %>
+	                		<% end %>
+
+							<hr>
+							<p class="result-info">
+								<div class="row justify-content-between">
+									<div class="col-8">
+										<p class="result-info-title"><%= trip.title %></p>
+									</div>
+									<div class="col-4">
+										<p class="result-info-price"><%= trip.price %> €</p>
+									</div>
+								</div>
+							</p>
+						</div>
+					<% end %>
+				</div>
+			</div>
 		<% end %>
 	</div>
+
+	<!----------------------------------------------------------->
+	<!---------------- Cuéntanos tu experiencia ----------------->
+	<!----------------------------------------------------------->
 
 	<% if user_signed_in?%>
 		<div class="landing-user-trip-container">
@@ -126,9 +172,13 @@
 		</div>
 	<% end %>
 
+	<!----------------------------------------------------------->
+	<!------------- Recomendaciones filtrado social ------------->
+	<!----------------------------------------------------------->
+
 	<div class="landing-results">
 		<% if user_signed_in?%>	
-			<% if @most_similar_users %>
+			<% if @most_similar_users.size != 0 %>
 				<div class="landing-results-info ">
 					<div class="landing-results-info-text">
 						<h2>Algunas sugerencias para ti</h2>
@@ -165,7 +215,7 @@
 				</div>
 			<% end %>
 
-			<% if @most_similar_users %>
+			<% if @most_similar_users.size != 0 %>
 				<div class="landing-results-info ">
 					<div class="landing-results-info-text">
 						<h2>Destinos que podrían interesarte</h2>
@@ -201,6 +251,10 @@
 			<% end %>
 		<% end %>
 	</div>
+
+	<!----------------------------------------------------------->
+	<!---------------- Queremos saber tu opinión ---------------->
+	<!----------------------------------------------------------->
 
 	<% if user_signed_in?%>
 
@@ -287,6 +341,10 @@
 			</div>
       	</div>
 	<% end %>
+
+	<!----------------------------------------------------------->
+	<!------------- Búsqueda interactiva parámetros ------------->
+	<!----------------------------------------------------------->
 
 	<div class="landing-form-container">
 		<div class="landing-form-section">

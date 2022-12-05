@@ -13,6 +13,12 @@ class LandingController < ApplicationController
 			@friends_trips = Review.get_most_popular_friends_trips(@user).keys.first(3)
 		end
 
+
+		if session[:trips_ids]
+			@session_visited_trips = session[:trips_ids]
+			@session_trips = Trip.get_most_similar_trips(session[:trips_ids])
+		end
+
 	end
 
 	def about

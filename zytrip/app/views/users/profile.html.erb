@@ -424,12 +424,12 @@
                                     <% @user.trips.each do |trip| %>
                                         <tr>
                                             <td>
-                                                <% if trip.image_url %>
+                                                <% if trip.image_url && !(trip.image_url.nil?) && !(trip.image_url.empty?) %>
                                                     <%= image_tag("#{trip.image_url}") %>
                                                 <% elsif trip.image %>
                                                     <%= image_tag(trip.image) %>
                                                 <% else %>
-                                                    <%= image_tag("local/user.jpeg") %>
+                                                    <%= image_tag("local/no-image-available.png") %>
                                                 <% end %>
                                             </td>
 
@@ -489,12 +489,12 @@
                                     <% @organized_trips.each do |trip| %>
                                         <tr>
                                             <td>
-                                                <% if trip.image_url %>
+                                                <% if trip.image_url && !(trip.image_url.nil?) && !(trip.image_url.empty?) %>
                                                     <%= image_tag("#{trip.image_url}") %>
                                                 <% elsif trip.image %>
                                                     <%= image_tag(trip.image) %>
                                                 <% else %>
-                                                    <%= image_tag("local/user.jpeg") %>
+                                                    <%= image_tag("local/no-image-available.png") %>
                                                 <% end %>
                                             </td>
 

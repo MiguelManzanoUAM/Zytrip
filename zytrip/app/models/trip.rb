@@ -293,7 +293,7 @@ class Trip < ApplicationRecord
   	# Elimina aquellos viajes que no se han guardado de
   	# forma correcta como por ejemplo si te saltas
   	# etapas del formulario "cuenta tu viaje"
-  	#####################################################s
+  	#####################################################
   	def self.destroy_unsaved_trips()
   		trip = Trip.last
 
@@ -309,4 +309,107 @@ class Trip < ApplicationRecord
   			end
   		end
   	end
+
+  	#####################################################
+  	# Obtiene los viajes mas parecidos a un array de
+  	# viajes dado, este metodo se hace con el fin de 
+  	# obtener las recomendaciones de sesión
+  	#####################################################
+
+  	def self.get_most_similar_trips(trips_ids)
+  		trips = []
+  		session_preferences = []
+  		total_session_preferences = 0
+  		similar_trips = []
+
+  		if trips_ids
+  			trips_ids.each do |trip_id|
+  				trips << Trip.find_by(id: trip_id)
+  			end
+  		end
+
+  		# Obtenemos las preferencias de los viajes para así
+  		# guardar las preferencias de la sesión
+  		trips.each do |trip|
+  			preferences_aux = []
+  			preferences_aux = Trip.trip_preferences(trip)
+  			preferences_aux.each do |pref|
+  				if !(session_preferences.include? pref)
+  					session_preferences << pref
+  				end
+  			end
+
+  			total_session_preferences = total_session_preferences + preferences_aux.size
+  		end
+
+  		# Calculamos la importancia de cada preferencia
+  		session_preferences_values = {}
+
+	    session_preferences.each do |pref|
+	      session_preferences_values[pref] = 0
+	    end
+
+	    trips.each do |trip|
+	        session_preferences.each do |pref|
+	        	if Trip.trip_has_preference(trip, pref)
+	          		session_preferences_values[pref] += 1
+	        	end
+	      	end
+	    end
+
+	    session_preferences_values.keys.each do |pref|
+	      session_preferences_values[pref] = (session_preferences_values[pref].to_f / total_session_preferences.to_f).round(3)
+	    end
+
+	    # Con esto hemos obtenido la importancia de cada una de las preferencias
+	    # para el usuario de una sesion
+
+
+	    # Ahora obtendremos los viajes candidatos
+	    # Para empezar seleccionaremos aquellos que no haya visto aún la sesión
+
+	    session_unseen_trips = []
+	    Trip.all.each do |trip|
+	    	if !(trips_ids.include? trip.id)
+	    		session_unseen_trips << trip
+	    	end
+	    end
+
+	    # Obtendremos la matriz ONE-HOT de estos candidatos
+	    candidates = {}
+
+	    session_unseen_trips.each do |trip|
+	      candidates[trip.id] = {}
+
+	      session_preferences_values.each do |pref, value|
+	        if Trip.trip_has_preference(trip, pref)
+	          candidates[trip.id][pref] = value
+	        else
+	          candidates[trip.id][pref] = 0
+	        end
+	      end
+	    end
+
+	    # Obtenemos la afinidad de estos candidatos
+	    afinities = {}
+
+	    candidates.keys.each do |trip|
+	      afinities[trip] = 0
+
+	      candidates[trip].keys.each do |pref|
+	        afinities[trip] += candidates[trip][pref]
+	      end
+	    end
+
+	    # Obtenemos los 3 viajes que más afinidad tengan con la sesión
+	    candidates_sorted = afinities.sort {|a1,a2| a2[1]<=>a1[1]}.to_h
+	    candidates_ids = candidates_sorted.keys.first(3)
+
+	    candidates_ids.each do |trip_id|
+	      similar_trips << Trip.find_by(id: trip_id)
+	    end
+
+	    return similar_trips
+	end
+
 end

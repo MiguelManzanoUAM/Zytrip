@@ -359,6 +359,179 @@
 }
 
 /**********************************************
+ * Survey-results styles
+**********************************************/
+.main-results-dark{
+  background-color: #1c2c3f;
+  padding-bottom: 200px;
+  padding-top: 50px;
+  color: white;
+}
+
+.results-filter-container-dark{
+  width: 100%;
+  height: 300px;
+  background-color: #323232;
+  border-radius: 20px;
+}
+
+.results-filter-container-dark hr{
+  border: 1px solid grey;
+  width: 90%;
+  margin: auto;
+}
+
+.results-filter-container-title-dark{
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-weight: bold;
+  font-size: 30px;
+  color: #d8a64c;
+  text-align: center;
+}
+
+.results-filter-container-description-dark{
+  padding-top: 20px;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+
+.results-survey-btn-dark{
+  background-color: #2a2c3b;
+  border-radius: 5px;
+  border:  1px solid white;
+  outline: none;
+  width: 300px;
+  margin: 10px auto;
+  text-align: center;
+}
+
+.results-survey-btn-dark:hover{
+  background-color: #504a4a;
+}
+
+
+.recomendations-results-box-dark{
+  border:  1px solid lightgrey;
+  border-radius: 20px;
+  margin-bottom: 50px;
+  margin-right: 50px;
+  background-color: #2b2a2f;
+}
+
+.recomendations-results-box-dark img{
+  height: 250px;
+  width:  100%;
+  padding-top: 10px;
+}
+
+.recomendations-results-box-dark hr{
+  border: 1px solid lightgrey;
+}
+
+/**********************************************
+ * poll styles
+**********************************************/
+.main-preferences-poll{
+  content: '';
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  filter: none;
+  overflow: scroll;
+
+  /*Estilos segun navegador */
+  -webkit-background-size: cover;
+  /*-webkit-filter: blur(10px);
+  -moz-filter: blur(10px);*/
+}
+
+.main-preferences-poll-img-dark{
+  background-image: url(local/landscape4.jpeg);
+}
+
+.preferences-poll-title-dark{
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
+  color: white;
+  margin-top: 2%;
+  font-family: monospace;
+  margin-bottom: 100px;
+  -webkit-text-stroke: 2px #8f55d1;
+}
+
+.preferences-poll-container-dark{
+  margin-left: 120px;
+  margin-bottom: 100px;
+  width: 350px;
+  height: 350px;
+  background: rgba(0,0,0,0.9);
+  border-radius: 20px;
+  border: 1px solid white;
+}
+
+.preferences-poll-container-dark hr{
+  border: 1px solid white;
+  width: 90%;
+  margin-left: 20px;
+}
+
+.preferences-poll-container-title-dark{
+  margin-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-weight: bold;
+  font-size: 30px;
+  color: white;
+}
+
+.preferences-poll-container-dark img{
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
+  background-color: transparents;
+}
+
+.preferences-poll-container-options-dark{
+  padding-left: 50px;
+  font-size: 20px;
+}
+
+.preferences-poll-container-options-dark input{
+  margin-right: 20px;
+}
+
+.preferences-poll-container-options-dark label{
+  margin-bottom: 10px;
+  color: lightgrey;
+}
+
+.preferences-poll-submit-btn-dark{
+  height: 50px;
+  color: #fff;
+  font-size: 20px;
+  background: #8f55d1;
+  cursor: pointer;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  width: 100%;
+  border: 1px solid white;
+}
+
+.preferences-poll-submit-btn-dark:hover{
+  background-color: #b995e2;
+}
+
+/**********************************************
  * About styles
 **********************************************/
 .main-about-container-dark{

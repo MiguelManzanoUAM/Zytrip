@@ -912,6 +912,10 @@
   padding-top: 5px;
 }
 
+.trip-booking-box:hover{
+  background-color: #8dee5f;
+}
+
 .trip-description{
   margin-left: 15%;
   margin-right: 15%;
@@ -1064,7 +1068,7 @@
 }
 
 .main-preferences-poll-img{
-  background-image: url(local/landscape4.jpeg);
+  background-image: url(local/traveler-landscape-light.jpg);
 }
 
 .preferences-poll-title{
@@ -1075,19 +1079,22 @@
   margin-top: 2%;
   font-family: monospace;
   margin-bottom: 100px;
+  -webkit-text-stroke: 2px #d8a64c;
 }
 
 .preferences-poll-container{
   margin-left: 120px;
   margin-bottom: 100px;
-  width: 400px;
-  height: 400px;
-  background: rgba(0,0,0,0.8);
+  width: 350px;
+  height: 350px;
+  background: rgba(216,235,238,0.9);
   border-radius: 20px;
+  color: black;
+  border: 1px solid black;
 }
 
 .preferences-poll-container hr{
-  border: 1px solid white;
+  border: 1px solid black;
   width: 90%;
   margin-left: 20px;
 }
@@ -1098,7 +1105,7 @@
   padding-right: 20px;
   font-weight: bold;
   font-size: 30px;
-  color: white;
+  color: #000;
 }
 
 .preferences-poll-container img{
@@ -1119,7 +1126,7 @@
 
 .preferences-poll-container-options label{
   margin-bottom: 10px;
-  color: lightgrey;
+  color: black;
 }
 
 .preferences-poll-options{
@@ -1137,6 +1144,11 @@
   outline: none;
   width: 100%;
   margin-right: 50px;
+  border: 1px solid white;
+}
+
+.preferences-poll-back-btn:hover{
+  background-color: #9a9d9e;
 }
 
 .preferences-poll-back-link{
@@ -1155,12 +1167,17 @@
   height: 50px;
   color: #fff;
   font-size: 20px;
-  background: blue;
+  background: #d8a64c;
   cursor: pointer;
   border-radius: 25px;
   border: none;
   outline: none;
   width: 100%;
+  border: 1px solid white;
+}
+
+.preferences-poll-submit-btn:hover{
+  background-color: #eec57c;
 }
 
 /**********************************************
@@ -1168,8 +1185,8 @@
 **********************************************/
 .main-results{
   background-color: #F5F4F5;
-  padding-bottom: 150px;
-  padding-top: 100px;
+  padding-bottom: 200px;
+  padding-top: 50px;
 }
 
 .results-filters{

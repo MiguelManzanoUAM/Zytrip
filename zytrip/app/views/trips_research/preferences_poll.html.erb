@@ -1,97 +1,194 @@
 <%= render "layouts/header" %>
 
-<div class="main-preferences-poll main-preferences-poll-img">
+<% if session[:theme] == "light" %>
+	<div class="main-preferences-poll main-preferences-poll-img">
 
-	<div class="preferences-poll-title">
-		<p>Ayúdanos a encontrar tu viaje ideal</p>
+		<div class="preferences-poll-title">
+			<p>Ayúdanos a encontrar tu viaje ideal</p>
+		</div>
+
+		<%= form_for "", url: trips_research_results_path, method: :get do %>
+			<div class="row">
+				<div class="col col-lg-3 preferences-poll-container">
+					<p class="preferences-poll-container-title"><%= image_tag("local/earth.png") %> ¿Dónde quieres ir?</p>
+					<hr><br>
+					<div class="preferences-poll-container-options">
+						<input name="iberic" type="checkbox" id="iberic", onclick="checkIberic()"><label>Rutas Ibéricas</label><br>
+						<input name="europe" type="checkbox" id="europe", onclick="checkEurope()"><label>Europa</label><br>
+						<input name="africa" type="checkbox" id="africa", onclick="checkAfrica()"><label>Africa</label><br>
+						<input name="america" type="checkbox" id="america", onclick="checkAmerica()"><label>America</label><br>
+						<input name="asia" type="checkbox" id="asia", onclick="checkAsia()"><label>Asia</label><br>
+					</div>
+
+				</div>
+
+				<div class="col col-lg-3 preferences-poll-container">
+					<p class="preferences-poll-container-title"><%= image_tag("local/friends.png") %> Tipo de viaje</p>
+					<hr><br>
+					<div class="preferences-poll-container-options">
+						<input name="family" type="checkbox" id="family", onclick="checkFamily()"><label>Viaje Familiar</label><br>
+						<input name="romantic" type="checkbox" id="romantic", onclick="checkLove()"><label>Escapada Romántica</label><br>
+						<input name="alone" type="checkbox" id="alone", onclick="checkAlone()"><label>Me gustaría viajar solo</label><br>
+						<input name="friends" type="checkbox" id="friends", onclick="checkFriends()"><label>Viaje con amigos</label><br>
+						<input name="people" type="checkbox" id="people", onclick="checkPeople()"><label>Quiero conocer gente</label><br>
+					</div>
+				</div>
+
+				<div class="col col-lg-3 preferences-poll-container">
+					<p class="preferences-poll-container-title"><%= image_tag("local/wallet.png") %> Presupuesto deseable</p>
+					<hr><br>
+					<div class="preferences-poll-container-options">
+						<input name="maxp500" type="checkbox" id="maxp500", onclick="checkPriceMax500()"><label>Menos de 500€</label><br>
+						<input name="betwp510" type="checkbox" id="betwp510", onclick="checkPriceBetw510()"><label>Entre 500 y 1000€</label><br>
+						<input name="betwp1015" type="checkbox" id="betwp1015", onclick="checkPriceBetw1015()"><label>Entre 1000 y 1500€</label><br>
+						<input name="minp1500" type="checkbox" id="minp1500", onclick="checkPriceMin1500()"><label>Más de 1500€</label><br>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col col-lg-3 preferences-poll-container">
+					<p class="preferences-poll-container-title"><%= image_tag("local/duration.png") %> Duración de tu viaje</p>
+					<hr><br>
+					<div class="preferences-poll-container-options">
+						<input name="maxd3" type="checkbox" id="maxd3", onclick="checkDurationMax3()"><label>Menos de 3 días</label><br>
+						<input name="betwd35" type="checkbox" id="betwd35", onclick="checkDurationBetw35()"><label> Entre 3 y 5 días</label><br>
+						<input name="betwd57" type="checkbox" id="betwd57", onclick="checkDurationBetw57()"><label>Entre 5 y 7 días</label><br>
+						<input name="minweek" type="checkbox" id="minweek", onclick="checkDurationMinWeek()"><label>Más de una semana</label><br>
+					</div>
+				</div>
+
+				<div class="col col-lg-3 preferences-poll-container">
+					<p class="preferences-poll-container-title"><%= image_tag("local/beach.png") %> Interés principal</p>
+					<hr><br>
+					<div class="preferences-poll-container-options">
+						<input name="tourism" type="checkbox" id="tourism", onclick="checkTourism()"><label>Turismo y cultura</label><br>
+						<input name="nature" type="checkbox" id="nature", onclick="checkNature()"><label>Naturaleza</label><br>
+						<input name="beach" type="checkbox" id="beach", onclick="checkBeach()"><label>Playa</label><br>
+						<input name="relax" type="checkbox" id="relax", onclick="checkRelax()"><label>No hacer nada</label><br>
+					</div>
+
+				</div>
+
+				<div class="col col-lg-3 preferences-poll-container">
+					<p class="preferences-poll-container-title"><%= image_tag("local/eating.png") %> Tienes que elegir...</p>
+					<hr><br>
+					<div class="preferences-poll-container-options">
+						<input name="lodging" type="checkbox" id="lodging", onclick="checkLodging()"><label>Una buena habitación</label><br>
+						<input name="gastronomy" type="checkbox" id="gastronomy", onclick="checkGastronomy()"><label>Me quedo con la gastronomía</label><br>
+						<input name="activities" type="checkbox" id="activities", onclick="checkActivities()"><label>Variedad de actividades</label><br>
+					</div>
+				</div>
+			</div>
+
+			<div class="row justify-content-center preferences-poll-options">
+				<div class="col-2 preferences-poll-back-btn text-center">
+		      		<%= link_to "Volver", root_path, class: "preferences-poll-back-link" %>
+		    	</div>
+		    	<div class="col-2 text-center ">
+		      		<%= submit_tag "Mostrar resultados", class: "preferences-poll-submit-btn" %>
+		    	</div>
+		    </div>
+
+		<% end %>
+
 	</div>
 
-	<%= form_for "", url: trips_research_results_path, method: :get do %>
-		<div class="row">
-			<div class="col col-lg-3 preferences-poll-container">
-				<p class="preferences-poll-container-title"><%= image_tag("local/earth.png") %> ¿Dónde te gustaría viajar?</p>
-				<hr><br>
-				<div class="preferences-poll-container-options">
-					<input name="iberic" type="checkbox" id="iberic", onclick="checkIberic()"><label>Rutas Ibéricas</label><br>
-					<input name="europe" type="checkbox" id="europe", onclick="checkEurope()"><label>Europa</label><br>
-					<input name="africa" type="checkbox" id="africa", onclick="checkAfrica()"><label>Africa</label><br>
-					<input name="america" type="checkbox" id="america", onclick="checkAmerica()"><label>America</label><br>
-					<input name="asia" type="checkbox" id="asia", onclick="checkAsia()"><label>Asia</label><br>
-				</div>
+<% else %>
+	
+	<div class="main-preferences-poll main-preferences-poll-img-dark">
 
-			</div>
-
-			<div class="col col-lg-3 preferences-poll-container">
-				<p class="preferences-poll-container-title"><%= image_tag("local/friends.png") %> Compañía para tu viaje</p>
-				<hr><br>
-				<div class="preferences-poll-container-options">
-					<input name="family" type="checkbox" id="family", onclick="checkFamily()"><label>Viaje Familiar</label><br>
-					<input name="romantic" type="checkbox" id="romantic", onclick="checkLove()"><label>Escapada Romántica</label><br>
-					<input name="alone" type="checkbox" id="alone", onclick="checkAlone()"><label>Me gustaría viajar solo</label><br>
-					<input name="friends" type="checkbox" id="friends", onclick="checkFriends()"><label>Viaje con amigos</label><br>
-					<input name="people" type="checkbox" id="people", onclick="checkPeople()"><label>Quiero conocer gente</label><br>
-				</div>
-			</div>
-
-			<div class="col col-lg-3 preferences-poll-container">
-				<p class="preferences-poll-container-title"><%= image_tag("local/wallet.png") %> Presupuesto deseable</p>
-				<hr><br>
-				<div class="preferences-poll-container-options">
-					<input name="maxp500" type="checkbox" id="maxp500", onclick="checkPriceMax500()"><label>Menos de 500€</label><br>
-					<input name="betwp510" type="checkbox" id="betwp510", onclick="checkPriceBetw510()"><label>Entre 500 y 1000€</label><br>
-					<input name="betwp1015" type="checkbox" id="betwp1015", onclick="checkPriceBetw1015()"><label>Entre 1000 y 1500€</label><br>
-					<input name="minp1500" type="checkbox" id="minp1500", onclick="checkPriceMin1500()"><label>Más de 1500€</label><br>
-				</div>
-			</div>
+		<div class="preferences-poll-title-dark">
+			<p>Ayúdanos a encontrar tu viaje ideal</p>
 		</div>
 
-		<div class="row">
-			<div class="col col-lg-3 preferences-poll-container">
-				<p class="preferences-poll-container-title"><%= image_tag("local/duration.png") %> Duración de tu viaje</p>
-				<hr><br>
-				<div class="preferences-poll-container-options">
-					<input name="maxd3" type="checkbox" id="maxd3", onclick="checkDurationMax3()"><label>Menos de 3 días</label><br>
-					<input name="betwd35" type="checkbox" id="betwd35", onclick="checkDurationBetw35()"><label> Entre 3 y 5 días</label><br>
-					<input name="betwd57" type="checkbox" id="betwd57", onclick="checkDurationBetw57()"><label>Entre 5 y 7 días</label><br>
-					<input name="minweek" type="checkbox" id="minweek", onclick="checkDurationMinWeek()"><label>Más de una semana</label><br>
+		<%= form_for "", url: trips_research_results_path, method: :get do %>
+			<div class="row">
+				<div class="col col-lg-3 preferences-poll-container-dark">
+					<p class="preferences-poll-container-title-dark"><%= image_tag("local/earth.png") %> ¿Dónde quieres ir?</p>
+					<hr><br>
+					<div class="preferences-poll-container-options-dark">
+						<input name="iberic" type="checkbox" id="iberic", onclick="checkIberic()"><label>Rutas Ibéricas</label><br>
+						<input name="europe" type="checkbox" id="europe", onclick="checkEurope()"><label>Europa</label><br>
+						<input name="africa" type="checkbox" id="africa", onclick="checkAfrica()"><label>Africa</label><br>
+						<input name="america" type="checkbox" id="america", onclick="checkAmerica()"><label>America</label><br>
+						<input name="asia" type="checkbox" id="asia", onclick="checkAsia()"><label>Asia</label><br>
+					</div>
+
+				</div>
+
+				<div class="col col-lg-3 preferences-poll-container-dark">
+					<p class="preferences-poll-container-title-dark"><%= image_tag("local/friends.png") %> Tipo de viaje</p>
+					<hr><br>
+					<div class="preferences-poll-container-options-dark">
+						<input name="family" type="checkbox" id="family", onclick="checkFamily()"><label>Viaje Familiar</label><br>
+						<input name="romantic" type="checkbox" id="romantic", onclick="checkLove()"><label>Escapada Romántica</label><br>
+						<input name="alone" type="checkbox" id="alone", onclick="checkAlone()"><label>Me gustaría viajar solo</label><br>
+						<input name="friends" type="checkbox" id="friends", onclick="checkFriends()"><label>Viaje con amigos</label><br>
+						<input name="people" type="checkbox" id="people", onclick="checkPeople()"><label>Quiero conocer gente</label><br>
+					</div>
+				</div>
+
+				<div class="col col-lg-3 preferences-poll-container-dark">
+					<p class="preferences-poll-container-title-dark"><%= image_tag("local/wallet.png") %> Presupuesto deseable</p>
+					<hr><br>
+					<div class="preferences-poll-container-options-dark">
+						<input name="maxp500" type="checkbox" id="maxp500", onclick="checkPriceMax500()"><label>Menos de 500€</label><br>
+						<input name="betwp510" type="checkbox" id="betwp510", onclick="checkPriceBetw510()"><label>Entre 500 y 1000€</label><br>
+						<input name="betwp1015" type="checkbox" id="betwp1015", onclick="checkPriceBetw1015()"><label>Entre 1000 y 1500€</label><br>
+						<input name="minp1500" type="checkbox" id="minp1500", onclick="checkPriceMin1500()"><label>Más de 1500€</label><br>
+					</div>
 				</div>
 			</div>
 
-			<div class="col col-lg-3 preferences-poll-container">
-				<p class="preferences-poll-container-title"><%= image_tag("local/beach.png") %> Interés principal</p>
-				<hr><br>
-				<div class="preferences-poll-container-options">
-					<input name="tourism" type="checkbox" id="tourism", onclick="checkTourism()"><label>Turismo y cultura</label><br>
-					<input name="nature" type="checkbox" id="nature", onclick="checkNature()"><label>Naturaleza</label><br>
-					<input name="beach" type="checkbox" id="beach", onclick="checkBeach()"><label>Playa</label><br>
-					<input name="relax" type="checkbox" id="relax", onclick="checkRelax()"><label>No hacer nada</label><br>
+			<div class="row">
+				<div class="col col-lg-3 preferences-poll-container-dark">
+					<p class="preferences-poll-container-title-dark"><%= image_tag("local/duration.png") %> Duración de tu viaje</p>
+					<hr><br>
+					<div class="preferences-poll-container-options-dark">
+						<input name="maxd3" type="checkbox" id="maxd3", onclick="checkDurationMax3()"><label>Menos de 3 días</label><br>
+						<input name="betwd35" type="checkbox" id="betwd35", onclick="checkDurationBetw35()"><label> Entre 3 y 5 días</label><br>
+						<input name="betwd57" type="checkbox" id="betwd57", onclick="checkDurationBetw57()"><label>Entre 5 y 7 días</label><br>
+						<input name="minweek" type="checkbox" id="minweek", onclick="checkDurationMinWeek()"><label>Más de una semana</label><br>
+					</div>
 				</div>
 
-			</div>
+				<div class="col col-lg-3 preferences-poll-container-dark">
+					<p class="preferences-poll-container-title-dark"><%= image_tag("local/beach.png") %> Interés principal</p>
+					<hr><br>
+					<div class="preferences-poll-container-options-dark">
+						<input name="tourism" type="checkbox" id="tourism", onclick="checkTourism()"><label>Turismo y cultura</label><br>
+						<input name="nature" type="checkbox" id="nature", onclick="checkNature()"><label>Naturaleza</label><br>
+						<input name="beach" type="checkbox" id="beach", onclick="checkBeach()"><label>Playa</label><br>
+						<input name="relax" type="checkbox" id="relax", onclick="checkRelax()"><label>No hacer nada</label><br>
+					</div>
 
-			<div class="col col-lg-3 preferences-poll-container">
-				<p class="preferences-poll-container-title"><%= image_tag("local/eating.png") %> Si pudieses destacar una...</p>
-				<hr><br>
-				<div class="preferences-poll-container-options">
-					<input name="lodging" type="checkbox" id="lodging", onclick="checkLodging()"><label>Una buena habitación</label><br>
-					<input name="gastronomy" type="checkbox" id="gastronomy", onclick="checkGastronomy()"><label>Me quedo con la gastronomía</label><br>
-					<input name="activities" type="checkbox" id="activities", onclick="checkActivities()"><label>Variedad de actividades</label><br>
+				</div>
+
+				<div class="col col-lg-3 preferences-poll-container-dark">
+					<p class="preferences-poll-container-title-dark"><%= image_tag("local/eating.png") %> Tienes que elegir...</p>
+					<hr><br>
+					<div class="preferences-poll-container-options-dark">
+						<input name="lodging" type="checkbox" id="lodging", onclick="checkLodging()"><label>Una buena habitación</label><br>
+						<input name="gastronomy" type="checkbox" id="gastronomy", onclick="checkGastronomy()"><label>Me quedo con la gastronomía</label><br>
+						<input name="activities" type="checkbox" id="activities", onclick="checkActivities()"><label>Variedad de actividades</label><br>
+					</div>
 				</div>
 			</div>
-		</div>
 
-		<div class="row justify-content-center preferences-poll-options">
-			<div class="col-2 preferences-poll-back-btn text-center">
-	      		<%= link_to "Volver", root_path, class: "preferences-poll-back-link" %>
-	    	</div>
-	    	<div class="col-2 text-center ">
-	      		<%= submit_tag "Mostrar resultados", class: "preferences-poll-submit-btn" %>
-	    	</div>
-	    </div>
+			<div class="row justify-content-center preferences-poll-options">
+				<div class="col-2 preferences-poll-back-btn text-center">
+		      		<%= link_to "Volver", root_path, class: "preferences-poll-back-link" %>
+		    	</div>
+		    	<div class="col-2 text-center ">
+		      		<%= submit_tag "Mostrar resultados", class: "preferences-poll-submit-btn-dark" %>
+		    	</div>
+		    </div>
 
-	<% end %>
+		<% end %>
 
-</div>
+	</div>
+<% end %>
 
 <!-- render footer -->
 

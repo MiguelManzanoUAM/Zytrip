@@ -35,7 +35,7 @@
                   <p class="trip-price-info">Desde <b class="trip-price-colored"><%= @trip.price%>€</b></p>
                 </div>
                 <div class="col-4">
-                  <p class="trip-booking-box">RESERVAR</p>
+                  <p class="trip-booking-box"><a href="#ratings" style="text-decoration: none; color: white;">Valorar</a></p>
                 </div>
               </div>
           </div>
@@ -86,7 +86,7 @@
       </div>
     </div>
 
-    <div class="trip-ratings">
+    <div class="trip-ratings" id="ratings">
       <% if @reviews %>
         <p class="trip-section-title">Valoraciones de los usuarios (<%= @reviews.size %>)</p>
       <% else %>
@@ -221,7 +221,7 @@
                   <p class="trip-price-info">Desde <b class="trip-price-colored"><%= @trip.price%>€</b></p>
                 </div>
                 <div class="col-4">
-                  <p class="trip-booking-box">RESERVAR</p>
+                  <p class="trip-booking-box"><a href="#ratings" style="text-decoration: none; color: white;">Valorar</a></p>
                 </div>
               </div>
           </div>
@@ -272,7 +272,7 @@
       </div>
     </div>
 
-    <div class="trip-ratings-dark">
+    <div class="trip-ratings-dark" id="ratings">
       <% if @reviews %>
         <p class="trip-section-title-dark">Valoraciones de los usuarios (<%= @reviews.size %>)</p>
       <% else %>

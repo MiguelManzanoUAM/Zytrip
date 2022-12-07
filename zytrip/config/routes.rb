@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get "/policies/privacy", to: "policies#privacy", as: 'privacy'
   get "/policies/terms_of_use", to: "policies#terms_of_use", as: 'terms_of_use'
   get "landing/about", to: "landing#about", as: 'about'
+  get "landing/guide", to: "landing#guide", as: 'guide'
 
   devise_for :users
 

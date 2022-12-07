@@ -13,7 +13,7 @@
       <div class="trip-main-container">
         <div class="row trip-main-box">
           <div class="col">
-              <% if @trip.image_url %>
+              <% if @trip.image_url && !(@trip.image_url.nil?) && !(@trip.image_url.empty?) %>
                 <%= image_tag("#{@trip.image_url}") %>
               <% elsif @trip.image %>
                 <%= image_tag(@trip.image) %>
@@ -50,29 +50,32 @@
             <p class="trip-section-title">Organizado por</p>
             <hr>
             <p class="trip-section-info">
-              <% if @organizer.additional_information && !(@organizer.additional_information.image_url.nil?)%>
-                <%= image_tag("#{@organizer.additional_information.image_url}") %><%= @organizer.name %> <%= @organizer.surname %>
+              <% if @organizer.additional_information && !(@organizer.additional_information.image_url.nil?)  && !(@organizer.additional_information.image_url.empty?)%>
+                <%= image_tag("#{@organizer.additional_information.image_url}") %>
               <% elsif !(@organizer.image.nil?) && !(@organizer.image.empty?) %>
-                <% if @organizer.additional_information && !(@organizer.additional_information.phone_number.nil?)%>
-                  <%= image_tag(@organizer.image) %> <%= @organizer.name %> <%= @organizer.surname %> (<%= @organizer.additional_information.phone_number %>)
-                <% else %>
-                  <%= image_tag(@organizer.image) %> <%= @organizer.name %> <%= @organizer.surname %>
-                <% end %>
+                <%= image_tag(@organizer.image) %>
               <% else %>
-                <% if @organizer.additional_information && !(@organizer.additional_information.phone_number.nil?)%>
-                  <%= image_tag("local/user.jpeg") %> <%= @organizer.name %> <%= @organizer.surname %> (<%= @organizer.additional_information.phone_number %>)
-                <% else %>
-                  <%= image_tag("local/user.jpeg") %> <%= @organizer.name %> <%= @organizer.surname %>
-                <% end %>
+                <%= image_tag("local/user.jpeg") %>
               <% end %>
+
+              <% @organizer_name = @organizer.name + " " + @organizer.surname %>
+              <%= link_to @organizer_name, users_profile_path(@organizer.id), class: "result-info-user" %>
             </p>
           </div>
 
           <div class="trip-section">
             <p class="trip-section-title">Acerca de esta experiencia</p>
             <hr>
-            <p class="trip-section-info"><b>Duración:</b> 5 días</p>
-            <p class="trip-section-info"><b>Otra información:</b> No se que poner</p>
+            <p class="trip-section-info"><b>Duración: </b><text style="color: grey; margin-left: 10px;"><%= Trip.get_trip_duration(@trip) %></text></p>
+            <p class="trip-section-info"><b>Valoración media: </b><text style="margin-left: 10px;">
+              <% @trip.rating.round().times do  %>
+                <i class="fas fa-star"></i>
+              <% end %>
+
+              <% (5 - @trip.rating.round()).times do %>
+                <i class="far fa-star"></i>
+              <% end %>
+            </p>
           </div> 
         </div>
 
@@ -97,16 +100,19 @@
       <% if @reviews %>
         <% @reviews.each do |review| %>
           <div class="trip-section-review">
-            <% if Review.get_user(review).additional_information && !(Review.get_user(review).additional_information.image_url.nil?) %>
-                <%= image_tag("#{Review.get_user(review).additional_information.image_url}") %> <%= Review.get_user(review).name %> <%= Review.get_user(review).surname %> <text class="trip-section-review-date"><%= review.created_at.strftime("%d/%m/%Y") %></text>
-            <% elsif !(Review.get_user(review).image.nil?) && !(Review.get_user(review).image.empty?) %>
-              <%= image_tag(Review.get_user(review).image) %> <%= Review.get_user(review).name %> <%= Review.get_user(review).surname %> <text class="trip-section-review-date"><%= review.created_at.strftime("%d/%m/%Y") %></text>
-            <% else %>
-                <%= image_tag("local/user.jpeg") %> <%= Review.get_user(review).name %> <%= Review.get_user(review).surname %>
-                <text class="trip-section-review-date"><%= review.created_at.strftime("%d/%m/%Y") %></text>
-            <% end %>
-            <br>
 
+            <% if Review.get_user(review).additional_information && !(Review.get_user(review).additional_information.image_url.nil?) && !(Review.get_user(review).additional_information.image_url.empty?)%>
+                <%= image_tag("#{Review.get_user(review).additional_information.image_url}") %>
+            <% elsif !(Review.get_user(review).image.nil?) && !(Review.get_user(review).image.empty?) %>
+              <%= image_tag(Review.get_user(review).image) %>
+            <% else %>
+                <%= image_tag("local/user.jpeg") %>
+            <% end %>
+
+            <% @user_name = Review.get_user(review).name + " " + Review.get_user(review).surname %>
+            <%= link_to @user_name, users_profile_path(Review.get_user(review).id), class: "result-info-user" %>
+            <text class="trip-section-review-date"><%= review.created_at.strftime("%d/%m/%Y") %></text><br>
+            
             <% review.rating.round().times do  %>
               <i class="fas fa-star"></i>
             <% end %>
@@ -129,8 +135,8 @@
         <hr>
         <p class="trip-section-title">
           Valora este viaje
-          <% if flash[:notice] %>
-            <text class="invalid-field-step"><%= flash[:notice] %></text>
+          <% if flash[:review_error] %>
+            <text class="invalid-field-step"><%= flash[:review_error] %></text>
           <% end %>
         </p>
         <p class="trip-section-description">Comparte tu opinión acerca de esta experiencia con otros usuarios</p>
@@ -199,7 +205,7 @@
       <div class="trip-main-container">
         <div class="row trip-main-box-dark">
           <div class="col">
-              <% if @trip.image_url %>
+              <% if @trip.image_url && !(@trip.image_url.nil?) && !(@trip.image_url.empty?) %>
                 <%= image_tag("#{@trip.image_url}") %>
               <% elsif @trip.image %>
                 <%= image_tag(@trip.image) %>
@@ -236,29 +242,32 @@
             <p class="trip-section-title-dark">Organizado por</p>
             <hr>
             <p class="trip-section-info">
-              <% if @organizer.additional_information && !(@organizer.additional_information.image_url.nil?)%>
-                <%= image_tag("#{@organizer.additional_information.image_url}") %><%= @organizer.name %> <%= @organizer.surname %>
+              <% if @organizer.additional_information && !(@organizer.additional_information.image_url.nil?)  && !(@organizer.additional_information.image_url.empty?)%>
+                <%= image_tag("#{@organizer.additional_information.image_url}") %>
               <% elsif !(@organizer.image.nil?) && !(@organizer.image.empty?) %>
-                <% if @organizer.additional_information && !(@organizer.additional_information.phone_number.nil?)%>
-                  <%= image_tag(@organizer.image) %> <%= @organizer.name %> <%= @organizer.surname %> (<%= @organizer.additional_information.phone_number %>)
-                <% else %>
-                  <%= image_tag(@organizer.image) %> <%= @organizer.name %> <%= @organizer.surname %>
-                <% end %>
+                <%= image_tag(@organizer.image) %>
               <% else %>
-                <% if @organizer.additional_information && !(@organizer.additional_information.phone_number.nil?)%>
-                  <%= image_tag("local/user.jpeg") %> <%= @organizer.name %> <%= @organizer.surname %> (<%= @organizer.additional_information.phone_number %>)
-                <% else %>
-                  <%= image_tag("local/user.jpeg") %> <%= @organizer.name %> <%= @organizer.surname %>
-                <% end %>
+                <%= image_tag("local/user.jpeg") %>
               <% end %>
+
+              <% @organizer_name = @organizer.name + " " + @organizer.surname %>
+              <%= link_to @organizer_name, users_profile_path(@organizer.id), class: "result-info-user", style:"color: white;" %>
             </p>
           </div>
 
           <div class="trip-section-dark">
             <p class="trip-section-title-dark">Acerca de esta experiencia</p>
             <hr>
-            <p class="trip-section-info"><b>Duración:</b> 5 días</p>
-            <p class="trip-section-info"><b>Otra información:</b> No se que poner</p>
+            <p class="trip-section-info"><b>Duración: </b><text style="color: grey; margin-left: 10px;"><%= Trip.get_trip_duration(@trip) %></text></p>
+            <p class="trip-section-info"><b>Valoración media: </b><text style="margin-left: 10px; color: grey;">
+              <% @trip.rating.round().times do  %>
+                <i class="fas fa-star" style="color: #d8a64c;"></i>
+              <% end %>
+
+              <% (5 - @trip.rating.round()).times do %>
+                <i class="far fa-star"></i>
+              <% end %>
+            </p>
           </div> 
         </div>
 
@@ -283,22 +292,24 @@
       <% if @reviews %>
         <% @reviews.each do |review| %>
           <div class="trip-section-review">
-            <% if Review.get_user(review).additional_information && !(Review.get_user(review).additional_information.image_url.nil?) %>
-                <%= image_tag("#{Review.get_user(review).additional_information.image_url}") %> <%= Review.get_user(review).name %> <%= Review.get_user(review).surname %> <text class="trip-section-review-date"><%= review.created_at.strftime("%d/%m/%Y") %></text>
+            <% if Review.get_user(review).additional_information && !(Review.get_user(review).additional_information.image_url.nil?) && !(Review.get_user(review).additional_information.image_url.empty?)%>
+                <%= image_tag("#{Review.get_user(review).additional_information.image_url}") %>
             <% elsif !(Review.get_user(review).image.nil?) && !(Review.get_user(review).image.empty?) %>
-              <%= image_tag(Review.get_user(review).image) %> <%= Review.get_user(review).name %> <%= Review.get_user(review).surname %> <text class="trip-section-review-date"><%= review.created_at.strftime("%d/%m/%Y") %></text>
+              <%= image_tag(Review.get_user(review).image) %>
             <% else %>
-                <%= image_tag("local/user.jpeg") %> <%= Review.get_user(review).name %> <%= Review.get_user(review).surname %>
-                <text class="trip-section-review-date"><%= review.created_at.strftime("%d/%m/%Y") %></text>
+                <%= image_tag("local/user.jpeg") %>
             <% end %>
-            <br>
+
+            <% @user_name = Review.get_user(review).name + " " + Review.get_user(review).surname %>
+            <%= link_to @user_name, users_profile_path(Review.get_user(review).id), class: "result-info-user", style:"color: white;" %>
+            <text class="trip-section-review-date"><%= review.created_at.strftime("%d/%m/%Y") %></text><br>
 
             <% review.rating.round().times do  %>
               <i class="fas fa-star" style="color: #d8a64c;"></i>
             <% end %>
 
             <% (5 - review.rating.round()).times do %>
-              <i class="far fa-star"></i>
+              <i class="far fa-star" style="color: grey;"></i>
             <% end %>
 
             <% if review.comment %>

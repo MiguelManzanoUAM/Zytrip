@@ -64,7 +64,9 @@
 							<p class="result-info">
 								<div class="row justify-content-between">
 									<div class="col-8">
-										<p class="result-info-title"><%= trip.title %></p>
+										<%= link_to trip, style:"text-decoration: none" do %>
+											<b><p class="result-info-title" style="text-decoration: none; color: black;"><%= trip.title %></p></b>
+										<% end %>
 									</div>
 									<div class="col-4">
 										<p class="result-info-price"><%= trip.price %> €</p>
@@ -102,7 +104,9 @@
 								<p class="result-info">
 									<div class="row justify-content-between">
 										<div class="col-8">
-											<p class="result-info-title"><%= trip.title %></p>
+											<%= link_to trip, style:"text-decoration: none" do %>
+												<b><p class="result-info-title" style="text-decoration: none; color: black;"><%= trip.title %></p></b>
+											<% end %>
 										</div>
 										<div class="col-4">
 											<p class="result-info-price"><%= trip.price %> €</p>
@@ -135,7 +139,9 @@
 								<p class="result-info">
 									<div class="row justify-content-between">
 										<div class="col-8">
-											<p class="result-info-title"><%= trip.title %></p>
+											<%= link_to trip, style:"text-decoration: none" do %>
+												<b><p class="result-info-title" style="text-decoration: none; color: black;"><%= trip.title %></p></b>
+											<% end %>
 										</div>
 										<div class="col-4">
 											<p class="result-info-price"><%= trip.price %> €</p>
@@ -154,6 +160,7 @@
 		<!----------------------------------------------------------->
 
 		<% if user_signed_in?%>
+
 			<div class="landing-user-trip-container">
 				<div class="row">
 					<div class="col-4">
@@ -239,7 +246,9 @@
 									<p class="result-info">
 										<div class="row justify-content-between">
 											<div class="col-8">
-												<p class="result-info-title"><%= trip.title %></p>
+												<%= link_to trip, style:"text-decoration: none" do %>
+													<b><p class="result-info-title" style="text-decoration: none; color: black;"><%= trip.title %></p></b>
+												<% end %>
 											</div>
 											<div class="col-4">
 												<p class="result-info-price"><%= trip.price %> €</p>
@@ -430,7 +439,9 @@
 							<p class="result-info">
 								<div class="row justify-content-between">
 									<div class="col-8">
-										<p class="result-info-title"><%= trip.title %></p>
+										<%= link_to trip, style:"text-decoration: none" do %>
+											<b><p class="result-info-title" style="text-decoration: none; color: white;"><%= trip.title %></p></b>
+										<% end %>
 									</div>
 									<div class="col-4">
 										<p class="result-info-price"><%= trip.price %> €</p>
@@ -468,7 +479,9 @@
 								<p class="result-info">
 									<div class="row justify-content-between">
 										<div class="col-8">
-											<p class="result-info-title"><%= trip.title %></p>
+											<%= link_to trip, style:"text-decoration: none" do %>
+												<b><p class="result-info-title" style="text-decoration: none; color: white;"><%= trip.title %></p></b>
+											<% end %>
 										</div>
 										<div class="col-4">
 											<p class="result-info-price"><%= trip.price %> €</p>
@@ -501,7 +514,9 @@
 								<p class="result-info">
 									<div class="row justify-content-between">
 										<div class="col-8">
-											<p class="result-info-title"><%= trip.title %></p>
+											<%= link_to trip, style:"text-decoration: none" do %>
+												<b><p class="result-info-title" style="text-decoration: none; color: white;"><%= trip.title %></p></b>
+											<% end %>
 										</div>
 										<div class="col-4">
 											<p class="result-info-price"><%= trip.price %> €</p>
@@ -605,7 +620,9 @@
 									<p class="result-info">
 										<div class="row justify-content-between">
 											<div class="col-8">
-												<p class="result-info-title"><%= trip.title %></p>
+												<%= link_to trip, style:"text-decoration: none" do %>
+													<b><p class="result-info-title" style="text-decoration: none; color: white;"><%= trip.title %></p></b>
+												<% end %>
 											</div>
 											<div class="col-4">
 												<p class="result-info-price"><%= trip.price %> €</p>

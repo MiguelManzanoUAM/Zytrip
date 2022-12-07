@@ -1,0 +1,172 @@
+<%= render 'layouts/header' %>
+
+<% if session[:theme] == "light" %>
+	<div class="main-about-container">
+
+		<div class="about-title-container">
+			<div class="about-title">
+				<%= image_tag 'local/zytrip-transparent-footer-2.png' %>Zytrip
+			</div>
+		</div>
+
+		<div class="navigation-routes">
+		  <ol>
+		      <li><%= link_to 'Zytrip', root_path, class:"navigation-routes-link" %></li>
+		      <li>Guía y preguntas frecuentes</li>
+		  </ol>
+		</div>
+
+		<div class="main-about">
+
+			<h1>Guía rápida para sacar el máximo potencial de Zytrip</h1>
+
+			<p> El primer paso es entender el entorno. Zytrip es una aplicación web consistente en un recomendador de nuevas experiencias/viajes y, que a su vez, actúa como portal para conocer otros usuarios. El funcionamiento básico es que un nuevo usuario pueda navegar por el sistema y encontrar su futuro viaje a realizar.</p>
+
+			<p> Existen varias formas de ayudar al usuario en la búsqueda. La primera de ellas y más sencilla es la navegación básica, el usuario podrá acceder a la sección de viajes en todo momento e informarse sobre éstos.</p><br>
+
+			<div class="row">
+				<div class="col-6">
+					<%= image_tag "local/search_form" %>
+				</div>
+
+				<div class="col-6">
+					<p> A su vez, se ha diseñado un formulario interactivo fundamentado en la búsqueda por parámetros, de forma que un usuario que tenga ya una idea más o menos clara del tipo de viaje que quiera realizar pueda encontrar un resultado de forma rápida. Este formulario se econtrará disponible en todo momento en la página principal y tiene el aspecto mostrado en la imagen adjunta.</p>
+
+					<p>En este formulario el usuario podrá elegir entre diferentes parámetros que tenga en mente de cara a encontrar el viaje que está buscando (precio, tipo de viaje, duración...) y se le mostrarán resultados según los parámetros establecidos.</p><br>
+				</div>
+			</div>
+
+			<p> Recomendamos al usuario la navegación a través de una cuenta de usuario (es decir realizar el login previo). El usuario podrá hacer uso del sistema y su funcionalidad básica como la mencionada anteriormente sin la necesidad de esta acción, pero el hecho de tener una cuenta aumenta el abanico de resultados que un usuario puede obtener a través de nuestro sistema de recomendaciones. Más adelante explicaremos más en detalle el por qué de esto y que beneficios puede tener este usuario logeado frente a un usuario anónimo.</p>
+
+			<p> Otra de las formas de ayudar al usuario en la búsqueda es, como ya hemos mencionado, a través del sistema de recomendaciones que Zytrip ofrece a los usuarios.</p><br>
+
+			<h1>¿Cómo funciona el sistema de recomendaciones de Zytrip?</h1>
+
+			<p>Es un sistema de recomendación mixto o híbrido, lo que quiere decir que combina diferentes técnicas de los sistemas de recomendación para alcanzar un resultado final. Estas técnicas están basadas en la popularidad, proximidad entre usuarios y el conocimiento que el sistema tenga de los mismos. Es decir, cuanto más sepa el sistema del usuario, mejores recomendaciones podrá ofrecer, de ahí la diferencia de información entre un usuario anónimo y un usuario registrado.</p><br>
+
+			<h1>¿Cuál es la diferencia entonces entre un usuario anónimo y un usuario registrado?</h1>
+
+			<p>Un usuario anónimo es aquel que no está registrado y suele emplearse para consultas o navegaciones rápidas, como el uso del formulario interactivo (no necesitas una cuenta para usarlo) o consultas rápidas en la sección de viajes. Este usuario recibirá recomendaciones muy genéricas según la actividad realizada únicamente en esa sesión.</p>
+
+			<p>Por otra parte, un usuario registrado es aquel que tiene una cuenta en el sistema. Este usuario dispondrá de más ventajas como el poder seguir a otros usuarios, guardar los viajes que le han gustado de forma permanente, y a su vez poder dar a conocer viajes y experiencias que haya realizado, de forma que otros usuarios puedan descubrirlos. </p>
+
+			<p>Al tener ya esta información las recomendaciones para el usuario registrado serán mucho más específicas, ya que se podrá tener en cuenta los viajes que le han gustado al usuario y la afinidad que tenga con otros usuarios para descubrir nuevas opciones.</p></br>
+
+			<h1>¿Entonces la identidad de un usuario se verá afectada públicamente si lo que quiere son buenas recomendaciones?</h1>
+
+			<p>No tiene por qué verse afectada. La forma de obtener esta información es a medida que el propio usuario interactúe con la aplicación web, por ejemplo buscando viajes que podrían interesarle o valorando los viajes de otros, sin necesidad de que éstos aporten información de carácter personal más allá del propio formulario de registro, que solicita al usuario un correo y un nombre con el que el sistema pueda referirse al interesado.</p>
+
+			<p>A pesar de esto, ya hemos mencionado que un usuario anónimo no necesita dar esta información básica y registrarse con la finalidad de obtener resultados, ya que existen opciones de navegación básica para que el sistema pueda ofrecer las primeras recomendaciones como es el formulario interactivo o consultas en la sección de viajes.</p>
+
+			<p>Por último, añadir que dentro del propio perfil de un usuario existe un formulario para completar su perfil y de esta forma aportar cierta información que será visible para los demás usuarios, pero ésta no será necesaria para la obtención de resultados, siendo una información de carácter más personal que se podrá aportar si desea que los demás usuarios tengan acceso a ella, ya que como se ha mencionado antes, la idea de Zytrip es que también sirva como un portal para que usuarios puedan conocerse entre ellos.</p><br>
+
+			<h1>Consejos para amenar la navegación y experiencia del usuario</h1>
+
+			<p>El primer consejo es a nivel de accesibilidad, y es que el usuario tendrá a su disposición la opción para poder cambiar a tema oscuro en todo momento en la cabecera de la página si así lo desea, como se muestra en la siguiente imagen: </p>
+
+			<%= image_tag "local/change_theme.png", class:"main-about-change-theme-img" %><br><br>
+
+			<p>El siguiente consejo es a nivel de accesibilidad respecto a la navegación y es que el usuario tendrá a su disposición en todo momento esta cabecera mostrada en la imagen anterior, formada por subenlaces que llevan a algunas de las secciones más importantes del sistema como es la página principal (pinchando en el logo de zytrip) o la sección de viajes entre los más destacados. Desde la página principal el usuario podrá acceder a todas las opciones que ofrece el sistema.</p>
+
+			<p>A su vez en la mayoría de las secciones (viajes, perfil de usuario, formularios...) el usuario contará con una barra de navegación adicional más sencilla para facilitar el retroceso y a su vez evitar el uso de la flecha de retroceso del navegador.</p><br>
+
+			<div class="row">
+				<div class="col-6">
+					<%= image_tag "local/survey_form" %>
+				</div>
+
+				<div class="col-6">
+					<p>El último consejo es a nivel de resultados, y es que el usuario dedique un tiempo a la navegación y se vaya familiarizando con lo que zytrip le ofrece, ya que esto le permitirá descubrir todas las funcionalidades del sistema. Se ha tratado de hacer una experiencia de usuario lo más interactiva y fácil posible.</p>
+
+					<p> De todas formas se dispondrá de una encuesta de usuario para valorar zytrip, los resultados obtenidos e incluso preguntar dudas o realizar sugerencias de cara a nuestras futuras versiones. Esta encuesta se encontrará en la página principal disponible únicamente para los usuarios registrados y tiene el aspecto mostrado en la imagen adjunta. Toda valoración nos ayudará a mejorar esta experiencia de navegación mencionada.
+				</div>
+			</div>
+
+		</div>
+	</div>
+<% else %>
+	<div class="main-about-container-dark">
+
+		<div class="about-title-container">
+			<div class="about-title">
+				<%= image_tag 'local/zytrip-transparent-footer-2.png' %>Zytrip
+			</div>
+		</div>
+
+		<div class="navigation-routes">
+		  <ol>
+		      <li><%= link_to 'Zytrip', root_path, class:"navigation-routes-link" %></li>
+		      <li style="color: black;">Guía y preguntas frecuentes</li>
+		  </ol>
+		</div>
+
+		<div class="main-about-dark">
+
+			<h1>Guía rápida para sacar el máximo potencial de Zytrip</h1>
+
+			<p> El primer paso es entender el entorno. Zytrip es una aplicación web consistente en un recomendador de nuevas experiencias/viajes y, que a su vez, actúa como portal para conocer otros usuarios. El funcionamiento básico es que un nuevo usuario pueda navegar por el sistema y encontrar su futuro viaje a realizar.</p>
+
+			<p> Existen varias formas de ayudar al usuario en la búsqueda. La primera de ellas y más sencilla es la navegación básica, el usuario podrá acceder a la sección de viajes en todo momento e informarse sobre éstos.</p><br>
+
+			<div class="row">
+				<div class="col-6">
+					<%= image_tag "local/search_form" %>
+				</div>
+
+				<div class="col-6">
+					<p> A su vez, se ha diseñado un formulario interactivo fundamentado en la búsqueda por parámetros de forma que un usuario que tenga ya una idea más o menos clara del tipo de viaje que quiera realizar pueda encontrar un resultado de forma rápida. Este formulario se econtrará disponible en todo momento en la página principal y tiene el aspecto mostrado en la imagen adjunta.</p>
+
+					<p>En este formulario el usuario podrá elegir entre diferentes parámetros que tenga en mente de cara a encontrar el viaje que está buscando (precio, tipo de viaje, duración...) y se le mostrarán resultados según los parámetros establecidos.</p><br>
+				</div>
+			</div>
+
+			<p> Recomendamos al usuario la navegación a través de una cuenta de usuario (es decir realizar el login previo). El usuario podrá hacer uso del sistema y su funcionalidad básica como la mencionada anteriormente sin la necesidad de esta acción, pero el hecho de tener una cuenta aumenta el abanico de resultados que un usuario puede obtener a través de nuestro sistema de recomendaciones. Más adelante explicaremos más en detalle el por qué de esto y que beneficios puede tener este usuario logeado frente a un usuario anónimo.</p>
+
+			<p> Otra de las formas de ayudar al usuario en la búsqueda es, como ya hemos mencionado, a través del sistema de recomendaciones que Zytrip ofrece a los usuarios.</p><br>
+
+			<h1>¿Cómo funciona el sistema de recomendaciones de Zytrip?</h1>
+
+			<p>Es un sistema de recomendación mixto o híbrido, lo que quiere decir que combina diferentes técnicas de los sistemas de recomendación para alcanzar un resultado final. Estas técnicas están basadas en la popularidad, proximidad entre usuarios y el conocimiento que el sistema tenga de los mismos. Es decir, cuanto más sepa el sistema del usuario, mejores recomendaciones podrá ofrecer, de ahí la diferencia de información entre un usuario anónimo y un usuario registrado.</p><br>
+
+			<h1>¿Cuál es la diferencia entonces entre un usuario anónimo y un usuario registrado?</h1>
+
+			<p>Un usuario anónimo es aquel que no está registrado y suele emplearse para consultas o navegaciones rápidas, como el uso del formulario interactivo (no necesitas una cuenta para usarlo) o consultas rápidas en la sección de viajes. Este usuario recibirá recomendaciones muy genéricas según la actividad realizada únicamente en esa sesión.</p>
+
+			<p>Por otra parte, un usuario registrado es aquel que tiene una cuenta en el sistema. Este usuario dispondrá de más ventajas como el poder seguir a otros usuarios, guardar los viajes que le han gustado de forma permanente, y a su vez poder dar a conocer viajes y experiencias que haya realizado, de forma que otros usuarios puedan descubrirlos. </p>
+
+			<p>Al tener ya esta información las recomendaciones para el usuario registrado serán mucho más específicas, ya que se podrá tener en cuenta los viajes que le han gustado al usuario y la afinidad que tenga con otros usuarios para descubrir nuevas opciones.</p></br>
+
+			<h1>¿Entonces la identidad de un usuario se verá afectada públicamente si lo que quiere son buenas recomendaciones?</h1>
+
+			<p>No tiene por qué verse afectada. La forma de obtener esta información es a medida que el propio usuario interactúe con la aplicación web, por ejemplo buscando viajes que podrían interesarle o valorando los viajes de otros, sin necesidad de que éstos aporten información de carácter personal más allá del propio formulario de registro, que solicita al usuario un correo y un nombre con el que el sistema pueda referirse al interesado.</p>
+
+			<p>A pesar de esto, ya hemos mencionado que un usuario anónimo no necesita dar esta información básica y registrarse con la finalidad de obtener resultados, ya que existen opciones de navegación básica para que el sistema pueda ofrecer las primeras recomendaciones como es el formulario interactivo o consultas en la sección de viajes.</p>
+
+			<p>Por último, añadir que dentro del propio perfil de un usuario existe un formulario para completar su perfil y de esta forma aportar cierta información que será visible para los demás usuarios, pero ésta no será necesaria para la obtención de resultados, siendo una información de carácter más personal que se podrá aportar si desea que los demás usuarios tengan acceso a ella, ya que como se ha mencionado antes, la idea de Zytrip es que también sirva como un portal para que usuarios puedan conocerse entre ellos.</p><br>
+
+			<h1>Consejos para amenar la navegación y experiencia del usuario</h1>
+
+			<p>El primer consejo es a nivel de accesibilidad, y es que el usuario tendrá a su disposición la opción para poder cambiar a tema oscuro en todo momento en la cabecera de la página si así lo desea, como se muestra en la siguiente imagen: </p>
+
+			<%= image_tag "local/change_theme.png", class:"main-about-change-theme-img" %><br><br>
+
+			<p>El siguiente consejo es a nivel de accesibilidad respecto a la navegación y es que el usuario tendrá a su disposición en todo momento esta cabecera mostrada en la imagen anterior, formada por subenlaces que llevan a algunas de las secciones más importantes del sistema como es la página principal (pinchando en el logo de zytrip) o la sección de viajes entre los más destacados. Desde la página principal el usuario podrá acceder a todas las opciones que ofrece el sistema.</p>
+
+			<p>A su vez en la mayoría de las secciones (viajes, perfil de usuario, formularios...) el usuario contará con una barra de navegación adicional más sencilla para facilitar el retroceso y a su vez evitar el uso de la flecha de retroceso del navegador.</p><br>
+
+			<div class="row">
+				<div class="col-6">
+					<%= image_tag "local/survey_form" %>
+				</div>
+
+				<div class="col-6">
+					<p>El último consejo es a nivel de resultados, y es que el usuario dedique un tiempo a la navegación y se vaya familiarizando con lo que zytrip le ofrece, ya que esto le permitirá descubrir todas las funcionalidades del sistema. Se ha tratado de hacer una experiencia de usuario lo más interactiva y fácil posible.</p>
+
+					<p> De todas formas se dispondrá de una encuesta de usuario para valorar zytrip, los resultados obtenidos e incluso preguntar dudas o realizar sugerencias de cara a nuestras futuras versiones. Esta encuesta se encontrará en la página principal disponible únicamente para los usuarios registrados y tiene el aspecto mostrado en la imagen adjunta. Toda valoración nos ayudará a mejorar esta experiencia de navegación mencionada.
+				</div>
+			</div>
+		</div>
+	</div>
+<% end %>
+
+<%= render 'layouts/footer' %>

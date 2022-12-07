@@ -1,10 +1,23 @@
-<p class="create-edit-trip-form-section-title">¿Cúal de estos servicios destacarías de tu viaje?</p>
+<% if session[:theme] == "light" %>
+	<p class="create-edit-trip-form-section-title">¿Cúal de estos servicios destacarías de tu viaje?</p>
 
-<%= f.check_box :lodging, class:"create-edit-trip-form-checkbox"%>
-<label class="create-edit-form-option">Alojamiento</label><br>
+	<%= f.check_box :lodging, class:"create-edit-trip-form-checkbox"%>
+	<label class="create-edit-form-option">Alojamiento</label><br>
 
-<%= f.check_box :gastronomy, class:"create-edit-trip-form-checkbox" %>
-<label class="create-edit-form-option">Gastronomía</label><br>
+	<%= f.check_box :gastronomy, class:"create-edit-trip-form-checkbox" %>
+	<label class="create-edit-form-option">Gastronomía</label><br>
 
-<%= f.check_box :activities, class:"create-edit-trip-form-checkbox"%>
-<label class="create-edit-form-option">Variedad de actividades</label><br>
+	<%= f.check_box :activities, class:"create-edit-trip-form-checkbox"%>
+	<label class="create-edit-form-option">Variedad de actividades</label><br>
+<% else %>
+	<p class="create-edit-trip-form-section-title">¿Cúal de estos servicios destacarías de tu viaje?</p>
+
+	<%= f.check_box :lodging, class:"create-edit-trip-form-checkbox"%>
+	<label class="create-edit-form-option" style="color: grey;">Alojamiento</label><br>
+
+	<%= f.check_box :gastronomy, class:"create-edit-trip-form-checkbox" %>
+	<label class="create-edit-form-option" style="color: grey;">Gastronomía</label><br>
+
+	<%= f.check_box :activities, class:"create-edit-trip-form-checkbox"%>
+	<label class="create-edit-form-option" style="color: grey;">Variedad de actividades</label><br>
+<% end %>

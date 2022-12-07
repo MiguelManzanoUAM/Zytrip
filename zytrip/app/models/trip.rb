@@ -72,6 +72,21 @@ class Trip < ApplicationRecord
   	end
 
   	#####################################################
+  	# Obtiene la duración de un viaje como cadena
+  	#####################################################
+  	def self.get_trip_duration(trip)
+  		if trip.preference.duration_short?
+  			return "Menos de 3 días"
+  		elsif trip.preference.duration_ordinary?
+  			return "3-5 días"
+  		elsif trip.preference.duration_ordinary?
+  			return "5-7 días"
+  		else
+  			return "Más de una semana"
+  		end
+  	end
+
+  	#####################################################
   	# Obtiene las preferencias de un viaje
   	#####################################################
   	def self.trip_preferences(trip)

@@ -1,14 +1,31 @@
+<% if session[:theme] == "light" %>
+	<p class="create-edit-trip-form-section-title">¿Cuál de estas temáticas ofrece tu viaje?</p>
 
-<p class="create-edit-trip-form-section-title">¿Cuál de estas temáticas ofrece tu viaje?</p>
+	<%= f.check_box :beach, class:"create-edit-trip-form-checkbox"%>
+	<label class="create-edit-form-option">Playas y mar</label><br>
 
-<%= f.check_box :beach, class:"create-edit-trip-form-checkbox"%>
-<label class="create-edit-form-option">Playas y mar</label><br>
+	<%= f.check_box :nature, class:"create-edit-trip-form-checkbox" %>
+	<label class="create-edit-form-option">Naturaleza y preciosos paisajes</label><br>
 
-<%= f.check_box :nature, class:"create-edit-trip-form-checkbox" %>
-<label class="create-edit-form-option">Naturaleza y preciosos paisajes</label><br>
+	<%= f.check_box :tourism, class:"create-edit-trip-form-checkbox"%>
+	<label class="create-edit-form-option">Turismo y descubrir nuevas culturas</label><br>
 
-<%= f.check_box :tourism, class:"create-edit-trip-form-checkbox"%>
-<label class="create-edit-form-option">Turismo y descubrir nuevas culturas</label><br>
+	<%= f.check_box :relax, class:"create-edit-trip-form-checkbox"%>
+	<label class="create-edit-form-option">Descansar y desconectar</label><br>
 
-<%= f.check_box :relax, class:"create-edit-trip-form-checkbox"%>
-<label class="create-edit-form-option">Descansar y desconectar</label><br>
+<% else %>
+
+	<p class="create-edit-trip-form-section-title">¿Cuál de estas temáticas ofrece tu viaje?</p>
+
+	<%= f.check_box :beach, class:"create-edit-trip-form-checkbox"%>
+	<label class="create-edit-form-option" style="color: grey;">Playas y mar</label><br>
+
+	<%= f.check_box :nature, class:"create-edit-trip-form-checkbox" %>
+	<label class="create-edit-form-option" style="color: grey;">Naturaleza y preciosos paisajes</label><br>
+
+	<%= f.check_box :tourism, class:"create-edit-trip-form-checkbox"%>
+	<label class="create-edit-form-option" style="color: grey;">Turismo y descubrir nuevas culturas</label><br>
+
+	<%= f.check_box :relax, class:"create-edit-trip-form-checkbox"%>
+	<label class="create-edit-form-option" style="color: grey;">Descansar y desconectar</label><br>
+<% end %>

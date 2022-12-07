@@ -1,40 +1,86 @@
-<% if flash[:trip_error] %>
-  <div class="invalid-field-profile">
-    <p><text class="invalid-field-step">-></text><%= flash[:trip_error] %></p>        
+<% if session[:theme] == "light" %>
+  
+  <% if flash[:trip_error] %>
+    <div class="invalid-field-profile">
+      <p><b><text class="invalid-field-step">-></text><%= flash[:trip_error] %></b></p>        
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-12 mb-3">
+      <%= f.label(:title, "Elige el título principal para tu viaje", class:"create-edit-trip-form-label") %><text class="required-star">*</text>
+      <%= f.text_field :title, class:"create-edit-trip-form-input", autofocus: true %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 mb-3">
+      <%= f.label(:subtitle, "Piensa una frase que pueda llamar la atención de los usuarios", class:"create-edit-trip-form-label") %><text class="required-star">*</text>
+      <%= f.text_field :subtitle, class:"create-edit-trip-form-input", autofocus: true %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 mb-3">
+      <%= f.label(:image_url, "¿Quieres asociar una imagen a tu viaje? Pega aquí la dirección URL de la imagen que quieras poner", class:"create-edit-trip-form-label") %>
+      <%= f.text_field :image_url, class:"create-edit-trip-form-input", autofocus: true, placeholder:"https://imagenejemplo.jpg" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 mb-3">
+      <%= f.label(:description, "Cuenta a los demás usuarios cómo fue tu experiencia (hotel, actividades...)", class:"create-edit-trip-form-label") %><text class="required-star">*</text>
+      <%= f.text_area :description, class:"create-edit-trip-form-description", autofocus: true, placeholder:"Este campo de texto utiliza un formato html, por lo que cada párrafo te pedimos que lo escribas con la notación: \n <p>esto sería un párrafo</p>. <p>nuevo párrafo</p>. \n\nEstamos trabajando en mejorar esto, rogamos disculpe las molestias." %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <%= f.label(:price, "Precio aproximado (€): ", class:"create-edit-trip-form-label") %><text class="required-star">*</text>
+      <%= f.text_field :price, class:"create-edit-trip-form-input-short", placeholder:"0", autofocus: true %>
+    </div>
+  </div>
+
+<% else %>
+  
+  <% if flash[:trip_error] %>
+    <div class="invalid-field-profile">
+      <p style="color: #d84f4f;"><b><text class="invalid-field-step" style="color: #d84f4f;">-></text><%= flash[:trip_error] %></b></p>        
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-12 mb-3">
+      <%= f.label(:title, "Elige el título principal para tu viaje", class:"create-edit-trip-form-label") %><text class="required-star" style="color: #d84f4f;">*</text>
+      <%= f.text_field :title, class:"create-edit-trip-form-input", autofocus: true %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 mb-3">
+      <%= f.label(:subtitle, "Piensa una frase que pueda llamar la atención de los usuarios", class:"create-edit-trip-form-label") %><text class="required-star" style="color: #d84f4f;">*</text>
+      <%= f.text_field :subtitle, class:"create-edit-trip-form-input", autofocus: true %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 mb-3">
+      <%= f.label(:image_url, "¿Quieres asociar una imagen a tu viaje? Pega aquí la dirección URL de la imagen que quieras poner", class:"create-edit-trip-form-label") %>
+      <%= f.text_field :image_url, class:"create-edit-trip-form-input", autofocus: true, placeholder:"https://imagenejemplo.jpg" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 mb-3">
+      <%= f.label(:description, "Cuenta a los demás usuarios cómo fue tu experiencia (hotel, actividades...)", class:"create-edit-trip-form-label") %><text class="required-star" style="color: #d84f4f;">*</text>
+      <%= f.text_area :description, class:"create-edit-trip-form-description", autofocus: true, placeholder:"Este campo de texto utiliza un formato html, por lo que cada párrafo te pedimos que lo escribas con la notación: \n <p>esto sería un párrafo</p>. <p>nuevo párrafo</p>. \n\nEstamos trabajando en mejorar esto, rogamos disculpe las molestias." %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <%= f.label(:price, "Precio aproximado (€): ", class:"create-edit-trip-form-label") %><text class="required-star" style="color: #d84f4f;">*</text>
+      <%= f.text_field :price, class:"create-edit-trip-form-input-short-dark", placeholder:"0", autofocus: true %>
+    </div>
   </div>
 <% end %>
-        
-<div class="row">
-  <div class="col-md-12 mb-3">
-    <%= f.label(:title, "Elige el título principal para tu viaje", class:"create-edit-trip-form-label") %><text class="required-star">*</text>
-    <%= f.text_field :title, class:"create-edit-trip-form-input", autofocus: true %>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-12 mb-3">
-    <%= f.label(:subtitle, "Piensa una frase que pueda llamar la atención de los usuarios", class:"create-edit-trip-form-label") %><text class="required-star">*</text>
-    <%= f.text_field :subtitle, class:"create-edit-trip-form-input", autofocus: true %>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-12 mb-3">
-    <%= f.label(:image_url, "¿Quieres asociar una imagen a tu viaje? Pega aquí la dirección URL de la imagen que quieras poner", class:"create-edit-trip-form-label") %>
-    <%= f.text_field :image_url, class:"create-edit-trip-form-input", autofocus: true, placeholder:"https://imagenejemplo.jpg" %>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-12 mb-3">
-    <%= f.label(:description, "Cuenta a los demás usuarios cómo fue tu experiencia (hotel, actividades...)", class:"create-edit-trip-form-label") %><text class="required-star">*</text>
-    <%= f.text_area :description, class:"create-edit-trip-form-description", autofocus: true, placeholder:"Este campo de texto utiliza un formato html, por lo que cada párrafo te pedimos que lo escribas con la notación: \n <p>esto sería un párrafo</p>. <p>nuevo párrafo</p>. \n\nEstamos trabajando en mejorar esto, rogamos disculpe las molestias." %>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-6 mb-3">
-    <%= f.label(:price, "Precio aproximado (€): ", class:"create-edit-trip-form-label") %><text class="required-star">*</text>
-    <%= f.text_field :price, class:"create-edit-trip-form-input-short", autofocus: true %>
-  </div>
-</div>

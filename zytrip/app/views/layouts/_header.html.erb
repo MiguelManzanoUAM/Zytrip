@@ -1,18 +1,35 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid d-flex">
-    <%= link_to 'Zytrip', root_path, class: 'navbar-brand' %>
+  <div class="container-fluid">
+    <%= link_to root_path, class: 'navbar-brand' do %>
+      <%= image_tag "local/zytrip-transparent-footer-2.png", class:"header-logo" %> Zytrip
+    <% end %> 
 
-    <% if session[:theme] == "light" %>
-      <%= link_to root_path(theme: "dark") do %>
-        <i class="fas fa-moon" style="color: white;"></i>
-      <% end %>
-    <% else %>
-      <%= link_to root_path(theme: "light") do %>
-        <i class="fas fa-sun" style="color: yellow;"></i>
-      <% end %>
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <%= link_to 'Nuestros viajes', trips_path, class: "nav-link header-link" %>
+      </li>
+
+      <li class="nav-item">
+        <%= link_to 'Acerca de Zytrip', about_path, class: "nav-link header-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Guía y preguntas frecuentes', guide_path, class: "nav-link header-link" %>
+      </li>
+    </ul>
+  </div>
+
+  <% if session[:theme] == "light" %>
+    <%= link_to root_path(theme: "dark") do %>
+      <i class="fas fa-moon" style="color: #aea7b0;"></i>
     <% end %>
+  <% else %>
+    <%= link_to root_path(theme: "light") do %>
+      <i class="fas fa-sun" style="color: #e8d247;"></i>
+    <% end %>
+  <% end %>
 
-    <ul class="navbar-nav ml-auto px-4">
+  <div class="d-flex align-items-center" style="margin-right: 2%; margin-left: 1%;">
+    <ul class="navbar-nav">
       <% if user_signed_in?%>
         <% if current_user.admin == true %>
           <li class="nav-item dropdown">
@@ -53,12 +70,12 @@
 
       <% else %>
         <form class="d-flex">
-          <li class="nav-item me-2">
-            <%= link_to 'Register', new_user_registration_path, class: 'nav-link' %>
+          <li class="nav-item">
+            <%= link_to 'Registrarse', new_user_registration_path, class: 'nav-link' %>
             
           </li>
           <li class="nav-item">
-            <%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %>
+            <%= link_to 'Login', new_user_session_path, class: 'nav-link' %>
           </li>
         </form>
 

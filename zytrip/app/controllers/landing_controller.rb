@@ -28,4 +28,8 @@ class LandingController < ApplicationController
 	def about
 
 	end
+
+	def guide
+
+	end
 end

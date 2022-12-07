@@ -1,17 +1,37 @@
+<% if session[:theme] == "light" %>
+	<p class="create-edit-trip-form-section-title">¿Cómo categorizarías este viaje?</p>
 
-<p class="create-edit-trip-form-section-title">¿Cómo categorizarías este viaje?</p>
+	<%= f.check_box :family, class:"create-edit-trip-form-checkbox"%>
+	<label class="create-edit-form-option">Viaje familiar</label><br>
 
-<%= f.check_box :family, class:"create-edit-trip-form-checkbox"%>
-<label class="create-edit-form-option">Viaje familiar</label><br>
+	<%= f.check_box :romantic, class:"create-edit-trip-form-checkbox" %>
+	<label class="create-edit-form-option">Escapada romántica con tu pareja</label><br>
 
-<%= f.check_box :romantic, class:"create-edit-trip-form-checkbox" %>
-<label class="create-edit-form-option">Escapada romántica con tu pareja</label><br>
+	<%= f.check_box :friends, class:"create-edit-trip-form-checkbox"%>
+	<label class="create-edit-form-option">Viaje que hay que hacer con amigos</label><br>
 
-<%= f.check_box :friends, class:"create-edit-trip-form-checkbox"%>
-<label class="create-edit-form-option">Viaje que hay que hacer con amigos</label><br>
+	<%= f.check_box :alone, class:"create-edit-trip-form-checkbox"%>
+	<label class="create-edit-form-option">Viaje para realizar sólo</label><br>
 
-<%= f.check_box :alone, class:"create-edit-trip-form-checkbox"%>
-<label class="create-edit-form-option">Viaje para realizar sólo</label><br>
+	<%= f.check_box :people, class:"create-edit-trip-form-checkbox"%>
+	<label class="create-edit-form-option">Viaje para conocer gente</label><br>
 
-<%= f.check_box :people, class:"create-edit-trip-form-checkbox"%>
-<label class="create-edit-form-option">Viaje para conocer gente</label><br>
+<% else %>
+
+	<p class="create-edit-trip-form-section-title">¿Cómo categorizarías este viaje?</p>
+
+	<%= f.check_box :family, class:"create-edit-trip-form-checkbox"%>
+	<label class="create-edit-form-option" style="color: grey;">Viaje familiar</label><br>
+
+	<%= f.check_box :romantic, class:"create-edit-trip-form-checkbox" %>
+	<label class="create-edit-form-option" style="color: grey;">Escapada romántica con tu pareja</label><br>
+
+	<%= f.check_box :friends, class:"create-edit-trip-form-checkbox"%>
+	<label class="create-edit-form-option" style="color: grey;">Viaje que hay que hacer con amigos</label><br>
+
+	<%= f.check_box :alone, class:"create-edit-trip-form-checkbox"%>
+	<label class="create-edit-form-option" style="color: grey;">Viaje para realizar sólo</label><br>
+
+	<%= f.check_box :people, class:"create-edit-trip-form-checkbox"%>
+	<label class="create-edit-form-option" style="color: grey;">Viaje para conocer gente</label><br>
+<% end %>

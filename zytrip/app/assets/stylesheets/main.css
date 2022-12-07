@@ -250,6 +250,26 @@
   margin-left: 5px;
 }
 
+
+/**********************************************
+ * Header styles
+**********************************************/
+.header-logo{
+  width: 40px;
+  height: 40px;
+  margin-left: 20px;
+}
+
+.header-link{
+  text-decoration: none;
+  color: white;
+}
+
+.header-link:hover{
+  text-decoration: none;
+  color: white;
+}
+
 /**********************************************
  * Landing styles
 **********************************************/
@@ -327,6 +347,16 @@
 }
 
 .landing-results-info{
+  font-size: 20px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+}
+
+.landing-results-info-help{
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 80px;
   font-size: 20px;
   text-align: left;
   display: flex;
@@ -1757,6 +1787,7 @@
 
 .create-edit-trip-form-label{
   margin: 0;
+  margin-bottom: 10px;
   padding: 0;
   font-weight: bold;
 }
@@ -1789,6 +1820,7 @@
   border: 1px solid black;
   background: transparent;
   outline: none;
+  margin-left: 10px;
 }
 
 .create-edit-trip-btns{
@@ -1800,27 +1832,36 @@
   height: 40px;
   color: #fff;
   font-size: 15px;
-  background: #a9f7ae;
+  background: #6ff178;
   cursor: pointer;
   border-radius: 25px;
-  border: none;
+  border: 1px solid white;
   outline: none;
   font-weight: bold;
   width: 100%;
   margin-bottom: 2%;
 }
 
+.create-edit-trip-form-submit-btn:hover{
+  background-color: #97ec9d;
+}
+
+
 .create-edit-trip-form-cancel-btn{
   height: 40px;
   color: #fff;
   font-size: 15px;
   padding-top: 10px;
-  background-color: grey;
+  background-color: #8a8f8b;
   border-radius: 25px;
-  border: none;
+  border: 1px solid white;
   outline: none;
   width: 100%;
   margin-bottom: 2%;
+}
+
+.create-edit-trip-form-cancel-btn:hover{
+  background-color: #bac0bb;
 }
 
 .create-edit-trip-form-cancel-link{
@@ -1840,6 +1881,7 @@
 .create-edit-trip-form-select{
   position: relative;
   margin-bottom: 20px;
+  margin-right: 20px;
   font-weight: bold;
 }
 
@@ -1885,6 +1927,7 @@
   background: transparent;
   background-color: #eee;
   margin-left: 6%;
+  margin-right: 10px;
 }
 
 /**********************************************
@@ -2228,7 +2271,7 @@
 }
 
 .main-about-container{
-  background-color: #F5F4F5;
+  background-color: #cedded;
   padding-bottom: 50px;
 }
 
@@ -2243,6 +2286,22 @@
 .main-about h1{
   font-size: 40px;
   margin-bottom: 20px;
+  color: #603fa7;
+}
+
+.main-about h2{
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.main-about img{
+  width: 95%;
+  height: 300px;
+}
+
+.main-about-change-theme-img{
+  width: 100%;
+  height: 150px;
 }
 
 /**********************************************

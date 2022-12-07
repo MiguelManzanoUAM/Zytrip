@@ -1,28 +1,56 @@
 <%= render "layouts/header" %>
-<section>
-  <div class="create-edit-trip">
-    <div class="navigation-routes" style="background-color: #b1f2af">
-        <ol>
-            <li><%= link_to 'Zytrip', root_path, class:"navigation-routes-link", style:"color: #33e12d" %></li>
-            <li>Cuéntanos tu experiencia</li>
-        </ol>
-    </div>
-    
-    <div class="create-edit-trip-preferences-box">
-      <h2 class="create-edit-trip-title">Queremos saber más de tu experiencia</h2>
-      <%= form_for(@preference, url: preferences_path(@preference)) do |f| %>
-        <%= render partial: "preference_form_fields", :locals => {:f => f} %>
-        <div class="create-edit-trip-btns">
-          <div class="row justify-content-center">
-            <div class="col-6">
-              <%= f.submit "Siguiente", class: "create-edit-trip-form-submit-btn" %>
+
+<% if session[:theme] == "light" %>
+  <section>
+    <div class="create-edit-trip">
+      <div class="navigation-routes" style="background-color: #b1f2af">
+          <ol>
+              <li><%= link_to 'Zytrip', root_path, class:"navigation-routes-link", style:"color: #33e12d" %></li>
+              <li>Cuéntanos tu experiencia</li>
+          </ol>
+      </div>
+      
+      <div class="create-edit-trip-preferences-box">
+        <h2 class="create-edit-trip-title">Queremos saber más de tu experiencia</h2>
+        <%= form_for(@preference, url: preferences_path(@preference)) do |f| %>
+          <%= render partial: "preference_form_fields", :locals => {:f => f} %>
+          <div class="create-edit-trip-btns">
+            <div class="row justify-content-center">
+              <div class="col-6">
+                <%= f.submit "Siguiente", class: "create-edit-trip-form-submit-btn" %>
+              </div>
             </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+<% else %>
+  <section>
+    <div class="create-edit-trip-dark">
+      <div class="navigation-routes" style="background-color: #b1f2af">
+          <ol>
+              <li><%= link_to 'Zytrip', root_path, class:"navigation-routes-link", style:"color: #33e12d" %></li>
+              <li style="color: black;">Cuéntanos tu experiencia</li>
+          </ol>
+      </div>
+      
+      <div class="create-edit-trip-preferences-box-dark">
+        <h2 class="create-edit-trip-title">Queremos saber más de tu experiencia</h2>
+        <%= form_for(@preference, url: preferences_path(@preference)) do |f| %>
+          <%= render partial: "preference_form_fields", :locals => {:f => f} %>
+          <div class="create-edit-trip-btns">
+            <div class="row justify-content-center">
+              <div class="col-6">
+                <%= f.submit "Siguiente", class: "create-edit-trip-form-submit-btn" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+<% end %>
 
 <%= render "layouts/footer" %>
 <% content_for :view_specific_css do %>

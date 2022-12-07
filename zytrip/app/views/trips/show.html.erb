@@ -315,8 +315,8 @@
         <hr>
         <p class="trip-section-title-dark">
           Valora este viaje
-          <% if flash[:notice] %>
-            <text class="invalid-field-step"><%= flash[:notice] %></text>
+          <% if flash[:review_error] %>
+            <text class="invalid-field-step"><%= flash[:review_error] %></text>
           <% end %>
         </p>
         <p class="trip-section-description">Comparte tu opinión acerca de esta experiencia con otros usuarios</p>

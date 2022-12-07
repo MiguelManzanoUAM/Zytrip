@@ -140,6 +140,113 @@
   color: white;
 }
 
+.landing-user-survey-description-container-dark{
+  margin-top: 30px;
+  margin-left: 20px;
+  height: 210px;
+  background-color: #4d445f;
+  color: white;
+  margin-right: 100px;
+}
+
+.landing-user-survey-title-dark{
+  font-size: 30px;
+  font-weight: bold;
+  padding-top: 1%;
+  padding-left: 3%;
+  color: #7239fb;
+  -webkit-text-stroke: 1px #fff;
+}
+
+.landing-user-survey-btn-dark{
+  float: right;
+  background-color: #7239fb;
+  border-radius: 5px;
+  border:  1px solid #fff;
+  outline: none;
+  margin-right: 15px;
+  margin-top: 0px;
+}
+
+.landing-user-survey-btn-dark:hover{
+  background-color: #9066f5;
+}
+
+.landing-user-survey-form-description-container-dark{
+  margin-top: 30px;
+  margin-left: 30px;
+  background-color: #4d445f;
+  color: white;
+  margin-right: 30px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+}
+
+.landing-user-survey-form-title-dark{
+  font-size: 30px;
+  font-weight: bold;
+  padding-top: 1%;
+  text-align: center;
+  color: #7239fb;
+  -webkit-text-stroke: 1px #fff;
+}
+
+.landing-user-survey-form-description-container-dark hr{
+  border: 1px solid #7239fb;
+  width: 90%;
+  margin-left: 5%;
+}
+
+.landing-user-survey-form-submit-btn-dark{
+  background-color: #7239fb;
+  border-radius: 5px;
+  border:  1px solid #fff;
+  outline: none;
+  text-align: center;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+
+.landing-user-survey-form-submit-btn-dark:hover{
+  background-color: #9066f5;
+}
+
+.landing-user-trip-description-container-dark{
+  margin-top: 30px;
+  margin-left: 100px;
+  height: 210px;
+  background-color: #425842;
+  color: white;
+  margin-right: 50px;
+}
+
+.landing-user-trip-title-dark{
+  font-size: 30px;
+  font-weight: bold;
+  padding-top: 1%;
+  padding-left: 3%;
+  color: #7dd956;
+  -webkit-text-stroke: 1px #fff;
+}
+
+.landing-user-trip-btn-dark{
+  float: right;
+  background-color: #91fb63;
+  border-radius: 5px;
+  border:  1px solid #fff;
+  outline: none;
+  margin-right: 15px;
+  margin-top: 0px;
+}
+
+.landing-user-trip-btn-dark:hover{
+  background-color: #a6e38d;
+}
+
 /**********************************************
  * Trips Index styles
 **********************************************/
@@ -529,6 +636,86 @@
 
 .preferences-poll-submit-btn-dark:hover{
   background-color: #b995e2;
+}
+
+/**********************************************
+ * User profile styles
+**********************************************/
+.main-profile-dark{
+  background-color: #3d4555;
+  padding-bottom: 100px;
+  padding-top: 20px;
+  color: white;
+}
+
+.profile-user-container-dark{
+  background-color: #323232;
+  margin-top: 20px;
+  border: 1px solid white;
+  padding-top: 20px;
+  padding-bottom: 50px;
+}
+
+.profile-user-container-dark img{
+  margin-top: 30px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.profile-section-title-dark{
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  color: #6e9bd5;
+  -webkit-text-stroke: 1px white;
+}
+
+.profile-contact-container-dark{
+  background-color: #323232;
+  margin-top: 20px;
+  border: 1px solid white;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.profile-contact-container-dark hr{
+  border: 1px solid white;
+  width: 90%;
+  margin-left: 20px;
+}
+
+.profile-sections-container-dark{
+  background-color: #323232;
+  margin-top: 20px;
+  border: 1px solid white;
+  padding-top: 20px;
+  padding-bottom: 50px;
+  height: 632px;
+  color: white;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.profile-section-form-title-dark{
+  font-size: 20px;
+  font-weight: bold;
+  color: #6e9bd5;
+  text-align: center;
+  -webkit-text-stroke: 1px white;
+}
+
+.profile-section-form-container-dark{
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  border: 1px solid #6e9bd5;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  color: white;
+  background-color: #686767;
 }
 
 /**********************************************

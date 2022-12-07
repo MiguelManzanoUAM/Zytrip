@@ -527,11 +527,11 @@
 					</div>
 
 					<div class="col-8">
-						<div class="landing-user-trip-description-container">
-							<p class="landing-user-trip-title">¿Has hecho un viaje memorable? </p>
+						<div class="landing-user-trip-description-container-dark">
+							<p class="landing-user-trip-title-dark">¿Has hecho un viaje memorable? </p>
 							<p class="landing-user-trip-description-text">Comparte tus viajes y experiencias con otros usuarios para poder abrir entre vosotros un mundo de posibilidades</p>
 
-							<div class="landing-user-trip-btn">
+							<div class="landing-user-trip-btn-dark">
 								<%=link_to 'Cuéntanos tu experiencia', new_trip_path, class:"landing-user-trip-btn-link"%>
 							</div>
 						</div>
@@ -630,11 +630,11 @@
 				<div class="landing-user-survey-container">
 					<div class="row">
 						<div class="col-8">
-							<div class="landing-user-survey-description-container">
-								<p class="landing-user-survey-title">Queremos saber tu opinión </p>
+							<div class="landing-user-survey-description-container-dark">
+								<p class="landing-user-survey-title-dark">Queremos saber tu opinión </p>
 								<p class="landing-user-survey-description-text">¿Cuál es tu satisfacción con zytrip y los resultados obtenidos de las distintas recomendaciones?</p>
 
-								<div class="landing-user-survey-btn">
+								<div class="landing-user-survey-btn-dark">
 									<text onclick="show_survey_form()", id="surveybtn", class="landing-user-survey-btn-link">Realizar encuesta</text>
 								</div>
 							</div>
@@ -649,8 +649,8 @@
 
 			<div id="surveyform">
 				<div class="landing-user-survey-form-container">
-					<div class="landing-user-survey-form-description-container">
-						<p class="landing-user-survey-title text-center">Queremos saber tu opinión </p>
+					<div class="landing-user-survey-form-description-container-dark">
+						<p class="landing-user-survey-title-dark text-center">Queremos saber tu opinión </p>
 
 				        <% @survey = Survey.new() %>
 				        <%= form_tag surveys_path(@survey), :method => 'post' do %>
@@ -700,7 +700,7 @@
 					        <div class="landing-user-survey-form-btns">
 					            <div class="row justify-content-center">
 					              	<div class="col-4 text-center">
-					                	<%= submit_tag "Publicar valoración", class: "landing-user-survey-form-submit-btn", onclick:"set_ratings_values();" %>
+					                	<%= submit_tag "Publicar valoración", class: "landing-user-survey-form-submit-btn-dark", onclick:"set_ratings_values();" %>
 					              	</div>
 					            </div>
 					        </div>

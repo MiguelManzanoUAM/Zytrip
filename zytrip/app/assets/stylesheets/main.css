@@ -1401,9 +1401,13 @@
   font-size: 15px;
   padding-top: 10px;
   background-color: #6e9bd5;
+  border: 1px solid #fff;
   border-radius: 5px;
-  border: none;
   outline: none;
+}
+
+.profile-edit-btn:hover{
+  background-color: #98b7de;
 }
 
 .profile-edit-btn-link{
@@ -1430,6 +1434,7 @@
   outline: none;
 }
 
+
 .profile-followed-btn-link{
   color: #000;
   font-size: 15px;
@@ -1446,8 +1451,12 @@
   padding-top: 10px;
   background-color: #eb7878;
   border-radius: 5px;
-  border: none;
+  border: 1px solid white;
   outline: none;
+}
+
+.profile-unfollow-btn:hover{
+  background-color: #e79393;
 }
 
 .profile-option-btn{
@@ -1597,8 +1606,10 @@
 
 .profile-section-form-label{
   margin: 0;
+  margin-bottom: 10px;
   padding: 0;
   color: #000;
+  font-weight: bold;
 }
 
 .profile-section-form-input{
@@ -1633,7 +1644,7 @@
 .profile-section-form-submit-btn{
   background-color: #6e9bd5;
   border-radius: 5px;
-  border:  1px solid #6e9bd5;
+  border:  1px solid #fff;
   outline: none;
   text-align: center;
   width: 80%;
@@ -1643,6 +1654,10 @@
   font-weight: bold;
   cursor: pointer;
   text-decoration: none;
+}
+
+.profile-section-form-submit-btn:hover{
+  background-color: #93b3dc;
 }
 
 .profile-statistics-container{
@@ -1884,7 +1899,7 @@
   border-radius: 10px;
   width: 63%;
   height: 270px;
-  background: linear-gradient(to right bottom,#91fb63,#a9f7ae);
+  background: linear-gradient(to right bottom,#7dd956,#a9f7ae);
 }
 
 .landing-user-trip-container img{
@@ -1907,7 +1922,7 @@
   font-weight: bold;
   padding-top: 1%;
   padding-left: 3%;
-  color: #91fb63;
+  color: #7dd956;
 }
 
 .landing-user-trip-description-text{
@@ -1926,6 +1941,10 @@
   outline: none;
   margin-right: 15px;
   margin-top: 0px;
+}
+
+.landing-user-trip-btn:hover{
+  background-color: #a6e38d;
 }
 
 .landing-user-trip-btn-link{
@@ -1995,6 +2014,10 @@
   outline: none;
   margin-right: 15px;
   margin-top: 0px;
+}
+
+.landing-user-survey-btn:hover{
+  background-color: #9066f5;
 }
 
 .landing-user-survey-btn-link{
@@ -2087,6 +2110,10 @@
   margin-bottom: 20px;
 }
 
+.landing-user-survey-form-submit-btn:hover{
+  background-color: #9066f5;
+}
+
 /**********************************************
  * Trip add review
 **********************************************/
@@ -2095,6 +2122,7 @@
   margin-left: 20px;
   padding: 0;
   font-weight: bold;
+  margin-right: 10px;
 }
 
 .create-review-trip-form-description{

@@ -217,10 +217,10 @@
 
 						<% @latest_surveys.each do |survey| %>
 							<div class="user-survey">
-								<% if Survey.get_user_survey(survey).additional_information && !(Survey.get_user_survey(survey).additional_information.image_url.nil?) %>
+								<% if Survey.get_user_survey(survey).additional_information && !(Survey.get_user_survey(survey).additional_information.image_url.nil?) && !(Survey.get_user_survey(survey).additional_information.image_url.empty?)%>
 			          				<%= image_tag("#{Survey.get_user_survey(survey).additional_information.image_url}") %><%= Survey.get_user_survey(survey).name %> <%= Survey.get_user_survey(survey).surname %> <text class="user-survey-date"><%= survey.created_at.strftime("%d/%m/%Y") %></text>
 
-								<% elsif Survey.get_user_survey(survey).image %>
+								<% elsif !(Survey.get_user_survey(survey).image.nil?) && !(Survey.get_user_survey(survey).image.empty?) %>
 			                        <%= image_tag Survey.get_user_survey(survey).image %><%= Survey.get_user_survey(survey).name %> <%= Survey.get_user_survey(survey).surname %> <text class="user-survey-date"><%= survey.created_at.strftime("%d/%m/%Y") %></text>
 			                    <% else %>
 			                        <%= image_tag "local/user.jpeg" %><%= Survey.get_user_survey(survey).name %> <%= Survey.get_user_survey(survey).surname %> <text class="user-survey-date"><%= survey.created_at.strftime("%d/%m/%Y") %></text>

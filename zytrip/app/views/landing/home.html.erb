@@ -31,12 +31,42 @@
 			</div>
 		</div>
 
-		<div class="landing-results">
+		<% if !(user_signed_in?)%>
+			<% if session[:nav_count] == 1 %>
+				<div id="recommendation">
+					<div class="recommendation-container">
+				
+						<%= link_to root_path, class:"close-button-img" do %>
+							<%= image_tag 'local/close_button.jpg' %>
+						<% end %>
 
+						<div class="recommendation-main-container">
+							<div class="row">
+								<div class="col-6">
+									<%= image_tag 'local/zytrip-high-resolution-color-team.png' %>
+								</div>
+
+								<div class="col-6">
+									<h1>¡Gracias por usar zytrip!</h1>
+
+									<p> Te recomendamos crear una cuenta de usuario para poder disfrutar de todas las posibilidades que Zytrip te ofrece, y de esta forma, conseguir la mejor experiencia de usuario posible.</p>
+
+									<p>Esperemos que disfrutes de esta primera versión.</p>
+
+									<p>Atentamente, el equipo desarrollador</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		<% end %>
+
+		<div class="landing-results">
 			<!----------------------------------------------------------->
 			<!------------ Recomendaciones según Popularidad ------------>
 			<!----------------------------------------------------------->
-
+			
 			<div class="landing-results-info ">
 				<div class="landing-results-info-text">
 					<h2>Nuestros destinos más populares</h2>
@@ -406,6 +436,37 @@
 			</div>
 		</div>
 
+		<% if !(user_signed_in?)%>
+			<% if session[:nav_count] == 1 %>
+				<div id="recommendation">
+					<div class="recommendation-container">
+				
+						<%= link_to root_path, class:"close-button-img" do %>
+							<%= image_tag 'local/close_button.jpg' %>
+						<% end %>
+
+						<div class="recommendation-main-container">
+							<div class="row">
+								<div class="col-6">
+									<%= image_tag 'local/zytrip-high-resolution-color-team.png' %>
+								</div>
+
+								<div class="col-6" style="color: black;">
+									<h1>¡Gracias por usar zytrip!</h1>
+
+									<p> Te recomendamos crear una cuenta de usuario para poder disfrutar de todas las posibilidades que Zytrip te ofrece, y de esta forma, conseguir la mejor experiencia de usuario posible.</p>
+
+									<p>Esperemos que disfrutes de esta primera versión.</p>
+
+									<p>Atentamente, el equipo desarrollador</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		<% end %>
+
 		<div class="landing-results">
 
 			<!----------------------------------------------------------->
@@ -760,6 +821,12 @@
 	/////////////////////////////////////////////
 	// Change dynamic info and styles
 	/////////////////////////////////////////////
+
+  	function hide_recommendation(){
+  		if(document.getElementById('recommendation').style.display == 'block'){
+  			document.getElementById('recommendation').style.display == 'none';
+  		}
+  	}
 
 	function show_survey_form(){
 	    if(document.getElementById('surveyform').style.display == 'none'){

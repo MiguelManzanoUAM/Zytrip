@@ -6,6 +6,12 @@ class LandingController < ApplicationController
 			session[:theme] = "light"
 		end
 		
+		if !session[:nav_count]
+			session[:nav_count] = 0
+		else
+			session[:nav_count] += 1
+		end
+
 		Trip.destroy_unsaved_trips()
 		
 		@popular_trips = Trip.get_most_popular_trips()

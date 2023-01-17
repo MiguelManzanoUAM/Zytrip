@@ -13,8 +13,8 @@ class AdditionalInformationsController < ApplicationController
       elsif !(params[:phone_number] =~ /[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}/)
         flash[:additional_information_error] = "Introduzca un nº teléfono válido con formato internacional"
 
-      elsif params[:instagram_nickname].length > 10
-        flash[:additional_information_error] = "introduce un usuario de instagram más corto (máximo 10 caracteres)"
+      elsif params[:instagram_nickname].length > 16
+        flash[:additional_information_error] = "introduce un usuario de instagram más corto (máximo 15 caracteres)"
 
       elsif params[:description].length > 250
         flash[:additional_information_error] = "descripción demasiado extensa (máximo 250 caracteres)"

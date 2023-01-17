@@ -8,19 +8,21 @@ class AdditionalInformation < ApplicationRecord
 	#####################################################
 	def validate_additional_info
 
-		if instagram_nickname.length > 10
-		  errors.add :instagram_nickname, 'introduce un más usuario más corto (máximo 10 caracteres)'
+		if instagram_nickname && instagram_nickname.length > 16
+		  errors.add :instagram_nickname, 'introduce un usuario más corto (máximo 15 caracteres)'
 		end
 
-		if !(phone_number =~ /^\+(?:[0-9]●?){6,14}[0-9]$/)
-		  errors.add :phone_number, 'Introduzca un nº teléfono válido'
+		if phone_number
+			if (phone_number.length > 1) && !(phone_number =~ /^[0-9]{9,12}/)
+		  		errors.add :phone_number, 'Introduzca un nº teléfono válido'
+		  	end
 		end
 
-		if slogan.length > 30
+		if slogan && slogan.length > 30
 		  errors.add :slogan, 'slogan demasiado largo (máximo 30 caracteres)'
 		end
 
-		if description.length > 250
+		if description && description.length > 250
 		  errors.add :description, 'descripción demasiado extensa (máximo 250 caracteres)'
 		end
 	end

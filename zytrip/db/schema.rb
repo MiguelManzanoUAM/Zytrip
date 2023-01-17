@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_21_111739) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_09_114701) do
   create_table "additional_informations", force: :cascade do |t|
     t.string "phone_number"
     t.string "slogan"
@@ -55,7 +55,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_21_111739) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.decimal "rating"
+    t.integer "rating"
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -102,8 +102,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_21_111739) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.decimal "price", default: "0.0"
-    t.decimal "rating", default: "0.0"
+    t.integer "price", default: 0
+    t.integer "rating", default: 0
     t.string "image"
     t.string "subtitle"
     t.integer "organizer_id", null: false

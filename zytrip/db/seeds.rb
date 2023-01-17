@@ -53,6 +53,7 @@ User.create!(id: 19, name:"Lara", surname:"Lorenzo", email:"laraenzo@outlook.es"
 User.create!(id: 20, name:"Flavio", surname:"Palma", email:"flapalma@outlook.es", password:"palmaBillarFla98", password_confirmation:"palmaBillarFla98", admin:false)
 User.create!(id: 21, name:"Luis", surname:"Salmerón", email:"lusalmon@outlook.es", admin: false, password:"salmeUi99s", password_confirmation:"salmeUi99s")
 
+User.create!(id: 22, name:"Reading", surname:".yeah", email:"reading@email.com", admin: false, image:"local/reading_logo.png", password:"reaDingYeah03", password_confirmation:"reaDingYeah03")
 p "Se están creando los primeros usuarios..."
 p "Se ha creado un usuario administrador..."
 ########################################

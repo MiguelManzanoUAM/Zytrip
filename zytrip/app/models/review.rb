@@ -3,7 +3,7 @@ class Review < ApplicationRecord
 	belongs_to :trip
 
 	validates :rating, presence: {message: 'Introduzca una valoración'}, numericality: { less_than_or_equal_to: 5, only_integer: true, message: "Introduce un nº entre 0 y 5"}
-	validates :comment, length: {maximum: 150, message: 'introduce un comentario más corto (máximo 150 caracteres)'}
+	validates :comment, length: {maximum: 300, message: 'introduce un comentario más corto (máximo 300 caracteres)'}
 	
 	#####################################################
   	# Exporta todos los datos en un csv
@@ -34,6 +34,8 @@ class Review < ApplicationRecord
 					review = Review.create!(review_hash)
 					user.trips << trip
 					user.save
+				else
+					review = Review.create!(review_hash)
 				end
   			end
   			review.update(review_hash)
@@ -69,6 +71,8 @@ class Review < ApplicationRecord
 			user.trips << trip
 			user.save
 		end
+
+		Trip.trips_ratings()
 	end
 
   	#####################################################
@@ -193,7 +197,7 @@ class Review < ApplicationRecord
   	# una valoracion parecida en alguno de los viajes 
   	# del usuario.
   	# Consideraremos valoraciones parecidas aquellas que
-  	# se encuentren en un intervalo < 0.5 de diferencia
+  	# se encuentren en un intervalo < 2 de diferencia
   	#####################################################
   	def self.get_similar_reviews(user)
   		user_reviews = Review.get_user_reviews(user)
@@ -204,7 +208,7 @@ class Review < ApplicationRecord
 	  		user_reviews.each do |user_review|
 	  			other_reviews.each do |other_review|
 	  				if (user_review.trip_id == other_review.trip_id)
-	  					if ((user_review.rating - other_review.rating).abs() <= 0.5)
+	  					if ((user_review.rating - other_review.rating).abs() <= 1)
 	  						similar_reviews << other_review
 	  					end
 	  				end

@@ -124,7 +124,9 @@
 					<div class="row justify-content-md-center">
 						<% @trips_recomendated.each do |trip| %>
 							<div class="col col-lg-3 landing-results-recomendations-box">
-								<% if trip.image %>
+								<% if trip.image_url %>
+	              					<%= image_tag("#{trip.image_url}") %>
+								<% elsif trip.image %>
 									<%= image_tag(trip.image) %>
 								<% else %>
 		                			<%= image_tag("local/no-image-available.png") %>
@@ -159,7 +161,9 @@
 					<div class="row justify-content-md-center">
 						<% @session_trips.each do |trip| %>
 							<div class="col col-lg-3 landing-results-recomendations-box">
-								<% if trip.image %>
+								<% if trip.image_url %>
+	              					<%= image_tag("#{trip.image_url}") %>
+								<% elsif trip.image %>
 									<%= image_tag(trip.image) %>
 								<% else %>
 		                			<%= image_tag("local/no-image-available.png") %>
@@ -254,7 +258,7 @@
 					</div>
 				<% end %>
 
-				<% if @most_similar_users.size != 0 %>
+				<% if @friends_trips.size != 0 %>
 					<div class="landing-results-info ">
 						<div class="landing-results-info-text">
 							<h2>Destinos que podrían interesarte</h2>
@@ -266,7 +270,9 @@
 						<div class="row justify-content-md-center">
 							<% @friends_trips.each do |trip| %>
 								<div class="col col-lg-3 landing-results-recomendations-box">
-									<% if trip.image %>
+									<% if trip.image_url %>
+	              						<%= image_tag("#{trip.image_url}") %>
+									<% elsif trip.image %>
 										<%= image_tag(trip.image) %>
 									<% else %>
 			                			<%= image_tag("local/no-image-available.png") %>
@@ -530,7 +536,9 @@
 					<div class="row justify-content-md-center">
 						<% @trips_recomendated.each do |trip| %>
 							<div class="col col-lg-3 landing-results-recomendations-box-dark">
-								<% if trip.image %>
+								<% if trip.image_url %>
+	              					<%= image_tag("#{trip.image_url}") %>
+								<% elsif trip.image %>
 									<%= image_tag(trip.image) %>
 								<% else %>
 		                			<%= image_tag("local/no-image-available.png") %>
@@ -565,7 +573,9 @@
 					<div class="row justify-content-md-center">
 						<% @session_trips.each do |trip| %>
 							<div class="col col-lg-3 landing-results-recomendations-box-dark">
-								<% if trip.image %>
+								<% if trip.image_url %>
+	              					<%= image_tag("#{trip.image_url}") %>
+								<% elsif trip.image %>
 									<%= image_tag(trip.image) %>
 								<% else %>
 		                			<%= image_tag("local/no-image-available.png") %>
@@ -659,7 +669,7 @@
 					</div>
 				<% end %>
 
-				<% if @most_similar_users.size != 0 %>
+				<% if @friends_trips.size != 0 %>
 					<div class="landing-results-info ">
 						<div class="landing-results-info-text-dark">
 							<h2>Destinos que podrían interesarte</h2>
@@ -671,7 +681,9 @@
 						<div class="row justify-content-md-center">
 							<% @friends_trips.each do |trip| %>
 								<div class="col col-lg-3 landing-results-recomendations-box-dark">
-									<% if trip.image %>
+									<% if trip.image_url %>
+	              						<%= image_tag("#{trip.image_url}") %>
+									<% elsif trip.image %>
 										<%= image_tag(trip.image) %>
 									<% else %>
 			                			<%= image_tag("local/no-image-available.png") %>

@@ -5,14 +5,14 @@ class ReviewTest < ActiveSupport::TestCase
   # Inicializacion previa a los test
   #####################################################
 
-  puts "\n-> Test Valoración de un viaje"
+  puts "-> Test Valoración de un viaje"
 
   setup do
     @user_one = User.new(id: 0, name:"User", surname:"One", email:"useremailone@outlook.es", password:"UserOne111", password_confirmation:"UserOne111", admin:false)
     @user_one.save
     @user_two = User.new(id: 1, name:"User", surname:"Two", email:"useremailtwo@outlook.es", password:"UserTwo222", password_confirmation:"UserTwo222", admin:false)
     @user_two.save
-    @trip_one = Trip.new(id: 0, organizer_id: @user_one.id, title: "Trip One", description: "Description for trip one", subtitle:"Subtitle for trip one", price: 250)
+    @trip_one = Trip.new(id: 0, organizer_id: @user_one.id, title: "Trip One", description: "Description for trip one", subtitle:"Subtitle for trip one", price: 250, rating: 0)
     @trip_one.save
     @review_one = Review.new(id: 0, user_id: @user_two.id, trip_id: @trip_one.id, rating: 4, comment: "Valoracion uno")
     @review_one.save

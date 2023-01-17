@@ -43,7 +43,7 @@ class FriendshipTest < ActiveSupport::TestCase
   # El test comprueba que el usuario elimina al usuario
   # dos de su lista de amigos
   #####################################################
-  def test_user_add_friend
+  def test_user_delete_friend
     Friendship.add_friend(@user_one, @user_two)
     Friendship.delete_friend(@user_one, @user_two)
     assert_equal @user_one.friends.size, 0, "la lista de amigos del usuario no ha cambiado"

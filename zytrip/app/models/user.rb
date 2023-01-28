@@ -305,7 +305,7 @@ class User < ApplicationRecord
 
       preferences.each do |pref, value|
         if Trip.trip_has_preference(trip, pref)
-          candidates[trip.id][pref] = value
+          candidates[trip.id][pref] = value.round(3)
         else
           candidates[trip.id][pref] = 0
         end
@@ -332,7 +332,9 @@ class User < ApplicationRecord
 
       candidates[trip].keys.each do |pref|
         afinities[trip] += candidates[trip][pref]
+        afinities[trip] = afinities[trip].round(3)
       end
+
     end
 
     return afinities

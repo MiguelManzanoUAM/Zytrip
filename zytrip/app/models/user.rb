@@ -350,10 +350,14 @@ class User < ApplicationRecord
     candidates_sorted = candidates_affinity.sort {|a1,a2| a2[1]<=>a1[1]}.to_h
 
     candidates_ids = candidates_sorted.keys.first(3)
-    candidates = []
+    candidates = {}
+
+    #candidates_ids.each do |trip_id|
+      #candidates << Trip.find_by(id: trip_id)
+    #end
 
     candidates_ids.each do |trip_id|
-      candidates << Trip.find_by(id: trip_id)
+      candidates[Trip.find_by(id: trip_id)] = candidates_affinity[trip_id]
     end
 
     return candidates

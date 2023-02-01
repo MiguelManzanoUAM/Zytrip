@@ -285,14 +285,16 @@
 								<tr>
 									<td>ID Viaje</td>
 									<td>Título</td>
+									<td>Afinidad</td>
 								</tr>
 							</thead>
 
 							<tbody>
-								<% @final_candidates.each do |trip| %>
+								<% @final_candidates.keys.each do |trip| %>
 									<tr>
 										<td><%= trip.id %></td>
 										<td><%= trip.title %></td>
+										<td><%= @final_candidates[trip] %></td>
 									</tr>
 								<% end %>
 							</tbody>

@@ -8,9 +8,12 @@ class SurveyTest < ActiveSupport::TestCase
   puts "-> Test encuesta de usuario"
 
   setup do
-    @user_one = User.new(id: 0, name:"User", surname:"One", email:"useremailone@outlook.es", password:"UserOne111", password_confirmation:"UserOne111", admin:false)
+    @user_one = User.new(id: 0, name:"User", surname:"One", email:"useremailone@outlook.es", password:"UserOne111", 
+      password_confirmation:"UserOne111", admin:false)
     @user_one.save
-    @user_two = User.new(id: 1, name:"User", surname:"Two", email:"useremailtwo@outlook.es", password:"UserTwo222", password_confirmation:"UserTwo222", admin:false)
+
+    @user_two = User.new(id: 1, name:"User", surname:"Two", email:"useremailtwo@outlook.es", password:"UserTwo222", 
+      password_confirmation:"UserTwo222", admin:false)
     @user_two.save
   end
 
@@ -34,11 +37,13 @@ class SurveyTest < ActiveSupport::TestCase
   # el sistema
   #####################################################
   def test_user_make_survey
-    @survey_one = Survey.new(id: 0, user_id: @user_one.id, results_rating: 3, preferences_poll_rating: 4, zytrip_rating: 4, comment: "Comentario uno")
+    @survey_one = Survey.new(id: 0, user_id: @user_one.id, results_rating: 3, preferences_poll_rating: 4, 
+      zytrip_rating: 4, comment: "Comentario uno")
     @survey_one.save
     assert_not_equal @user_one.surveys.size, 0, "Error al realizar la encuesta"
     @latest_surveys = Survey.get_latest_surveys()
     assert_not_nil @latest_surveys, "No se han rellenado encuestas ultimamente"
   end
-  
+
 end
+

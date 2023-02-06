@@ -40,3 +40,13 @@ id,preference_id,family,romantic,friends,alone,people
 39,39,false,true,false,true,false
 40,40,true,true,true,true,true
 41,41,true,true,true,true,true
+42,42,true,false,false,true,true
+43,43,true,false,false,true,true
+44,44,true,false,false,true,true
+45,45,true,true,false,true,true
+46,46,true,true,false,true,false
+47,47,true,false,false,false,false
+48,48,true,false,false,false,false
+49,49,true,true,false,true,false
+50,50,true,false,false,true,false
+51,51,false,false,false,true,true

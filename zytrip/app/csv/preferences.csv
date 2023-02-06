@@ -40,3 +40,13 @@ id,trip_id,destination,budget,duration
 39,39,africa,high,overlong
 40,40,europe,low,short
 41,41,asia,low,short
+42,42,spain,medium,long
+43,43,spain,low,short
+44,44,spain,medium,long
+45,45,spain,low,short
+46,46,spain,low,short
+47,47,europe,medium,ordinary
+48,48,europe,medium,ordinary
+49,49,europe,medium,long
+50,50,europe,medium,long
+51,51,america,medium,short

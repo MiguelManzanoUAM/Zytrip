@@ -40,3 +40,13 @@ id,preference_id,beach,nature,tourism,relax
 39,39,false,true,true,false
 40,40,false,true,true,false
 41,41,false,true,true,false
+42,42,true,true	true,false
+43,43,false,true,true,false
+44,44,false,true,true,false
+45,45,false,true,true,true
+46,46,false,true,true,false
+47,47,false,true,true,false
+48,48,false,true,true,false
+49,49,false,false,true,false
+50,50,false,true,true,false
+51,51,false,true,true,true

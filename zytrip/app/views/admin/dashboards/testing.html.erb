@@ -328,7 +328,7 @@
 				<% if !@user_social %>
 					<p><text class="testing-container-step">-></text> Debe seleccionarse un usuario para realizar el test </p>
 				<% else %>
-					<p><text class="testing-container-step">-></text> Esta técnica consiste en buscar cuales son los viajes más afines con el usuario en función de la interacción con otros usuarios. El algoritmo en sí dice que si dos personas A y B comparten una misma opinión sobre un producto, entonces, matemáticamente A tendrá más posibilidades de tener la misma opinión que B en un producto distinto que otra persona tomada al azar.</p>
+					<!--<p><text class="testing-container-step">-></text> Esta técnica consiste en buscar cuales son los viajes más afines con el usuario en función de la interacción con otros usuarios. El algoritmo en sí dice que si dos personas A y B comparten una misma opinión sobre un producto, entonces, matemáticamente A tendrá más posibilidades de tener la misma opinión que B en un producto distinto que otra persona tomada al azar.</p>-->
 
 					<p><text class="testing-container-step">-></text> El usuario seleccionado ha sido <b><%=@user_social.name%> <%=@user_social.surname %></b> con id: <b><%=@user_social.id %></b> </p>
 
@@ -462,7 +462,7 @@
 											<% @most_similar_users_by_reviews.each do |user| %>
 												<tr>
 													<td><%= user.id %></td>
-													<td><%= user.name %><%= user.surname %></td>
+													<td><%= user.name %> <%= user.surname %></td>
 												</tr>
 											<% end %>
 										</tbody>

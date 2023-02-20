@@ -122,7 +122,7 @@
 
 				<div class="landing-results-recomendations">
 					<div class="row justify-content-md-center">
-						<% @trips_recomendated.each do |trip| %>
+						<% @trips_recomendated.keys.each do |trip| %>
 							<div class="col col-lg-3 landing-results-recomendations-box">
 								<% if trip.image_url %>
 	              					<%= image_tag("#{trip.image_url}") %>
@@ -534,7 +534,7 @@
 
 				<div class="landing-results-recomendations">
 					<div class="row justify-content-md-center">
-						<% @trips_recomendated.each do |trip| %>
+						<% @trips_recomendated.keys.each do |trip| %>
 							<div class="col col-lg-3 landing-results-recomendations-box-dark">
 								<% if trip.image_url %>
 	              					<%= image_tag("#{trip.image_url}") %>
